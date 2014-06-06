@@ -34,7 +34,11 @@ namespace ScreenCapture
 
         private void Capture()
         {
+            Bitmap bitmap = new Bitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
+            Graphics graphics = Graphics.FromImage(bitmap);
 
+            graphics.CopyFromScreen(Point.Empty, Point.Empty, Screen.PrimaryScreen.WorkingArea.Size);
+            picFeed.Image = bitmap;
         }
 
         private void LiveFeed()

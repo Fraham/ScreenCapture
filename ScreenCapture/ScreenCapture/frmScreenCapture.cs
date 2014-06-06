@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ScreenCapture
 {
-    public partial class Form1 : Form
+    public partial class frmScreenCapture : Form
     {
-        public Form1()
+        public frmScreenCapture()
         {
             InitializeComponent();
         }

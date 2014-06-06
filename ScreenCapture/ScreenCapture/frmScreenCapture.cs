@@ -13,13 +13,13 @@ namespace ScreenCapture
 {
     public partial class frmScreenCapture : Form
     {
-        Thread t;
+        Thread feedThread;
 
         public frmScreenCapture()
         {
             InitializeComponent();
 
-            t = new Thread(LiveFeed);
+            feedThread = new Thread(LiveFeed);
         }
 
         private void btnScreenshot_Click(object sender, EventArgs e)

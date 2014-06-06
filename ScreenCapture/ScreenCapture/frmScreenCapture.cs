@@ -24,12 +24,17 @@ namespace ScreenCapture
 
         private void btnScreenshot_Click(object sender, EventArgs e)
         {
+            feedThread.Abort();
 
+            Capture();
         }
 
         private void btnLiveFeed_Click(object sender, EventArgs e)
         {
-
+            if (!feedThread.IsAlive)
+            {
+                feedThread.Start();
+            }
         }
 
         /// <summary>

@@ -42,6 +42,7 @@
             this.btnScreenshot.TabIndex = 0;
             this.btnScreenshot.Text = "Screenshot";
             this.btnScreenshot.UseVisualStyleBackColor = true;
+            this.btnScreenshot.Click += new System.EventHandler(this.btnScreenshot_Click);
             // 
             // btnLiveFeed
             // 
@@ -51,6 +52,7 @@
             this.btnLiveFeed.TabIndex = 0;
             this.btnLiveFeed.Text = "Live Feed";
             this.btnLiveFeed.UseVisualStyleBackColor = true;
+            this.btnLiveFeed.Click += new System.EventHandler(this.btnLiveFeed_Click);
             // 
             // picFeed
             // 

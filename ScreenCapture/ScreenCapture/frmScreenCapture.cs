@@ -26,7 +26,7 @@ namespace ScreenCapture
         {
             feedThread.Abort();
 
-            Capture();
+            CaptureScreen();
         }
 
         private void btnLiveFeed_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace ScreenCapture
         /// <summary>
         /// Will capture a frame of the current primary screen.
         /// </summary>
-        private void Capture()
+        private void CaptureScreen()
         {
             /*
              * Creates a new bitmap with the width and height of the primary screen (the one with the taskbar).
@@ -48,18 +48,30 @@ namespace ScreenCapture
              */ 
             Bitmap bitmap = new Bitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
             Graphics graphics = Graphics.FromImage(bitmap);
-
+            
             /*
              * Copy the graphics from the screen for the whole screen.
              * Then it will set the created bitmap image to the picture box.
              */ 
             graphics.CopyFromScreen(Point.Empty, Point.Empty, Screen.PrimaryScreen.WorkingArea.Size);
+
+            if (picFeed.Image != null)
+            {
+                picFeed.Image.Dispose();
+            }
+
             picFeed.Image = bitmap;
+
+            //bitmap.Dispose();
+            //graphics.Dispose();
         }
 
         private void LiveFeed()
         {
-
+            while(true)
+            {
+                CaptureScreen();
+            }
         }
     }
 }

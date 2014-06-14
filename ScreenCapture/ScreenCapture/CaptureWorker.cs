@@ -38,7 +38,9 @@ namespace ScreenCapture
         #region Getters and Setters
 
         /// <summary>
-        ///
+        /// Getter and Setter for the capture height.
+        /// 
+        /// When setting the value for the height must be not be negative.
         /// </summary>
         public int CaptureHeight
         {
@@ -61,7 +63,9 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        ///
+        /// Getter and Setter for the capture width.
+        /// 
+        /// When setting the value for the width must be not be negative.
         /// </summary>
         public int CaptureWidth
         {
@@ -83,7 +87,9 @@ namespace ScreenCapture
             }
         }
         /// <summary>
-        ///
+        /// Getter and Setter for picture box.
+        /// 
+        /// When setting the value for the picture box must not be null.
         /// </summary>
         public PictureBox PicBox
         {

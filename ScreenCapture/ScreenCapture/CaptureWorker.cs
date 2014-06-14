@@ -4,21 +4,20 @@ namespace ScreenCapture
 {
     internal class CaptureWorker
     {
-        private int captureWidth;
         private int captureHeight;
+        private int captureWidth;
         private PictureBox picBox;
 
         private volatile bool shouldStop;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="captureWidth"></param>
         /// <param name="captureHeight"></param>
         /// <param name="picBox"></param>
         public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox)
         {
-
         }
 
         /// <summary>
@@ -39,30 +38,7 @@ namespace ScreenCapture
         #region Getters and Setters
 
         /// <summary>
-        /// 
-        /// </summary>
-        public int CaptureWidth
-        {
-            get
-            {
-                return this.captureWidth;
-            }
-
-            set
-            {
-                if(value < 0)
-                {
-                    this.captureWidth = 0;
-                }
-                else
-                {
-                    this.captureWidth = value;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 
+        ///
         /// </summary>
         public int CaptureHeight
         {
@@ -85,7 +61,29 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// 
+        ///
+        /// </summary>
+        public int CaptureWidth
+        {
+            get
+            {
+                return this.captureWidth;
+            }
+
+            set
+            {
+                if (value < 0)
+                {
+                    this.captureWidth = 0;
+                }
+                else
+                {
+                    this.captureWidth = value;
+                }
+            }
+        }
+        /// <summary>
+        ///
         /// </summary>
         public PictureBox PicBox
         {
@@ -96,7 +94,7 @@ namespace ScreenCapture
 
             set
             {
-                if(value != null)
+                if (value != null)
                 {
                     //make an error message.
                 }
@@ -107,6 +105,6 @@ namespace ScreenCapture
             }
         }
 
-#endregion
+        #endregion Getters and Setters
     }
 }

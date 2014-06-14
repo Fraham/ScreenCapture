@@ -24,8 +24,7 @@ namespace ScreenCapture
 
         private void btnScreenshot_Click(object sender, EventArgs e)
         {
-            feedThread.Abort();
-
+            //remember to stop the thread
             CaptureScreen();
         }
 

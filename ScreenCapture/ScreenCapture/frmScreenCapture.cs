@@ -33,11 +33,6 @@ namespace ScreenCapture
 
         private void btnLiveFeed_Click(object sender, EventArgs e)
         {
-            /*if (!feedThread.IsAlive)
-            {
-                feedThread.Start();
-            }*/
-
             feedThread.Start();
         }
 

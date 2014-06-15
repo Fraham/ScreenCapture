@@ -126,7 +126,7 @@ namespace ScreenCapture
 
             set
             {
-                if (value != null)
+                if (value == null)
                 {
                     //make an error message.
                 }

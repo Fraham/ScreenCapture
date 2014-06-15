@@ -11,13 +11,16 @@ namespace ScreenCapture
         private volatile bool shouldStop;
 
         /// <summary>
-        ///
+        /// Makes a new instance of a capture worker.
         /// </summary>
-        /// <param name="captureWidth"></param>
-        /// <param name="captureHeight"></param>
-        /// <param name="picBox"></param>
+        /// <param name="captureWidth">The width of capture area.</param>
+        /// <param name="captureHeight">The height of capture area.</param>
+        /// <param name="picBox">The picture box being used to display the capture.</param>
         public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox)
         {
+            CaptureWidth = captureWidth;
+            CaptureHeight = captureHeight;
+            PicBox = picBox;
         }
 
         /// <summary>
@@ -39,7 +42,7 @@ namespace ScreenCapture
 
         /// <summary>
         /// Getter and Setter for the capture height.
-        /// 
+        ///
         /// When setting the value for the height must be not be negative.
         /// </summary>
         public int CaptureHeight
@@ -64,7 +67,7 @@ namespace ScreenCapture
 
         /// <summary>
         /// Getter and Setter for the capture width.
-        /// 
+        ///
         /// When setting the value for the width must be not be negative.
         /// </summary>
         public int CaptureWidth
@@ -86,9 +89,10 @@ namespace ScreenCapture
                 }
             }
         }
+
         /// <summary>
         /// Getter and Setter for picture box.
-        /// 
+        ///
         /// When setting the value for the picture box must not be null.
         /// </summary>
         public PictureBox PicBox

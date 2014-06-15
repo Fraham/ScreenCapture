@@ -14,18 +14,20 @@ namespace ScreenCapture
     public partial class frmScreenCapture : Form
     {
         Thread feedThread;
+        CaptureWorker workerObject;
 
         public frmScreenCapture()
         {
             InitializeComponent();
 
-            CaptureWorker workerObject = new CaptureWorker(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height, this.picFeed);
-            feedThread = new Thread(LiveFeed);            
+            workerObject = new CaptureWorker(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height, this.picFeed);
+            feedThread = new Thread(workerObject.DoCapture);            
         }
 
         private void btnScreenshot_Click(object sender, EventArgs e)
         {
-            //remember to stop the thread
+            workerObject.RequestStop();
+
             CaptureScreen();
         }
 
@@ -68,12 +70,12 @@ namespace ScreenCapture
             //graphics.Dispose();
         }
 
-        private void LiveFeed()
+        /*private void LiveFeed()
         {
             while(true)
             {
                 CaptureScreen();
             }
-        }
+        }*/
     }
 }

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaptureWorker.cs" />
     <Compile Include="frmScreenCapture.cs">
       <SubType>Form</SubType>
     </Compile>

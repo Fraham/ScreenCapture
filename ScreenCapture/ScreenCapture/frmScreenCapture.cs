@@ -19,7 +19,8 @@ namespace ScreenCapture
         {
             InitializeComponent();
 
-            feedThread = new Thread(LiveFeed);
+            CaptureWorker workerObject = new CaptureWorker(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height, this.picFeed);
+            feedThread = new Thread(LiveFeed);            
         }
 
         private void btnScreenshot_Click(object sender, EventArgs e)
@@ -30,10 +31,12 @@ namespace ScreenCapture
 
         private void btnLiveFeed_Click(object sender, EventArgs e)
         {
-            if (!feedThread.IsAlive)
+            /*if (!feedThread.IsAlive)
             {
                 feedThread.Start();
-            }
+            }*/
+
+            feedThread.Start();
         }
 
         /// <summary>

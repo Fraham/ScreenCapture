@@ -26,14 +26,21 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        ///
+        /// This will run the capture code until the signal to stop the thread.
+        /// 
+        /// The call comes form the global variable shouldStop which can be changed to false by calling RequestStop.
+        /// 
+        /// Once the request to stop the thread is made it will finish until the end of the current thread and then it will stop looping.
+        /// 
+        /// The capture uses the global variables CaptureWidth and CaptureHeight as the width and height of the capture.
+        /// It will display the capture on the picture box that was used when creating the new class.
         /// </summary>
         public void DoCapture()
         {
             while (!shouldStop)
             {
                 /*
-                 * Creates a new bitmap with the width and height of the primary screen (the one with the taskbar).
+                 * Creates a new bitmap with the width and height of the primary screen (the one with the task-bar).
                  * Then it will create a graphics from the new bitmap.
                  */
                 Bitmap bitmap = new Bitmap(CaptureWidth, CaptureHeight);
@@ -43,7 +50,6 @@ namespace ScreenCapture
                  * Copy the graphics from the screen for the whole screen.
                  * Then it will set the created bitmap image to the picture box.
                  */
-                //graphics.CopyFromScreen(Point.Empty, Point.Empty, Screen.PrimaryScreen.WorkingArea.Size);
                 graphics.CopyFromScreen(Point.Empty, Point.Empty, new Size(CaptureWidth, CaptureHeight));
 
                 if (PicBox.Image != null)
@@ -56,7 +62,7 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        ///
+        /// Stops the current thread once its completed its current run through the thread.
         /// </summary>
         public void RequestStop()
         {

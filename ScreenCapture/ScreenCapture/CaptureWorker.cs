@@ -66,6 +66,8 @@ namespace ScreenCapture
                  */
                 graphics.CopyFromScreen(Point.Empty, Point.Empty, new Size(CaptureWidth, CaptureHeight));
 
+                graphics.Dispose();
+
                 if (PicBox.Image != null)
                 {
                     PicBox.Image.Dispose();

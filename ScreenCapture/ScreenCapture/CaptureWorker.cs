@@ -26,6 +26,20 @@ namespace ScreenCapture
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public CaptureWorker(PictureBox picBox)
+        {
+            Rectangle totalSize = Rectangle.Empty;
+
+            foreach (Screen s in Screen.AllScreens)
+                totalSize = Rectangle.Union(totalSize, s.Bounds);
+
+            CaptureWidth = totalSize.Width;
+            CaptureHeight = totalSize.Height;
+        }
+
+        /// <summary>
         /// This will run the capture code until the signal to stop the thread.
         /// 
         /// The call comes form the global variable shouldStop which can be changed to false by calling RequestStop.

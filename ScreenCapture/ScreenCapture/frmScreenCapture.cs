@@ -54,6 +54,8 @@ namespace ScreenCapture
              */ 
             graphics.CopyFromScreen(Point.Empty, Point.Empty, Screen.PrimaryScreen.WorkingArea.Size);
 
+            graphics.Dispose();
+
             if (picFeed.Image != null)
             {
                 picFeed.Image.Dispose();

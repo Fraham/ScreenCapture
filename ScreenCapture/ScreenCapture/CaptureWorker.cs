@@ -14,6 +14,8 @@ namespace ScreenCapture
 
         /// <summary>
         /// Makes a new instance of a capture worker.
+        /// 
+        /// It will capture an area from (0, 0) to the set width and height.
         /// </summary>
         /// <param name="captureWidth">The width of capture area.</param>
         /// <param name="captureHeight">The height of capture area.</param>
@@ -26,8 +28,12 @@ namespace ScreenCapture
         }
 
         /// <summary>
+        /// Makes a new instance of a capture worker
         /// 
+        /// It will set the height and width of the capture to the full area of displays.
+        /// It will be able to capture the screen over multiple displays.
         /// </summary>
+        /// <param name="picBox">The picture box being used to display the capture.</param>
         public CaptureWorker(PictureBox picBox)
         {
             Rectangle totalSize = Rectangle.Empty;

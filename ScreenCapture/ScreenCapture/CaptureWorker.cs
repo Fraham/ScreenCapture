@@ -11,8 +11,6 @@ namespace ScreenCapture
         private PictureBox picBox;
         private bool started = false;
 
-        //private volatile bool shouldStop;
-
         private ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
         private ManualResetEvent _pauseEvent = new ManualResetEvent(true);
         private Thread _thread;
@@ -123,14 +121,6 @@ namespace ScreenCapture
                 PicBox.Image = bitmap;
             }
         }
-
-        /// <summary>
-        /// Stops the current thread once its completed its current run through the thread.
-        /// </summary>
-        /*public void RequestStop()
-        {
-            shouldStop = true;
-        }*/
 
         #region Getters and Setters
 

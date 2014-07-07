@@ -24,11 +24,19 @@ namespace ScreenCapture
 
         /// <summary>
         /// It will capture the screen and stop the live capture.
+        /// This uses the same settings as the live feed but it will only take one frame.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnScreenshot_Click(object sender, EventArgs e)
-        { 
+        {
+            /*
+             * It will check if the worker has already been started. 
+             * Then it will resume and pause to get a still image.
+             * 
+             * If it hasn't been started already it will start and then pause
+             * with a small sleep so has enough time to capture the screen.
+            */ 
             if (workerObject.Started)
             {
                 workerObject.Resume();

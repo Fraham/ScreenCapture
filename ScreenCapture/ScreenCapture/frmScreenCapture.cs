@@ -7,26 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
 
 namespace ScreenCapture
 {
     public partial class frmScreenCapture : Form
     {
-        //Thread feedThread;
         CaptureWorker workerObject;
 
         public frmScreenCapture()
         {
             InitializeComponent();
 
-            workerObject = new CaptureWorker(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height, this.picFeed);
-            //feedThread = new Thread(workerObject.DoCapture);            
+            workerObject = new CaptureWorker(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height, this.picFeed);          
         }
 
         private void btnScreenshot_Click(object sender, EventArgs e)
         {
-            //workerObject.RequestStop();
             workerObject.Pause();
 
             CaptureScreen();
@@ -34,7 +30,6 @@ namespace ScreenCapture
 
         private void btnLiveFeed_Click(object sender, EventArgs e)
         {
-            //feedThread.Start();
             workerObject.Start();
 
             if (workerObject.Started)
@@ -80,16 +75,10 @@ namespace ScreenCapture
 
         private void frmScreenCapture_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //workerObject.RequestStop();
-            workerObject.Stop();
-        }
-
-        /*private void LiveFeed()
-        {
-            while(true)
+            if (workerObject.Started)
             {
-                CaptureScreen();
+                workerObject.Stop();
             }
-        }*/
+        }
     }
 }

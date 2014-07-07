@@ -62,6 +62,7 @@
             this.picFeed.Location = new System.Drawing.Point(12, 41);
             this.picFeed.Name = "picFeed";
             this.picFeed.Size = new System.Drawing.Size(927, 562);
+            this.picFeed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picFeed.TabIndex = 1;
             this.picFeed.TabStop = false;
             // 

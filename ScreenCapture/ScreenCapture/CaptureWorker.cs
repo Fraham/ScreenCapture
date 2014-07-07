@@ -39,6 +39,8 @@ namespace ScreenCapture
         /// <param name="picBox">The picture box being used to display the capture.</param>
         public CaptureWorker(PictureBox picBox)
         {
+            PicBox = picBox;
+
             Rectangle totalSize = Rectangle.Empty;
 
             foreach (Screen s in Screen.AllScreens)
@@ -204,7 +206,7 @@ namespace ScreenCapture
             {
                 if (value == null)
                 {
-                    //make an error message.
+                    System.Console.WriteLine("Null picture box.");
                 }
                 else
                 {

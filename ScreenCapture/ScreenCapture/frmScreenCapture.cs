@@ -18,7 +18,8 @@ namespace ScreenCapture
         {
             InitializeComponent();
 
-            workerObject = new CaptureWorker(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height, this.picFeed);          
+            //workerObject = new CaptureWorker(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height, this.picFeed);
+            workerObject = new CaptureWorker(this.picFeed);
         }
 
         /// <summary>
@@ -58,7 +59,7 @@ namespace ScreenCapture
         private void CaptureScreen()
         {
             /*
-             * Creates a new bitmap with the width and height of the primary screen (the one with the taskbar).
+             * Creates a new bitmap with the width and height of the primary screen (the one with the task-bar).
              * Then it will create a graphics from the new bitmap.
              */ 
             Bitmap bitmap = new Bitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);

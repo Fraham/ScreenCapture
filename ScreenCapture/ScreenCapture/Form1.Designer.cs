@@ -75,6 +75,7 @@
             this.Controls.Add(this.btnScreenshot);
             this.Name = "frmScreenCapture";
             this.Text = "Screen Capture";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmScreenCapture_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.picFeed)).EndInit();
             this.ResumeLayout(false);
 

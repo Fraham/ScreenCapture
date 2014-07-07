@@ -67,6 +67,11 @@ namespace ScreenCapture
             //graphics.Dispose();
         }
 
+        private void frmScreenCapture_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            workerObject.RequestStop();
+        }
+
         /*private void LiveFeed()
         {
             while(true)

@@ -18,7 +18,6 @@ namespace ScreenCapture
         {
             InitializeComponent();
 
-            //workerObject = new CaptureWorker(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height, this.picFeed);
             workerObject = new CaptureWorker(this.picFeed);
         }
 

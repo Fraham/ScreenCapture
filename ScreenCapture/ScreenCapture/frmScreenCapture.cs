@@ -24,6 +24,11 @@ namespace ScreenCapture
             feedThread = new Thread(workerObject.DoCapture);            
         }
 
+        /// <summary>
+        /// It will capture the screen and stop the live capture.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnScreenshot_Click(object sender, EventArgs e)
         {
             workerObject.RequestStop();
@@ -31,6 +36,11 @@ namespace ScreenCapture
             CaptureScreen();
         }
 
+        /// <summary>
+        /// It will start the thread when the button is pressed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLiveFeed_Click(object sender, EventArgs e)
         {
             feedThread.Start();
@@ -42,7 +52,7 @@ namespace ScreenCapture
         private void CaptureScreen()
         {
             /*
-             * Creates a new bitmap with the width and height of the primary screen (the one with the taskbar).
+             * Creates a new bitmap with the width and height of the primary screen (the one with the task bar).
              * Then it will create a graphics from the new bitmap.
              */ 
             Bitmap bitmap = new Bitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
@@ -62,22 +72,16 @@ namespace ScreenCapture
             }
 
             picFeed.Image = bitmap;
-
-            //bitmap.Dispose();
-            //graphics.Dispose();
         }
 
+        /// <summary>
+        /// Makes sure that the thread is stopped when the form closes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmScreenCapture_FormClosing(object sender, FormClosingEventArgs e)
         {
             workerObject.RequestStop();
         }
-
-        /*private void LiveFeed()
-        {
-            while(true)
-            {
-                CaptureScreen();
-            }
-        }*/
     }
 }

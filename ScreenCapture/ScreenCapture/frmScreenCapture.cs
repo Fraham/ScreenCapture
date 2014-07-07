@@ -58,7 +58,7 @@ namespace ScreenCapture
         private void CaptureScreen()
         {
             /*
-             * Creates a new bitmap with the width and height of the primary screen (the one with the task bar).
+             * Creates a new bitmap with the width and height of the primary screen (the one with the taskbar).
              * Then it will create a graphics from the new bitmap.
              */ 
             Bitmap bitmap = new Bitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
@@ -87,14 +87,10 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void frmScreenCapture_FormClosing(object sender, FormClosingEventArgs e)
         {
-<<<<<<< HEAD
-            workerObject.RequestStop();
-=======
             if (workerObject.Started)
             {
                 workerObject.Stop();
             }
->>>>>>> origin/SortingOutThreading
         }
     }
 }

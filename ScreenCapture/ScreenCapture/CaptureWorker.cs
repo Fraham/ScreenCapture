@@ -30,6 +30,9 @@ namespace ScreenCapture
             PicBox = picBox;
         }
 
+        /// <summary>
+        /// This will start the thread from running.
+        /// </summary>
         public void Start()
         {
             Started = true;
@@ -38,17 +41,28 @@ namespace ScreenCapture
             _thread.Start();            
         }
 
+        /// <summary>
+        /// This will pause the thread from running.
+        /// It can be resumed by using Resume function.
+        /// </summary>
         public void Pause()
         {
             _pauseEvent.Reset();
         }
 
+        /// <summary>
+        /// Used to restart the thread when it has been paused by the Pause function.
+        /// </summary>
         public void Resume()
         {
             _pauseEvent.Set();
-            System.Console.WriteLine("Resume Thread");
         }
 
+        /// <summary>
+        /// This will completely stop the running thread.
+        /// It will allow for the currently paused thread to resume again.
+        /// It will allow the current thread to finish a loop around before stopping.
+        /// </summary>
         public void Stop()
         {
             // Signal the shutdown event

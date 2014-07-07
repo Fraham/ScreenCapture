@@ -1,6 +1,6 @@
-﻿using System.Windows.Forms;
-using System.Data;
-using System.Drawing;
+﻿using System.Drawing;
+using System.Windows.Forms;
+using System.Threading;
 
 namespace ScreenCapture
 {
@@ -9,12 +9,15 @@ namespace ScreenCapture
         private int captureHeight;
         private int captureWidth;
         private PictureBox picBox;
+        private bool started = false;
 
-        private volatile bool shouldStop;
+        private ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
+        private ManualResetEvent _pauseEvent = new ManualResetEvent(true);
+        private Thread _thread;
 
         /// <summary>
         /// Makes a new instance of a capture worker.
-        /// 
+        ///
         /// It will capture an area from (0, 0) to the set width and height.
         /// </summary>
         /// <param name="captureWidth">The width of capture area.</param>
@@ -28,8 +31,53 @@ namespace ScreenCapture
         }
 
         /// <summary>
+        /// This will start the thread from running.
+        /// </summary>
+        public void Start()
+        {
+            Started = true;
+
+            _thread = new Thread(DoCapture);
+            _thread.Start();            
+        }
+
+        /// <summary>
+        /// This will pause the thread from running.
+        /// It can be resumed by using Resume function.
+        /// </summary>
+        public void Pause()
+        {
+            _pauseEvent.Reset();
+        }
+
+        /// <summary>
+        /// Used to restart the thread when it has been paused by the Pause function.
+        /// </summary>
+        public void Resume()
+        {
+            _pauseEvent.Set();
+        }
+
+        /// <summary>
+        /// This will completely stop the running thread.
+        /// It will allow for the currently paused thread to resume again.
+        /// It will allow the current thread to finish a loop around before stopping.
+        /// </summary>
+        public void Stop()
+        {
+            // Signal the shutdown event
+            _shutdownEvent.Set();
+
+            // Make sure to resume any paused threads
+            _pauseEvent.Set();
+
+            // Wait for the thread to exit
+            _thread.Join();
+        }
+
+        /// <summary>
         /// Makes a new instance of a capture worker
-        /// 
+        ///
         /// It will set the height and width of the capture to the full area of displays.
         /// It will be able to capture the screen over multiple displays.
         /// </summary>
@@ -47,18 +95,23 @@ namespace ScreenCapture
 
         /// <summary>
         /// This will run the capture code until the signal to stop the thread.
-        /// 
+        ///
         /// The call comes form the global variable shouldStop which can be changed to false by calling RequestStop.
-        /// 
+        ///
         /// Once the request to stop the thread is made it will finish until the end of the current thread and then it will stop looping.
-        /// 
+        ///
         /// The capture uses the global variables CaptureWidth and CaptureHeight as the width and height of the capture.
         /// It will display the capture on the picture box that was used when creating the new class.
         /// </summary>
         public void DoCapture()
         {
-            while (!shouldStop)
+            while (true)
             {
+                _pauseEvent.WaitOne(Timeout.Infinite);
+
+                if (_shutdownEvent.WaitOne(0))
+                    break;
+
                 /*
                  * Creates a new bitmap with the width and height of the primary screen (the one with the task-bar).
                  * Then it will create a graphics from the new bitmap.
@@ -81,14 +134,6 @@ namespace ScreenCapture
 
                 PicBox.Image = bitmap;
             }
-        }
-
-        /// <summary>
-        /// Stops the current thread once its completed its current run through the thread.
-        /// </summary>
-        public void RequestStop()
-        {
-            shouldStop = true;
         }
 
         #region Getters and Setters
@@ -165,6 +210,18 @@ namespace ScreenCapture
                 {
                     picBox = value;
                 }
+            }
+        }
+
+        public bool Started
+        {
+            get
+            {
+                return this.started;
+            }
+            set
+            {
+                this.started = value;
             }
         }
 

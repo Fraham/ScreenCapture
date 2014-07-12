@@ -6,6 +6,8 @@ namespace ScreenCapture
 {
     internal class CaptureWorker
     {
+        #region Class Variables
+
         private int captureHeight;
         private int captureWidth;
         private PictureBox picBox;
@@ -15,6 +17,8 @@ namespace ScreenCapture
         private ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
         private ManualResetEvent _pauseEvent = new ManualResetEvent(true);
         private Thread _thread;
+
+        #endregion
 
         #region Constructors
 
@@ -93,6 +97,8 @@ namespace ScreenCapture
 
 #endregion
 
+        #region Threading
+
         /// <summary>
         /// This will start the thread from running.
         /// </summary>
@@ -137,6 +143,8 @@ namespace ScreenCapture
             // Wait for the thread to exit
             _thread.Join();
         }
+
+        #endregion
 
         /// <summary>
         /// This will run the capture code until the signal to stop the thread.

@@ -169,7 +169,7 @@ namespace ScreenCapture
                  * Copy the graphics from the screen for the whole screen.
                  * Then it will set the created bitmap image to the picture box.
                  */
-                graphics.CopyFromScreen(Point.Empty, Point.Empty, new Size(CaptureWidth, CaptureHeight));
+                graphics.CopyFromScreen(SourcePoint, Point.Empty, new Size(CaptureWidth, CaptureHeight));
 
                 graphics.Dispose();
 

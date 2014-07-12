@@ -34,6 +34,40 @@ namespace ScreenCapture
         }
 
         /// <summary>
+        /// Makes a new instance of a capture worker.
+        ///
+        /// It will capture an area from the source point to the set width and height.
+        /// </summary>
+        /// <param name="captureWidth">The width of capture area.</param>
+        /// <param name="captureHeight">The height of capture area.</param>
+        /// <param name="picBox">The picture box being used to display the capture.</param>
+        public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox)
+        {
+            CaptureWidth = captureWidth;
+            CaptureHeight = captureHeight;
+            PicBox = picBox;
+            SourcePoint = Point.Empty;
+        }
+
+        /// <summary>
+        /// Makes a new instance of a capture worker.
+        ///
+        /// It will capture an area from the set x and y to the set width and height.
+        /// </summary>
+        /// <param name="captureWidth">The width of capture area.</param>
+        /// <param name="captureHeight">The height of capture area.</param>
+        /// <param name="picBox">The picture box being used to display the capture.</param>
+        /// <param name="x">The x co-ordinate of the source of the source</param>
+        /// <param name="y">The y co-ordinate of the source of the source</param>
+        public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox, int x, int y)
+        {
+            CaptureWidth = captureWidth;
+            CaptureHeight = captureHeight;
+            PicBox = picBox;
+            SourcePoint = new Point(x, y);
+        }
+
+        /// <summary>
         /// Makes a new instance of a capture worker
         /// 
         /// It will set the height and width of the capture to the full area of displays.

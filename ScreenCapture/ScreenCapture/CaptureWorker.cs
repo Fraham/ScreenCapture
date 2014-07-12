@@ -207,6 +207,8 @@ namespace ScreenCapture
                 if (value == null)
                 {
                     System.Console.WriteLine("Null picture box.");
+
+                    picBox = new PictureBox();
                 }
                 else
                 {
@@ -215,6 +217,10 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// Getter and Setter for the started variable.
+        /// The variable is boolean so can only be true or false.
+        /// </summary>
         public bool Started
         {
             get

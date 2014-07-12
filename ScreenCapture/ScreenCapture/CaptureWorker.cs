@@ -49,6 +49,8 @@ namespace ScreenCapture
 
             CaptureWidth = totalSize.Width;
             CaptureHeight = totalSize.Height;
+
+            SourcePoint = Point.Empty;
         }
 
         /// <summary>

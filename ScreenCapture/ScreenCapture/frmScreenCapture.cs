@@ -19,7 +19,8 @@ namespace ScreenCapture
         {
             InitializeComponent();
 
-            workerObject = new CaptureWorker(this.picFeed);
+            //workerObject = new CaptureWorker(this.picFeed);
+            workerObject = new CaptureWorker(40, 40, this.picFeed, 10, 100);
         }
 
         /// <summary>

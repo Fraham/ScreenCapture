@@ -24,11 +24,13 @@ namespace ScreenCapture
         /// <param name="captureWidth">The width of capture area.</param>
         /// <param name="captureHeight">The height of capture area.</param>
         /// <param name="picBox">The picture box being used to display the capture.</param>
-        public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox)
+        /// <param name="sourcePoint">The source point of the capture.</param>
+        public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox, Point sourcePoint)
         {
             CaptureWidth = captureWidth;
             CaptureHeight = captureHeight;
             PicBox = picBox;
+            SourcePoint = sourcePoint;
         }
 
         /// <summary>
@@ -236,6 +238,10 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// Getter and Setter for the source point variable.
+        /// If the source point is null then it will set the source point to be an empty point.
+        /// </summary>
         public Point SourcePoint
         {
             get

@@ -10,6 +10,7 @@ namespace ScreenCapture
         private int captureWidth;
         private PictureBox picBox;
         private bool started = false;
+        private Point sourcePoint;
 
         private ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
         private ManualResetEvent _pauseEvent = new ManualResetEvent(true);
@@ -230,6 +231,25 @@ namespace ScreenCapture
             set
             {
                 this.started = value;
+            }
+        }
+
+        public Point SourcePoint
+        {
+            get
+            {
+                return this.sourcePoint;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    sourcePoint = value;
+                }
+                else
+                {
+                    sourcePoint = Point.Empty;
+                }
             }
         }
 

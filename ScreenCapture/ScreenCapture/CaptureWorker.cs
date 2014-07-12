@@ -23,8 +23,7 @@ namespace ScreenCapture
         #region Constructors
 
         /// <summary>
-        /// Makes a new instance of a capture worker.
-        ///
+        /// Makes a new instance of a capture worker.        ///
         /// It will capture an area from the source point to the set width and height.
         /// </summary>
         /// <param name="captureWidth">The width of capture area.</param>
@@ -40,8 +39,7 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Makes a new instance of a capture worker.
-        /// 
+        /// Makes a new instance of a capture worker. 
         /// It will capture an area from (0, 0) to the set width and height.        
         /// </summary>
         /// <param name="captureWidth">The width of capture area.</param>
@@ -57,7 +55,6 @@ namespace ScreenCapture
 
         /// <summary>
         /// Makes a new instance of a capture worker.
-        ///
         /// It will capture an area from the set x and y to the set width and height.
         /// </summary>
         /// <param name="captureWidth">The width of capture area.</param>
@@ -75,7 +72,6 @@ namespace ScreenCapture
 
         /// <summary>
         /// Makes a new instance of a capture worker
-        /// 
         /// It will set the height and width of the capture to the full area of displays.
         /// It will be able to capture the screen over multiple displays.
         /// </summary>
@@ -148,11 +144,8 @@ namespace ScreenCapture
 
         /// <summary>
         /// This will run the capture code until the signal to stop the thread.
-        ///
         /// The call comes form the global variable shouldStop which can be changed to false by calling RequestStop.
-        ///
         /// Once the request to stop the thread is made it will finish until the end of the current thread and then it will stop looping.
-        ///
         /// The capture uses the global variables CaptureWidth and CaptureHeight as the width and height of the capture.
         /// It will display the capture on the picture box that was used when creating the new class.
         /// </summary>
@@ -193,7 +186,6 @@ namespace ScreenCapture
 
         /// <summary>
         /// Getter and Setter for the capture height.
-        ///
         /// When setting the value for the height must be not be negative.
         /// </summary>
         public int CaptureHeight
@@ -218,7 +210,6 @@ namespace ScreenCapture
 
         /// <summary>
         /// Getter and Setter for the capture width.
-        ///
         /// When setting the value for the width must be not be negative.
         /// </summary>
         public int CaptureWidth
@@ -243,7 +234,6 @@ namespace ScreenCapture
 
         /// <summary>
         /// Getter and Setter for picture box.
-        ///
         /// When setting the value for the picture box must not be null.
         /// </summary>
         public PictureBox PicBox

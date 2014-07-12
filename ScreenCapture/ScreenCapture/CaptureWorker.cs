@@ -16,6 +16,8 @@ namespace ScreenCapture
         private ManualResetEvent _pauseEvent = new ManualResetEvent(true);
         private Thread _thread;
 
+        #region Constructors
+
         /// <summary>
         /// Makes a new instance of a capture worker.
         ///
@@ -88,6 +90,8 @@ namespace ScreenCapture
 
             SourcePoint = Point.Empty;
         }
+
+#endregion
 
         /// <summary>
         /// This will start the thread from running.

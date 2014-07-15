@@ -23,5 +23,26 @@ namespace ScreenCapture
         {
 
         }
+
+        public int Width
+        {
+            get
+            {
+                return this.width;
+            }
+            set
+            {
+                if(value < 0)
+                {
+                    this.width = 0;
+
+                    System.Console.WriteLine("The width was set to be less than zero");
+                }
+                else
+                {
+                    this.width = value;
+                }
+            }
+        }
     }
 }

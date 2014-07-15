@@ -13,5 +13,15 @@ namespace ScreenCapture
         private int height;
         private Point sourcePoint;
         private bool fullscreen;
+
+        public Options()
+        {
+
+        }
+
+        public Options(int width, int height, Point sourcePoint, bool fullscreen)
+        {
+
+        }
     }
 }

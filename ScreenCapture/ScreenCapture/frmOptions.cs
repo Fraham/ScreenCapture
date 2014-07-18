@@ -19,12 +19,12 @@ namespace ScreenCapture
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void frmOptions_Load(object sender, EventArgs e)

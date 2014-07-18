@@ -32,7 +32,7 @@ namespace ScreenCapture
             }
             set
             {
-                if(value < 0)
+                if (value < 0)
                 {
                     this.width = 0;
 
@@ -41,6 +41,27 @@ namespace ScreenCapture
                 else
                 {
                     this.width = value;
+                }
+            }
+        }
+
+        public int Height
+        {
+            get
+            {
+                return this.height;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    this.height = 0;
+
+                    System.Console.WriteLine("The height was set to be less than zero");
+                }
+                else
+                {
+                    this.height = value;
                 }
             }
         }

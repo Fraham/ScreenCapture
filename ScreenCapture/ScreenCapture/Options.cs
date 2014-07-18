@@ -65,5 +65,17 @@ namespace ScreenCapture
                 }
             }
         }
+
+        public Point SourcePoint
+        {
+            get
+            {
+                return this.sourcePoint;
+            }
+            set
+            {
+                this.sourcePoint = value;
+            }
+        }
     }
 }

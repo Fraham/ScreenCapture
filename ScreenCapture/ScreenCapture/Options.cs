@@ -9,11 +9,18 @@ namespace ScreenCapture
 {
     class Options
     {
+        #region Class Variables
         private int width;
         private int height;
         private Point sourcePoint;
         private bool fullscreen;
+        #endregion
 
+        #region Constructors
+        /// <summary>
+        /// Making a new instance of the options class.
+        /// This will store the users options for the capture.
+        /// </summary>
         public Options()
         {
             Width = 0;
@@ -22,6 +29,14 @@ namespace ScreenCapture
             Fullscreen = false;
         }
 
+        /// <summary>
+        /// Making a new instance of the options class.
+        /// This will store the users options for the capture.
+        /// </summary>
+        /// <param name="width">The width of the capture area.</param>
+        /// <param name="height">The height of the capture area.</param>
+        /// <param name="sourcePoint">The source point of the capture.</param>
+        /// <param name="fullscreen">If the capture is full screen.</param>
         public Options(int width, int height, Point sourcePoint, bool fullscreen)
         {
             Width = width;
@@ -29,7 +44,13 @@ namespace ScreenCapture
             SourcePoint = sourcePoint;
             Fullscreen = fullscreen;
         }
+        #endregion
 
+        #region Properties
+        /// <summary>
+        /// Getters and setter for the width.
+        /// The width must be not be negative.
+        /// </summary>
         public int Width
         {
             get
@@ -51,6 +72,10 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// Getters and setter for the height.
+        /// The height must be not be negative.
+        /// </summary>
         public int Height
         {
             get
@@ -72,6 +97,9 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// Getters and setter for the source point.
+        /// </summary>
         public Point SourcePoint
         {
             get
@@ -84,6 +112,9 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// Getters and setter for the full screen.
+        /// </summary>
         public bool Fullscreen
         {
             get
@@ -95,5 +126,6 @@ namespace ScreenCapture
                 this.fullscreen = value;
             }
         }
+        #endregion
     }
 }

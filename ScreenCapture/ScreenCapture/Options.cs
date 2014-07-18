@@ -77,5 +77,17 @@ namespace ScreenCapture
                 this.sourcePoint = value;
             }
         }
+
+        public bool Fullscreen
+        {
+            get
+            {
+                return this.fullscreen;
+            }
+            set
+            {
+                this.fullscreen = value;
+            }
+        }
     }
 }

@@ -30,13 +30,31 @@
         {
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.grpFullScreen = new System.Windows.Forms.GroupBox();
+            this.grpCaptureOptions = new System.Windows.Forms.GroupBox();
+            this.radNotFullScreen = new System.Windows.Forms.RadioButton();
+            this.radFullScreen = new System.Windows.Forms.RadioButton();
+            this.lblWidth = new System.Windows.Forms.Label();
+            this.nudWidth = new System.Windows.Forms.NumericUpDown();
+            this.nudHeight = new System.Windows.Forms.NumericUpDown();
+            this.lblHeight = new System.Windows.Forms.Label();
+            this.nudXSourcePoint = new System.Windows.Forms.NumericUpDown();
+            this.lblXSourcePoint = new System.Windows.Forms.Label();
+            this.nudYSourcePoint = new System.Windows.Forms.NumericUpDown();
+            this.lblYSourcePoint = new System.Windows.Forms.Label();
+            this.grpFullScreen.SuspendLayout();
+            this.grpCaptureOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudXSourcePoint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudYSourcePoint)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnOk.Location = new System.Drawing.Point(277, 347);
+            this.btnOk.Location = new System.Drawing.Point(142, 222);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(45, 23);
             this.btnOk.TabIndex = 0;
@@ -48,7 +66,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(328, 347);
+            this.btnCancel.Location = new System.Drawing.Point(193, 222);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(54, 23);
             this.btnCancel.TabIndex = 0;
@@ -56,13 +74,129 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // grpFullScreen
+            // 
+            this.grpFullScreen.Controls.Add(this.radNotFullScreen);
+            this.grpFullScreen.Controls.Add(this.radFullScreen);
+            this.grpFullScreen.Location = new System.Drawing.Point(12, 12);
+            this.grpFullScreen.Name = "grpFullScreen";
+            this.grpFullScreen.Size = new System.Drawing.Size(240, 69);
+            this.grpFullScreen.TabIndex = 1;
+            this.grpFullScreen.TabStop = false;
+            this.grpFullScreen.Text = "Full Screen";
+            // 
+            // grpCaptureOptions
+            // 
+            this.grpCaptureOptions.Controls.Add(this.lblHeight);
+            this.grpCaptureOptions.Controls.Add(this.lblYSourcePoint);
+            this.grpCaptureOptions.Controls.Add(this.lblXSourcePoint);
+            this.grpCaptureOptions.Controls.Add(this.lblWidth);
+            this.grpCaptureOptions.Controls.Add(this.nudHeight);
+            this.grpCaptureOptions.Controls.Add(this.nudYSourcePoint);
+            this.grpCaptureOptions.Controls.Add(this.nudXSourcePoint);
+            this.grpCaptureOptions.Controls.Add(this.nudWidth);
+            this.grpCaptureOptions.Location = new System.Drawing.Point(12, 87);
+            this.grpCaptureOptions.Name = "grpCaptureOptions";
+            this.grpCaptureOptions.Size = new System.Drawing.Size(240, 127);
+            this.grpCaptureOptions.TabIndex = 0;
+            this.grpCaptureOptions.TabStop = false;
+            this.grpCaptureOptions.Text = "Capture Options";
+            // 
+            // radNotFullScreen
+            // 
+            this.radNotFullScreen.AutoSize = true;
+            this.radNotFullScreen.Checked = true;
+            this.radNotFullScreen.Location = new System.Drawing.Point(25, 19);
+            this.radNotFullScreen.Name = "radNotFullScreen";
+            this.radNotFullScreen.Size = new System.Drawing.Size(98, 17);
+            this.radNotFullScreen.TabIndex = 2;
+            this.radNotFullScreen.TabStop = true;
+            this.radNotFullScreen.Text = "Not Full Screen";
+            this.radNotFullScreen.UseVisualStyleBackColor = true;
+            // 
+            // radFullScreen
+            // 
+            this.radFullScreen.AutoSize = true;
+            this.radFullScreen.Location = new System.Drawing.Point(25, 42);
+            this.radFullScreen.Name = "radFullScreen";
+            this.radFullScreen.Size = new System.Drawing.Size(78, 17);
+            this.radFullScreen.TabIndex = 3;
+            this.radFullScreen.Text = "Full Screen";
+            this.radFullScreen.UseVisualStyleBackColor = true;
+            // 
+            // lblWidth
+            // 
+            this.lblWidth.AutoSize = true;
+            this.lblWidth.Location = new System.Drawing.Point(22, 21);
+            this.lblWidth.Name = "lblWidth";
+            this.lblWidth.Size = new System.Drawing.Size(38, 13);
+            this.lblWidth.TabIndex = 2;
+            this.lblWidth.Text = "Width:";
+            // 
+            // nudWidth
+            // 
+            this.nudWidth.Location = new System.Drawing.Point(109, 19);
+            this.nudWidth.Name = "nudWidth";
+            this.nudWidth.Size = new System.Drawing.Size(120, 20);
+            this.nudWidth.TabIndex = 3;
+            // 
+            // nudHeight
+            // 
+            this.nudHeight.Location = new System.Drawing.Point(109, 45);
+            this.nudHeight.Name = "nudHeight";
+            this.nudHeight.Size = new System.Drawing.Size(120, 20);
+            this.nudHeight.TabIndex = 3;
+            // 
+            // lblHeight
+            // 
+            this.lblHeight.AutoSize = true;
+            this.lblHeight.Location = new System.Drawing.Point(22, 47);
+            this.lblHeight.Name = "lblHeight";
+            this.lblHeight.Size = new System.Drawing.Size(41, 13);
+            this.lblHeight.TabIndex = 2;
+            this.lblHeight.Text = "Height:";
+            // 
+            // nudXSourcePoint
+            // 
+            this.nudXSourcePoint.Location = new System.Drawing.Point(109, 71);
+            this.nudXSourcePoint.Name = "nudXSourcePoint";
+            this.nudXSourcePoint.Size = new System.Drawing.Size(120, 20);
+            this.nudXSourcePoint.TabIndex = 3;
+            // 
+            // lblXSourcePoint
+            // 
+            this.lblXSourcePoint.AutoSize = true;
+            this.lblXSourcePoint.Location = new System.Drawing.Point(22, 73);
+            this.lblXSourcePoint.Name = "lblXSourcePoint";
+            this.lblXSourcePoint.Size = new System.Drawing.Size(81, 13);
+            this.lblXSourcePoint.TabIndex = 2;
+            this.lblXSourcePoint.Text = "X Source Point:";
+            // 
+            // nudYSourcePoint
+            // 
+            this.nudYSourcePoint.Location = new System.Drawing.Point(109, 97);
+            this.nudYSourcePoint.Name = "nudYSourcePoint";
+            this.nudYSourcePoint.Size = new System.Drawing.Size(120, 20);
+            this.nudYSourcePoint.TabIndex = 3;
+            // 
+            // lblYSourcePoint
+            // 
+            this.lblYSourcePoint.AutoSize = true;
+            this.lblYSourcePoint.Location = new System.Drawing.Point(22, 99);
+            this.lblYSourcePoint.Name = "lblYSourcePoint";
+            this.lblYSourcePoint.Size = new System.Drawing.Size(81, 13);
+            this.lblYSourcePoint.TabIndex = 2;
+            this.lblYSourcePoint.Text = "Y Source Point:";
+            // 
             // frmOptions
             // 
             this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(394, 382);
+            this.ClientSize = new System.Drawing.Size(259, 257);
+            this.Controls.Add(this.grpCaptureOptions);
+            this.Controls.Add(this.grpFullScreen);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -70,6 +204,14 @@
             this.Name = "frmOptions";
             this.Text = "Options";
             this.Load += new System.EventHandler(this.frmOptions_Load);
+            this.grpFullScreen.ResumeLayout(false);
+            this.grpFullScreen.PerformLayout();
+            this.grpCaptureOptions.ResumeLayout(false);
+            this.grpCaptureOptions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudXSourcePoint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudYSourcePoint)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -78,5 +220,17 @@
 
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.GroupBox grpFullScreen;
+        private System.Windows.Forms.GroupBox grpCaptureOptions;
+        private System.Windows.Forms.RadioButton radNotFullScreen;
+        private System.Windows.Forms.RadioButton radFullScreen;
+        private System.Windows.Forms.Label lblHeight;
+        private System.Windows.Forms.Label lblYSourcePoint;
+        private System.Windows.Forms.Label lblXSourcePoint;
+        private System.Windows.Forms.Label lblWidth;
+        private System.Windows.Forms.NumericUpDown nudHeight;
+        private System.Windows.Forms.NumericUpDown nudYSourcePoint;
+        private System.Windows.Forms.NumericUpDown nudXSourcePoint;
+        private System.Windows.Forms.NumericUpDown nudWidth;
     }
 }

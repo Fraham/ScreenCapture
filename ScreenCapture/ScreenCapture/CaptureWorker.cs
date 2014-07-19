@@ -22,7 +22,7 @@ namespace ScreenCapture
         #endregion
 
         #region Constructors
-
+        /*
         /// <summary>
         /// Makes a new instance of a capture worker.        ///
         /// It will capture an area from the source point to the set width and height.
@@ -91,7 +91,7 @@ namespace ScreenCapture
 
             SourcePoint = Point.Empty;
         }
-
+        */
         public CaptureWorker(Options options, PictureBox picBox)
         {
             CaptureOptions = options;

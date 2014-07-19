@@ -13,6 +13,7 @@ namespace ScreenCapture
         private PictureBox picBox;
         private bool started = false;
         private Point sourcePoint;
+        private Options options;
 
         private ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
         private ManualResetEvent _pauseEvent = new ManualResetEvent(true);
@@ -89,6 +90,12 @@ namespace ScreenCapture
             CaptureHeight = totalSize.Height;
 
             SourcePoint = Point.Empty;
+        }
+
+        public CaptureWorker(Options options, PictureBox picBox)
+        {
+            CaptureOptions = options;
+            PicBox = picBox;
         }
 
 #endregion
@@ -294,6 +301,18 @@ namespace ScreenCapture
                 {
                     sourcePoint = Point.Empty;
                 }
+            }
+        }
+
+        public Options CaptureOptions
+        {
+            get
+            {
+                return this.options;
+            }
+            set
+            {
+                this.options = value;
             }
         }
 

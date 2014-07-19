@@ -221,6 +221,10 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// Getter and Setter for the capture options.
+        /// This holds all the information needed for the capture.
+        /// </summary>
         public Options CaptureOptions
         {
             get

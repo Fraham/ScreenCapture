@@ -1,23 +1,24 @@
 ﻿using System.Drawing;
-using System.Windows.Forms;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace ScreenCapture
 {
     internal class CaptureWorker
     {
-        #region Class Variables 
+        #region Class Variables
+
+        private ManualResetEvent _pauseEvent = new ManualResetEvent(true);
+        private ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
+        private Thread _thread;
         private Options options;
         private PictureBox picBox;
         private bool started = false;
 
-        private ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
-        private ManualResetEvent _pauseEvent = new ManualResetEvent(true);
-        private Thread _thread;
-
-        #endregion
+        #endregion Class Variables
 
         #region Constructors
+
         /// <summary>
         /// Makes a new instance of a capture worker.
         /// It will capture an area from the source point to the set width and height.
@@ -34,8 +35,8 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Makes a new instance of a capture worker. 
-        /// It will capture an area from (0, 0) to the set width and height.        
+        /// Makes a new instance of a capture worker.
+        /// It will capture an area from (0, 0) to the set width and height.
         /// </summary>
         /// <param name="captureWidth">The width of capture area.</param>
         /// <param name="captureHeight">The height of capture area.</param>
@@ -87,20 +88,9 @@ namespace ScreenCapture
             PicBox = picBox;
         }
 
-#endregion
+        #endregion Constructors
 
         #region Threading
-
-        /// <summary>
-        /// This will start the thread from running.
-        /// </summary>
-        public void Start()
-        {
-            Started = true;
-
-            _thread = new Thread(DoCapture);
-            _thread.Start();            
-        }
 
         /// <summary>
         /// This will pause the thread from running.
@@ -120,6 +110,17 @@ namespace ScreenCapture
         }
 
         /// <summary>
+        /// This will start the thread from running.
+        /// </summary>
+        public void Start()
+        {
+            Started = true;
+
+            _thread = new Thread(DoCapture);
+            _thread.Start();
+        }
+
+        /// <summary>
         /// This will completely stop the running thread.
         /// It will allow for the currently paused thread to resume again.
         /// It will allow the current thread to finish a loop around before stopping.
@@ -136,7 +137,7 @@ namespace ScreenCapture
             _thread.Join();
         }
 
-        #endregion
+        #endregion Threading
 
         /// <summary>
         /// This will run the capture code until the signal to stop the thread.
@@ -177,7 +178,24 @@ namespace ScreenCapture
                 PicBox.Image = bitmap;
             }
         }
+
         #region Getters and Setters
+
+        /// <summary>
+        /// Getter and Setter for the capture options.
+        /// This holds all the information needed for the capture.
+        /// </summary>
+        public Options CaptureOptions
+        {
+            get
+            {
+                return this.options;
+            }
+            set
+            {
+                this.options = value;
+            }
+        }
 
         /// <summary>
         /// Getter and Setter for picture box.
@@ -218,22 +236,6 @@ namespace ScreenCapture
             set
             {
                 this.started = value;
-            }
-        }
-
-        /// <summary>
-        /// Getter and Setter for the capture options.
-        /// This holds all the information needed for the capture.
-        /// </summary>
-        public Options CaptureOptions
-        {
-            get
-            {
-                return this.options;
-            }
-            set
-            {
-                this.options = value;
             }
         }
 

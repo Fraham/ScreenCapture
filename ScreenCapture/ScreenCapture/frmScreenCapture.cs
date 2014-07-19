@@ -15,6 +15,8 @@ namespace ScreenCapture
             workerObject = new CaptureWorker(this.picFeed);
         }
 
+        #region Click Events
+
         /// <summary>
         /// It will start the thread when the button is pressed.
         /// </summary>
@@ -59,6 +61,11 @@ namespace ScreenCapture
                 workerObject.Pause();
             }
         }
+
+        #endregion Click Events
+
+        #region Form CLosing
+
         /// <summary>
         /// Makes sure that the thread is stopped when the form closes.
         /// </summary>
@@ -71,5 +78,7 @@ namespace ScreenCapture
                 workerObject.Stop();
             }
         }
+
+        #endregion Form CLosing
     }
 }

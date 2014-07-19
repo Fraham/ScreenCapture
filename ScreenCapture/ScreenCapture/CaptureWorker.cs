@@ -8,12 +8,14 @@ namespace ScreenCapture
     {
         #region Class Variables
 
+        /*
         private int captureHeight;
-        private int captureWidth;
+        private int captureWidth;        
+        private Point sourcePoint;
+         */ 
+        private Options options;
         private PictureBox picBox;
         private bool started = false;
-        private Point sourcePoint;
-        private Options options;
 
         private ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
         private ManualResetEvent _pauseEvent = new ManualResetEvent(true);
@@ -212,7 +214,47 @@ namespace ScreenCapture
         }
 
         #endregion
+        /*
+        /// <summary>
+        /// This will run the capture code until the signal to stop the thread.
+        /// The call comes form the global variable shouldStop which can be changed to false by calling RequestStop.
+        /// Once the request to stop the thread is made it will finish until the end of the current thread and then it will stop looping.
+        /// The capture uses the global variables CaptureWidth and CaptureHeight as the width and height of the capture.
+        /// It will display the capture on the picture box that was used when creating the new class.
+        /// </summary>
+        public void DoCapture()
+        {
+            while (true)
+            {
+                _pauseEvent.WaitOne(Timeout.Infinite);
 
+                if (_shutdownEvent.WaitOne(0))
+                    break;
+
+                /*
+                 * Creates a new bitmap with the width and height of the primary screen (the one with the task-bar).
+                 * Then it will create a graphics from the new bitmap.
+                 */ /*
+                Bitmap bitmap = new Bitmap(CaptureWidth, CaptureHeight);
+                Graphics graphics = Graphics.FromImage(bitmap);
+
+                /*
+                 * Copy the graphics from the screen for the whole screen.
+                 * Then it will set the created bitmap image to the picture box.
+                 */ /*
+                graphics.CopyFromScreen(SourcePoint, Point.Empty, new Size(CaptureWidth, CaptureHeight));
+
+                graphics.Dispose();
+
+                if (PicBox.Image != null)
+                {
+                    PicBox.Image.Dispose();
+                }
+
+                PicBox.Image = bitmap;
+            }
+        }
+*/
         /// <summary>
         /// This will run the capture code until the signal to stop the thread.
         /// The call comes form the global variable shouldStop which can be changed to false by calling RequestStop.
@@ -233,14 +275,14 @@ namespace ScreenCapture
                  * Creates a new bitmap with the width and height of the primary screen (the one with the task-bar).
                  * Then it will create a graphics from the new bitmap.
                  */
-                Bitmap bitmap = new Bitmap(CaptureWidth, CaptureHeight);
+                Bitmap bitmap = new Bitmap(CaptureOptions.Width, CaptureOptions.Height);
                 Graphics graphics = Graphics.FromImage(bitmap);
 
                 /*
                  * Copy the graphics from the screen for the whole screen.
                  * Then it will set the created bitmap image to the picture box.
                  */
-                graphics.CopyFromScreen(SourcePoint, Point.Empty, new Size(CaptureWidth, CaptureHeight));
+                graphics.CopyFromScreen(CaptureOptions.SourcePoint, Point.Empty, new Size(CaptureOptions.Width, CaptureOptions.Height));
 
                 graphics.Dispose();
 
@@ -252,9 +294,8 @@ namespace ScreenCapture
                 PicBox.Image = bitmap;
             }
         }
-
         #region Getters and Setters
-
+        /*
         /// <summary>
         /// Getter and Setter for the capture height.
         /// When setting the value for the height must be not be negative.
@@ -303,6 +344,34 @@ namespace ScreenCapture
             }
         }
 
+        
+
+
+
+        /// <summary>
+        /// Getter and Setter for the source point variable.
+        /// If the source point is null then it will set the source point to be an empty point.
+        /// </summary>
+        public Point SourcePoint
+        {
+            get
+            {
+                return this.sourcePoint;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    sourcePoint = value;
+                }
+                else
+                {
+                    sourcePoint = Point.Empty;
+                }
+            }
+        }
+        */
+
         /// <summary>
         /// Getter and Setter for picture box.
         /// When setting the value for the picture box must not be null.
@@ -342,29 +411,6 @@ namespace ScreenCapture
             set
             {
                 this.started = value;
-            }
-        }
-
-        /// <summary>
-        /// Getter and Setter for the source point variable.
-        /// If the source point is null then it will set the source point to be an empty point.
-        /// </summary>
-        public Point SourcePoint
-        {
-            get
-            {
-                return this.sourcePoint;
-            }
-            set
-            {
-                if (value != null)
-                {
-                    sourcePoint = value;
-                }
-                else
-                {
-                    sourcePoint = Point.Empty;
-                }
             }
         }
 

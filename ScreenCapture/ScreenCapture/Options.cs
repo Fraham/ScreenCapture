@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace ScreenCapture
 {
-    class Options
+    internal class Options
     {
         #region Class Variables
-        private int width;
+
+        private bool fullscreen;
         private int height;
         private Point sourcePoint;
-        private bool fullscreen;
-        #endregion
+        private int width;
+        #endregion Class Variables
 
         #region Constructors
+
         /// <summary>
         /// Making a new instance of the options class.
         /// This will store the users options for the capture.
@@ -43,31 +40,23 @@ namespace ScreenCapture
             SourcePoint = sourcePoint;
             Fullscreen = false;
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Properties
+
         /// <summary>
-        /// Getters and setter for the width.
-        /// The width must be not be negative.
+        /// Getters and setter for the full screen.
         /// </summary>
-        public int Width
+        public bool Fullscreen
         {
             get
             {
-                return this.width;
+                return this.fullscreen;
             }
             set
             {
-                if (value < 0)
-                {
-                    this.width = 0;
-
-                    System.Console.WriteLine("The width was set to be less than zero");
-                }
-                else
-                {
-                    this.width = value;
-                }
+                this.fullscreen = value;
             }
         }
 
@@ -112,19 +101,29 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Getters and setter for the full screen.
+        /// Getters and setter for the width.
+        /// The width must be not be negative.
         /// </summary>
-        public bool Fullscreen
+        public int Width
         {
             get
             {
-                return this.fullscreen;
+                return this.width;
             }
             set
             {
-                this.fullscreen = value;
+                if (value < 0)
+                {
+                    this.width = 0;
+
+                    System.Console.WriteLine("The width was set to be less than zero");
+                }
+                else
+                {
+                    this.width = value;
+                }
             }
         }
-        #endregion
+        #endregion Properties
     }
 }

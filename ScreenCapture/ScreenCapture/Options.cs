@@ -26,7 +26,7 @@ namespace ScreenCapture
             Width = 0;
             Height = 0;
             SourcePoint = new Point();
-            Fullscreen = false;
+            Fullscreen = true;
         }
 
         /// <summary>
@@ -36,13 +36,12 @@ namespace ScreenCapture
         /// <param name="width">The width of the capture area.</param>
         /// <param name="height">The height of the capture area.</param>
         /// <param name="sourcePoint">The source point of the capture.</param>
-        /// <param name="fullscreen">If the capture is full screen.</param>
-        public Options(int width, int height, Point sourcePoint, bool fullscreen)
+        public Options(int width, int height, Point sourcePoint)
         {
             Width = width;
             Height = height;
             SourcePoint = sourcePoint;
-            Fullscreen = fullscreen;
+            Fullscreen = false;
         }
         #endregion
 

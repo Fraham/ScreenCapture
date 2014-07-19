@@ -92,6 +92,70 @@ namespace ScreenCapture
             SourcePoint = Point.Empty;
         }
         */
+
+        /// <summary>
+        /// Makes a new instance of a capture worker.
+        /// It will capture an area from the source point to the set width and height.
+        /// </summary>
+        /// <param name="captureWidth">The width of capture area.</param>
+        /// <param name="captureHeight">The height of capture area.</param>
+        /// <param name="picBox">The picture box being used to display the capture.</param>
+        /// <param name="sourcePoint">The source point of the capture.</param>
+        public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox, Point sourcePoint)
+        {
+            CaptureOptions = new Options(captureWidth, captureHeight, sourcePoint);
+
+            PicBox = picBox;
+        }
+
+        /// <summary>
+        /// Makes a new instance of a capture worker. 
+        /// It will capture an area from (0, 0) to the set width and height.        
+        /// </summary>
+        /// <param name="captureWidth">The width of capture area.</param>
+        /// <param name="captureHeight">The height of capture area.</param>
+        /// <param name="picBox">The picture box being used to display the capture.</param>
+        public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox)
+        {
+            CaptureOptions = new Options(captureWidth, captureHeight, Point.Empty);
+
+            PicBox = picBox;
+        }
+
+        /// <summary>
+        /// Makes a new instance of a capture worker.
+        /// It will capture an area from the set x and y to the set width and height.
+        /// </summary>
+        /// <param name="captureWidth">The width of capture area.</param>
+        /// <param name="captureHeight">The height of capture area.</param>
+        /// <param name="picBox">The picture box being used to display the capture.</param>
+        /// <param name="x">The x co-ordinate of the source of the source</param>
+        /// <param name="y">The y co-ordinate of the source of the source</param>
+        public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox, int x, int y)
+        {
+            CaptureOptions = new Options(captureWidth, captureHeight, new Point(x, y));
+
+            PicBox = picBox;
+        }
+
+        /// <summary>
+        /// Makes a new instance of a capture worker
+        /// It will set the height and width of the capture to the full area of displays.
+        /// It will be able to capture the screen over multiple displays.
+        /// </summary>
+        /// <param name="picBox">The picture box being used to display the capture.</param>
+        public CaptureWorker(PictureBox picBox)
+        {
+            Rectangle totalSize = Rectangle.Empty;
+
+            foreach (Screen s in Screen.AllScreens)
+                totalSize = Rectangle.Union(totalSize, s.Bounds);
+
+            CaptureOptions = new Options(totalSize.Width, totalSize.Height, Point.Empty);
+
+            PicBox = picBox;
+        }
+
         public CaptureWorker(Options options, PictureBox picBox)
         {
             CaptureOptions = options;

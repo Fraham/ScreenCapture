@@ -139,6 +139,8 @@ namespace ScreenCapture
 
         #endregion Threading
 
+        #region Capture
+
         /// <summary>
         /// This will run the capture code until the signal to stop the thread.
         /// The call comes form the global variable shouldStop which can be changed to false by calling RequestStop.
@@ -178,6 +180,8 @@ namespace ScreenCapture
                 PicBox.Image = bitmap;
             }
         }
+
+        #endregion Capture
 
         #region Getters and Setters
 

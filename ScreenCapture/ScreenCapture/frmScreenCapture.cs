@@ -62,6 +62,12 @@ namespace ScreenCapture
             }
         }
 
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            frmOptions frmO = new frmOptions();
+            frmO.ShowDialog();
+        }
+
         #endregion Click Events
 
         #region Form CLosing

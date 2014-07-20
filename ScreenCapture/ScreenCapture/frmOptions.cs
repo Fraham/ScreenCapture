@@ -36,6 +36,9 @@ namespace ScreenCapture
 
             nudWidth.Maximum = totalSize.Width;
             nudHeight.Maximum = totalSize.Height;
+
+            nudXSourcePoint.Maximum = totalSize.Width;
+            nudYSourcePoint.Maximum = totalSize.Height;
         }
     }
 }

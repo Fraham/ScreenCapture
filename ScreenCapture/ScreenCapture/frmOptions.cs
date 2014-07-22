@@ -12,14 +12,25 @@ namespace ScreenCapture
 {
     public partial class frmOptions : Form
     {
+        private int maxWidth;
+        private int maxHeight;
+
         public frmOptions()
         {
             InitializeComponent();
         }
 
+
         private void btnOk_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if ()
+            {
+
+            }
+            else
+            {
+                this.Close();
+            }            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -39,6 +50,19 @@ namespace ScreenCapture
 
             nudXSourcePoint.Maximum = totalSize.Width;
             nudYSourcePoint.Maximum = totalSize.Height;
+
+            maxWidth = totalSize.Width;
+            maxHeight = totalSize.Height;
+        }
+
+        private bool checkWidth()
+        {
+            if (nudWidth.Value + nudXSourcePoint.Value > maxWidth)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

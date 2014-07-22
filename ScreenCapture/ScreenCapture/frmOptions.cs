@@ -23,13 +23,13 @@ namespace ScreenCapture
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            if ()
+            if (validWidth() && validHeight())
             {
-
+                this.Close();
             }
             else
             {
-                this.Close();
+                System.Console.WriteLine("Capture area too large for the screen.");
             }            
         }
 
@@ -55,9 +55,19 @@ namespace ScreenCapture
             maxHeight = totalSize.Height;
         }
 
-        private bool checkWidth()
+        private bool validWidth()
         {
             if (nudWidth.Value + nudXSourcePoint.Value > maxWidth)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool validHeight()
+        {
+            if (nudHeight.Value + nudYSourcePoint.Value > maxHeight)
             {
                 return false;
             }

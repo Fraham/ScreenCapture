@@ -65,7 +65,10 @@ namespace ScreenCapture
         private void btnOptions_Click(object sender, EventArgs e)
         {
             frmOptions frmO = new frmOptions();
-            frmO.ShowDialog();
+            if( frmO.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+
+            }
         }
 
         #endregion Click Events

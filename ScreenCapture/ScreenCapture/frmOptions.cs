@@ -81,5 +81,10 @@ namespace ScreenCapture
             if (this.DialogResult == DialogResult.None)
                 e.Cancel = true;
         }
+
+        public Options getOptions()
+        {
+            return new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
+        }
     }
 }

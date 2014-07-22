@@ -25,11 +25,12 @@ namespace ScreenCapture
         {
             if (validWidth() && validHeight())
             {
-                this.Close();
+                this.DialogResult = DialogResult.OK;
             }
             else
             {
                 System.Console.WriteLine("Capture area too large for the screen.");
+                this.DialogResult = DialogResult.None;
             }            
         }
 
@@ -73,6 +74,12 @@ namespace ScreenCapture
             }
 
             return true;
+        }
+
+        private void frmOptions_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.DialogResult == DialogResult.None)
+                e.Cancel = true;
         }
     }
 }

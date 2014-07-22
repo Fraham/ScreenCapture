@@ -53,7 +53,7 @@
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.Location = new System.Drawing.Point(142, 222);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(45, 23);
@@ -203,6 +203,7 @@
             this.MaximizeBox = false;
             this.Name = "frmOptions";
             this.Text = "Options";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmOptions_FormClosing);
             this.Load += new System.EventHandler(this.frmOptions_Load);
             this.grpFullScreen.ResumeLayout(false);
             this.grpFullScreen.PerformLayout();

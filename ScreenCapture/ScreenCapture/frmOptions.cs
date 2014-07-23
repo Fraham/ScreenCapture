@@ -1,26 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ScreenCapture
 {
     public partial class frmOptions : Form
     {
-        private int maxWidth;
+        #region Class Variables
+
         private int maxHeight;
+        private int maxWidth;
         private Options usersOptions;
+
+        #endregion Class Variables
 
         public frmOptions()
         {
             InitializeComponent();
         }
 
+        #region Click Events
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
@@ -32,13 +36,29 @@ namespace ScreenCapture
             {
                 System.Console.WriteLine("Capture area too large for the screen.");
                 this.DialogResult = DialogResult.None;
-            }            
+            }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void frmOptions_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Close();
+            if (this.DialogResult == DialogResult.None)
+                e.Cancel = true;
         }
+
+        private void radNotFullScreen_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radFullScreen.Checked)
+            {
+                grpCaptureOptions.Enabled = false;
+            }
+            else
+            {
+                grpCaptureOptions.Enabled = true;
+            }
+        }
+        #endregion Click Events
+
+        #region Form Loading
 
         private void frmOptions_Load(object sender, EventArgs e)
         {
@@ -57,15 +77,9 @@ namespace ScreenCapture
             maxHeight = totalSize.Height;
         }
 
-        private bool validWidth()
-        {
-            if (nudWidth.Value + nudXSourcePoint.Value > maxWidth)
-            {
-                return false;
-            }
+        #endregion Form Loading
 
-            return true;
-        }
+        #region Validation Checks
 
         private bool validHeight()
         {
@@ -77,23 +91,19 @@ namespace ScreenCapture
             return true;
         }
 
-        private void frmOptions_FormClosing(object sender, FormClosingEventArgs e)
+        private bool validWidth()
         {
-            if (this.DialogResult == DialogResult.None)
-                e.Cancel = true;
+            if (nudWidth.Value + nudXSourcePoint.Value > maxWidth)
+            {
+                return false;
+            }
+
+            return true;
         }
 
-        private void radNotFullScreen_CheckedChanged(object sender, EventArgs e)
-        {
-            if(radFullScreen.Checked)
-            {
-                grpCaptureOptions.Enabled = false;
-            }
-            else
-            {
-                grpCaptureOptions.Enabled = true;
-            }
-        }
+        #endregion Validation Checks
+
+        #region Properties
 
         public Options UsersOptions
         {
@@ -106,5 +116,7 @@ namespace ScreenCapture
                 usersOptions = value;
             }
         }
+
+        #endregion Properties
     }
 }

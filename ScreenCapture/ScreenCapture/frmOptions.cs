@@ -75,6 +75,14 @@ namespace ScreenCapture
 
             maxWidth = totalSize.Width;
             maxHeight = totalSize.Height;
+
+            nudHeight.Value = UsersOptions.Height;
+            nudWidth.Value = UsersOptions.Width;
+
+            nudXSourcePoint.Value = UsersOptions.SourcePoint.X;
+            nudYSourcePoint.Value = UsersOptions.SourcePoint.Y;
+
+            radFullScreen.Checked = UsersOptions.Fullscreen;
         }
 
         #endregion Form Loading

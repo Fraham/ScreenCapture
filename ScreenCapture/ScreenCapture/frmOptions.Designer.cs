@@ -31,23 +31,23 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.grpFullScreen = new System.Windows.Forms.GroupBox();
-            this.grpCaptureOptions = new System.Windows.Forms.GroupBox();
             this.radNotFullScreen = new System.Windows.Forms.RadioButton();
             this.radFullScreen = new System.Windows.Forms.RadioButton();
-            this.lblWidth = new System.Windows.Forms.Label();
-            this.nudWidth = new System.Windows.Forms.NumericUpDown();
-            this.nudHeight = new System.Windows.Forms.NumericUpDown();
+            this.grpCaptureOptions = new System.Windows.Forms.GroupBox();
             this.lblHeight = new System.Windows.Forms.Label();
-            this.nudXSourcePoint = new System.Windows.Forms.NumericUpDown();
-            this.lblXSourcePoint = new System.Windows.Forms.Label();
-            this.nudYSourcePoint = new System.Windows.Forms.NumericUpDown();
             this.lblYSourcePoint = new System.Windows.Forms.Label();
+            this.lblXSourcePoint = new System.Windows.Forms.Label();
+            this.lblWidth = new System.Windows.Forms.Label();
+            this.nudHeight = new System.Windows.Forms.NumericUpDown();
+            this.nudYSourcePoint = new System.Windows.Forms.NumericUpDown();
+            this.nudXSourcePoint = new System.Windows.Forms.NumericUpDown();
+            this.nudWidth = new System.Windows.Forms.NumericUpDown();
             this.grpFullScreen.SuspendLayout();
             this.grpCaptureOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudXSourcePoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudYSourcePoint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudXSourcePoint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
@@ -85,6 +85,29 @@
             this.grpFullScreen.TabStop = false;
             this.grpFullScreen.Text = "Full Screen";
             // 
+            // radNotFullScreen
+            // 
+            this.radNotFullScreen.AutoSize = true;
+            this.radNotFullScreen.Checked = true;
+            this.radNotFullScreen.Location = new System.Drawing.Point(25, 19);
+            this.radNotFullScreen.Name = "radNotFullScreen";
+            this.radNotFullScreen.Size = new System.Drawing.Size(98, 17);
+            this.radNotFullScreen.TabIndex = 2;
+            this.radNotFullScreen.TabStop = true;
+            this.radNotFullScreen.Text = "Not Full Screen";
+            this.radNotFullScreen.UseVisualStyleBackColor = true;
+            this.radNotFullScreen.CheckedChanged += new System.EventHandler(this.radNotFullScreen_CheckedChanged);
+            // 
+            // radFullScreen
+            // 
+            this.radFullScreen.AutoSize = true;
+            this.radFullScreen.Location = new System.Drawing.Point(25, 42);
+            this.radFullScreen.Name = "radFullScreen";
+            this.radFullScreen.Size = new System.Drawing.Size(78, 17);
+            this.radFullScreen.TabIndex = 3;
+            this.radFullScreen.Text = "Full Screen";
+            this.radFullScreen.UseVisualStyleBackColor = true;
+            // 
             // grpCaptureOptions
             // 
             this.grpCaptureOptions.Controls.Add(this.lblHeight);
@@ -102,51 +125,6 @@
             this.grpCaptureOptions.TabStop = false;
             this.grpCaptureOptions.Text = "Capture Options";
             // 
-            // radNotFullScreen
-            // 
-            this.radNotFullScreen.AutoSize = true;
-            this.radNotFullScreen.Checked = true;
-            this.radNotFullScreen.Location = new System.Drawing.Point(25, 19);
-            this.radNotFullScreen.Name = "radNotFullScreen";
-            this.radNotFullScreen.Size = new System.Drawing.Size(98, 17);
-            this.radNotFullScreen.TabIndex = 2;
-            this.radNotFullScreen.TabStop = true;
-            this.radNotFullScreen.Text = "Not Full Screen";
-            this.radNotFullScreen.UseVisualStyleBackColor = true;
-            // 
-            // radFullScreen
-            // 
-            this.radFullScreen.AutoSize = true;
-            this.radFullScreen.Location = new System.Drawing.Point(25, 42);
-            this.radFullScreen.Name = "radFullScreen";
-            this.radFullScreen.Size = new System.Drawing.Size(78, 17);
-            this.radFullScreen.TabIndex = 3;
-            this.radFullScreen.Text = "Full Screen";
-            this.radFullScreen.UseVisualStyleBackColor = true;
-            // 
-            // lblWidth
-            // 
-            this.lblWidth.AutoSize = true;
-            this.lblWidth.Location = new System.Drawing.Point(22, 21);
-            this.lblWidth.Name = "lblWidth";
-            this.lblWidth.Size = new System.Drawing.Size(38, 13);
-            this.lblWidth.TabIndex = 2;
-            this.lblWidth.Text = "Width:";
-            // 
-            // nudWidth
-            // 
-            this.nudWidth.Location = new System.Drawing.Point(109, 19);
-            this.nudWidth.Name = "nudWidth";
-            this.nudWidth.Size = new System.Drawing.Size(120, 20);
-            this.nudWidth.TabIndex = 3;
-            // 
-            // nudHeight
-            // 
-            this.nudHeight.Location = new System.Drawing.Point(109, 45);
-            this.nudHeight.Name = "nudHeight";
-            this.nudHeight.Size = new System.Drawing.Size(120, 20);
-            this.nudHeight.TabIndex = 3;
-            // 
             // lblHeight
             // 
             this.lblHeight.AutoSize = true;
@@ -156,12 +134,14 @@
             this.lblHeight.TabIndex = 2;
             this.lblHeight.Text = "Height:";
             // 
-            // nudXSourcePoint
+            // lblYSourcePoint
             // 
-            this.nudXSourcePoint.Location = new System.Drawing.Point(109, 71);
-            this.nudXSourcePoint.Name = "nudXSourcePoint";
-            this.nudXSourcePoint.Size = new System.Drawing.Size(120, 20);
-            this.nudXSourcePoint.TabIndex = 3;
+            this.lblYSourcePoint.AutoSize = true;
+            this.lblYSourcePoint.Location = new System.Drawing.Point(22, 99);
+            this.lblYSourcePoint.Name = "lblYSourcePoint";
+            this.lblYSourcePoint.Size = new System.Drawing.Size(81, 13);
+            this.lblYSourcePoint.TabIndex = 2;
+            this.lblYSourcePoint.Text = "Y Source Point:";
             // 
             // lblXSourcePoint
             // 
@@ -172,6 +152,22 @@
             this.lblXSourcePoint.TabIndex = 2;
             this.lblXSourcePoint.Text = "X Source Point:";
             // 
+            // lblWidth
+            // 
+            this.lblWidth.AutoSize = true;
+            this.lblWidth.Location = new System.Drawing.Point(22, 21);
+            this.lblWidth.Name = "lblWidth";
+            this.lblWidth.Size = new System.Drawing.Size(38, 13);
+            this.lblWidth.TabIndex = 2;
+            this.lblWidth.Text = "Width:";
+            // 
+            // nudHeight
+            // 
+            this.nudHeight.Location = new System.Drawing.Point(109, 45);
+            this.nudHeight.Name = "nudHeight";
+            this.nudHeight.Size = new System.Drawing.Size(120, 20);
+            this.nudHeight.TabIndex = 3;
+            // 
             // nudYSourcePoint
             // 
             this.nudYSourcePoint.Location = new System.Drawing.Point(109, 97);
@@ -179,14 +175,19 @@
             this.nudYSourcePoint.Size = new System.Drawing.Size(120, 20);
             this.nudYSourcePoint.TabIndex = 3;
             // 
-            // lblYSourcePoint
+            // nudXSourcePoint
             // 
-            this.lblYSourcePoint.AutoSize = true;
-            this.lblYSourcePoint.Location = new System.Drawing.Point(22, 99);
-            this.lblYSourcePoint.Name = "lblYSourcePoint";
-            this.lblYSourcePoint.Size = new System.Drawing.Size(81, 13);
-            this.lblYSourcePoint.TabIndex = 2;
-            this.lblYSourcePoint.Text = "Y Source Point:";
+            this.nudXSourcePoint.Location = new System.Drawing.Point(109, 71);
+            this.nudXSourcePoint.Name = "nudXSourcePoint";
+            this.nudXSourcePoint.Size = new System.Drawing.Size(120, 20);
+            this.nudXSourcePoint.TabIndex = 3;
+            // 
+            // nudWidth
+            // 
+            this.nudWidth.Location = new System.Drawing.Point(109, 19);
+            this.nudWidth.Name = "nudWidth";
+            this.nudWidth.Size = new System.Drawing.Size(120, 20);
+            this.nudWidth.TabIndex = 3;
             // 
             // frmOptions
             // 
@@ -209,10 +210,10 @@
             this.grpFullScreen.PerformLayout();
             this.grpCaptureOptions.ResumeLayout(false);
             this.grpCaptureOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudXSourcePoint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudYSourcePoint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudXSourcePoint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).EndInit();
             this.ResumeLayout(false);
 
         }

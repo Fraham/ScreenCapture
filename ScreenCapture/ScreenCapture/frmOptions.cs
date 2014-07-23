@@ -82,9 +82,21 @@ namespace ScreenCapture
                 e.Cancel = true;
         }
 
-        public Options getOptions()
+        internal Options getOptions()
         {
             return new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
+        }
+
+        private void radNotFullScreen_CheckedChanged(object sender, EventArgs e)
+        {
+            if(radFullScreen.Checked)
+            {
+                grpCaptureOptions.Enabled = false;
+            }
+            else
+            {
+                grpCaptureOptions.Enabled = true;
+            }
         }
     }
 }

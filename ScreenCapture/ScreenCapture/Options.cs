@@ -2,7 +2,7 @@
 
 namespace ScreenCapture
 {
-    internal class Options
+    public class Options
     {
         #region Class Variables
 

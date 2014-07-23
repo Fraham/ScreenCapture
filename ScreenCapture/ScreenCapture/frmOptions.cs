@@ -14,6 +14,7 @@ namespace ScreenCapture
     {
         private int maxWidth;
         private int maxHeight;
+        private Options usersOptions;
 
         public frmOptions()
         {
@@ -82,11 +83,6 @@ namespace ScreenCapture
                 e.Cancel = true;
         }
 
-        internal Options getOptions()
-        {
-            return new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
-        }
-
         private void radNotFullScreen_CheckedChanged(object sender, EventArgs e)
         {
             if(radFullScreen.Checked)
@@ -96,6 +92,18 @@ namespace ScreenCapture
             else
             {
                 grpCaptureOptions.Enabled = true;
+            }
+        }
+
+        public Options UsersOptions
+        {
+            get
+            {
+                return new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
+            }
+            set
+            {
+                usersOptions = value;
             }
         }
     }

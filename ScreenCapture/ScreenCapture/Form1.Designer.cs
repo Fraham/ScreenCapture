@@ -50,7 +50,7 @@
             this.btnLiveFeed.Location = new System.Drawing.Point(93, 12);
             this.btnLiveFeed.Name = "btnLiveFeed";
             this.btnLiveFeed.Size = new System.Drawing.Size(75, 23);
-            this.btnLiveFeed.TabIndex = 0;
+            this.btnLiveFeed.TabIndex = 1;
             this.btnLiveFeed.Text = "Live Feed";
             this.btnLiveFeed.UseVisualStyleBackColor = true;
             this.btnLiveFeed.Click += new System.EventHandler(this.btnLiveFeed_Click);
@@ -72,7 +72,7 @@
             this.btnOptions.Location = new System.Drawing.Point(174, 12);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(61, 23);
-            this.btnOptions.TabIndex = 0;
+            this.btnOptions.TabIndex = 2;
             this.btnOptions.Text = "Options";
             this.btnOptions.UseVisualStyleBackColor = true;
             this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);

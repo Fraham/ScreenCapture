@@ -68,11 +68,31 @@ namespace ScreenCapture
             frmOptions frmO = new frmOptions(UsersOptions);
             if( frmO.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-
+                //save options
+                //load the new options
             }
         }
 
         #endregion Click Events
+
+        #region Loading and Saving Options
+
+        private void saveOptions()
+        {
+
+        }
+
+        private void loadOptions()
+        {
+
+        }
+
+        #endregion
+
+        private void changeCaptureOptions()
+        {
+
+        }
 
         #region Form CLosing
 

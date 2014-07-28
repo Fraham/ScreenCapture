@@ -13,7 +13,9 @@ namespace ScreenCapture
         {
             InitializeComponent();
 
-            workerObject = new CaptureWorker(this.picFeed);
+            loadOptions();
+
+            workerObject = new CaptureWorker(UsersOptions, this.picFeed);
         }
 
         #region Click Events

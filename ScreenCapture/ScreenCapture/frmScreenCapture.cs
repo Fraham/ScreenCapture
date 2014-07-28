@@ -7,7 +7,7 @@ namespace ScreenCapture
     public partial class frmScreenCapture : Form
     {
         private CaptureWorker workerObject;
-        private Options userOptions;
+        private Options usersOptions;
 
         public frmScreenCapture()
         {
@@ -65,7 +65,7 @@ namespace ScreenCapture
 
         private void btnOptions_Click(object sender, EventArgs e)
         {
-            frmOptions frmO = new frmOptions();
+            frmOptions frmO = new frmOptions(UsersOptions);
             if( frmO.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
 
@@ -90,5 +90,21 @@ namespace ScreenCapture
         }
 
         #endregion Form CLosing
+
+        #region Properties
+
+        public Options UsersOptions
+        {
+            get
+            {
+                return usersOptions;
+            }
+            set
+            {
+                usersOptions = value;
+            }
+        }
+
+        #endregion Properties
     }
 }

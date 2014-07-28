@@ -14,8 +14,9 @@ namespace ScreenCapture
 
         #endregion Class Variables
 
-        public frmOptions()
+        public frmOptions(Options options)
         {
+            usersOptions = options;
             InitializeComponent();
         }
 

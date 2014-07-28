@@ -7,6 +7,7 @@ namespace ScreenCapture
     public partial class frmScreenCapture : Form
     {
         private CaptureWorker workerObject;
+        private Options userOptions;
 
         public frmScreenCapture()
         {

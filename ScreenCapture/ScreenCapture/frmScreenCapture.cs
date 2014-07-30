@@ -56,6 +56,7 @@ namespace ScreenCapture
             if (workerObject.Started)
             {
                 workerObject.Resume();
+                Thread.Sleep(10);
                 workerObject.Pause();
             }
             else

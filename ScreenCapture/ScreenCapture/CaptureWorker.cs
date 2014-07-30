@@ -107,6 +107,7 @@ namespace ScreenCapture
         /// </summary>
         public void Pause()
         {
+            Capturing = false;
             _pauseEvent.Reset();
         }
 
@@ -115,6 +116,7 @@ namespace ScreenCapture
         /// </summary>
         public void Resume()
         {
+            Capturing = true;
             _pauseEvent.Set();
         }
 
@@ -124,7 +126,7 @@ namespace ScreenCapture
         public void Start()
         {
             Started = true;
-
+            Capturing = true;
             _thread = new Thread(DoCapture);
             _thread.Start();
         }

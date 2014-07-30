@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -11,7 +12,7 @@ namespace ScreenCapture
         private ManualResetEvent _pauseEvent = new ManualResetEvent(true);
         private ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
         private Thread _thread;
-        private int frames;
+        private int frames = 0;
         private Options options;
         private PictureBox picBox;
         private bool started = false;
@@ -157,34 +158,43 @@ namespace ScreenCapture
         /// </summary>
         public void DoCapture()
         {
-            while (true)
+            try
             {
-                _pauseEvent.WaitOne(Timeout.Infinite);
-
-                if (_shutdownEvent.WaitOne(0))
-                    break;
-
-                /*
-                 * Creates a new bitmap with the width and height of the primary screen (the one with the task-bar).
-                 * Then it will create a graphics from the new bitmap.
-                 */
-                Bitmap bitmap = new Bitmap(CaptureOptions.Width, CaptureOptions.Height);
-                Graphics graphics = Graphics.FromImage(bitmap);
-
-                /*
-                 * Copy the graphics from the screen for the whole screen.
-                 * Then it will set the created bitmap image to the picture box.
-                 */
-                graphics.CopyFromScreen(CaptureOptions.SourcePoint, Point.Empty, new Size(CaptureOptions.Width, CaptureOptions.Height));
-
-                graphics.Dispose();
-
-                if (PicBox.Image != null)
+                while (true)
                 {
-                    PicBox.Image.Dispose();
-                }
+                    _pauseEvent.WaitOne(Timeout.Infinite);
 
-                PicBox.Image = bitmap;
+                    if (_shutdownEvent.WaitOne(0))
+                        break;
+
+                    /*
+                     * Creates a new bitmap with the width and height of the primary screen (the one with the task-bar).
+                     * Then it will create a graphics from the new bitmap.
+                     */
+                    Bitmap bitmap = new Bitmap(CaptureOptions.Width, CaptureOptions.Height);
+                    Graphics graphics = Graphics.FromImage(bitmap);
+
+                    /*
+                     * Copy the graphics from the screen for the whole screen.
+                     * Then it will set the created bitmap image to the picture box.
+                     */
+                    graphics.CopyFromScreen(CaptureOptions.SourcePoint, Point.Empty, new Size(CaptureOptions.Width, CaptureOptions.Height));
+
+                    graphics.Dispose();
+
+                    if (PicBox.Image != null)
+                    {
+                        PicBox.Image.Dispose();
+                    }
+
+                    PicBox.Image = bitmap;
+
+                    frames++;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex);
             }
         }
 

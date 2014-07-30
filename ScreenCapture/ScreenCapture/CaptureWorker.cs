@@ -82,6 +82,12 @@ namespace ScreenCapture
             PicBox = picBox;
         }
 
+        /// <summary>
+        /// Makes a new instance of a capture worker
+        /// It will capture an area using the options provided.
+        /// </summary>
+        /// <param name="options">The options for the capture.</param>
+        /// <param name="picBox">The picture box being used to display the capture.</param>
         public CaptureWorker(Options options, PictureBox picBox)
         {
             CaptureOptions = options;

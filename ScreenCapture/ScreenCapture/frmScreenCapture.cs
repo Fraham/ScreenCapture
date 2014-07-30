@@ -16,7 +16,7 @@ namespace ScreenCapture
 
             loadOptions();
 
-            workerObject = new CaptureWorker(UsersOptions, this.picFeed);
+            WorkerObject = new CaptureWorker(UsersOptions, this.picFeed);
         }
 
         #region Click Events
@@ -28,13 +28,13 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void btnLiveFeed_Click(object sender, EventArgs e)
         {
-            if (workerObject.Started)
+            if (WorkerObject.Started)
             {
-                workerObject.Resume();
+                WorkerObject.Resume();
             }
             else
             {
-                workerObject.Start();
+                WorkerObject.Start();
             }
         }
 
@@ -53,17 +53,17 @@ namespace ScreenCapture
              * If it hasn't been started already it will start and then pause
              * with a small sleep so has enough time to capture the screen.
             */
-            if (workerObject.Started)
+            if (WorkerObject.Started)
             {
-                workerObject.Resume();
+                WorkerObject.Resume();
                 Thread.Sleep(10);
-                workerObject.Pause();
+                WorkerObject.Pause();
             }
             else
             {
-                workerObject.Start();
+                WorkerObject.Start();
                 Thread.Sleep(10);
-                workerObject.Pause();
+                WorkerObject.Pause();
             }
         }
 
@@ -117,9 +117,9 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void frmScreenCapture_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (workerObject.Started)
+            if (WorkerObject.Started)
             {
-                workerObject.Stop();
+                WorkerObject.Stop();
             }
 
             saveOptions();

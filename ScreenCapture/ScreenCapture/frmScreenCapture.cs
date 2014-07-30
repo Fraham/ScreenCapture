@@ -67,6 +67,12 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// Will open the options form.
+        /// If the user clicks okay it will change the new options.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOptions_Click(object sender, EventArgs e)
         {
             frmOptions frmO = new frmOptions(UsersOptions);
@@ -81,6 +87,9 @@ namespace ScreenCapture
 
         #region Loading and Saving Options
 
+        /// <summary>
+        /// It will save the options to an XML file.
+        /// </summary>
         private void saveOptions()
         {
             using (var writer = new System.IO.StreamWriter("UserOptions.xml"))
@@ -91,6 +100,9 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// It will load the options from an XML file.
+        /// </summary>
         private void loadOptions()
         {
             using (var stream = System.IO.File.OpenRead("UserOptions.xml"))
@@ -102,6 +114,9 @@ namespace ScreenCapture
 
         #endregion Loading and Saving Options
 
+        /// <summary>
+        /// It will update the options for the capture.
+        /// </summary>
         private void changeCaptureOptions()
         {
             WorkerObject.Pause();
@@ -130,6 +145,9 @@ namespace ScreenCapture
 
         #region Properties
 
+        /// <summary>
+        /// Holds all the options for the capture
+        /// </summary>
         public Options UsersOptions
         {
             get
@@ -147,6 +165,9 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// Holds all the information about the current capture.
+        /// </summary>
         public CaptureWorker WorkerObject
         {
             get

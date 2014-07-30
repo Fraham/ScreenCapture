@@ -20,8 +20,8 @@ namespace ScreenCapture
         /// </summary>
         public Options()
         {
-            Width = 0;
-            Height = 0;
+            Width = 1;
+            Height = 1;
             SourcePoint = new Point();
             Fullscreen = true;
         }
@@ -72,11 +72,11 @@ namespace ScreenCapture
             }
             set
             {
-                if (value < 0)
+                if (value < 1)
                 {
-                    this.height = 0;
+                    this.height = 1;
 
-                    System.Console.WriteLine("The height was set to be less than zero");
+                    System.Console.WriteLine("The height was set to be less than one");
                 }
                 else
                 {
@@ -112,11 +112,11 @@ namespace ScreenCapture
             }
             set
             {
-                if (value < 0)
+                if (value < 1)
                 {
-                    this.width = 0;
+                    this.width = 1;
 
-                    System.Console.WriteLine("The width was set to be less than zero");
+                    System.Console.WriteLine("The width was set to be less than one");
                 }
                 else
                 {

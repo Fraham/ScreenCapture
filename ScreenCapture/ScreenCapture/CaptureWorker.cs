@@ -11,6 +11,7 @@ namespace ScreenCapture
         private ManualResetEvent _pauseEvent = new ManualResetEvent(true);
         private ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
         private Thread _thread;
+        private int frames;
         private Options options;
         private PictureBox picBox;
         private bool started = false;
@@ -189,7 +190,7 @@ namespace ScreenCapture
 
         #endregion Capture
 
-        #region Getters and Setters
+        #region Properties
 
         /// <summary>
         /// Getter and Setter for the capture options.
@@ -204,6 +205,22 @@ namespace ScreenCapture
             set
             {
                 this.options = value;
+            }
+        }
+
+        /// <summary>
+        /// Getter and Setter for the frames variable.
+        /// The variable is used to count the amount of frames processed.
+        /// </summary>
+        public int Frames
+        {
+            get
+            {
+                return frames;
+            }
+            set
+            {
+                frames = value;
             }
         }
 
@@ -249,6 +266,6 @@ namespace ScreenCapture
             }
         }
 
-        #endregion Getters and Setters
+        #endregion Properties
     }
 }

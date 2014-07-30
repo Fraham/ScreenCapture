@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace ScreenCapture
 {
-    internal class CaptureWorker
+    public class CaptureWorker
     {
         #region Class Variables
 

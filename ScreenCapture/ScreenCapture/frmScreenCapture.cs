@@ -73,8 +73,7 @@ namespace ScreenCapture
             if (frmO.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 UsersOptions = frmO.UsersOptions;
-                //save options
-                //load the new options
+                changeCaptureOptions();
             }
         }
 

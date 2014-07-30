@@ -93,7 +93,11 @@ namespace ScreenCapture
 
         private void loadOptions()
         {
-
+            using (var stream = System.IO.File.OpenRead("UserOptions.xml"))
+            {
+                var serializer = new XmlSerializer(UsersOptions.GetType());
+                UsersOptions = (Options)serializer.Deserialize(stream);
+            }
         }
 
         #endregion Loading and Saving Options

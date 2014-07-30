@@ -16,6 +16,7 @@ namespace ScreenCapture
         private Options options;
         private PictureBox picBox;
         private bool started = false;
+        private bool capturing = false;
 
         #endregion Class Variables
 
@@ -273,6 +274,22 @@ namespace ScreenCapture
             set
             {
                 this.started = value;
+            }
+        }
+
+        /// <summary>
+        /// Getter and Setter for the capturing variable.
+        /// The variable is boolean so can only be true or false.
+        /// </summary>
+        public bool Capturing
+        {
+            get
+            {
+                return this.capturing;
+            }
+            set
+            {
+                this.capturing = value;
             }
         }
 

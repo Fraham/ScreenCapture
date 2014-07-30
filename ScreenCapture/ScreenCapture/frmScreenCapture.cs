@@ -12,7 +12,7 @@ namespace ScreenCapture
         private Options usersOptions;
         private CaptureWorker workerObject;
 
-        #endregion
+        #endregion Class Variables
 
         #region Constructor
 
@@ -25,7 +25,7 @@ namespace ScreenCapture
             WorkerObject = new CaptureWorker(UsersOptions, this.picFeed);
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Click Events
 
@@ -90,6 +90,7 @@ namespace ScreenCapture
                 WorkerObject.Pause();
             }
         }
+
         #endregion Click Events
 
         #region Loading and Saving Options
@@ -99,10 +100,17 @@ namespace ScreenCapture
         /// </summary>
         private void loadOptions()
         {
-            using (var stream = System.IO.File.OpenRead("UserOptions.xml"))
+            try
             {
-                var serializer = new XmlSerializer(UsersOptions.GetType());
-                UsersOptions = (Options)serializer.Deserialize(stream);
+                using (var stream = System.IO.File.OpenRead("UserOptions.xml"))
+                {
+                    var serializer = new XmlSerializer(UsersOptions.GetType());
+                    UsersOptions = (Options)serializer.Deserialize(stream);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex);
             }
         }
 
@@ -111,13 +119,21 @@ namespace ScreenCapture
         /// </summary>
         private void saveOptions()
         {
-            using (var writer = new System.IO.StreamWriter("UserOptions.xml"))
+            try
             {
-                var serializer = new XmlSerializer(UsersOptions.GetType());
-                serializer.Serialize(writer, UsersOptions);
-                writer.Flush();
+                using (var writer = new System.IO.StreamWriter("UserOptions.xml"))
+                {
+                    var serializer = new XmlSerializer(UsersOptions.GetType());
+                    serializer.Serialize(writer, UsersOptions);
+                    writer.Flush();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex);
             }
         }
+
         #endregion Loading and Saving Options
 
         #region Change Capture Options
@@ -132,7 +148,7 @@ namespace ScreenCapture
             WorkerObject.Resume();
         }
 
-        #endregion
+        #endregion Change Capture Options
 
         #region Form CLosing
 

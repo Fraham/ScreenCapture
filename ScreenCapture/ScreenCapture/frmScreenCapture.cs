@@ -96,7 +96,15 @@ namespace ScreenCapture
             using (var stream = System.IO.File.OpenRead("UserOptions.xml"))
             {
                 var serializer = new XmlSerializer(UsersOptions.GetType());
+                Console.WriteLine("X:" + UsersOptions.SourcePoint.X);
+                Console.WriteLine("Y:" + UsersOptions.SourcePoint.Y);
+                Console.WriteLine("Width:" + UsersOptions.Width);
+                Console.WriteLine("Height:" + UsersOptions.Height);
                 UsersOptions = (Options)serializer.Deserialize(stream);
+                Console.WriteLine("X:" + UsersOptions.SourcePoint.X);
+                Console.WriteLine("Y:" + UsersOptions.SourcePoint.Y);
+                Console.WriteLine("Width:" + UsersOptions.Width);
+                Console.WriteLine("Height:" + UsersOptions.Height);
             }
         }
 
@@ -132,6 +140,11 @@ namespace ScreenCapture
         {
             get
             {
+                if(usersOptions == null)
+                {
+                    return new Options();
+                }
+
                 return usersOptions;
             }
             set

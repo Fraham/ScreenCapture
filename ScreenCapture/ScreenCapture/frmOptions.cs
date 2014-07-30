@@ -16,7 +16,7 @@ namespace ScreenCapture
 
         public frmOptions(Options options)
         {
-            usersOptions = options;
+            UsersOptions = options;
             InitializeComponent();
         }
 
@@ -31,6 +31,7 @@ namespace ScreenCapture
         {
             if (validWidth() && validHeight())
             {
+                UsersOptions = new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
                 this.DialogResult = DialogResult.OK;
             }
             else
@@ -118,7 +119,7 @@ namespace ScreenCapture
         {
             get
             {
-                return new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
+                return usersOptions;
             }
             set
             {

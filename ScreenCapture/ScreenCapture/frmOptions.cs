@@ -31,7 +31,15 @@ namespace ScreenCapture
         {
             if (validWidth() && validHeight())
             {
-                UsersOptions = new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
+                if (radFullScreen.Checked)
+                {
+                    UsersOptions = new Options();
+                }
+                else
+                {
+                    UsersOptions = new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
+                }
+                
                 this.DialogResult = DialogResult.OK;
             }
             else

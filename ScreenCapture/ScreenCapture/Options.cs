@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace ScreenCapture
 {
@@ -20,8 +21,13 @@ namespace ScreenCapture
         /// </summary>
         public Options()
         {
-            Width = 1;
-            Height = 1;
+            Rectangle totalSize = Rectangle.Empty;
+
+            foreach (Screen s in Screen.AllScreens)
+                totalSize = Rectangle.Union(totalSize, s.Bounds);
+
+            Width = totalSize.Width;
+            Height = totalSize.Height;
             SourcePoint = new Point();
             Fullscreen = true;
         }

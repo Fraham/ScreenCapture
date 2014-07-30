@@ -2,6 +2,8 @@
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace ScreenCapture
 {
@@ -210,12 +212,19 @@ namespace ScreenCapture
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            SaveFileDialog dialog = new SaveFileDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+               int width = Convert.ToInt32(picFeed.Width);
+               int height = Convert.ToInt32(picFeed.Height);
+               Bitmap bmp = new Bitmap(width,height);
+               picFeed.DrawToBitmap(bmp, new Rectangle(0, 0, width, height));
+               bmp.Save(dialog.FileName, ImageFormat.Jpeg);
+            }
         }
     }
 }

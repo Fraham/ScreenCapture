@@ -7,8 +7,14 @@ namespace ScreenCapture
 {
     public partial class frmScreenCapture : Form
     {
-        private CaptureWorker workerObject;
+        #region Class Variables
+
         private Options usersOptions;
+        private CaptureWorker workerObject;
+
+        #endregion
+
+        #region Constructor
 
         public frmScreenCapture()
         {
@@ -18,6 +24,8 @@ namespace ScreenCapture
 
             WorkerObject = new CaptureWorker(UsersOptions, this.picFeed);
         }
+
+        #endregion
 
         #region Click Events
 
@@ -35,6 +43,22 @@ namespace ScreenCapture
             else
             {
                 WorkerObject.Start();
+            }
+        }
+
+        /// <summary>
+        /// Will open the options form.
+        /// If the user clicks okay it will change the new options.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            frmOptions frmO = new frmOptions(UsersOptions);
+            if (frmO.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                UsersOptions = frmO.UsersOptions;
+                changeCaptureOptions();
             }
         }
 
@@ -66,39 +90,9 @@ namespace ScreenCapture
                 WorkerObject.Pause();
             }
         }
-
-        /// <summary>
-        /// Will open the options form.
-        /// If the user clicks okay it will change the new options.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnOptions_Click(object sender, EventArgs e)
-        {
-            frmOptions frmO = new frmOptions(UsersOptions);
-            if (frmO.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                UsersOptions = frmO.UsersOptions;
-                changeCaptureOptions();
-            }
-        }
-
         #endregion Click Events
 
         #region Loading and Saving Options
-
-        /// <summary>
-        /// It will save the options to an XML file.
-        /// </summary>
-        private void saveOptions()
-        {
-            using (var writer = new System.IO.StreamWriter("UserOptions.xml"))
-            {
-                var serializer = new XmlSerializer(UsersOptions.GetType());
-                serializer.Serialize(writer, UsersOptions);
-                writer.Flush();
-            }
-        }
 
         /// <summary>
         /// It will load the options from an XML file.
@@ -112,7 +106,21 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// It will save the options to an XML file.
+        /// </summary>
+        private void saveOptions()
+        {
+            using (var writer = new System.IO.StreamWriter("UserOptions.xml"))
+            {
+                var serializer = new XmlSerializer(UsersOptions.GetType());
+                serializer.Serialize(writer, UsersOptions);
+                writer.Flush();
+            }
+        }
         #endregion Loading and Saving Options
+
+        #region Change Capture Options
 
         /// <summary>
         /// It will update the options for the capture.
@@ -123,6 +131,8 @@ namespace ScreenCapture
             WorkerObject.CaptureOptions = UsersOptions;
             WorkerObject.Resume();
         }
+
+        #endregion
 
         #region Form CLosing
 
@@ -152,7 +162,7 @@ namespace ScreenCapture
         {
             get
             {
-                if(usersOptions == null)
+                if (usersOptions == null)
                 {
                     return new Options();
                 }

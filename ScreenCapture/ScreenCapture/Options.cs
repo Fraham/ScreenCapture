@@ -11,6 +11,7 @@ namespace ScreenCapture
         private int height;
         private Point sourcePoint;
         private int width;
+
         #endregion Class Variables
 
         #region Constructors
@@ -130,6 +131,7 @@ namespace ScreenCapture
                 }
             }
         }
+
         #endregion Properties
     }
 }

@@ -146,6 +146,18 @@ namespace ScreenCapture
             }
         }
 
+        public CaptureWorker WorkerObject
+        {
+            get
+            {
+                return workerObject;
+            }
+            set
+            {
+                workerObject = value;
+            }
+        }
+
         #endregion Properties
     }
 }

@@ -109,6 +109,8 @@ namespace ScreenCapture
             {
                 workerObject.Stop();
             }
+
+            saveOptions();
         }
 
         #endregion Form CLosing

@@ -105,7 +105,9 @@ namespace ScreenCapture
 
         private void changeCaptureOptions()
         {
-
+            WorkerObject.Pause();
+            WorkerObject.CaptureOptions = UsersOptions;
+            WorkerObject.Resume();
         }
 
         #region Form CLosing

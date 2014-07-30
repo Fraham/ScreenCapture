@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace ScreenCapture
 {
@@ -68,8 +69,9 @@ namespace ScreenCapture
         private void btnOptions_Click(object sender, EventArgs e)
         {
             frmOptions frmO = new frmOptions(UsersOptions);
-            if( frmO.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (frmO.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                UsersOptions = frmO.UsersOptions;
                 //save options
                 //load the new options
             }
@@ -81,7 +83,12 @@ namespace ScreenCapture
 
         private void saveOptions()
         {
-
+            using (var writer = new System.IO.StreamWriter("UserOptions.xml"))
+            {
+                var serializer = new XmlSerializer(UsersOptions.GetType());
+                serializer.Serialize(writer, UsersOptions);
+                writer.Flush();
+            }
         }
 
         private void loadOptions()
@@ -89,7 +96,7 @@ namespace ScreenCapture
 
         }
 
-        #endregion
+        #endregion Loading and Saving Options
 
         private void changeCaptureOptions()
         {

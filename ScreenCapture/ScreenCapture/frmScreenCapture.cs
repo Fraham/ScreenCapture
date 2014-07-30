@@ -207,5 +207,15 @@ namespace ScreenCapture
         }
 
         #endregion Properties
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

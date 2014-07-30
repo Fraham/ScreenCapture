@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnScreenshot = new System.Windows.Forms.Button();
             this.btnLiveFeed = new System.Windows.Forms.Button();
             this.picFeed = new System.Windows.Forms.PictureBox();
             this.btnOptions = new System.Windows.Forms.Button();
+            this.cmsPictureBox = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.picFeed)).BeginInit();
+            this.cmsPictureBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnScreenshot
@@ -77,6 +82,28 @@
             this.btnOptions.UseVisualStyleBackColor = true;
             this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
             // 
+            // cmsPictureBox
+            // 
+            this.cmsPictureBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem,
+            this.saveToolStripMenuItem});
+            this.cmsPictureBox.Name = "cmsPictureBox";
+            this.cmsPictureBox.Size = new System.Drawing.Size(153, 70);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
             // frmScreenCapture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,6 +117,7 @@
             this.Text = "Screen Capture";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmScreenCapture_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.picFeed)).EndInit();
+            this.cmsPictureBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -100,6 +128,9 @@
         private System.Windows.Forms.Button btnLiveFeed;
         private System.Windows.Forms.PictureBox picFeed;
         private System.Windows.Forms.Button btnOptions;
+        private System.Windows.Forms.ContextMenuStrip cmsPictureBox;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
     }
 }
 

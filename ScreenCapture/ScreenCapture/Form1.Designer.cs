@@ -65,6 +65,7 @@
             this.picFeed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.picFeed.ContextMenuStrip = this.cmsPictureBox;
             this.picFeed.Location = new System.Drawing.Point(12, 41);
             this.picFeed.Name = "picFeed";
             this.picFeed.Size = new System.Drawing.Size(927, 562);
@@ -88,7 +89,7 @@
             this.copyToolStripMenuItem,
             this.saveToolStripMenuItem});
             this.cmsPictureBox.Name = "cmsPictureBox";
-            this.cmsPictureBox.Size = new System.Drawing.Size(153, 70);
+            this.cmsPictureBox.Size = new System.Drawing.Size(103, 48);
             // 
             // saveToolStripMenuItem
             // 

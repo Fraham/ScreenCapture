@@ -213,22 +213,36 @@ namespace ScreenCapture
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!WorkerObject.Capturing)
+            try
             {
-                Clipboard.SetImage(picFeed.Image);
+                if (!WorkerObject.Capturing)
+                {
+                    Clipboard.SetImage(picFeed.Image);
+                }
+            }
+            catch(Exception ex)
+            {
+                System.Console.WriteLine(ex);
             }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!WorkerObject.Capturing)
+            try
             {
-                SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "JPEG File | *.jpeg";
-                if (dialog.ShowDialog() == DialogResult.OK)
+                if (!WorkerObject.Capturing)
                 {
-                    picFeed.Image.Save(dialog.FileName, ImageFormat.Jpeg);
+                    SaveFileDialog dialog = new SaveFileDialog();
+                    dialog.Filter = "JPEG File | *.jpeg";
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        picFeed.Image.Save(dialog.FileName, ImageFormat.Jpeg);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex);
             }
         }
 

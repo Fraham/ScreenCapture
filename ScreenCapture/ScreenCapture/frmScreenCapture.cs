@@ -218,6 +218,7 @@ namespace ScreenCapture
             if (!WorkerObject.Capturing)
             {
                 SaveFileDialog dialog = new SaveFileDialog();
+                dialog.Filter = "JPEG File | *.jpeg";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     picFeed.Image.Save(dialog.FileName, ImageFormat.Jpeg);

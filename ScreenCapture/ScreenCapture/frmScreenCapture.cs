@@ -209,8 +209,14 @@ namespace ScreenCapture
 
         #endregion Properties
 
+        #region Picture Box Context Strip
+
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!WorkerObject.Capturing)
+            {
+                Clipboard.SetImage(picFeed.Image);
+            }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -225,5 +231,7 @@ namespace ScreenCapture
                 }
             }
         }
+
+        #endregion Picture Box Context Strip
     }
 }

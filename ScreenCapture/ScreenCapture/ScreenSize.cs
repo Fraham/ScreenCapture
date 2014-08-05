@@ -8,5 +8,14 @@ namespace ScreenCapture
 {
     class ScreenSize
     {
+        public static int Width
+        {
+
+        }
+
+        public static int Height
+        {
+
+        }
     }
 }

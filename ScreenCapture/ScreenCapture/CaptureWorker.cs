@@ -75,12 +75,7 @@ namespace ScreenCapture
         /// <param name="picBox">The picture box being used to display the capture.</param>
         public CaptureWorker(PictureBox picBox)
         {
-            Rectangle totalSize = Rectangle.Empty;
-
-            foreach (Screen s in Screen.AllScreens)
-                totalSize = Rectangle.Union(totalSize, s.Bounds);
-
-            CaptureOptions = new Options(totalSize.Width, totalSize.Height, Point.Empty);
+            CaptureOptions = new Options(ScreenSize.Width, ScreenSize.Height, Point.Empty);
 
             PicBox = picBox;
         }

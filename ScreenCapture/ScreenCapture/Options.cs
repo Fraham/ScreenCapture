@@ -22,13 +22,8 @@ namespace ScreenCapture
         /// </summary>
         public Options()
         {
-            Rectangle totalSize = Rectangle.Empty;
-
-            foreach (Screen s in Screen.AllScreens)
-                totalSize = Rectangle.Union(totalSize, s.Bounds);
-
-            Width = totalSize.Width;
-            Height = totalSize.Height;
+            Width = ScreenSize.Width;
+            Height = ScreenSize.Height;
             SourcePoint = new Point();
             Fullscreen = true;
         }

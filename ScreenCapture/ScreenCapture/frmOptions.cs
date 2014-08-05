@@ -108,19 +108,14 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void frmOptions_Load(object sender, EventArgs e)
         {
-            Rectangle totalSize = Rectangle.Empty;
+            nudWidth.Maximum = ScreenSize.Width;
+            nudHeight.Maximum = ScreenSize.Height;
 
-            foreach (Screen s in Screen.AllScreens)
-                totalSize = Rectangle.Union(totalSize, s.Bounds);
+            nudXSourcePoint.Maximum = ScreenSize.Width;
+            nudYSourcePoint.Maximum = ScreenSize.Height;
 
-            nudWidth.Maximum = totalSize.Width;
-            nudHeight.Maximum = totalSize.Height;
-
-            nudXSourcePoint.Maximum = totalSize.Width;
-            nudYSourcePoint.Maximum = totalSize.Height;
-
-            maxWidth = totalSize.Width;
-            maxHeight = totalSize.Height;
+            maxWidth = ScreenSize.Width;
+            maxHeight = ScreenSize.Height;
 
             nudHeight.Value = UsersOptions.Height;
             nudWidth.Value = UsersOptions.Width;

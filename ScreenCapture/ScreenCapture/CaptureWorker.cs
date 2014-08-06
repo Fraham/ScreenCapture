@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace ScreenCapture
 {
@@ -17,6 +18,7 @@ namespace ScreenCapture
         private PictureBox picBox;
         private bool started = false;
         private bool capturing = false;
+        private Stopwatch captureTime;
 
         #endregion Class Variables
 

@@ -244,7 +244,6 @@ namespace ScreenCapture
             {
                 return this.picBox;
             }
-
             set
             {
                 if (value == null)
@@ -289,6 +288,34 @@ namespace ScreenCapture
             set
             {
                 this.capturing = value;
+            }
+        }
+
+        public Stopwatch CaptureTime
+        {
+            get
+            {
+                if (captureTime == null)
+                {
+                    return new Stopwatch();
+                }
+                else
+                {
+                    return captureTime;
+                }
+            }
+            set
+            {
+                if (value == null)
+                {
+                    System.Console.WriteLine("Null capture time.");
+
+                    captureTime = new Stopwatch();
+                }
+                else
+                {
+                    captureTime = value;
+                }
             }
         }
 

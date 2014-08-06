@@ -291,6 +291,10 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// Getter and Setter for capture time.
+        /// When setting the value for the capture time must not be null.
+        /// </summary>
         public Stopwatch CaptureTime
         {
             get

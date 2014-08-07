@@ -317,6 +317,8 @@ namespace ScreenCapture
             }
         }
 
+        #region Capture Methods
+
         private void startCapture()
         {
             if (WorkerObject.Started)
@@ -338,5 +340,12 @@ namespace ScreenCapture
         {
 
         }
+
+        private void resumeCapture()
+        {
+
+        }
+
+        #endregion
     }
 }

@@ -28,42 +28,6 @@ namespace ScreenCapture
 
         #endregion Constructor
 
-        #region Click Events
-
-        /// <summary>
-        /// It will start the thread when the button is pressed.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnLiveFeed_Click(object sender, EventArgs e)
-        {
-            startCapture();
-        }
-
-        /// <summary>
-        /// Will open the options form.
-        /// If the user clicks okay it will change the new options.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnOptions_Click(object sender, EventArgs e)
-        {
-            openOptionsForm();
-        }
-
-        /// <summary>
-        /// It will capture the screen and stop the live capture.
-        /// This uses the same settings as the live feed but it will only take one frame.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnScreenshot_Click(object sender, EventArgs e)
-        {
-            takeScreenshot();
-        }
-
-        #endregion Click Events
-
         #region Loading and Saving Options
 
         /// <summary>

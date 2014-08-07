@@ -149,6 +149,9 @@ namespace ScreenCapture
 
             // Wait for the thread to exit
             _thread.Join();
+
+            Started = false;
+            Capturing = false;
         }
 
         #endregion Threading

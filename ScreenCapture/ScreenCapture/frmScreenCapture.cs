@@ -37,14 +37,7 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void btnLiveFeed_Click(object sender, EventArgs e)
         {
-            if (WorkerObject.Started)
-            {
-                WorkerObject.Resume();
-            }
-            else
-            {
-                WorkerObject.Start();
-            }
+            startCapture();
         }
 
         /// <summary>
@@ -55,12 +48,7 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void btnOptions_Click(object sender, EventArgs e)
         {
-            frmOptions frmO = new frmOptions(UsersOptions);
-            if (frmO.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                UsersOptions = frmO.UsersOptions;
-                changeCaptureOptions();
-            }
+            openOptionsForm();
         }
 
         /// <summary>
@@ -229,13 +217,16 @@ namespace ScreenCapture
 
         private void mnsScreenCapturePause_Click(object sender, EventArgs e)
         {
+            pauseCapture();
         }
 
         private void mnsScreenCaptureStart_Click(object sender, EventArgs e)
         {
+            startCapture();
         }
         private void mnsScreenCaptureStop_Click(object sender, EventArgs e)
         {
+            stopCapture();
         }
 
         #endregion Live Feed
@@ -244,6 +235,7 @@ namespace ScreenCapture
 
         private void mnsScreenCaptureOptions_Click(object sender, EventArgs e)
         {
+            openOptionsForm();
         }
 
         #endregion Options
@@ -314,5 +306,37 @@ namespace ScreenCapture
         }
 
         #endregion Screenshot Methods
+
+        private void openOptionsForm()
+        {
+            frmOptions frmO = new frmOptions(UsersOptions);
+            if (frmO.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                UsersOptions = frmO.UsersOptions;
+                changeCaptureOptions();
+            }
+        }
+
+        private void startCapture()
+        {
+            if (WorkerObject.Started)
+            {
+                WorkerObject.Resume();
+            }
+            else
+            {
+                WorkerObject.Start();
+            }
+        }
+
+        private void pauseCapture()
+        {
+
+        }
+
+        private void stopCapture()
+        {
+
+        }
     }
 }

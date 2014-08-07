@@ -193,52 +193,33 @@ namespace ScreenCapture
 
         #region Picture Box Context Strip
 
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cmsPictureBoxCopy_Click(object sender, EventArgs e)
         {
             copyScreenshot();
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cmsPictureBoxSave_Click(object sender, EventArgs e)
         {
             saveScreenshot();
         }
 
         #endregion Picture Box Context Strip
 
-        private void takeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mnsScreenCaptureTake_Click(object sender, EventArgs e)
         {
             takeScreenshot();
         }
 
-        private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void mnsScreenCaptureSave_Click(object sender, EventArgs e)
         {
             saveScreenshot();
         }
 
-        private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void mnsScreenCaptureCopy_Click(object sender, EventArgs e)
         {
             copyScreenshot();
         }
 
-        private void startToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
         #region Screenshot Methods
         private void copyScreenshot()
         {
@@ -296,7 +277,30 @@ namespace ScreenCapture
                 Thread.Sleep(10);
                 WorkerObject.Pause();
             }
+
+            mnsScreenCaptureSave.Enabled = true;
+            mnsScreenCaptureCopy.Enabled = true;
         }
         #endregion
+
+        private void mnsScreenCaptureStart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnsScreenCapturePause_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnsScreenCaptureStop_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnsScreenCaptureOptions_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

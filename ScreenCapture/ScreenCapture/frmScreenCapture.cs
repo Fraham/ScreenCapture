@@ -71,25 +71,7 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void btnScreenshot_Click(object sender, EventArgs e)
         {
-            /*
-             * It will check if the worker has already been started.
-             * Then it will resume and pause to get a still image.
-             *
-             * If it hasn't been started already it will start and then pause
-             * with a small sleep so has enough time to capture the screen.
-            */
-            if (WorkerObject.Started)
-            {
-                WorkerObject.Resume();
-                Thread.Sleep(10);
-                WorkerObject.Pause();
-            }
-            else
-            {
-                WorkerObject.Start();
-                Thread.Sleep(10);
-                WorkerObject.Pause();
-            }
+            takeScreenshot();
         }
 
         #endregion Click Events
@@ -225,7 +207,7 @@ namespace ScreenCapture
 
         private void takeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            takeScreenshot();
         }
 
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -290,6 +272,29 @@ namespace ScreenCapture
             catch (Exception ex)
             {
                 System.Console.WriteLine(ex);
+            }
+        }
+
+        private void takeScreenshot()
+        {
+            /*
+             * It will check if the worker has already been started.
+             * Then it will resume and pause to get a still image.
+             *
+             * If it hasn't been started already it will start and then pause
+             * with a small sleep so has enough time to capture the screen.
+            */
+            if (WorkerObject.Started)
+            {
+                WorkerObject.Resume();
+                Thread.Sleep(10);
+                WorkerObject.Pause();
+            }
+            else
+            {
+                WorkerObject.Start();
+                Thread.Sleep(10);
+                WorkerObject.Pause();
             }
         }
         #endregion

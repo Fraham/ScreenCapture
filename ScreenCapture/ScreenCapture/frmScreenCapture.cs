@@ -247,5 +247,40 @@ namespace ScreenCapture
         }
 
         #endregion Picture Box Context Strip
+
+        private void takeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void startToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

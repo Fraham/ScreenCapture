@@ -148,15 +148,17 @@
             // 
             // mnsScreenCaptureSave
             // 
+            this.mnsScreenCaptureSave.Enabled = false;
             this.mnsScreenCaptureSave.Name = "mnsScreenCaptureSave";
-            this.mnsScreenCaptureSave.Size = new System.Drawing.Size(102, 22);
+            this.mnsScreenCaptureSave.Size = new System.Drawing.Size(152, 22);
             this.mnsScreenCaptureSave.Text = "Save";
             this.mnsScreenCaptureSave.Click += new System.EventHandler(this.mnsScreenCaptureSave_Click);
             // 
             // mnsScreenCaptureCopy
             // 
+            this.mnsScreenCaptureCopy.Enabled = false;
             this.mnsScreenCaptureCopy.Name = "mnsScreenCaptureCopy";
-            this.mnsScreenCaptureCopy.Size = new System.Drawing.Size(102, 22);
+            this.mnsScreenCaptureCopy.Size = new System.Drawing.Size(152, 22);
             this.mnsScreenCaptureCopy.Text = "Copy";
             this.mnsScreenCaptureCopy.Click += new System.EventHandler(this.mnsScreenCaptureCopy_Click);
             // 
@@ -180,6 +182,7 @@
             // 
             // mnsScreenCapturePause
             // 
+            this.mnsScreenCapturePause.Enabled = false;
             this.mnsScreenCapturePause.Name = "mnsScreenCapturePause";
             this.mnsScreenCapturePause.Size = new System.Drawing.Size(152, 22);
             this.mnsScreenCapturePause.Text = "Pause";
@@ -187,6 +190,7 @@
             // 
             // mnsScreenCaptureStop
             // 
+            this.mnsScreenCaptureStop.Enabled = false;
             this.mnsScreenCaptureStop.Name = "mnsScreenCaptureStop";
             this.mnsScreenCaptureStop.Size = new System.Drawing.Size(152, 22);
             this.mnsScreenCaptureStop.Text = "Stop";
@@ -201,6 +205,7 @@
             // 
             // mnsScreenCaptureResume
             // 
+            this.mnsScreenCaptureResume.Enabled = false;
             this.mnsScreenCaptureResume.Name = "mnsScreenCaptureResume";
             this.mnsScreenCaptureResume.Size = new System.Drawing.Size(152, 22);
             this.mnsScreenCaptureResume.Text = "Resume";

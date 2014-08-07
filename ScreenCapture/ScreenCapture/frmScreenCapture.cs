@@ -364,8 +364,6 @@ namespace ScreenCapture
             cmsPictureBoxCopy.Enabled = true;
             cmsPictureBoxSave.Enabled = true;
 
-            mnsScreenCaptureSave.Enabled = true;
-            mnsScreenCaptureCopy.Enabled = true;
             mnsScreenCaptureTake.Enabled = true;
 
             mnsScreenCaptureStop.Enabled = false;

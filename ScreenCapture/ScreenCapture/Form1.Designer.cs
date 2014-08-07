@@ -29,13 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnScreenshot = new System.Windows.Forms.Button();
-            this.btnLiveFeed = new System.Windows.Forms.Button();
             this.picFeed = new System.Windows.Forms.PictureBox();
             this.cmsPictureBox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmsPictureBoxCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsPictureBoxSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnOptions = new System.Windows.Forms.Button();
             this.mnsScreenCapture = new System.Windows.Forms.MenuStrip();
             this.screenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsScreenCaptureTake = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,35 +49,15 @@
             this.mnsScreenCapture.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnScreenshot
-            // 
-            this.btnScreenshot.Location = new System.Drawing.Point(12, 12);
-            this.btnScreenshot.Name = "btnScreenshot";
-            this.btnScreenshot.Size = new System.Drawing.Size(75, 23);
-            this.btnScreenshot.TabIndex = 0;
-            this.btnScreenshot.Text = "Screenshot";
-            this.btnScreenshot.UseVisualStyleBackColor = true;
-            this.btnScreenshot.Click += new System.EventHandler(this.btnScreenshot_Click);
-            // 
-            // btnLiveFeed
-            // 
-            this.btnLiveFeed.Location = new System.Drawing.Point(93, 12);
-            this.btnLiveFeed.Name = "btnLiveFeed";
-            this.btnLiveFeed.Size = new System.Drawing.Size(75, 23);
-            this.btnLiveFeed.TabIndex = 1;
-            this.btnLiveFeed.Text = "Live Feed";
-            this.btnLiveFeed.UseVisualStyleBackColor = true;
-            this.btnLiveFeed.Click += new System.EventHandler(this.btnLiveFeed_Click);
-            // 
             // picFeed
             // 
             this.picFeed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picFeed.ContextMenuStrip = this.cmsPictureBox;
-            this.picFeed.Location = new System.Drawing.Point(12, 41);
+            this.picFeed.Location = new System.Drawing.Point(12, 27);
             this.picFeed.Name = "picFeed";
-            this.picFeed.Size = new System.Drawing.Size(927, 562);
+            this.picFeed.Size = new System.Drawing.Size(927, 576);
             this.picFeed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picFeed.TabIndex = 1;
             this.picFeed.TabStop = false;
@@ -106,16 +83,6 @@
             this.cmsPictureBoxSave.Size = new System.Drawing.Size(102, 22);
             this.cmsPictureBoxSave.Text = "Save";
             this.cmsPictureBoxSave.Click += new System.EventHandler(this.cmsPictureBoxSave_Click);
-            // 
-            // btnOptions
-            // 
-            this.btnOptions.Location = new System.Drawing.Point(174, 12);
-            this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(61, 23);
-            this.btnOptions.TabIndex = 2;
-            this.btnOptions.Text = "Options";
-            this.btnOptions.UseVisualStyleBackColor = true;
-            this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
             // 
             // mnsScreenCapture
             // 
@@ -218,9 +185,6 @@
             this.ClientSize = new System.Drawing.Size(951, 615);
             this.Controls.Add(this.mnsScreenCapture);
             this.Controls.Add(this.picFeed);
-            this.Controls.Add(this.btnOptions);
-            this.Controls.Add(this.btnLiveFeed);
-            this.Controls.Add(this.btnScreenshot);
             this.MainMenuStrip = this.mnsScreenCapture;
             this.Name = "frmScreenCapture";
             this.Text = "Screen Capture";
@@ -236,10 +200,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnScreenshot;
-        private System.Windows.Forms.Button btnLiveFeed;
         private System.Windows.Forms.PictureBox picFeed;
-        private System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.ContextMenuStrip cmsPictureBox;
         private System.Windows.Forms.ToolStripMenuItem cmsPictureBoxCopy;
         private System.Windows.Forms.ToolStripMenuItem cmsPictureBoxSave;

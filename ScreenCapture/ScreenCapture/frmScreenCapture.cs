@@ -215,6 +215,11 @@ namespace ScreenCapture
 
         #region Live Feed
 
+        private void mnsScreenCaptureResume_Click(object sender, EventArgs e)
+        {
+            resumeCapture();
+        }
+
         private void mnsScreenCapturePause_Click(object sender, EventArgs e)
         {
             pauseCapture();
@@ -323,27 +328,63 @@ namespace ScreenCapture
         {
             if (WorkerObject.Started)
             {
-                WorkerObject.Resume();
+                resumeCapture();
             }
             else
             {
                 WorkerObject.Start();
             }
+
+            cmsPictureBoxCopy.Enabled = false;
+            cmsPictureBoxSave.Enabled = false;
+
+            mnsScreenCaptureSave.Enabled = false;
+            mnsScreenCaptureCopy.Enabled = false;
+            mnsScreenCaptureTake.Enabled = false;
+
+            mnsScreenCaptureStop.Enabled = true;
+            mnsScreenCapturePause.Enabled = true;
+
+            mnsScreenCaptureResume.Enabled = false;
+            mnsScreenCaptureStart.Enabled = false;
         }
 
         private void pauseCapture()
         {
+            WorkerObject.Pause();
 
+            mnsScreenCaptureResume.Enabled = true;
+            mnsScreenCapturePause.Enabled = false;
         }
 
         private void stopCapture()
         {
+            WorkerObject.Stop();
 
+            cmsPictureBoxCopy.Enabled = true;
+            cmsPictureBoxSave.Enabled = true;
+
+            mnsScreenCaptureSave.Enabled = true;
+            mnsScreenCaptureCopy.Enabled = true;
+            mnsScreenCaptureTake.Enabled = true;
+
+            mnsScreenCaptureStop.Enabled = false;
+            mnsScreenCapturePause.Enabled = false;
+
+            mnsScreenCaptureResume.Enabled = false;
+            mnsScreenCaptureStart.Enabled = true;
         }
 
         private void resumeCapture()
         {
-
+            if (WorkerObject.Started)
+            {
+                WorkerObject.Resume();
+            }
+            else
+            {
+                startCapture();
+            }
         }
 
         #endregion

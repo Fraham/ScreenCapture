@@ -46,6 +46,7 @@
             this.mnsScreenCapturePause = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsScreenCaptureStop = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsScreenCaptureOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnsScreenCaptureResume = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.picFeed)).BeginInit();
             this.cmsPictureBox.SuspendLayout();
             this.mnsScreenCapture.SuspendLayout();
@@ -163,6 +164,7 @@
             // 
             this.liveFeedToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnsScreenCaptureStart,
+            this.mnsScreenCaptureResume,
             this.mnsScreenCapturePause,
             this.mnsScreenCaptureStop});
             this.liveFeedToolStripMenuItem.Name = "liveFeedToolStripMenuItem";
@@ -196,6 +198,13 @@
             this.mnsScreenCaptureOptions.Size = new System.Drawing.Size(61, 20);
             this.mnsScreenCaptureOptions.Text = "Options";
             this.mnsScreenCaptureOptions.Click += new System.EventHandler(this.mnsScreenCaptureOptions_Click);
+            // 
+            // mnsScreenCaptureResume
+            // 
+            this.mnsScreenCaptureResume.Name = "mnsScreenCaptureResume";
+            this.mnsScreenCaptureResume.Size = new System.Drawing.Size(152, 22);
+            this.mnsScreenCaptureResume.Text = "Resume";
+            this.mnsScreenCaptureResume.Click += new System.EventHandler(this.mnsScreenCaptureResume_Click);
             // 
             // frmScreenCapture
             // 
@@ -239,6 +248,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnsScreenCapturePause;
         private System.Windows.Forms.ToolStripMenuItem mnsScreenCaptureStop;
         private System.Windows.Forms.ToolStripMenuItem mnsScreenCaptureOptions;
+        private System.Windows.Forms.ToolStripMenuItem mnsScreenCaptureResume;
     }
 }
 

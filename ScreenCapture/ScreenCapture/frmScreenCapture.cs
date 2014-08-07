@@ -205,9 +205,13 @@ namespace ScreenCapture
 
         #endregion Picture Box Context Strip
 
-        private void mnsScreenCaptureTake_Click(object sender, EventArgs e)
+        #region Menu Strip
+
+        #region Screenshot
+
+        private void mnsScreenCaptureCopy_Click(object sender, EventArgs e)
         {
-            takeScreenshot();
+            copyScreenshot();
         }
 
         private void mnsScreenCaptureSave_Click(object sender, EventArgs e)
@@ -215,12 +219,39 @@ namespace ScreenCapture
             saveScreenshot();
         }
 
-        private void mnsScreenCaptureCopy_Click(object sender, EventArgs e)
+        private void mnsScreenCaptureTake_Click(object sender, EventArgs e)
         {
-            copyScreenshot();
+            takeScreenshot();
+        }
+        #endregion Screenshot
+
+        #region Live Feed
+
+        private void mnsScreenCapturePause_Click(object sender, EventArgs e)
+        {
         }
 
+        private void mnsScreenCaptureStart_Click(object sender, EventArgs e)
+        {
+        }
+        private void mnsScreenCaptureStop_Click(object sender, EventArgs e)
+        {
+        }
+
+        #endregion Live Feed
+
+        #region Options
+
+        private void mnsScreenCaptureOptions_Click(object sender, EventArgs e)
+        {
+        }
+
+        #endregion Options
+
+        #endregion Menu Strip
+
         #region Screenshot Methods
+
         private void copyScreenshot()
         {
             try
@@ -281,26 +312,7 @@ namespace ScreenCapture
             mnsScreenCaptureSave.Enabled = true;
             mnsScreenCaptureCopy.Enabled = true;
         }
-        #endregion
 
-        private void mnsScreenCaptureStart_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mnsScreenCapturePause_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mnsScreenCaptureStop_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mnsScreenCaptureOptions_Click(object sender, EventArgs e)
-        {
-
-        }
+        #endregion Screenshot Methods
     }
 }

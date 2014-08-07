@@ -213,37 +213,12 @@ namespace ScreenCapture
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (!WorkerObject.Capturing)
-                {
-                    Clipboard.SetImage(picFeed.Image);
-                }
-            }
-            catch(Exception ex)
-            {
-                System.Console.WriteLine(ex);
-            }
+            copyScreenshot();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (!WorkerObject.Capturing)
-                {
-                    SaveFileDialog dialog = new SaveFileDialog();
-                    dialog.Filter = "JPEG File | *.jpeg";
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                    {
-                        picFeed.Image.Save(dialog.FileName, ImageFormat.Jpeg);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex);
-            }
+            saveScreenshot();
         }
 
         #endregion Picture Box Context Strip
@@ -255,12 +230,12 @@ namespace ScreenCapture
 
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            saveScreenshot();
         }
 
         private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            copyScreenshot();
         }
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
@@ -281,6 +256,41 @@ namespace ScreenCapture
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void copyScreenshot()
+        {
+            try
+            {
+                if (!WorkerObject.Capturing)
+                {
+                    Clipboard.SetImage(picFeed.Image);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex);
+            }
+        }
+
+        private void saveScreenshot()
+        {
+            try
+            {
+                if (!WorkerObject.Capturing)
+                {
+                    SaveFileDialog dialog = new SaveFileDialog();
+                    dialog.Filter = "JPEG File | *.jpeg";
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        picFeed.Image.Save(dialog.FileName, ImageFormat.Jpeg);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex);
+            }
         }
     }
 }

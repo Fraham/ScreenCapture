@@ -257,7 +257,7 @@ namespace ScreenCapture
         {
 
         }
-
+        #region Screenshot Methods
         private void copyScreenshot()
         {
             try
@@ -292,5 +292,6 @@ namespace ScreenCapture
                 System.Console.WriteLine(ex);
             }
         }
+        #endregion
     }
 }

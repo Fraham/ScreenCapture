@@ -290,14 +290,10 @@ namespace ScreenCapture
 
         private void startCapture()
         {
-            if (WorkerObject.Started)
-            {
-                resumeCapture();
-            }
-            else
-            {
-                WorkerObject.Start();
-            }
+
+            WorkerObject = new CaptureWorker(UsersOptions, this.picFeed);
+
+            WorkerObject.Start();
 
             cmsPictureBoxCopy.Enabled = false;
             cmsPictureBoxSave.Enabled = false;
@@ -335,6 +331,9 @@ namespace ScreenCapture
 
             mnsScreenCaptureResume.Enabled = false;
             mnsScreenCaptureStart.Enabled = true;
+
+            Console.WriteLine(WorkerObject.CaptureTime.Elapsed);
+            Console.WriteLine(WorkerObject.Frames);
         }
 
         private void resumeCapture()

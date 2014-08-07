@@ -124,6 +124,8 @@ namespace ScreenCapture
         /// </summary>
         public void Start()
         {
+            _pauseEvent = new ManualResetEvent(true);
+            _shutdownEvent = new ManualResetEvent(false);
             Started = true;
             Capturing = true;
             CaptureTime.Restart();
@@ -305,7 +307,7 @@ namespace ScreenCapture
             {
                 if (captureTime == null)
                 {
-                    return new Stopwatch();
+                    return captureTime = new Stopwatch();
                 }
                 else
                 {

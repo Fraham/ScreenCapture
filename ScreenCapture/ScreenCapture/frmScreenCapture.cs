@@ -290,8 +290,7 @@ namespace ScreenCapture
 
         private void startCapture()
         {
-
-            WorkerObject = new CaptureWorker(UsersOptions, this.picFeed);
+            //WorkerObject = new CaptureWorker(UsersOptions, this.picFeed);
 
             WorkerObject.Start();
 

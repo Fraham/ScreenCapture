@@ -128,6 +128,10 @@ namespace ScreenCapture
 
         #endregion Form Loading
 
+        #region Square Sizing
+
+        #endregion Square Sizing
+
         #region Validation Checks
 
         /// <summary>

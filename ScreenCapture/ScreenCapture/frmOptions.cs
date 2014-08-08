@@ -12,6 +12,59 @@ namespace ScreenCapture
         private int maxWidth;
         private Options usersOptions;
 
+        public enum CursPos : int
+        {
+
+            WithinSelectionArea = 0,
+            OutsideSelectionArea,
+            TopLine,
+            BottomLine,
+            LeftLine,
+            RightLine,
+            TopLeft,
+            TopRight,
+            BottomLeft,
+            BottomRight
+
+        }
+
+        public enum ClickAction : int
+        {
+
+            NoClick = 0,
+            Dragging,
+            Outside,
+            TopSizing,
+            BottomSizing,
+            LeftSizing,
+            TopLeftSizing,
+            BottomLeftSizing,
+            RightSizing,
+            TopRightSizing,
+            BottomRightSizing
+
+        }
+
+        public ClickAction CurrentAction;
+        public bool LeftButtonDown = false;
+        public bool RectangleDrawn = false;
+        public bool ReadyToDrag = false;
+        string ScreenPath = "";
+
+        public Point ClickPoint = new Point();
+        public Point CurrentTopLeft = new Point();
+        public Point CurrentBottomRight = new Point();
+        public Point DragClickRelative = new Point();
+
+        public int RectangleHeight = new int();
+        public int RectangleWidth = new int();
+        public int PrimMon = 0;
+        public int showMon = 0;
+
+        Graphics g;
+        Pen MyPen = new Pen(Color.White, 1);
+        Pen EraserPen = new Pen(Color.FromArgb(0, 0, 0), 20);
+
         #endregion Class Variables
 
         #region Constructor
@@ -24,6 +77,7 @@ namespace ScreenCapture
         {
             UsersOptions = options;
             InitializeComponent();
+            g = this.CreateGraphics();
         }
 
         #endregion Constructor
@@ -129,6 +183,135 @@ namespace ScreenCapture
         #endregion Form Loading
 
         #region Square Sizing
+
+        private void ResizeSelection()
+        {
+
+            if (CurrentAction == ClickAction.LeftSizing)
+            {
+
+                if (Cursor.Position.X < CurrentBottomRight.X - 10)
+                {
+
+                    //Erase the previous rectangle
+                    g.DrawRectangle(EraserPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    CurrentTopLeft.X = Cursor.Position.X;
+                    RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
+                    g.DrawRectangle(MyPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+
+                }
+
+            }
+            if (CurrentAction == ClickAction.TopLeftSizing)
+            {
+
+                if (Cursor.Position.X < CurrentBottomRight.X - 10 && Cursor.Position.Y < CurrentBottomRight.Y - 10)
+                {
+
+                    //Erase the previous rectangle
+                    g.DrawRectangle(EraserPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    CurrentTopLeft.X = Cursor.Position.X;
+                    CurrentTopLeft.Y = Cursor.Position.Y;
+                    RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
+                    RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
+                    g.DrawRectangle(MyPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+
+                }
+            }
+            if (CurrentAction == ClickAction.BottomLeftSizing)
+            {
+
+                if (Cursor.Position.X < CurrentBottomRight.X - 10 && Cursor.Position.Y > CurrentTopLeft.Y + 10)
+                {
+
+                    //Erase the previous rectangle
+                    g.DrawRectangle(EraserPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    CurrentTopLeft.X = Cursor.Position.X;
+                    CurrentBottomRight.Y = Cursor.Position.Y;
+                    RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
+                    RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
+                    g.DrawRectangle(MyPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+
+                }
+
+            }
+            if (CurrentAction == ClickAction.RightSizing)
+            {
+
+                if (Cursor.Position.X > CurrentTopLeft.X + 10)
+                {
+
+                    //Erase the previous rectangle
+                    g.DrawRectangle(EraserPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    CurrentBottomRight.X = Cursor.Position.X;
+                    RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
+                    g.DrawRectangle(MyPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+
+                }
+            }
+            if (CurrentAction == ClickAction.TopRightSizing)
+            {
+
+                if (Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.Y < CurrentBottomRight.Y - 10)
+                {
+
+                    //Erase the previous rectangle
+                    g.DrawRectangle(EraserPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    CurrentBottomRight.X = Cursor.Position.X;
+                    CurrentTopLeft.Y = Cursor.Position.Y;
+                    RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
+                    RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
+                    g.DrawRectangle(MyPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+
+                }
+            }
+            if (CurrentAction == ClickAction.BottomRightSizing)
+            {
+
+                if (Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.Y > CurrentTopLeft.Y + 10)
+                {
+
+                    //Erase the previous rectangle
+                    g.DrawRectangle(EraserPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    CurrentBottomRight.X = Cursor.Position.X;
+                    CurrentBottomRight.Y = Cursor.Position.Y;
+                    RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
+                    RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
+                    g.DrawRectangle(MyPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+
+                }
+            }
+            if (CurrentAction == ClickAction.TopSizing)
+            {
+
+                if (Cursor.Position.Y < CurrentBottomRight.Y - 10)
+                {
+
+                    //Erase the previous rectangle
+                    g.DrawRectangle(EraserPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    CurrentTopLeft.Y = Cursor.Position.Y;
+                    RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
+                    g.DrawRectangle(MyPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+
+                }
+            }
+            if (CurrentAction == ClickAction.BottomSizing)
+            {
+
+                if (Cursor.Position.Y > CurrentTopLeft.Y + 10)
+                {
+
+                    //Erase the previous rectangle
+                    g.DrawRectangle(EraserPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    CurrentBottomRight.Y = Cursor.Position.Y;
+                    RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
+                    g.DrawRectangle(MyPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+
+                }
+
+            }
+
+        }
 
         #endregion Square Sizing
 

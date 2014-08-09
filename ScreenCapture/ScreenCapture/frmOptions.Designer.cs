@@ -42,6 +42,7 @@
             this.nudYSourcePoint = new System.Windows.Forms.NumericUpDown();
             this.nudXSourcePoint = new System.Windows.Forms.NumericUpDown();
             this.nudWidth = new System.Windows.Forms.NumericUpDown();
+            this.btnSelectCaptureArea = new System.Windows.Forms.Button();
             this.grpFullScreen.SuspendLayout();
             this.grpCaptureOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
@@ -54,7 +55,7 @@
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(142, 222);
+            this.btnOk.Location = new System.Drawing.Point(142, 249);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(45, 23);
             this.btnOk.TabIndex = 0;
@@ -66,7 +67,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(193, 222);
+            this.btnCancel.Location = new System.Drawing.Point(193, 249);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(54, 23);
             this.btnCancel.TabIndex = 0;
@@ -118,7 +119,7 @@
             this.grpCaptureOptions.Controls.Add(this.nudYSourcePoint);
             this.grpCaptureOptions.Controls.Add(this.nudXSourcePoint);
             this.grpCaptureOptions.Controls.Add(this.nudWidth);
-            this.grpCaptureOptions.Location = new System.Drawing.Point(12, 87);
+            this.grpCaptureOptions.Location = new System.Drawing.Point(12, 116);
             this.grpCaptureOptions.Name = "grpCaptureOptions";
             this.grpCaptureOptions.Size = new System.Drawing.Size(240, 127);
             this.grpCaptureOptions.TabIndex = 0;
@@ -209,12 +210,22 @@
             0,
             0});
             // 
+            // btnSelectCaptureArea
+            // 
+            this.btnSelectCaptureArea.Location = new System.Drawing.Point(12, 87);
+            this.btnSelectCaptureArea.Name = "btnSelectCaptureArea";
+            this.btnSelectCaptureArea.Size = new System.Drawing.Size(240, 23);
+            this.btnSelectCaptureArea.TabIndex = 4;
+            this.btnSelectCaptureArea.Text = "Select Capture Area";
+            this.btnSelectCaptureArea.UseVisualStyleBackColor = true;
+            // 
             // frmOptions
             // 
             this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(259, 257);
+            this.ClientSize = new System.Drawing.Size(259, 284);
+            this.Controls.Add(this.btnSelectCaptureArea);
             this.Controls.Add(this.grpCaptureOptions);
             this.Controls.Add(this.grpFullScreen);
             this.Controls.Add(this.btnCancel);
@@ -253,5 +264,6 @@
         private System.Windows.Forms.NumericUpDown nudYSourcePoint;
         private System.Windows.Forms.NumericUpDown nudXSourcePoint;
         private System.Windows.Forms.NumericUpDown nudWidth;
+        private System.Windows.Forms.Button btnSelectCaptureArea;
     }
 }

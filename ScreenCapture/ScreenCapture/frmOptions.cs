@@ -58,7 +58,7 @@ namespace ScreenCapture
                 }
                 else
                 {
-                    UsersOptions = new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
+                    UsersOptions = MakeOptions();
                 }
 
                 this.DialogResult = DialogResult.OK;
@@ -195,22 +195,30 @@ namespace ScreenCapture
                 frmUCA.Dispose();
                 frmUCA = null;
 
-                frmUCA = new frmUserCaptureArea();
+                frmUCA = new frmUserCaptureArea(MakeOptions());
                 frmUCA.InstanceRef = this;
             }
             else if (frmUCA == null)
             {
-                frmUCA = new frmUserCaptureArea();
+                frmUCA = new frmUserCaptureArea(MakeOptions());
                 frmUCA.InstanceRef = this;
             }
 
             this.Hide();
             Application.DoEvents();
 
-            if (frmUCA.Visible)
-                ;
-            else
+            if (!frmUCA.Visible)
                 frmUCA.Show();
+
+            if(frmUCA)
+            {
+
+            }
+        }
+
+        private Options MakeOptions()
+        {
+            return UsersOptions = new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
         }
     }
 }

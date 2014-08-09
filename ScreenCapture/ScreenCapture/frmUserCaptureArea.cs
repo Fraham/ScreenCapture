@@ -168,9 +168,21 @@ namespace ScreenCapture
             {
                 this.InstanceRef.Show();
                 this.Hide();
+
+                this.DialogResult = DialogResult.Cancel;
             }
             else if (sKey == "Z")
                 InvertColors();
+            else if(e.KeyCode == Keys.Enter)
+            {
+                CaptureOptions.Width = CurrentBottomRight.X - CurrentTopLeft.X;
+                CaptureOptions.Height = CurrentBottomRight.Y - CurrentTopLeft.Y;
+
+                this.InstanceRef.Show();
+                this.Hide();
+
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
         #region:::::::::::::::::::::::::::::::::::::::::::Mouse Buttons:::::::::::::::::::::::::::::::::::::::::::

@@ -12,6 +12,8 @@ namespace ScreenCapture
         private int maxWidth;
         private Options usersOptions;
 
+        private frmUserCaptureArea frmUCA = null;
+
         #endregion Class Variables
 
         #region Constructor
@@ -24,8 +26,6 @@ namespace ScreenCapture
         {
             UsersOptions = options;
             InitializeComponent();
-
-            g = this.CreateGraphics();
         }
 
         #endregion Constructor
@@ -180,5 +180,37 @@ namespace ScreenCapture
         }
 
         #endregion Properties
+
+        private void btnSelectCaptureArea_Click(object sender, EventArgs e)
+        {
+            DoUserCaptureArea();
+        }
+        
+        private void DoUserCaptureArea()
+        {
+            if ((frmUCA != null) && !frmUCA.Visible)
+            {
+                // clean up the screen cap form by closing and re-instantiating (quick down and dirty)
+
+                frmUCA.Dispose();
+                frmUCA = null;
+
+                frmUCA = new frmUserCaptureArea();
+                frmUCA.InstanceRef = this;
+            }
+            else if (frmUCA == null)
+            {
+                frmUCA = new frmUserCaptureArea();
+                frmUCA.InstanceRef = this;
+            }
+
+            this.Hide();
+            Application.DoEvents();
+
+            if (frmUCA.Visible)
+                ;
+            else
+                frmUCA.Show();
+        }
     }
 }

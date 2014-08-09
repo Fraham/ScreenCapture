@@ -57,6 +57,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>frmScreenCapture.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUserCaptureArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserCaptureArea.Designer.cs">
+      <DependentUpon>frmUserCaptureArea.cs</DependentUpon>
+    </Compile>
     <Compile Include="Options.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

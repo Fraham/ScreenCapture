@@ -119,13 +119,7 @@ namespace ScreenCapture
             maxWidth = ScreenSize.Width;
             maxHeight = ScreenSize.Height;
 
-            nudHeight.Value = UsersOptions.Height;
-            nudWidth.Value = UsersOptions.Width;
-
-            nudXSourcePoint.Value = UsersOptions.SourcePoint.X;
-            nudYSourcePoint.Value = UsersOptions.SourcePoint.Y;
-
-            radFullScreen.Checked = UsersOptions.Fullscreen;
+            LoadOptions();
         }
 
         #endregion Form Loading
@@ -203,12 +197,30 @@ namespace ScreenCapture
             if (frmUCA.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 UsersOptions = frmUCA.CaptureOptions;
+
+                if (UsersOptions.Width < ScreenSize.Width && UsersOptions.Height < ScreenSize.Height)
+                {
+                    UsersOptions.Fullscreen = false;
+                }
+
+                LoadOptions();
             }
         }
 
         private Options MakeOptions()
         {
             return UsersOptions = new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
+        }
+
+        private void LoadOptions()
+        {
+            nudHeight.Value = UsersOptions.Height;
+            nudWidth.Value = UsersOptions.Width;
+
+            nudXSourcePoint.Value = UsersOptions.SourcePoint.X;
+            nudYSourcePoint.Value = UsersOptions.SourcePoint.Y;
+
+            radFullScreen.Checked = UsersOptions.Fullscreen;
         }
     }
 }

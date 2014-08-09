@@ -228,91 +228,6 @@ namespace ScreenCapture
             g.DrawRectangle(MyPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, GetX(CurrentBottomRight.X) - GetX(CurrentTopLeft.X), CurrentBottomRight.Y - CurrentTopLeft.Y);
         }
 
-        private void Form1_Shown(object sender, EventArgs e)
-        {
-            return;
-
-            this.WindowState = FormWindowState.Normal;
-            this.ClientSize = new System.Drawing.Size(518, 416);
-            Application.DoEvents();
-            this.StartPosition = FormStartPosition.Manual;
-
-            int height = 0; 
-            int width = 0;
-            int left = 0;
-            int top = 0;
-
-            foreach (Screen screen in Screen.AllScreens) 
-            { 
-                //take smallest height 
-                height = (screen.Bounds.Height <= height) ? height : screen.Bounds.Height;
-                width += screen.Bounds.Width;
-
-                left = screen.Bounds.Left;
-                top = screen.Bounds.Top;
-            }
-
-            this.Left = left;
-            this.Height = height;
-            this.Width = width;
-            this.Top = top;
-
-        }
-
-        public void SaveSelection(bool showCursor, string sKey)
-        {
-            /*Point curPos = new Point(Cursor.Position.X - CurrentTopLeft.X, Cursor.Position.Y - CurrentTopLeft.Y);
-            Size curSize = new Size();
-            curSize.Height = Cursor.Current.Size.Height;
-            curSize.Width = Cursor.Current.Size.Width;
-            ScreenShot.saveToClipboard = false;
-            ScreenShot.saveToEMail = false;
-            ScreenShot.saveToPrinter = false;
-
-            ScreenPath = "";
-
-            if (sKey == "C")
-                ScreenShot.saveToClipboard = true;
-            else if (sKey == "E")
-                ScreenShot.saveToEMail = true;
-            else if (sKey == "P")
-                ScreenShot.saveToPrinter = true;
-                
-
-            if (!ScreenShot.saveToClipboard)
-            {
-                string s = Path.GetTempFileName();
-                s = Path.ChangeExtension(s, "bmp");
-                ScreenPath = s;
-            }
-
-            if (ScreenPath != "" || ScreenShot.saveToClipboard)
-            {
-
-                //Allow 250 milliseconds for the screen to repaint itself (we don't want to include this form in the capture)
-                System.Threading.Thread.Sleep(250);
-
-                Point StartPoint = new Point(CurrentTopLeft.X, CurrentTopLeft.Y);
-                Rectangle bounds = new Rectangle(CurrentTopLeft.X, CurrentTopLeft.Y, CurrentBottomRight.X - CurrentTopLeft.X, CurrentBottomRight.Y - CurrentTopLeft.Y);
-                string fi = "";
-
-                if (ScreenPath != "")
-                {
-
-                    fi = new FileInfo(ScreenPath).Extension;
-
-                }
-
-                BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
-                Opacity = 0.0D;
-
-                ScreenShot.CaptureImage(showCursor, curSize, curPos, StartPoint, Point.Empty, bounds, ScreenPath, fi);
-
-                this.Hide();
-            }*/
-
-        }
-
         private void init_FullScreen()
         {
             Screen[] sc;
@@ -330,21 +245,8 @@ namespace ScreenCapture
         public void key_press(object sender, KeyEventArgs e)
         {
             string sKey = e.KeyCode.ToString();
-            if (sKey == "E" || sKey == "P" || sKey == "C")
-            {
-                if (RectangleDrawn)
-                {
-                    if ((CursorPosition() == CursPos.WithinSelectionArea) || (CursorPosition() == CursPos.OutsideSelectionArea))
-                        SaveSelection(true, sKey);
-                }
-                else
-                {
-                    //Do fullscreen capture.
-                    init_FullScreen();
-                    SaveSelection(true, sKey);
-                }
-            }
-            else if (e.KeyCode == Keys.Escape)
+
+            if (e.KeyCode == Keys.Escape)
             {
                 this.InstanceRef.Show();
                 this.Hide();

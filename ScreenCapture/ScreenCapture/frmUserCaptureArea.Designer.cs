@@ -47,7 +47,6 @@
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.White;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.ResumeLayout(false);
 
         }

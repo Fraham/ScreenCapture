@@ -177,6 +177,7 @@ namespace ScreenCapture
             {
                 CaptureOptions.Width = CurrentBottomRight.X - CurrentTopLeft.X;
                 CaptureOptions.Height = CurrentBottomRight.Y - CurrentTopLeft.Y;
+                CaptureOptions.SourcePoint = CurrentTopLeft;
 
                 this.InstanceRef.Show();
                 this.Hide();

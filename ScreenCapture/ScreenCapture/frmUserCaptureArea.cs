@@ -50,10 +50,9 @@ namespace ScreenCapture
 
         public int RectangleHeight = new int();
         public int RectangleWidth = new int();
-        public int PrimMon = 0;
 
         private Graphics g;
-        private Pen MyPen = new Pen(Color.White, 1);
+        private Pen MyPen = new Pen(Color.Red, 1);
         private Pen EraserPen = new Pen(Color.FromArgb(0, 0, 0), 20);
 
         protected override void OnMouseClick(MouseEventArgs e)
@@ -91,9 +90,8 @@ namespace ScreenCapture
             this.MouseUp += new MouseEventHandler(mouse_Up);
             this.MouseMove += new MouseEventHandler(mouse_Move);
             this.KeyUp += new KeyEventHandler(key_press);
-            g = this.CreateGraphics();
 
-            PrimMon = GetPrimaryMonIdx();
+            g = this.CreateGraphics();            
         }
 
         #endregion
@@ -120,40 +118,6 @@ namespace ScreenCapture
             this.Cursor = Cursors.Arrow;
         }
 
-        private int GetPrimaryMonIdx()
-        {
-            Screen[] sc;
-            sc = Screen.AllScreens;
-            int idx = 0;
-
-            foreach (Screen s in sc)
-            {
-                if (s.Bounds.Left == System.Windows.Forms.Screen.PrimaryScreen.Bounds.Left)
-                    break;
-                else
-                    idx++;
-            }
-
-            return (idx <= sc.Length) ? idx : 0;
-        }
-
-        private int GetNextMonIdx()
-        {
-            Screen[] sc;
-            sc = Screen.AllScreens;
-            int idx = 0;
-
-            foreach (Screen s in sc)
-            {
-                if (s.Bounds.Left == this.Left)
-                    idx++;
-                else
-                    break;
-            }
-
-            return (idx <= sc.Length) ? idx : 0;
-        }
-
         private void InvertColors()
         {
             g.DrawRectangle(EraserPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, GetX(CurrentBottomRight.X) - GetX(CurrentTopLeft.X), CurrentBottomRight.Y - CurrentTopLeft.Y);
@@ -171,7 +135,7 @@ namespace ScreenCapture
                 this.BackColor = Color.Black;
                 MyPen.Dispose();
                 EraserPen.Dispose();
-                MyPen = new Pen(Color.White, 1);
+                MyPen = new Pen(Color.Red, 1);
                 EraserPen = new Pen(Color.Black, 20);
             }
 

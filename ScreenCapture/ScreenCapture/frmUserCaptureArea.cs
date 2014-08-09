@@ -41,7 +41,6 @@ namespace ScreenCapture
         public bool LeftButtonDown = false;
         public bool RectangleDrawn = false;
         public bool ReadyToDrag = false;
-        private string ScreenPath = "";
 
         public Point ClickPoint = new Point();
         public Point CurrentTopLeft = new Point();

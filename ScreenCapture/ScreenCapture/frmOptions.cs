@@ -188,31 +188,21 @@ namespace ScreenCapture
         
         private void DoUserCaptureArea()
         {
-            if ((frmUCA != null) && !frmUCA.Visible)
+            if (frmUCA != null)
             {
-                // clean up the screen cap form by closing and re-instantiating (quick down and dirty)
-
                 frmUCA.Dispose();
                 frmUCA = null;
+            }
 
-                frmUCA = new frmUserCaptureArea(MakeOptions());
-                frmUCA.InstanceRef = this;
-            }
-            else if (frmUCA == null)
-            {
-                frmUCA = new frmUserCaptureArea(MakeOptions());
-                frmUCA.InstanceRef = this;
-            }
+            frmUCA = new frmUserCaptureArea(MakeOptions());
+            frmUCA.InstanceRef = this;
 
             this.Hide();
             Application.DoEvents();
 
-            if (!frmUCA.Visible)
-                frmUCA.Show();
-
-            if(frmUCA)
+            if (frmUCA.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-
+                UsersOptions = frmUCA.CaptureOptions;
             }
         }
 

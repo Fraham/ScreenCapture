@@ -54,6 +54,8 @@ namespace ScreenCapture
         private Pen MyPen = new Pen(Color.Red, 1);
         private Pen EraserPen = new Pen(Color.FromArgb(0, 0, 0), 20);
 
+        private Options options;
+
         protected override void OnMouseClick(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -78,11 +80,23 @@ namespace ScreenCapture
             }
         }
 
+        public Options CaptureOptions
+        {
+            get
+            {
+                return options;
+            }
+            set
+            {
+                options = value;
+            }
+        }
+
         #endregion
 
         #region:::::::::::::::::::::::::::::::::::::::::::Mouse Event Handlers & Drawing Initialization:::::::::::::::::::::::::::::::::::::::::::
 
-        public frmUserCaptureArea()
+        public frmUserCaptureArea(Options options)
         {
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(mouse_Click);
@@ -90,7 +104,9 @@ namespace ScreenCapture
             this.MouseMove += new MouseEventHandler(mouse_Move);
             this.KeyUp += new KeyEventHandler(key_press);
 
-            g = this.CreateGraphics();            
+            g = this.CreateGraphics();
+
+            CaptureOptions = options;
         }
 
         #endregion

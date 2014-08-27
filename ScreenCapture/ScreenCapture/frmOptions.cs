@@ -116,6 +116,9 @@ namespace ScreenCapture
             nudXSourcePoint.Maximum = ScreenSize.Width;
             nudYSourcePoint.Maximum = ScreenSize.Height;
 
+            nudXSourcePoint.Minimum = ScreenSize.TopLeftPoint.X;
+            nudYSourcePoint.Minimum = ScreenSize.TopLeftPoint.Y;
+
             maxWidth = ScreenSize.Width;
             maxHeight = ScreenSize.Height;
 

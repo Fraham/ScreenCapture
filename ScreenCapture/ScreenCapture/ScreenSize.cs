@@ -17,12 +17,7 @@ namespace ScreenCapture
         {
             get
             {
-                Rectangle totalSize = Rectangle.Empty;
-
-                foreach (Screen s in Screen.AllScreens)
-                    totalSize = Rectangle.Union(totalSize, s.Bounds);
-
-                return totalSize.Height;
+                return SystemInformation.VirtualScreen.Height;
             }
         }
 
@@ -30,12 +25,7 @@ namespace ScreenCapture
         {
             get
             {
-                Rectangle totalSize = Rectangle.Empty;
-
-                foreach (Screen s in Screen.AllScreens)
-                    totalSize = Rectangle.Union(totalSize, s.Bounds);
-
-                return totalSize.Width;
+                return SystemInformation.VirtualScreen.Width;
             }
         }
     }

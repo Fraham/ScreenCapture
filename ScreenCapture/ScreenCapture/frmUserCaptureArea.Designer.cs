@@ -50,6 +50,7 @@
             //this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Width = ScreenSize.Width;
             this.Height = ScreenSize.Height;
+            this.Location = ScreenSize.TopLeftPoint;
             this.ResumeLayout(false);
 
         }

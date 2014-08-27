@@ -206,6 +206,8 @@ namespace ScreenCapture
                     UsersOptions.Fullscreen = false;
                 }
 
+                UsersOptions.SourcePoint = new Point(UsersOptions.SourcePoint.X + ScreenSize.TopLeftPoint.X, UsersOptions.SourcePoint.Y + ScreenSize.TopLeftPoint.Y);
+
                 LoadOptions();
             }
         }

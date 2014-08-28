@@ -149,7 +149,7 @@ namespace ScreenCapture
         /// <returns>If the width and the source point are less than the max width.</returns>
         private bool validWidth()
         {
-            if (nudWidth.Value + nudXSourcePoint.Value > maxWidth)
+            if (nudWidth.Value + Math.Abs(nudXSourcePoint.Value) > maxWidth)
             {
                 return false;
             }

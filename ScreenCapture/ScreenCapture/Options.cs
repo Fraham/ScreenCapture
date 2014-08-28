@@ -105,6 +105,19 @@ namespace ScreenCapture
             }
             set
             {
+                if (value.X < ScreenSize.TopLeftPoint.X)
+                {
+                    value.X = ScreenSize.TopLeftPoint.X;
+
+                    System.Console.WriteLine("X co-ordinate being set is smaller than the screen.");
+                }
+                if (value.Y < ScreenSize.TopLeftPoint.Y)
+                {
+                    value.Y = ScreenSize.TopLeftPoint.Y;
+
+                    System.Console.WriteLine("X co-ordinate being set is smaller than the screen.");
+                }
+
                 this.sourcePoint = value;
             }
         }

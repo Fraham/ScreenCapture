@@ -178,6 +178,8 @@ namespace ScreenCapture
 
         #endregion Properties
 
+        #region User Capture
+
         /// <summary>
         /// When the user clicks the button it will send to run the user capture area.
         /// </summary>
@@ -229,6 +231,10 @@ namespace ScreenCapture
             }
         }
 
+#endregion
+
+#region Options
+
         /// <summary>
         /// Gets the capture information from the form and creates, returns a new Options.
         /// </summary>
@@ -251,5 +257,7 @@ namespace ScreenCapture
 
             radFullScreen.Checked = UsersOptions.Fullscreen;
         }
+
+#endregion
     }
 }

@@ -115,7 +115,19 @@ namespace ScreenCapture
                 {
                     value.Y = ScreenSize.TopLeftPoint.Y;
 
-                    System.Console.WriteLine("X co-ordinate being set is smaller than the screen.");
+                    System.Console.WriteLine("Y co-ordinate being set is smaller than the screen.");
+                }
+                if (value.X > SystemInformation.VirtualScreen.Right)
+                {
+                    value.X = SystemInformation.VirtualScreen.Right;
+
+                    System.Console.WriteLine("X co-ordinate being set is larger than the screen.");
+                }
+                if (value.Y > SystemInformation.VirtualScreen.Bottom)
+                {
+                    value.Y = SystemInformation.VirtualScreen.Bottom;
+
+                    System.Console.WriteLine("Y co-ordinate being set is larger than the screen.");
                 }
 
                 this.sourcePoint = value;

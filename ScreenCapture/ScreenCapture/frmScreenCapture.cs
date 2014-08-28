@@ -168,6 +168,11 @@ namespace ScreenCapture
 
         #region Picture Box Context Strip
 
+        /// <summary>
+        /// Calls for the screenshot to be copied.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmsPictureBoxCopy_Click(object sender, EventArgs e)
         {
             copyScreenshot();

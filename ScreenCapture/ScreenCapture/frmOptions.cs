@@ -135,7 +135,7 @@ namespace ScreenCapture
         /// <returns>If the height and the source point are less than the max height.</returns>
         private bool validHeight()
         {
-            if (nudHeight.Value + nudYSourcePoint.Value > maxHeight)
+            if (nudHeight.Value + Math.Abs(nudYSourcePoint.Value) > maxHeight)
             {
                 return false;
             }

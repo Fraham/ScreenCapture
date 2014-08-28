@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using System;
 
 namespace ScreenCapture
 {
@@ -78,7 +79,13 @@ namespace ScreenCapture
                 {
                     this.height = 1;
 
-                    System.Console.WriteLine("The height was set to be less than one");
+                    System.Console.WriteLine("The height was set to be less than one.");
+                }
+                else if (Math.Abs(value) + Math.Abs(SourcePoint.Y) > SystemInformation.VirtualScreen.Height)
+                {
+                    this.height = SystemInformation.VirtualScreen.Height - Math.Abs(SourcePoint.Y);
+
+                    System.Console.WriteLine("The height was set to high to fit inside the screen.");
                 }
                 else
                 {

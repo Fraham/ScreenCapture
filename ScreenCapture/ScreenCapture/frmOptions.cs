@@ -178,6 +178,11 @@ namespace ScreenCapture
 
         #endregion Properties
 
+        /// <summary>
+        /// When the user clicks the button it will send to run the user capture area.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSelectCaptureArea_Click(object sender, EventArgs e)
         {
             DoUserCaptureArea();

@@ -188,8 +188,16 @@ namespace ScreenCapture
             DoUserCaptureArea();
         }
         
+        /// <summary>
+        /// Opens the form to allow the user to capture their desired area. It will then load the
+        /// options back into the form again.
+        /// </summary>
         private void DoUserCaptureArea()
         {
+            /*
+             * It will check if the form is already open, if so then it will dispose it.
+             * It will open the form with the current options.
+            */
             if (frmUCA != null)
             {
                 frmUCA.Dispose();
@@ -201,6 +209,10 @@ namespace ScreenCapture
 
             this.Hide();
             Application.DoEvents();
+
+            /*
+             * If the response from the form is OK then it will get the options from user capture form and make sure that it is correct and then load them onto the form.
+             */
 
             if (frmUCA.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {

@@ -77,6 +77,15 @@ namespace ScreenCapture
                     writer.Flush();
                 }
             }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("The file was not found.");
+                Console.WriteLine(ex.ToString());
+            }
+            catch (IOException ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+            }
             catch (Exception ex)
             {
                 System.Console.WriteLine(ex);

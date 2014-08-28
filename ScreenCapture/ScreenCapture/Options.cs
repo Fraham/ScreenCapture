@@ -85,7 +85,7 @@ namespace ScreenCapture
                 {
                     this.height = SystemInformation.VirtualScreen.Height - Math.Abs(SourcePoint.Y);
 
-                    System.Console.WriteLine("The height was set to high to fit inside the screen.");
+                    System.Console.WriteLine("The height was set too high to fit inside the screen.");
                 }
                 else
                 {
@@ -131,7 +131,7 @@ namespace ScreenCapture
                 {
                     this.width = SystemInformation.VirtualScreen.Width - Math.Abs(SourcePoint.X);
 
-                    System.Console.WriteLine("The width was set to high to fit inside the screen.");
+                    System.Console.WriteLine("The width was set too high to fit inside the screen.");
                 }
                 else
                 {

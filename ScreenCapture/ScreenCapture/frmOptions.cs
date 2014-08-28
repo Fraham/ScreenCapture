@@ -238,6 +238,9 @@ namespace ScreenCapture
             return UsersOptions = new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
         }
 
+        /// <summary>
+        /// Loads the options from UserOptions into the right control.
+        /// </summary>
         private void LoadOptions()
         {
             nudHeight.Value = UsersOptions.Height;

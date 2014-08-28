@@ -8,11 +8,10 @@ namespace ScreenCapture
     {
         #region Class Variables
 
+        private frmUserCaptureArea frmUCA = null;
         private int maxHeight;
         private int maxWidth;
         private Options usersOptions;
-
-        private frmUserCaptureArea frmUCA = null;
 
         #endregion Class Variables
 
@@ -189,7 +188,7 @@ namespace ScreenCapture
         {
             DoUserCaptureArea();
         }
-        
+
         /// <summary>
         /// Opens the form to allow the user to capture their desired area. It will then load the
         /// options back into the form again.
@@ -231,18 +230,9 @@ namespace ScreenCapture
             }
         }
 
-#endregion
+        #endregion User Capture
 
-#region Options
-
-        /// <summary>
-        /// Gets the capture information from the form and creates, returns a new Options.
-        /// </summary>
-        /// <returns></returns>
-        private Options MakeOptions()
-        {
-            return UsersOptions = new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
-        }
+        #region Options
 
         /// <summary>
         /// Loads the options from UserOptions into the right control.
@@ -258,6 +248,15 @@ namespace ScreenCapture
             radFullScreen.Checked = UsersOptions.Fullscreen;
         }
 
-#endregion
+        /// <summary>
+        /// Gets the capture information from the form and creates, returns a new Options.
+        /// </summary>
+        /// <returns></returns>
+        private Options MakeOptions()
+        {
+            return UsersOptions = new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
+        }
+
+        #endregion Options
     }
 }

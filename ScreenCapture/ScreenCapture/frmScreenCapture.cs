@@ -17,6 +17,10 @@ namespace ScreenCapture
 
         #region Constructor
 
+        /// <summary>
+        /// Makes a new instance of the form.
+        /// Loads the options from file and creates the thread for the feed.
+        /// </summary>
         public frmScreenCapture()
         {
             InitializeComponent();

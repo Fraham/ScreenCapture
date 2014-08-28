@@ -178,6 +178,11 @@ namespace ScreenCapture
             copyScreenshot();
         }
 
+        /// <summary>
+        /// Calls for the screenshot to be copied.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmsPictureBoxSave_Click(object sender, EventArgs e)
         {
             saveScreenshot();

@@ -3,6 +3,7 @@ using System.Drawing.Imaging;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using System.IO;
 
 namespace ScreenCapture
 {
@@ -47,9 +48,18 @@ namespace ScreenCapture
                     UsersOptions = (Options)serializer.Deserialize(stream);
                 }
             }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("The file was not found.");
+                Console.WriteLine(ex.ToString());
+            }
+            catch(IOException ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+            }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex);
+                System.Console.WriteLine(ex.ToString());
             }
         }
 

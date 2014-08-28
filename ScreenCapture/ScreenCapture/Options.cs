@@ -25,7 +25,7 @@ namespace ScreenCapture
         {
             Width = ScreenSize.Width;
             Height = ScreenSize.Height;
-            SourcePoint = new Point();
+            SourcePoint = ScreenSize.TopLeftPoint;
             Fullscreen = true;
         }
 

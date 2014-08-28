@@ -229,6 +229,10 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// Gets the capture information from the form and creates, returns a new Options.
+        /// </summary>
+        /// <returns></returns>
         private Options MakeOptions()
         {
             return UsersOptions = new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));

@@ -359,6 +359,10 @@ namespace ScreenCapture
             mnsScreenCapturePause.Enabled = false;
         }
 
+        /// <summary>
+        /// It will stop the current capture.
+        /// It will change controls on the form to limit what the user is able to do.
+        /// </summary>
         private void stopCapture()
         {
             WorkerObject.Stop();

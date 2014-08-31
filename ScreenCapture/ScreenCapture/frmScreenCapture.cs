@@ -382,6 +382,10 @@ namespace ScreenCapture
             Console.WriteLine(WorkerObject.Frames);
         }
 
+        /// <summary>
+        /// It will resume the current capture.
+        /// It will change controls on the form to limit what the user is able to do.
+        /// </summary>
         private void resumeCapture()
         {
             if (WorkerObject.Started)

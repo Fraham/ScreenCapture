@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using System.IO;
 
 namespace ScreenCapture
 {
@@ -53,7 +53,7 @@ namespace ScreenCapture
                 Console.WriteLine("The file was not found.");
                 Console.WriteLine(ex.ToString());
             }
-            catch(IOException ex)
+            catch (IOException ex)
             {
                 System.Console.WriteLine(ex.ToString());
             }
@@ -208,6 +208,7 @@ namespace ScreenCapture
         {
             takeScreenshot();
         }
+
         #endregion Screenshot
 
         #region Live Feed
@@ -226,6 +227,7 @@ namespace ScreenCapture
         {
             startCapture();
         }
+
         private void mnsScreenCaptureStop_Click(object sender, EventArgs e)
         {
             stopCapture();
@@ -398,6 +400,6 @@ namespace ScreenCapture
             }
         }
 
-        #endregion
+        #endregion Capture Methods
     }
 }

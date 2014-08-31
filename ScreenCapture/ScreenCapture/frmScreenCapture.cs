@@ -325,10 +325,12 @@ namespace ScreenCapture
 
         #region Capture Methods
 
+        /// <summary>
+        /// It will start the feed using the current capture options.
+        /// It will change controls on the form to limit what the user is able to do.
+        /// </summary>
         private void startCapture()
         {
-            //WorkerObject = new CaptureWorker(UsersOptions, this.picFeed);
-
             WorkerObject.Start();
 
             cmsPictureBoxCopy.Enabled = false;

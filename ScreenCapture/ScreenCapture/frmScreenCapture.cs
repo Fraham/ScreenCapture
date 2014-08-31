@@ -179,7 +179,7 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Calls for the screenshot to be copied.
+        /// Calls for the screenshot to be saved.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -309,6 +309,10 @@ namespace ScreenCapture
 
         #endregion Screenshot Methods
 
+        /// <summary>
+        /// It will open the options menu in dialog form.
+        /// It will load the new capture options if the user has changed the settings.
+        /// </summary>
         private void openOptionsForm()
         {
             frmOptions frmO = new frmOptions(UsersOptions);

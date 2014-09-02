@@ -99,6 +99,7 @@ namespace ScreenCapture
         public frmUserCaptureArea(Options options, bool show)
         {
             InitializeComponent();
+
             this.MouseDown += new MouseEventHandler(mouse_Click);
             this.MouseUp += new MouseEventHandler(mouse_Up);
             this.MouseMove += new MouseEventHandler(mouse_Move);
@@ -107,6 +108,11 @@ namespace ScreenCapture
             g = this.CreateGraphics();
 
             CaptureOptions = options;
+
+            if (show)
+            {
+
+            }
         }
 
         #endregion
@@ -529,6 +535,11 @@ namespace ScreenCapture
             }
 
             //Draw a new rectangle
+            g.DrawRectangle(MyPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, GetX(CurrentBottomRight.X) - GetX(CurrentTopLeft.X), CurrentBottomRight.Y - CurrentTopLeft.Y);
+        }
+
+        private void DrawRectangle()
+        {
             g.DrawRectangle(MyPen, GetX(CurrentTopLeft.X), CurrentTopLeft.Y, GetX(CurrentBottomRight.X) - GetX(CurrentTopLeft.X), CurrentBottomRight.Y - CurrentTopLeft.Y);
         }
     }

@@ -186,7 +186,12 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void btnSelectCaptureArea_Click(object sender, EventArgs e)
         {
-            DoUserCaptureArea();
+            DoUserCaptureArea(false);
+        }
+
+        private void btnShowCaptureArea_Click(object sender, EventArgs e)
+        {
+            DoUserCaptureArea(true);
         }
 
         /// <summary>
@@ -259,9 +264,5 @@ namespace ScreenCapture
 
         #endregion Options
 
-        private void btnShowCaptureArea_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

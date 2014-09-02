@@ -193,7 +193,7 @@ namespace ScreenCapture
         /// Opens the form to allow the user to capture their desired area. It will then load the
         /// options back into the form again.
         /// </summary>
-        private void DoUserCaptureArea()
+        private void DoUserCaptureArea(bool show)
         {
             /*
              * It will check if the form is already open, if so then it will dispose it.
@@ -260,11 +260,6 @@ namespace ScreenCapture
         #endregion Options
 
         private void btnShowCaptureArea_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void showCaptureForm(bool show)
         {
 
         }

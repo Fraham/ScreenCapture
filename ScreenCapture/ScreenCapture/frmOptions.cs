@@ -258,5 +258,11 @@ namespace ScreenCapture
         }
 
         #endregion Options
+
+        private void btnShowCaptureArea_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

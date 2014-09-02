@@ -229,7 +229,7 @@
             this.btnShowCaptureArea.TabIndex = 4;
             this.btnShowCaptureArea.Text = "Show Capture Area";
             this.btnShowCaptureArea.UseVisualStyleBackColor = true;
-            this.btnShowCaptureArea.Click += new System.EventHandler(this.btnSelectCaptureArea_Click);
+            this.btnShowCaptureArea.Click += new System.EventHandler(this.btnShowCaptureArea_Click);
             // 
             // frmOptions
             // 

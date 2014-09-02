@@ -264,7 +264,7 @@ namespace ScreenCapture
 
         }
 
-        private void showCaptureForm()
+        private void showCaptureForm(bool show)
         {
 
         }

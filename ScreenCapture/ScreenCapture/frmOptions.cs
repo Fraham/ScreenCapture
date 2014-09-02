@@ -264,5 +264,9 @@ namespace ScreenCapture
 
         }
 
+        private void showCaptureForm()
+        {
+
+        }
     }
 }

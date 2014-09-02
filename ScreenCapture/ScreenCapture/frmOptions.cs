@@ -210,7 +210,7 @@ namespace ScreenCapture
                 frmUCA = null;
             }
 
-            frmUCA = new frmUserCaptureArea(MakeOptions());
+            frmUCA = new frmUserCaptureArea(MakeOptions(), show);
             frmUCA.InstanceRef = this;
 
             this.Hide();

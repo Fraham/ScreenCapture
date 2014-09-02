@@ -96,7 +96,7 @@ namespace ScreenCapture
 
         #region:::::::::::::::::::::::::::::::::::::::::::Mouse Event Handlers & Drawing Initialization:::::::::::::::::::::::::::::::::::::::::::
 
-        public frmUserCaptureArea(Options options)
+        public frmUserCaptureArea(Options options, bool show)
         {
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(mouse_Click);

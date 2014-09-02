@@ -115,33 +115,13 @@ namespace ScreenCapture
                 CurrentBottomRight.X = CaptureOptions.SourcePoint.X + CaptureOptions.Width;
                 CurrentBottomRight.Y = CaptureOptions.SourcePoint.Y + CaptureOptions.Height;
 
+                RectangleDrawn = true;
+
                 DrawRectangle();
             }
         }
 
         #endregion
-
-        private void initPoints()
-        {
-            ClickPoint.X = 0;
-            ClickPoint.Y = 0;
-
-            DragClickRelative.X = 0;
-            DragClickRelative.Y = 0;
-
-            CurrentTopLeft.X = 0;
-            CurrentTopLeft.Y = 0;
-            CurrentBottomRight.X = 0;
-            CurrentBottomRight.Y = 0;
-            RectangleWidth = 0;
-            RectangleHeight = 0;
-
-            LeftButtonDown = false;
-            RectangleDrawn = false;
-            ReadyToDrag = false;
-
-            this.Cursor = Cursors.Arrow;
-        }
 
         private void InvertColors()
         {

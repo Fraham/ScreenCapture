@@ -165,6 +165,9 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// Getters and setter for the bottom right corner.
+        /// </summary>
         public Point BottomRightCorner
         {
             get

@@ -165,6 +165,11 @@ namespace ScreenCapture
             }
         }
 
+        public Point BottomRightCorner
+        {
+
+        }
+
         #endregion Properties
     }
 }

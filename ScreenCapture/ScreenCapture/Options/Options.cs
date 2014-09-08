@@ -167,7 +167,10 @@ namespace ScreenCapture
 
         public Point BottomRightCorner
         {
-
+            get
+            {
+                return new Point(SourcePoint.X + Width, SourcePoint.Y + Height);
+            }
         }
 
         #endregion Properties

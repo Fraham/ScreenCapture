@@ -513,8 +513,7 @@ namespace ScreenCapture
             if (show)
             {
                 CurrentTopLeft = CaptureOptions.SourcePoint;
-                CurrentBottomRight.X = CaptureOptions.SourcePoint.X + CaptureOptions.Width;
-                CurrentBottomRight.Y = CaptureOptions.SourcePoint.Y + CaptureOptions.Height;
+                CurrentBottomRight = CaptureOptions.BottomRightCorner;
 
                 RectangleDrawn = true;
 

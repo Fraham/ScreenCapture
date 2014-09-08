@@ -55,6 +55,7 @@ namespace ScreenCapture
         private Pen EraserPen = new Pen(Color.FromArgb(0, 0, 0), 20);
 
         private Options options;
+        private bool show = false;
 
         protected override void OnMouseClick(MouseEventArgs e)
         {
@@ -109,16 +110,7 @@ namespace ScreenCapture
 
             CaptureOptions = options;
 
-            if (show)
-            {
-                CurrentTopLeft = CaptureOptions.SourcePoint;
-                CurrentBottomRight.X = CaptureOptions.SourcePoint.X + CaptureOptions.Width;
-                CurrentBottomRight.Y = CaptureOptions.SourcePoint.Y + CaptureOptions.Height;
-
-                RectangleDrawn = true;
-
-                DrawRectangle();
-            }
+            this.show = show;
         }
 
         #endregion
@@ -514,6 +506,20 @@ namespace ScreenCapture
         private void DrawRectangle()
         {
             g.DrawRectangle(MyPen, (CurrentTopLeft.X), CurrentTopLeft.Y, (CurrentBottomRight.X) - (CurrentTopLeft.X), CurrentBottomRight.Y - CurrentTopLeft.Y);
+        }
+
+        private void frmUserCaptureArea_Shown(object sender, EventArgs e)
+        {
+            if (show)
+            {
+                CurrentTopLeft = CaptureOptions.SourcePoint;
+                CurrentBottomRight.X = CaptureOptions.SourcePoint.X + CaptureOptions.Width;
+                CurrentBottomRight.Y = CaptureOptions.SourcePoint.Y + CaptureOptions.Height;
+
+                RectangleDrawn = true;
+
+                DrawRectangle();
+            }
         }
     }
 }

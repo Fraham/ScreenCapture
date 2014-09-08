@@ -35,8 +35,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            //this.ClientSize = new System.Drawing.Size(518, 416);
-            this.ClientSize = new System.Drawing.Size(ScreenSize.Width, ScreenSize.Height);
+            this.ClientSize = new System.Drawing.Size(3840, 1080);
             this.ControlBox = false;
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -47,10 +46,7 @@
             this.Text = "Screen Capture";
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.White;
-            //this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Width = ScreenSize.Width;
-            this.Height = ScreenSize.Height;
-            this.Location = ScreenSize.TopLeftPoint;
+            this.Shown += new System.EventHandler(this.frmUserCaptureArea_Shown);
             this.ResumeLayout(false);
 
         }

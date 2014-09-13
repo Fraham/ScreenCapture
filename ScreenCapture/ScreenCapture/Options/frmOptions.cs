@@ -12,6 +12,7 @@ namespace ScreenCapture
         private int maxHeight;
         private int maxWidth;
         private Options usersOptions;
+        private bool loading = false;
 
         #endregion Class Variables
 
@@ -253,6 +254,8 @@ namespace ScreenCapture
         /// </summary>
         private void LoadOptions()
         {
+            loading = true;
+
             nudHeight.Value = UsersOptions.Height;
             nudWidth.Value = UsersOptions.Width;
 
@@ -260,6 +263,8 @@ namespace ScreenCapture
             nudYSourcePoint.Value = UsersOptions.SourcePoint.Y;
 
             radFullScreen.Checked = UsersOptions.Fullscreen;
+
+            loading = false;
         }
 
         /// <summary>
@@ -314,23 +319,26 @@ namespace ScreenCapture
 
         private void captureOptionsChanged()
         {
-            int count = 0;
-
-            foreach (Screen screen in Screen.AllScreens)
+            if (!loading)
             {
-                if (screen.Bounds.Width == nudWidth.Value && screen.Bounds.Height == nudHeight.Value && screen.Bounds.X == nudXSourcePoint.Value && screen.Bounds.Y == nudYSourcePoint.Value)
-                {
-                    cmbNumberOfScreens.SelectedIndex = count;
+                int count = 0;
 
-                    return;
+                foreach (Screen screen in Screen.AllScreens)
+                {
+                    if (screen.Bounds.Width == nudWidth.Value && screen.Bounds.Height == nudHeight.Value && screen.Bounds.X == nudXSourcePoint.Value && screen.Bounds.Y == nudYSourcePoint.Value)
+                    {
+                        cmbNumberOfScreens.SelectedIndex = count;
+
+                        return;
+                    }
+
+                    count++;
                 }
 
-                count++;
-            }
-
-            if (count == SystemInformation.MonitorCount)
-            {
-                cmbNumberOfScreens.SelectedIndex = count;
+                if (count == SystemInformation.MonitorCount)
+                {
+                    cmbNumberOfScreens.SelectedIndex = count;
+                }
             }
         }
     }

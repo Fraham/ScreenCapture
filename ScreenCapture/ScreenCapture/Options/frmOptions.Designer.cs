@@ -251,6 +251,7 @@
             this.cmbNumberOfScreens.Name = "cmbNumberOfScreens";
             this.cmbNumberOfScreens.Size = new System.Drawing.Size(223, 21);
             this.cmbNumberOfScreens.TabIndex = 0;
+            this.cmbNumberOfScreens.SelectedIndexChanged += new System.EventHandler(this.cmbNumberOfScreens_SelectedIndexChanged);
             // 
             // frmOptions
             // 

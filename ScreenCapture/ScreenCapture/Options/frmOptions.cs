@@ -273,5 +273,22 @@ namespace ScreenCapture
 
         #endregion Options
 
+        private void cmbNumberOfScreens_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (SystemInformation.MonitorCount == cmbNumberOfScreens.SelectedIndex)
+            {
+                return;
+            }
+            else
+            {
+                Screen[] screens = Screen.AllScreens;
+
+                nudXSourcePoint.Value = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Left;
+                nudYSourcePoint.Value = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Top;
+
+                nudHeight.Value = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Height;
+                nudWidth.Value = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Width;
+            }
+        }
     }
 }

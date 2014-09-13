@@ -44,19 +44,22 @@
             this.nudWidth = new System.Windows.Forms.NumericUpDown();
             this.btnSelectCaptureArea = new System.Windows.Forms.Button();
             this.btnShowCaptureArea = new System.Windows.Forms.Button();
+            this.grpScreenSelect = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.grpFullScreen.SuspendLayout();
             this.grpCaptureOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudYSourcePoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudXSourcePoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).BeginInit();
+            this.grpScreenSelect.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(142, 277);
+            this.btnOk.Location = new System.Drawing.Point(142, 334);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(45, 23);
             this.btnOk.TabIndex = 0;
@@ -68,7 +71,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(193, 277);
+            this.btnCancel.Location = new System.Drawing.Point(193, 334);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(54, 23);
             this.btnCancel.TabIndex = 0;
@@ -120,7 +123,7 @@
             this.grpCaptureOptions.Controls.Add(this.nudYSourcePoint);
             this.grpCaptureOptions.Controls.Add(this.nudXSourcePoint);
             this.grpCaptureOptions.Controls.Add(this.nudWidth);
-            this.grpCaptureOptions.Location = new System.Drawing.Point(12, 145);
+            this.grpCaptureOptions.Location = new System.Drawing.Point(12, 201);
             this.grpCaptureOptions.Name = "grpCaptureOptions";
             this.grpCaptureOptions.Size = new System.Drawing.Size(240, 127);
             this.grpCaptureOptions.TabIndex = 0;
@@ -231,15 +234,34 @@
             this.btnShowCaptureArea.UseVisualStyleBackColor = true;
             this.btnShowCaptureArea.Click += new System.EventHandler(this.btnShowCaptureArea_Click);
             // 
+            // grpScreenSelect
+            // 
+            this.grpScreenSelect.Controls.Add(this.comboBox1);
+            this.grpScreenSelect.Location = new System.Drawing.Point(12, 145);
+            this.grpScreenSelect.Name = "grpScreenSelect";
+            this.grpScreenSelect.Size = new System.Drawing.Size(240, 50);
+            this.grpScreenSelect.TabIndex = 1;
+            this.grpScreenSelect.TabStop = false;
+            this.grpScreenSelect.Text = "Screen Select";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(6, 19);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(223, 21);
+            this.comboBox1.TabIndex = 0;
+            // 
             // frmOptions
             // 
             this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(259, 312);
+            this.ClientSize = new System.Drawing.Size(259, 369);
             this.Controls.Add(this.btnShowCaptureArea);
             this.Controls.Add(this.btnSelectCaptureArea);
             this.Controls.Add(this.grpCaptureOptions);
+            this.Controls.Add(this.grpScreenSelect);
             this.Controls.Add(this.grpFullScreen);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
@@ -257,6 +279,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudYSourcePoint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudXSourcePoint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).EndInit();
+            this.grpScreenSelect.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -279,5 +302,7 @@
         private System.Windows.Forms.NumericUpDown nudWidth;
         private System.Windows.Forms.Button btnSelectCaptureArea;
         private System.Windows.Forms.Button btnShowCaptureArea;
+        private System.Windows.Forms.GroupBox grpScreenSelect;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

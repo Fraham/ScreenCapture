@@ -290,5 +290,30 @@ namespace ScreenCapture
                 nudWidth.Value = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Width;
             }
         }
+
+        private void nudWidth_ValueChanged(object sender, EventArgs e)
+        {
+            captureOptionsChanged();
+        }
+
+        private void nudHeight_ValueChanged(object sender, EventArgs e)
+        {
+            captureOptionsChanged();
+        }
+
+        private void nudXSourcePoint_ValueChanged(object sender, EventArgs e)
+        {
+            captureOptionsChanged();
+        }
+
+        private void nudYSourcePoint_ValueChanged(object sender, EventArgs e)
+        {
+            captureOptionsChanged();
+        }
+
+        private void captureOptionsChanged()
+        {
+
+        }
     }
 }

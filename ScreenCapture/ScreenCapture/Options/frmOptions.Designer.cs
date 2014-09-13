@@ -182,6 +182,7 @@
             0,
             0,
             0});
+            this.nudHeight.ValueChanged += new System.EventHandler(this.nudHeight_ValueChanged);
             // 
             // nudYSourcePoint
             // 
@@ -189,6 +190,7 @@
             this.nudYSourcePoint.Name = "nudYSourcePoint";
             this.nudYSourcePoint.Size = new System.Drawing.Size(120, 20);
             this.nudYSourcePoint.TabIndex = 3;
+            this.nudYSourcePoint.ValueChanged += new System.EventHandler(this.nudYSourcePoint_ValueChanged);
             // 
             // nudXSourcePoint
             // 
@@ -196,6 +198,7 @@
             this.nudXSourcePoint.Name = "nudXSourcePoint";
             this.nudXSourcePoint.Size = new System.Drawing.Size(120, 20);
             this.nudXSourcePoint.TabIndex = 3;
+            this.nudXSourcePoint.ValueChanged += new System.EventHandler(this.nudXSourcePoint_ValueChanged);
             // 
             // nudWidth
             // 
@@ -213,6 +216,7 @@
             0,
             0,
             0});
+            this.nudWidth.ValueChanged += new System.EventHandler(this.nudWidth_ValueChanged);
             // 
             // btnSelectCaptureArea
             // 

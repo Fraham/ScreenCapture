@@ -283,11 +283,12 @@ namespace ScreenCapture
             {
                 Screen[] screens = Screen.AllScreens;
 
-                nudXSourcePoint.Value = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Left;
-                nudYSourcePoint.Value = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Top;
+                UsersOptions.Height = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Height;
+                UsersOptions.Width = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Width;                
+                    
+                UsersOptions.SourcePoint = new Point(screens[cmbNumberOfScreens.SelectedIndex].Bounds.Left, screens[cmbNumberOfScreens.SelectedIndex].Bounds.Top);
 
-                nudHeight.Value = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Height;
-                nudWidth.Value = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Width;
+                LoadOptions();
             }
         }
 
@@ -313,7 +314,24 @@ namespace ScreenCapture
 
         private void captureOptionsChanged()
         {
+            int count = 0;
 
+            foreach (Screen screen in Screen.AllScreens)
+            {
+                if (screen.Bounds.Width == nudWidth.Value && screen.Bounds.Height == nudHeight.Value && screen.Bounds.X == nudXSourcePoint.Value && screen.Bounds.Y == nudYSourcePoint.Value)
+                {
+                    cmbNumberOfScreens.SelectedIndex = count;
+
+                    return;
+                }
+
+                count++;
+            }
+
+            if (count == SystemInformation.MonitorCount)
+            {
+                cmbNumberOfScreens.SelectedIndex = count;
+            }
         }
     }
 }

@@ -265,6 +265,8 @@ namespace ScreenCapture
             radFullScreen.Checked = UsersOptions.Fullscreen;
 
             loading = false;
+
+            captureOptionsChanged();
         }
 
         /// <summary>

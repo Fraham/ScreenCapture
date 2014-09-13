@@ -128,6 +128,8 @@ namespace ScreenCapture
 
             cmbNumberOfScreens.Items.Add("No Screen Selected");
 
+            cmbNumberOfScreens.SelectedIndex = SystemInformation.MonitorCount;
+
             LoadOptions();
         }
 

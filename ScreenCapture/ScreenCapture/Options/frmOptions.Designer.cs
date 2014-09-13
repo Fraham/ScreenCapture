@@ -45,7 +45,7 @@
             this.btnSelectCaptureArea = new System.Windows.Forms.Button();
             this.btnShowCaptureArea = new System.Windows.Forms.Button();
             this.grpScreenSelect = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbNumberOfScreens = new System.Windows.Forms.ComboBox();
             this.grpFullScreen.SuspendLayout();
             this.grpCaptureOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
@@ -236,7 +236,7 @@
             // 
             // grpScreenSelect
             // 
-            this.grpScreenSelect.Controls.Add(this.comboBox1);
+            this.grpScreenSelect.Controls.Add(this.cmbNumberOfScreens);
             this.grpScreenSelect.Location = new System.Drawing.Point(12, 145);
             this.grpScreenSelect.Name = "grpScreenSelect";
             this.grpScreenSelect.Size = new System.Drawing.Size(240, 50);
@@ -244,13 +244,13 @@
             this.grpScreenSelect.TabStop = false;
             this.grpScreenSelect.Text = "Screen Select";
             // 
-            // comboBox1
+            // cmbNumberOfScreens
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(223, 21);
-            this.comboBox1.TabIndex = 0;
+            this.cmbNumberOfScreens.FormattingEnabled = true;
+            this.cmbNumberOfScreens.Location = new System.Drawing.Point(6, 19);
+            this.cmbNumberOfScreens.Name = "cmbNumberOfScreens";
+            this.cmbNumberOfScreens.Size = new System.Drawing.Size(223, 21);
+            this.cmbNumberOfScreens.TabIndex = 0;
             // 
             // frmOptions
             // 
@@ -303,6 +303,6 @@
         private System.Windows.Forms.Button btnSelectCaptureArea;
         private System.Windows.Forms.Button btnShowCaptureArea;
         private System.Windows.Forms.GroupBox grpScreenSelect;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbNumberOfScreens;
     }
 }

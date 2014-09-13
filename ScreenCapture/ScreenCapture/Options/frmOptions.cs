@@ -121,6 +121,13 @@ namespace ScreenCapture
             maxWidth = ScreenSize.Width;
             maxHeight = ScreenSize.Height;
 
+            for (int i = 1; i <= SystemInformation.MonitorCount; i++)
+            {
+                cmbNumberOfScreens.Items.Add("Screen: " + i);
+            }
+
+            cmbNumberOfScreens.Items.Add("No Screen Selected");
+
             LoadOptions();
         }
 

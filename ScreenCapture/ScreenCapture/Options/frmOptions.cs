@@ -354,7 +354,38 @@ namespace ScreenCapture
             }
             else
             {
+                //check if the file exist, check if the want to overwrite
+                MakeOptions();
+                //save the options
+            }
+        }
 
+        /// <summary>
+        /// It will save the options to an XML file.
+        /// </summary>
+        private void saveOptions()
+        {
+            try
+            {
+                using (var writer = new System.IO.StreamWriter("UserOptions.xml"))
+                {
+                    var serializer = new XmlSerializer(UsersOptions.GetType());
+                    serializer.Serialize(writer, UsersOptions);
+                    writer.Flush();
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("The file was not found.");
+                Console.WriteLine(ex.ToString());
+            }
+            catch (IOException ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex);
             }
         }
     }

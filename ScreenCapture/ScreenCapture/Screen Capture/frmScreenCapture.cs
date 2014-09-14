@@ -5,6 +5,12 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
+/*
+ * Things to do:
+ * 
+ * taking a screenshot and then opening and closing the options will start the capture.
+ */ 
+
 namespace ScreenCapture
 {
     public partial class frmScreenCapture : Form

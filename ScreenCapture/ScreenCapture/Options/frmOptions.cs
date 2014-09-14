@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace ScreenCapture
 {
@@ -291,8 +293,8 @@ namespace ScreenCapture
                 Screen[] screens = Screen.AllScreens;
 
                 UsersOptions.Height = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Height;
-                UsersOptions.Width = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Width;                
-                    
+                UsersOptions.Width = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Width;
+
                 UsersOptions.SourcePoint = new Point(screens[cmbNumberOfScreens.SelectedIndex].Bounds.Left, screens[cmbNumberOfScreens.SelectedIndex].Bounds.Top);
 
                 LoadOptions();
@@ -363,11 +365,11 @@ namespace ScreenCapture
         /// <summary>
         /// It will save the options to an XML file.
         /// </summary>
-        private void saveOptions()
+        private void saveOptions(string Filename)
         {
             try
             {
-                using (var writer = new System.IO.StreamWriter("UserOptions.xml"))
+                using (var writer = new System.IO.StreamWriter(Filename))
                 {
                     var serializer = new XmlSerializer(UsersOptions.GetType());
                     serializer.Serialize(writer, UsersOptions);

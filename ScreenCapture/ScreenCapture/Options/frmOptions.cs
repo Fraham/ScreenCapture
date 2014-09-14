@@ -346,7 +346,16 @@ namespace ScreenCapture
 
         private void btnSaveUserProfile_Click(object sender, EventArgs e)
         {
+            if (string.Equals(txtProfileName, ""))
+            {
+                System.Console.WriteLine("Profile has not been given a name.");
 
+                MessageBox.Show(this.Text + " - Error", "The profile needs a name.", MessageBoxButtons.OK);
+            }
+            else
+            {
+
+            }
         }
     }
 }

@@ -47,7 +47,7 @@
             this.grpScreenSelect = new System.Windows.Forms.GroupBox();
             this.cmbNumberOfScreens = new System.Windows.Forms.ComboBox();
             this.grpUserProfiles = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtProfileName = new System.Windows.Forms.TextBox();
             this.btnSaveUserProfile = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -265,7 +265,7 @@
             // 
             // grpUserProfiles
             // 
-            this.grpUserProfiles.Controls.Add(this.textBox1);
+            this.grpUserProfiles.Controls.Add(this.txtProfileName);
             this.grpUserProfiles.Controls.Add(this.btnSaveUserProfile);
             this.grpUserProfiles.Controls.Add(this.label1);
             this.grpUserProfiles.Controls.Add(this.comboBox1);
@@ -276,12 +276,12 @@
             this.grpUserProfiles.TabStop = false;
             this.grpUserProfiles.Text = "User Profiles";
             // 
-            // textBox1
+            // txtProfileName
             // 
-            this.textBox1.Location = new System.Drawing.Point(50, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(136, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtProfileName.Location = new System.Drawing.Point(50, 46);
+            this.txtProfileName.Name = "txtProfileName";
+            this.txtProfileName.Size = new System.Drawing.Size(136, 20);
+            this.txtProfileName.TabIndex = 3;
             // 
             // btnSaveUserProfile
             // 
@@ -291,6 +291,7 @@
             this.btnSaveUserProfile.TabIndex = 2;
             this.btnSaveUserProfile.Text = "Save";
             this.btnSaveUserProfile.UseVisualStyleBackColor = true;
+            this.btnSaveUserProfile.Click += new System.EventHandler(this.btnSaveUserProfile_Click);
             // 
             // label1
             // 
@@ -365,7 +366,7 @@
         private System.Windows.Forms.GroupBox grpScreenSelect;
         private System.Windows.Forms.ComboBox cmbNumberOfScreens;
         private System.Windows.Forms.GroupBox grpUserProfiles;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtProfileName;
         private System.Windows.Forms.Button btnSaveUserProfile;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;

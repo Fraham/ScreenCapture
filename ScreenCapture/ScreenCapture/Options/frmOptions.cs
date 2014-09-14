@@ -343,5 +343,10 @@ namespace ScreenCapture
                 }
             }
         }
+
+        private void btnSaveUserProfile_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

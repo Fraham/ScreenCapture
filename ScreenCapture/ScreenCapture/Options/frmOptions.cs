@@ -369,7 +369,9 @@ namespace ScreenCapture
         {
             try
             {
-                using (var writer = new System.IO.StreamWriter(Filename))
+                String filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "/ScreenCapture/" + Filename);
+
+                using (var writer = new System.IO.StreamWriter(filePath))
                 {
                     var serializer = new XmlSerializer(UsersOptions.GetType());
                     serializer.Serialize(writer, UsersOptions);

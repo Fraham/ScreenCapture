@@ -217,32 +217,6 @@ namespace ScreenCapture
 
         #endregion Screenshot
 
-        #region Live Feed
-
-        private void mnsScreenCaptureResume_Click(object sender, EventArgs e)
-        {
-            resumeCapture();
-        }
-
-        private void mnsScreenCapturePause_Click(object sender, EventArgs e)
-        {
-            pauseCapture();
-        }
-
-        private void mnsScreenCaptureStart_Click(object sender, EventArgs e)
-        {
-            Screen_Capture.frmFeed feed = new Screen_Capture.frmFeed(this.UsersOptions);
-            feed.Show();
-            //startCapture();
-        }
-
-        private void mnsScreenCaptureStop_Click(object sender, EventArgs e)
-        {
-            stopCapture();
-        }
-
-        #endregion Live Feed
-
         #region Options
 
         private void mnsScreenCaptureOptions_Click(object sender, EventArgs e)
@@ -332,68 +306,6 @@ namespace ScreenCapture
                 changeCaptureOptions();
             }
         }
-
-        #region Capture Methods
-
-        /// <summary>
-        /// It will start the feed using the current capture options.
-        /// It will change controls on the form to limit what the user is able to do.
-        /// </summary>
-        private void startCapture()
-        {
-            WorkerObject.Start();
-
-            cmsPictureBoxCopy.Enabled = false;
-            cmsPictureBoxSave.Enabled = false;
-
-            mnsScreenCaptureSave.Enabled = false;
-            mnsScreenCaptureCopy.Enabled = false;
-            mnsScreenCaptureTake.Enabled = false;
-        }
-
-        /// <summary>
-        /// It will pause the current capture.
-        /// It will change controls on the form to limit what the user is able to do.
-        /// </summary>
-        private void pauseCapture()
-        {
-            WorkerObject.Pause();
-        }
-
-        /// <summary>
-        /// It will stop the current capture.
-        /// It will change controls on the form to limit what the user is able to do.
-        /// </summary>
-        private void stopCapture()
-        {
-            WorkerObject.Stop();
-
-            cmsPictureBoxCopy.Enabled = true;
-            cmsPictureBoxSave.Enabled = true;
-
-            mnsScreenCaptureTake.Enabled = true;
-
-            Console.WriteLine(WorkerObject.CaptureTime.Elapsed);
-            Console.WriteLine(WorkerObject.Frames);
-        }
-
-        /// <summary>
-        /// It will resume the current capture.
-        /// It will change controls on the form to limit what the user is able to do.
-        /// </summary>
-        private void resumeCapture()
-        {
-            if (WorkerObject.Started)
-            {
-                WorkerObject.Resume();
-            }
-            else
-            {
-                startCapture();
-            }
-        }
-
-        #endregion Capture Methods
 
         private void btnLiveFeed_Click(object sender, EventArgs e)
         {

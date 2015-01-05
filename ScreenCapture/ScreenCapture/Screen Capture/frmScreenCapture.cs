@@ -349,12 +349,6 @@ namespace ScreenCapture
             mnsScreenCaptureSave.Enabled = false;
             mnsScreenCaptureCopy.Enabled = false;
             mnsScreenCaptureTake.Enabled = false;
-
-            mnsScreenCaptureStop.Enabled = true;
-            mnsScreenCapturePause.Enabled = true;
-
-            mnsScreenCaptureResume.Enabled = false;
-            mnsScreenCaptureStart.Enabled = false;
         }
 
         /// <summary>
@@ -364,9 +358,6 @@ namespace ScreenCapture
         private void pauseCapture()
         {
             WorkerObject.Pause();
-
-            mnsScreenCaptureResume.Enabled = true;
-            mnsScreenCapturePause.Enabled = false;
         }
 
         /// <summary>
@@ -381,12 +372,6 @@ namespace ScreenCapture
             cmsPictureBoxSave.Enabled = true;
 
             mnsScreenCaptureTake.Enabled = true;
-
-            mnsScreenCaptureStop.Enabled = false;
-            mnsScreenCapturePause.Enabled = false;
-
-            mnsScreenCaptureResume.Enabled = false;
-            mnsScreenCaptureStart.Enabled = true;
 
             Console.WriteLine(WorkerObject.CaptureTime.Elapsed);
             Console.WriteLine(WorkerObject.Frames);

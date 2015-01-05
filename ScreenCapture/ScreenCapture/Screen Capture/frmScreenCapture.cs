@@ -277,15 +277,14 @@ namespace ScreenCapture
             if (WorkerObject.Started)
             {
                 WorkerObject.Resume();
-                Thread.Sleep(10);
-                WorkerObject.Pause();
             }
             else
             {
                 WorkerObject.Start();
-                Thread.Sleep(10);
-                WorkerObject.Pause();
             }
+
+            Thread.Sleep(10);
+            WorkerObject.Pause();
 
             mnsScreenCaptureSave.Enabled = true;
             mnsScreenCaptureCopy.Enabled = true;

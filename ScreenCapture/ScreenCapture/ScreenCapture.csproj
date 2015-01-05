@@ -51,6 +51,12 @@
     <Compile Include="Options\frmOptions.Designer.cs">
       <DependentUpon>frmOptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screen Capture\frmFeed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen Capture\frmFeed.Designer.cs">
+      <DependentUpon>frmFeed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screen Capture\frmScreenCapture.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Options\frmUserCaptureArea.resx">
       <DependentUpon>frmUserCaptureArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen Capture\frmFeed.resx">
+      <DependentUpon>frmFeed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screen Capture\frmScreenCapture.resx">
       <DependentUpon>frmScreenCapture.cs</DependentUpon>

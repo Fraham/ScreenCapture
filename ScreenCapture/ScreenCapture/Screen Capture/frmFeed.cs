@@ -18,9 +18,14 @@ namespace ScreenCapture.Screen_Capture
         /// <summary>
         /// 
         /// </summary>
-        public frmFeed(Options UsersOptions)
+        /// <param name="usersOptions"></param>
+        public frmFeed(Options usersOptions)
         {
             InitializeComponent();
+
+            this.UsersOptions = usersOptions;
+
+            FeedWorker = new CaptureWorker(this.UsersOptions, this.picFeed);
         }
 
         /// <summary>
@@ -30,7 +35,7 @@ namespace ScreenCapture.Screen_Capture
         /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
-
+            startFeed();
         }
 
         /// <summary>
@@ -40,7 +45,7 @@ namespace ScreenCapture.Screen_Capture
         /// <param name="e"></param>
         private void btnPause_Click(object sender, EventArgs e)
         {
-
+            pauseFeed();
         }
 
         /// <summary>
@@ -50,7 +55,7 @@ namespace ScreenCapture.Screen_Capture
         /// <param name="e"></param>
         private void btnStop_Click(object sender, EventArgs e)
         {
-
+            stopFeed();
         }
 
         /// <summary>
@@ -58,7 +63,7 @@ namespace ScreenCapture.Screen_Capture
         /// </summary>
         private void startFeed()
         {
-
+            this.FeedWorker.Start();
         }
 
         /// <summary>
@@ -66,7 +71,7 @@ namespace ScreenCapture.Screen_Capture
         /// </summary>
         private void pauseFeed()
         {
-
+            this.FeedWorker.Pause();
         }
 
         /// <summary>
@@ -74,7 +79,7 @@ namespace ScreenCapture.Screen_Capture
         /// </summary>
         private void stopFeed()
         {
-
+            this.FeedWorker.Stop();
         }
 
         /// <summary>
@@ -109,6 +114,14 @@ namespace ScreenCapture.Screen_Capture
             set
             {
                 usersOptions = value;
+            }
+        }
+
+        private void frmFeed_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.FeedWorker.Started)
+            {
+                this.FeedWorker.Stop();
             }
         }
     }

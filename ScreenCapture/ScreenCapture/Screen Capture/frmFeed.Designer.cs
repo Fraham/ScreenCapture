@@ -89,6 +89,7 @@
             this.MinimumSize = new System.Drawing.Size(20, 20);
             this.Name = "frmFeed";
             this.Text = "Feed";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmFeed_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.picFeed)).EndInit();
             this.ResumeLayout(false);
 

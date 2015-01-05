@@ -231,7 +231,9 @@ namespace ScreenCapture
 
         private void mnsScreenCaptureStart_Click(object sender, EventArgs e)
         {
-            startCapture();
+            Screen_Capture.frmFeed feed = new Screen_Capture.frmFeed(this.UsersOptions);
+            feed.Show();
+            //startCapture();
         }
 
         private void mnsScreenCaptureStop_Click(object sender, EventArgs e)

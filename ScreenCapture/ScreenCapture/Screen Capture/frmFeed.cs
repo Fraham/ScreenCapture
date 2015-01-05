@@ -80,6 +80,9 @@ namespace ScreenCapture.Screen_Capture
         private void stopFeed()
         {
             this.FeedWorker.Stop();
+
+            Console.WriteLine("Elapsed Time: " + this.FeedWorker.CaptureTime.Elapsed);
+            Console.WriteLine("Number of Frames: " + this.FeedWorker.Frames);
         }
 
         /// <summary>

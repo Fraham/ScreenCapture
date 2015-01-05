@@ -39,6 +39,7 @@
             this.mnsScreenCaptureSave = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsScreenCaptureCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsScreenCaptureOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnLiveFeed = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picFeed)).BeginInit();
             this.cmsPictureBox.SuspendLayout();
             this.mnsScreenCapture.SuspendLayout();
@@ -50,9 +51,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picFeed.ContextMenuStrip = this.cmsPictureBox;
-            this.picFeed.Location = new System.Drawing.Point(12, 27);
+            this.picFeed.Location = new System.Drawing.Point(12, 54);
             this.picFeed.Name = "picFeed";
-            this.picFeed.Size = new System.Drawing.Size(927, 576);
+            this.picFeed.Size = new System.Drawing.Size(927, 549);
             this.picFeed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picFeed.TabIndex = 1;
             this.picFeed.TabStop = false;
@@ -130,11 +131,22 @@
             this.mnsScreenCaptureOptions.Text = "Options";
             this.mnsScreenCaptureOptions.Click += new System.EventHandler(this.mnsScreenCaptureOptions_Click);
             // 
+            // btnLiveFeed
+            // 
+            this.btnLiveFeed.Location = new System.Drawing.Point(22, 27);
+            this.btnLiveFeed.Name = "btnLiveFeed";
+            this.btnLiveFeed.Size = new System.Drawing.Size(90, 23);
+            this.btnLiveFeed.TabIndex = 4;
+            this.btnLiveFeed.Text = "New Live Feed";
+            this.btnLiveFeed.UseVisualStyleBackColor = true;
+            this.btnLiveFeed.Click += new System.EventHandler(this.btnLiveFeed_Click);
+            // 
             // frmScreenCapture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(951, 615);
+            this.Controls.Add(this.btnLiveFeed);
             this.Controls.Add(this.mnsScreenCapture);
             this.Controls.Add(this.picFeed);
             this.MainMenuStrip = this.mnsScreenCapture;
@@ -162,6 +174,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnsScreenCaptureSave;
         private System.Windows.Forms.ToolStripMenuItem mnsScreenCaptureCopy;
         private System.Windows.Forms.ToolStripMenuItem mnsScreenCaptureOptions;
+        private System.Windows.Forms.Button btnLiveFeed;
     }
 }
 

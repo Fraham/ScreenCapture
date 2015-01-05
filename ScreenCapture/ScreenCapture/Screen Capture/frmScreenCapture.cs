@@ -394,5 +394,11 @@ namespace ScreenCapture
         }
 
         #endregion Capture Methods
+
+        private void btnLiveFeed_Click(object sender, EventArgs e)
+        {
+            Screen_Capture.frmFeed feed = new Screen_Capture.frmFeed(this.UsersOptions);
+            feed.Show();
+        }
     }
 }

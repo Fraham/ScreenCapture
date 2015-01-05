@@ -12,10 +12,13 @@ namespace ScreenCapture.Screen_Capture
 {
     public partial class frmFeed : Form
     {
+        private CaptureWorker feedWorker;
+        private Options usersOptions;
+
         /// <summary>
         /// 
         /// </summary>
-        public frmFeed()
+        public frmFeed(Options UsersOptions)
         {
             InitializeComponent();
         }
@@ -72,6 +75,41 @@ namespace ScreenCapture.Screen_Capture
         private void stopFeed()
         {
 
+        }
+
+        /// <summary>
+        /// Holds all the information about the current feed.
+        /// </summary>
+        public CaptureWorker FeedWorker
+        {
+            get
+            {
+                return feedWorker;
+            }
+            set
+            {
+                feedWorker = value;
+            }
+        }
+
+        /// <summary>
+        /// Holds all the options for the capture
+        /// </summary>
+        public Options UsersOptions
+        {
+            get
+            {
+                if (usersOptions == null)
+                {
+                    return new Options();
+                }
+
+                return usersOptions;
+            }
+            set
+            {
+                usersOptions = value;
+            }
         }
     }
 }

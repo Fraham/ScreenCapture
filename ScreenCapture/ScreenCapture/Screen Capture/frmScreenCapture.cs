@@ -18,7 +18,7 @@ namespace ScreenCapture
         #region Class Variables
 
         private Options usersOptions;
-        private CaptureWorker workerObject;
+        //private CaptureWorker workerObject;
 
         #endregion Class Variables
 
@@ -33,8 +33,6 @@ namespace ScreenCapture
             InitializeComponent();
 
             loadOptions();
-
-            WorkerObject = new CaptureWorker(UsersOptions, this.picFeed);
         }
 
         #endregion Constructor
@@ -100,20 +98,6 @@ namespace ScreenCapture
 
         #endregion Loading and Saving Options
 
-        #region Change Capture Options
-
-        /// <summary>
-        /// It will update the options for the capture.
-        /// </summary>
-        private void changeCaptureOptions()
-        {
-            WorkerObject.Pause();
-            WorkerObject.CaptureOptions = UsersOptions;
-            WorkerObject.Resume();
-        }
-
-        #endregion Change Capture Options
-
         #region Form CLosing
 
         /// <summary>
@@ -123,11 +107,6 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void frmScreenCapture_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (WorkerObject.Started)
-            {
-                WorkerObject.Stop();
-            }
-
             saveOptions();
         }
 
@@ -152,21 +131,6 @@ namespace ScreenCapture
             set
             {
                 usersOptions = value;
-            }
-        }
-
-        /// <summary>
-        /// Holds all the information about the current capture.
-        /// </summary>
-        public CaptureWorker WorkerObject
-        {
-            get
-            {
-                return workerObject;
-            }
-            set
-            {
-                workerObject = value;
             }
         }
 
@@ -234,10 +198,7 @@ namespace ScreenCapture
         {
             try
             {
-                if (!WorkerObject.Capturing)
-                {
-                    Clipboard.SetImage(picFeed.Image);
-                }
+                Clipboard.SetImage(picFeed.Image);
             }
             catch (Exception ex)
             {
@@ -249,14 +210,11 @@ namespace ScreenCapture
         {
             try
             {
-                if (!WorkerObject.Capturing)
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.Filter = "JPEG File | *.jpeg";
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    SaveFileDialog dialog = new SaveFileDialog();
-                    dialog.Filter = "JPEG File | *.jpeg";
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                    {
-                        picFeed.Image.Save(dialog.FileName, ImageFormat.Jpeg);
-                    }
+                    picFeed.Image.Save(dialog.FileName, ImageFormat.Jpeg);
                 }
             }
             catch (Exception ex)
@@ -274,6 +232,7 @@ namespace ScreenCapture
              * If it hasn't been started already it will start and then pause
              * with a small sleep so has enough time to capture the screen.
             */
+            /*
             if (WorkerObject.Started)
             {
                 WorkerObject.Resume();
@@ -285,6 +244,12 @@ namespace ScreenCapture
 
             Thread.Sleep(10);
             WorkerObject.Pause();
+            */
+
+            ScreenCapture.Screenshot screenshot = new ScreenCapture.Screenshot(UsersOptions);
+            screenshot.Capture();
+
+            this.picFeed.Image = screenshot.Image;
 
             mnsScreenCaptureSave.Enabled = true;
             mnsScreenCaptureCopy.Enabled = true;
@@ -302,13 +267,12 @@ namespace ScreenCapture
             if (frmO.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 UsersOptions = frmO.UsersOptions;
-                changeCaptureOptions();
             }
         }
 
         private void btnLiveFeed_Click(object sender, EventArgs e)
         {
-            Screen_Capture.frmFeed feed = new Screen_Capture.frmFeed(this.UsersOptions);
+            ScreenCapture.frmFeed feed = new ScreenCapture.frmFeed(this.UsersOptions);
             feed.Show();
         }
     }

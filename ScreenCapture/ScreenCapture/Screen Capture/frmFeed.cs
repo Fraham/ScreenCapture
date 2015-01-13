@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ScreenCapture.Screen_Capture
+namespace ScreenCapture.ScreenCapture
 {
     public partial class frmFeed : Form
     {
@@ -126,6 +126,11 @@ namespace ScreenCapture.Screen_Capture
             {
                 this.FeedWorker.Stop();
             }
+        }
+
+        private void frmFeed_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

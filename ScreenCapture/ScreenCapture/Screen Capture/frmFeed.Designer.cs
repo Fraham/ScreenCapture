@@ -1,4 +1,4 @@
-﻿namespace ScreenCapture.Screen_Capture
+﻿namespace ScreenCapture.ScreenCapture
 {
     partial class frmFeed
     {
@@ -86,7 +86,7 @@
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.picFeed);
-            this.MinimumSize = new System.Drawing.Size(20, 20);
+            this.MinimumSize = new System.Drawing.Size(20, 38);
             this.Name = "frmFeed";
             this.Text = "Feed";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmFeed_FormClosing);

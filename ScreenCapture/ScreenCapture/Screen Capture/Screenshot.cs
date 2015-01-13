@@ -35,6 +35,14 @@ namespace ScreenCapture.ScreenCapture
             CaptureOptions = new Options(captureWidth, captureHeight, Point.Empty);
         }
 
+        public Screenshot(Options options)
+        {
+            CaptureOptions = options;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void Capture()
         {
             /*

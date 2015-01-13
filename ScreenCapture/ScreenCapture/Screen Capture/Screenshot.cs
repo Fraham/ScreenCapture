@@ -3,10 +3,71 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
-namespace ScreenCapture.Screen_Capture
+namespace ScreenCapture.ScreenCapture
 {
     class Screenshot
     {
+        private Options options;
+
+        /// <summary>
+        /// Makes a new instance of a capture worker.
+        /// It will capture an area from the source point to the set width and height.
+        /// </summary>
+        /// <param name="captureWidth">The width of capture area.</param>
+        /// <param name="captureHeight">The height of capture area.</param>
+        /// <param name="picBox">The picture box being used to display the capture.</param>
+        /// <param name="sourcePoint">The source point of the capture.</param>
+        public Screenshot(int captureWidth, int captureHeight, Point sourcePoint)
+        {
+            CaptureOptions = new Options(captureWidth, captureHeight, sourcePoint);
+        }
+
+        /// <summary>
+        /// Makes a new instance of a capture worker.
+        /// It will capture an area from (0, 0) to the set width and height.
+        /// </summary>
+        /// <param name="captureWidth">The width of capture area.</param>
+        /// <param name="captureHeight">The height of capture area.</param>
+        /// <param name="picBox">The picture box being used to display the capture.</param>
+        public Screenshot(int captureWidth, int captureHeight)
+        {
+            CaptureOptions = new Options(captureWidth, captureHeight, Point.Empty);
+        }
+
+        private void Capture()
+        {
+            /*
+                    * Creates a new bitmap with the width and height of the primary screen (the one with the task-bar).
+                    * Then it will create a graphics from the new bitmap.
+                    */
+            Bitmap bitmap = new Bitmap(CaptureOptions.Width, CaptureOptions.Height);
+            Graphics graphics = Graphics.FromImage(bitmap);
+
+            /*
+             * Copy the graphics from the screen for the whole screen.
+             * Then it will set the created bitmap image to the picture box.
+             */
+            graphics.CopyFromScreen(CaptureOptions.SourcePoint, Point.Empty, new Size(CaptureOptions.Width, CaptureOptions.Height));
+
+            graphics.Dispose();
+        }
+
+        /// <summary>
+        /// Getter and Setter for the capture options.
+        /// This holds all the information needed for the capture.
+        /// </summary>
+        public Options CaptureOptions
+        {
+            get
+            {
+                return this.options;
+            }
+            set
+            {
+                this.options = value;
+            }
+        }
     }
 }

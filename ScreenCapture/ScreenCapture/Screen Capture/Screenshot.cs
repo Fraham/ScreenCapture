@@ -35,7 +35,7 @@ namespace ScreenCapture.ScreenCapture
             CaptureOptions = new Options(captureWidth, captureHeight, Point.Empty);
         }
 
-        private void Capture()
+        public void Capture()
         {
             /*
              * Creates a new bitmap with the width and height of the primary screen (the one with the task-bar).
@@ -69,6 +69,9 @@ namespace ScreenCapture.ScreenCapture
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Bitmap Image
         {
             get 

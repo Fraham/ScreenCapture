@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ScreenCapture.ScreenCapture
+namespace ScreenCapture
 {
     public partial class frmScreenshot : Form
     {
@@ -17,6 +17,8 @@ namespace ScreenCapture.ScreenCapture
         public frmScreenshot(Screenshot shot)
         {
             InitializeComponent();
+
+            Shot = shot;
 
             loadShot();
         }

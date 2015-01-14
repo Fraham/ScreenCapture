@@ -245,10 +245,13 @@ namespace ScreenCapture
             WorkerObject.Pause();
             */
 
-            ScreenCapture.Screenshot screenshot = new ScreenCapture.Screenshot(UsersOptions);
+            Screenshot screenshot = new Screenshot(UsersOptions);
             screenshot.Capture();
 
             this.picFeed.Image = screenshot.Image;
+
+            frmScreenshot frmShot = new frmScreenshot(screenshot);
+            frmShot.Show();
 
             mnsScreenCaptureSave.Enabled = true;
             mnsScreenCaptureCopy.Enabled = true;

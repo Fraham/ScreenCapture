@@ -1,4 +1,4 @@
-﻿namespace ScreenCapture.ScreenCapture
+﻿namespace ScreenCapture
 {
     partial class frmScreenshot
     {

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace ScreenCapture.ScreenCapture
+namespace ScreenCapture
 {
-    class Screenshot
+    public class Screenshot
     {
         private Options options;
         private Bitmap image;

@@ -195,19 +195,19 @@ namespace ScreenCapture
 
         private void copyScreenshot()
         {
-            try
+            /*try
             {
                 Clipboard.SetImage(picFeed.Image);
             }
             catch (Exception ex)
             {
                 System.Console.WriteLine(ex);
-            }
+            }*/
         }
 
         private void saveScreenshot()
         {
-            try
+            /*try
             {
                 SaveFileDialog dialog = new SaveFileDialog();
                 dialog.Filter = "JPEG File | *.jpeg";
@@ -219,7 +219,7 @@ namespace ScreenCapture
             catch (Exception ex)
             {
                 System.Console.WriteLine(ex);
-            }
+            }*/
         }
 
         private void takeScreenshot()
@@ -248,7 +248,7 @@ namespace ScreenCapture
             Screenshot screenshot = new Screenshot(UsersOptions);
             screenshot.Capture();
 
-            this.picFeed.Image = screenshot.Image;
+            //this.picFeed.Image = screenshot.Image;
 
             frmScreenshot frmShot = new frmScreenshot(screenshot);
             frmShot.Show();

@@ -1,4 +1,4 @@
-﻿namespace ScreenCapture.Screen_Capture
+﻿namespace ScreenCapture.ScreenCapture
 {
     partial class frmScreenshot
     {
@@ -28,11 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.picScreenshot = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picScreenshot)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // picScreenshot
+            // 
+            this.picScreenshot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.picScreenshot.Location = new System.Drawing.Point(0, 0);
+            this.picScreenshot.Name = "picScreenshot";
+            this.picScreenshot.Size = new System.Drawing.Size(286, 259);
+            this.picScreenshot.TabIndex = 0;
+            this.picScreenshot.TabStop = false;
+            // 
+            // frmScreenshot
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "frmScreenshot";
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.picScreenshot);
+            this.Name = "frmScreenshot";
+            this.Text = "Screenshot";
+            ((System.ComponentModel.ISupportInitialize)(this.picScreenshot)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox picScreenshot;
     }
 }

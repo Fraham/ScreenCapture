@@ -8,13 +8,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ScreenCapture.Screen_Capture
+namespace ScreenCapture.ScreenCapture
 {
     public partial class frmScreenshot : Form
     {
-        public frmScreenshot()
+        private Screenshot shot;
+
+        public frmScreenshot(Screenshot shot)
         {
             InitializeComponent();
+
+            loadShot();
+        }
+
+        private void loadShot()
+        {
+            picScreenshot.Image = Shot.Image;
+        }
+
+        public Screenshot Shot
+        {
+            get
+            {
+                return shot;
+            }
+            set
+            {
+                shot = value;
+            }
         }
     }
 }

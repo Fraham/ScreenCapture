@@ -9,7 +9,7 @@ using System.Xml.Serialization;
  * Things to do:
  * 
  * taking a screenshot and then opening and closing the options will start the capture.
- */ 
+ */
 
 namespace ScreenCapture
 {
@@ -18,7 +18,6 @@ namespace ScreenCapture
         #region Class Variables
 
         private Options usersOptions;
-        //private CaptureWorker workerObject;
 
         #endregion Class Variables
 

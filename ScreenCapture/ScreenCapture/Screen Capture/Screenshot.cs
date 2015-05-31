@@ -83,7 +83,7 @@ namespace ScreenCapture
         /// </summary>
         public void copy()
         {
-
+            Clipboard.SetImage(image);
         }
 
         /// <summary>

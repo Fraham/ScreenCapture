@@ -62,6 +62,30 @@ namespace ScreenCapture
         }
 
         /// <summary>
+        /// Will save the current screenshot.
+        /// </summary>
+        public void save()
+        {
+
+        }
+
+        /// <summary>
+        /// Will copy the current screenshot.
+        /// </summary>
+        public void copy()
+        {
+
+        }
+
+        /// <summary>
+        /// Will print the current screenshot.
+        /// </summary>
+        public void print()
+        {
+
+        }
+
+        /// <summary>
         /// Getter and Setter for the capture options.
         /// This holds all the information needed for the capture.
         /// </summary>

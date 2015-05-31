@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace ScreenCapture
 {
@@ -66,7 +68,14 @@ namespace ScreenCapture
         /// </summary>
         public void save()
         {
+            SaveFileDialog dialog = new SaveFileDialog();
 
+            dialog.Filter = "JPEG Image (.jpeg)|*.jpeg";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                image.Save(dialog.FileName, ImageFormat.Jpeg);
+            }
         }
 
         /// <summary>

@@ -28,6 +28,21 @@ namespace ScreenCapture
             picScreenshot.Image = Shot.Image;
         }
 
+        private void saveShot()
+        {
+
+        }
+
+        private void copyShot()
+        {
+
+        }
+
+        private void printShot()
+        {
+
+        }
+
         public Screenshot Shot
         {
             get

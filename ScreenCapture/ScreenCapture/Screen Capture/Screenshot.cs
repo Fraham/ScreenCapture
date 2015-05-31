@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
+using System.Drawing.Printing;
+
 
 namespace ScreenCapture
 {
@@ -91,7 +93,20 @@ namespace ScreenCapture
         /// </summary>
         public void print()
         {
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += PrintPage;
+            pd.Print(); 
+        }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="e"></param>
+        private void PrintPage(object o, PrintPageEventArgs e)
+        {
+            Point loc = new Point(100, 100);
+            e.Graphics.DrawImage(image, loc);
         }
 
         /// <summary>

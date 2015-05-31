@@ -14,6 +14,10 @@ namespace ScreenCapture
     {
         private Screenshot shot;
 
+        /// <summary>
+        /// Creates a new form which is display a screenshot which is given as a parameter.
+        /// </summary>
+        /// <param name="shot">The screenshot which should be displayed on form.</param>
         public frmScreenshot(Screenshot shot)
         {
             InitializeComponent();
@@ -23,36 +27,68 @@ namespace ScreenCapture
             loadShot();
         }
 
+        /// <summary>
+        /// Loads the screenshot onto the picture box.
+        /// </summary>
         private void loadShot()
         {
             picScreenshot.Image = Shot.Image;
         }
 
+        /// <summary>
+        /// Saves the screenshot
+        /// </summary>
         private void saveShot()
         {
-
+            shot.save();
         }
 
+        /// <summary>
+        /// Copies the screenshot
+        /// </summary>
         private void copyShot()
         {
-
+            shot.copy();
         }
 
+        /// <summary>
+        /// Prints the screenshot
+        /// </summary>
         private void printShot()
         {
-
+            shot.print();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Screenshot Shot
         {
             get
             {
+                //check if null
                 return shot;
             }
             set
             {
+                //check if null
                 shot = value;
             }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveShot();
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            copyShot();
+        }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            printShot();
         }
     }
 }

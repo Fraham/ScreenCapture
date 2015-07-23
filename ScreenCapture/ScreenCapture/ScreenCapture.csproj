@@ -60,7 +60,7 @@
     <Compile Include="Screen Capture\frmScreenCapture.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screen Capture\Form1.Designer.cs">
+    <Compile Include="Screen Capture\frmScreenCapture.Designer.cs">
       <DependentUpon>frmScreenCapture.cs</DependentUpon>
     </Compile>
     <Compile Include="Options\frmUserCaptureArea.cs">

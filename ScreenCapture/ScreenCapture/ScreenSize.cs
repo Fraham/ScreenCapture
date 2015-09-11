@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace ScreenCapture
 {
-    internal class ScreenSize
+    public class ScreenSize
     {
         public static Point TopLeftPoint
         {

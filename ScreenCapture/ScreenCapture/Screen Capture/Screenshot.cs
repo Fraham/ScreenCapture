@@ -84,7 +84,15 @@ namespace ScreenCapture
         {
             get 
             { 
-                return image; 
+                if (image != null)
+                {
+                    return image;
+                }
+                else
+                {
+                    throw new Exception("The image has not been set");
+                }
+                
             }
             set 
             { 

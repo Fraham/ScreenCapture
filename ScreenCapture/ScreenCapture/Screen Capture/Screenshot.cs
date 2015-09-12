@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Threading;
+using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace ScreenCapture
 {
@@ -61,6 +66,41 @@ namespace ScreenCapture
             graphics.Dispose();
         }
 
+        public void Print()
+        {
+            throw new NotImplementedException("Print() has not been implemented yet");
+        }
+        
+        public void Save()
+        {
+            try
+            {
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.Filter = "JPEG File | *.jpeg";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    Image.Save(dialog.FileName, ImageFormat.Jpeg);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        
+        public void Copy()
+        {
+            try
+            {
+                Clipboard.SetImage(Image);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+            
+
         /// <summary>
         /// Getter and Setter for the capture options.
         /// This holds all the information needed for the capture.
@@ -90,9 +130,8 @@ namespace ScreenCapture
                 }
                 else
                 {
-                    throw new Exception("The image has not been set");
-                }
-                
+                    throw new InvalidOperationException("The image has not been set");
+                }                
             }
             set 
             { 

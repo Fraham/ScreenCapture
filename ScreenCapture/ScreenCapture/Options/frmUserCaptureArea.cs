@@ -38,6 +38,8 @@ namespace ScreenCapture
             this.MouseMove += new MouseEventHandler(mouse_Move);
             this.KeyUp += new KeyEventHandler(key_press);
 
+            this.Location = ScreenSize.TopLeftPoint;
+
             g = this.CreateGraphics();
 
             CaptureOptions = options;

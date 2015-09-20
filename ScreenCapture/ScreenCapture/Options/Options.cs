@@ -187,20 +187,7 @@ namespace ScreenCapture
         {
             try
             {
-                using (var writer = new StreamWriter("UserOptions.xml"))
-                {
-                    var serializer = new XmlSerializer(GetType());
-                    serializer.Serialize(writer, this);
-                    writer.Flush();
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                throw;
-            }
-            catch (IOException)
-            {
-                throw;
+                SaveFile("UserOptions.xml");
             }
             catch (Exception)
             {
@@ -218,8 +205,6 @@ namespace ScreenCapture
             {
                 string directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ScreenCapture");
 
-                Console.WriteLine(directory);
-
                 if (!Directory.Exists(directory))
                 {
                     Directory.CreateDirectory(directory);
@@ -227,20 +212,33 @@ namespace ScreenCapture
 
                 string filePath = Path.Combine(directory, Filename);
 
+                SaveFile(filePath);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filePath"></param>
+        private void SaveFile(string filePath)
+        {
+            try
+            {
+                if (!(filePath.EndsWith(".xml") || filePath.EndsWith(".XML")))
+                {
+                    filePath += ".xml";
+                }
+
                 using (var writer = new StreamWriter(filePath))
                 {
                     var serializer = new XmlSerializer(GetType());
                     serializer.Serialize(writer, this);
                     writer.Flush();
                 }
-            }
-            catch (FileNotFoundException)
-            {
-                throw;
-            }
-            catch (IOException)
-            {
-                throw;
             }
             catch (Exception)
             {

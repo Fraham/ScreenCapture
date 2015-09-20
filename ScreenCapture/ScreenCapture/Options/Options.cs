@@ -218,6 +218,8 @@ namespace ScreenCapture
             {
                 string directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ScreenCapture");
 
+                Console.WriteLine(directory);
+
                 if (!Directory.Exists(directory))
                 {
                     Directory.CreateDirectory(directory);
@@ -230,6 +232,35 @@ namespace ScreenCapture
                     var serializer = new XmlSerializer(GetType());
                     serializer.Serialize(writer, this);
                     writer.Flush();
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                throw;
+            }
+            catch (IOException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static Options LoadFromFile()
+        {
+            try
+            {
+                using (var stream = File.OpenRead("UserOptions.xml"))
+                {
+                    var obj = new Options();
+                    var serializer = new XmlSerializer(obj.GetType());
+                    return (Options)serializer.Deserialize(stream);
                 }
             }
             catch (FileNotFoundException)

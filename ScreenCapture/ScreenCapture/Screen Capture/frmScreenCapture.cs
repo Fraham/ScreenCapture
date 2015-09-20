@@ -45,24 +45,15 @@ namespace ScreenCapture
         {
             try
             {
-                using (var stream = System.IO.File.OpenRead("UserOptions.xml"))
-                {
-                    var serializer = new XmlSerializer(UsersOptions.GetType());
-                    UsersOptions = (Options)serializer.Deserialize(stream);
-                }
+                UsersOptions = Options.LoadFromFile();
             }
             catch (FileNotFoundException ex)
             {
-                Console.WriteLine("The file was not found.");
-                Console.WriteLine(ex.ToString());
-            }
-            catch (IOException ex)
-            {
-                System.Console.WriteLine(ex.ToString());
+                Console.WriteLine("The file was not found. " + ex.ToString());
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.ToString());
+                Console.WriteLine("Unable to load file - " + ex.ToString());
             }
         }
 

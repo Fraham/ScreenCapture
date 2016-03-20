@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ScreenCapture.Tests
@@ -56,5 +57,21 @@ namespace ScreenCapture.Tests
 
             Assert.AreEqual(SystemInformation.VirtualScreen.Height - Math.Abs(option1.SourcePoint.Y), option1.Height);
         }
+
+        [TestMethod()]
+        public void SourcePoint()
+        {
+            Assert.AreEqual(new Point(3, 4), option1.SourcePoint);
+            Assert.AreNotEqual(new Point(1, 4), option1.SourcePoint);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FileNotFoundException))]
+        public void LoadThrowsFileNotFound()
+        {
+            Options.LoadFromFile("notAFile");
+        }
+
+
     }
 }

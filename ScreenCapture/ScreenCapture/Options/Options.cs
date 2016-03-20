@@ -250,28 +250,28 @@ namespace ScreenCapture
         /// 
         /// </summary>
         /// <returns></returns>
+        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="Exception"></exception>
         public static Options LoadFromFile()
         {
-            try
+            return LoadFromFile("UserOptions.xml");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="Exception"></exception>
+        public static Options LoadFromFile(String FileName)
+        {
+            using (var stream = File.OpenRead(FileName))
             {
-                using (var stream = File.OpenRead("UserOptions.xml"))
-                {
-                    var obj = new Options();
-                    var serializer = new XmlSerializer(obj.GetType());
-                    return (Options)serializer.Deserialize(stream);
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                throw;
-            }
-            catch (IOException)
-            {
-                throw;
-            }
-            catch (Exception)
-            {
-                throw;
+                var obj = new Options();
+                var serializer = new XmlSerializer(obj.GetType());
+                return (Options)serializer.Deserialize(stream);
             }
         }
     }

@@ -12,11 +12,11 @@ namespace ScreenCapture.Tests
         [TestInitialize()]
         public void Initialize()
         {
-            option1 = new Options(100,100, new Point(3,4));
+            option1 = new Options(100, 100, new Point(3, 4));
         }
 
         [TestMethod()]
-        public void OptionsWidth()
+        public void Width()
         {
             Assert.AreEqual(100, option1.Width);
             Assert.AreNotEqual(200, option1.Width);
@@ -37,57 +37,24 @@ namespace ScreenCapture.Tests
         }
 
         [TestMethod()]
-        public void OptionsTest1()
+        public void Height()
         {
+            Assert.AreEqual(100, option1.Height);
+            Assert.AreNotEqual(200, option1.Height);
 
-        }
+            option1.Height = 50;
 
-        [TestMethod()]
-        public void SaveTest()
-        {
+            Assert.AreEqual(50, option1.Height);
+            Assert.AreNotEqual(100, option1.Height);
 
-        }
+            option1.Height = -1;
 
-        [TestMethod()]
-        public void SaveTest1()
-        {
+            Assert.AreEqual(1, option1.Height);
+            Assert.AreNotEqual(-1, option1.Height);
 
-        }
+            option1.Height = 50000000;
 
-        [TestMethod()]
-        public void LoadFromFileTest()
-        {
-
-        }
-
-        [TestMethod()]
-        public void OptionsTest2()
-        {
-
-        }
-
-        [TestMethod()]
-        public void OptionsTest3()
-        {
-
-        }
-
-        [TestMethod()]
-        public void SaveTest2()
-        {
-
-        }
-
-        [TestMethod()]
-        public void SaveTest3()
-        {
-
-        }
-
-        [TestMethod()]
-        public void LoadFromFileTest1()
-        {
-
+            Assert.AreEqual(SystemInformation.VirtualScreen.Height - Math.Abs(option1.SourcePoint.Y), option1.Height);
         }
     }
 }

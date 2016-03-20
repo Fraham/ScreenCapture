@@ -57,11 +57,11 @@ namespace ScreenCapture
         {
             get
             {
-                return this.fullscreen;
+                return fullscreen;
             }
             set
             {
-                this.fullscreen = value;
+                fullscreen = value;
             }
         }
 
@@ -73,25 +73,25 @@ namespace ScreenCapture
         {
             get
             {
-                return this.height;
+                return height;
             }
             set
             {
                 if (value < 1)
                 {
-                    this.height = 1;
+                    height = 1;
 
-                    System.Console.WriteLine("The height was set to be less than one.");
+                    Console.WriteLine("The height was set to be less than one.");
                 }
                 else if (Math.Abs(value) + Math.Abs(SourcePoint.Y) > SystemInformation.VirtualScreen.Height)
                 {
-                    this.height = SystemInformation.VirtualScreen.Height - Math.Abs(SourcePoint.Y);
+                    height = SystemInformation.VirtualScreen.Height - Math.Abs(SourcePoint.Y);
 
-                    System.Console.WriteLine("The height was set too high to fit inside the screen.");
+                    Console.WriteLine("The height was set too high to fit inside the screen.");
                 }
                 else
                 {
-                    this.height = value;
+                    height = value;
                 }
             }
         }

@@ -274,5 +274,21 @@ namespace ScreenCapture
                 return (Options)serializer.Deserialize(stream);
             }
         }
+
+        public override bool Equals(Object obj)
+        {
+            Options optionsObj = obj as Options;
+            if (optionsObj == null)
+            {
+                return false;
+            }
+
+            return optionsObj.Height == Height && optionsObj.Width == Width && optionsObj.SourcePoint == SourcePoint && optionsObj.Fullscreen == Fullscreen;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Height + this.width;
+        }
     }
 }

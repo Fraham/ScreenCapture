@@ -10,10 +10,13 @@ namespace ScreenCapture.Tests
     public class OptionsTests
     {
         private Options option1;
+        private Options option2;
+
         [TestInitialize()]
         public void Initialize()
         {
             option1 = new Options(100, 100, new Point(3, 4));
+            option2 = new Options(200, 100, new Point(3, 4));
         }
 
         [TestMethod()]
@@ -72,6 +75,24 @@ namespace ScreenCapture.Tests
             Options.LoadFromFile("notAFile");
         }
 
+        [TestMethod]
+        public void Load()
+        {
+            option1.Save();
 
+            Assert.AreEqual(option1, Options.LoadFromFile());
+            Assert.AreNotEqual(option2, Options.LoadFromFile());
+
+            option2.Save();
+
+            Assert.AreEqual(option2, Options.LoadFromFile());
+            Assert.AreNotEqual(option1, Options.LoadFromFile());
+        }
+
+        [TestMethod]
+        public void Save()
+        {
+
+        }
     }
 }

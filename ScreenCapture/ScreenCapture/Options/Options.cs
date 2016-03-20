@@ -144,25 +144,25 @@ namespace ScreenCapture
         {
             get
             {
-                return this.width;
+                return width;
             }
             set
             {
                 if (value < 1)
                 {
-                    this.width = 1;
+                    width = 1;
 
-                    System.Console.WriteLine("The width was set to be less than one");
+                    Console.WriteLine("The width was set to be less than one");
                 }
                 else if (Math.Abs(value) + Math.Abs(SourcePoint.X) > SystemInformation.VirtualScreen.Width)
                 {
-                    this.width = SystemInformation.VirtualScreen.Width - Math.Abs(SourcePoint.X);
+                    width = SystemInformation.VirtualScreen.Width - Math.Abs(SourcePoint.X);
 
-                    System.Console.WriteLine("The width was set too high to fit inside the screen.");
+                    Console.WriteLine("The width was set too high to fit inside the screen.");
                 }
                 else
                 {
-                    this.width = value;
+                    width = value;
                 }
             }
         }

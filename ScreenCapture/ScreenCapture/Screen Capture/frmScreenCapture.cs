@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Threading;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 /*
  * Things to do:
@@ -50,10 +47,12 @@ namespace ScreenCapture
             catch (FileNotFoundException ex)
             {
                 Console.WriteLine("The file was not found. " + ex.ToString());
+                UsersOptions = new Options();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Unable to load file - " + ex.ToString());
+                UsersOptions = new Options();
             }
         }
 

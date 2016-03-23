@@ -39,6 +39,7 @@
             this.ControlBox = false;
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Location = new System.Drawing.Point(-1920, 0);
             this.Name = "frmUserCaptureArea";
             this.Opacity = 0.4D;
             this.ShowInTaskbar = false;

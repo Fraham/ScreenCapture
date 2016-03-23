@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace ScreenCapture
 {
@@ -177,5 +179,71 @@ namespace ScreenCapture
         }
 
         #endregion Properties
+
+        /// <summary>
+        /// Will save the currently loaded options to file.
+        /// </summary>
+        public void Save()
+        {
+            try
+            {
+                using (var writer = new StreamWriter("UserOptions.xml"))
+                {
+                    var serializer = new XmlSerializer(GetType());
+                    serializer.Serialize(writer, this);
+                    writer.Flush();
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                throw;
+            }
+            catch (IOException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Used for when the user wants to be able to save the options to file.
+        /// </summary>
+        /// <param name="Filename">The choosen file name from the user. Must put .xml on the end.</param>
+        public void Save(string Filename)
+        {
+            try
+            {
+                string directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ScreenCapture");
+
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                string filePath = Path.Combine(directory, Filename);
+
+                using (var writer = new StreamWriter(filePath))
+                {
+                    var serializer = new XmlSerializer(GetType());
+                    serializer.Serialize(writer, this);
+                    writer.Flush();
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                throw;
+            }
+            catch (IOException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

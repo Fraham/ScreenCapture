@@ -38,6 +38,8 @@ namespace ScreenCapture
             this.MouseMove += new MouseEventHandler(mouse_Move);
             this.KeyUp += new KeyEventHandler(key_press);
 
+            this.Location = ScreenSize.TopLeftPoint;
+
             g = this.CreateGraphics();
 
             CaptureOptions = options;
@@ -235,8 +237,8 @@ namespace ScreenCapture
         {
             if (show)
             {
-                CurrentTopLeft = CaptureOptions.SourcePoint;
-                CurrentBottomRight = CaptureOptions.BottomRightCorner;
+                CurrentTopLeft = new Point(CaptureOptions.SourcePoint.X - ScreenSize.TopLeftPoint.X, CaptureOptions.SourcePoint.Y - ScreenSize.TopLeftPoint.Y);
+                CurrentBottomRight = new Point(CaptureOptions.BottomRightCorner.X - ScreenSize.TopLeftPoint.X, CaptureOptions.BottomRightCorner.Y - ScreenSize.TopLeftPoint.Y);
 
                 RectangleDrawn = true;
 

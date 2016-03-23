@@ -370,23 +370,7 @@ namespace ScreenCapture
         {
             try
             {
-                string directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ScreenCapture");
-
-                if (! Directory.Exists(directory))
-                {
-                    Directory.CreateDirectory(directory);
-                }
-                
-                String filePath = Path.Combine(directory, Filename);
-
-                System.Console.WriteLine(filePath);
-
-                using (var writer = new System.IO.StreamWriter(filePath))
-                {
-                    var serializer = new XmlSerializer(UsersOptions.GetType());
-                    serializer.Serialize(writer, UsersOptions);
-                    writer.Flush();
-                }
+                UsersOptions.Save(Filename);
             }
             catch (FileNotFoundException ex)
             {

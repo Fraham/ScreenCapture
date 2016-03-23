@@ -32,8 +32,10 @@
             this.picScreenshot = new System.Windows.Forms.PictureBox();
             this.cmsScreenshot = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
             ((System.ComponentModel.ISupportInitialize)(this.picScreenshot)).BeginInit();
             this.cmsScreenshot.SuspendLayout();
             this.SuspendLayout();
@@ -43,6 +45,7 @@
             this.picScreenshot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.picScreenshot.BackColor = System.Drawing.SystemColors.Window;
             this.picScreenshot.ContextMenuStrip = this.cmsScreenshot;
             this.picScreenshot.Location = new System.Drawing.Point(0, 0);
             this.picScreenshot.Name = "picScreenshot";
@@ -54,8 +57,9 @@
             // 
             this.cmsScreenshot.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveToolStripMenuItem,
-            this.copyToolStripMenuItem,
-            this.printToolStripMenuItem});
+            this.printToolStripMenuItem,
+            this.copyToolStripMenuItem});
+
             this.cmsScreenshot.Name = "cmsScreenshot";
             this.cmsScreenshot.Size = new System.Drawing.Size(103, 70);
             // 
@@ -79,6 +83,10 @@
             this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.printToolStripMenuItem.Text = "Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
+            // 
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // frmScreenshot
             // 

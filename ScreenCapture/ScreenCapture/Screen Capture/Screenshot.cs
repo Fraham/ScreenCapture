@@ -7,7 +7,10 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System.Drawing.Printing;
-
+using System.IO;
+using System.Threading;
+using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace ScreenCapture
 {
@@ -64,6 +67,41 @@ namespace ScreenCapture
 
             graphics.Dispose();
         }
+
+        public void Print()
+        {
+            throw new NotImplementedException("Print() has not been implemented yet");
+        }
+        
+        public void Save()
+        {
+            try
+            {
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.Filter = "JPEG File | *.jpeg";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    Image.Save(dialog.FileName, ImageFormat.Jpeg);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        
+        public void Copy()
+        {
+            try
+            {
+                Clipboard.SetImage(Image);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+            
 
         /// <summary>
         /// Will save the current screenshot.
@@ -132,7 +170,14 @@ namespace ScreenCapture
         {
             get 
             { 
-                return image; 
+                if (image != null)
+                {
+                    return image;
+                }
+                else
+                {
+                    throw new InvalidOperationException("The image has not been set");
+                }                
             }
             set 
             { 

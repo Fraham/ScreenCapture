@@ -71,28 +71,7 @@ namespace ScreenCapture
         /// </summary>
         private void saveOptions()
         {
-            try
-            {
-                using (var writer = new System.IO.StreamWriter("UserOptions.xml"))
-                {
-                    var serializer = new XmlSerializer(UsersOptions.GetType());
-                    serializer.Serialize(writer, UsersOptions);
-                    writer.Flush();
-                }
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine("The file was not found.");
-                Console.WriteLine(ex.ToString());
-            }
-            catch (IOException ex)
-            {
-                System.Console.WriteLine(ex.ToString());
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex);
-            }
+            UsersOptions.Save();
         }
 
         #endregion Loading and Saving Options

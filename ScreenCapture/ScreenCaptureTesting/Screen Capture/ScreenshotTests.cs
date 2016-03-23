@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace ScreenCapture.Tests
 {
@@ -9,12 +10,13 @@ namespace ScreenCapture.Tests
         private Screenshot screenshot1;
 
         private int captureWidth = 100;
-        private int captureHeight = 100;        
+        private int captureHeight = 100;
+        private Point captureSourcePoint = new Point(0, 0);
 
         [TestInitialize()]
         public void Initialize()
         {
-            screenshot1 = new Screenshot(captureWidth, captureHeight);
+            screenshot1 = new Screenshot(captureWidth, captureHeight, captureSourcePoint);
         }
 
         [TestMethod()]
@@ -46,6 +48,74 @@ namespace ScreenCapture.Tests
             Assert.AreEqual(captureHeight, Clipboard.GetImage().Height);
 
             Assert.AreEqual(captureWidth, Clipboard.GetImage().Width);
+        }
+
+        [TestMethod()]
+        public void Constructors()
+        {
+            Point testPoint = new Point(10, 30);
+            int testWidth = 120;
+            int testHeight = 140;
+
+            //----------------------------------
+
+            screenshot1 = new Screenshot(captureWidth, captureHeight, captureSourcePoint);
+
+            Assert.AreEqual(captureWidth, screenshot1.CaptureOptions.Width);
+
+            Assert.AreEqual(captureHeight, screenshot1.CaptureOptions.Height);
+
+            Assert.AreEqual(captureSourcePoint, screenshot1.CaptureOptions.SourcePoint);
+
+            //----------------------------------
+
+            screenshot1 = new Screenshot(testWidth, testHeight, testPoint);
+
+            Assert.AreEqual(testWidth, screenshot1.CaptureOptions.Width);
+
+            Assert.AreEqual(testHeight, screenshot1.CaptureOptions.Height);
+
+            Assert.AreEqual(testPoint, screenshot1.CaptureOptions.SourcePoint);
+
+            //----------------------------------
+
+            screenshot1 = new Screenshot(captureWidth, captureHeight);
+
+            Assert.AreEqual(captureWidth, screenshot1.CaptureOptions.Width);
+
+            Assert.AreEqual(captureHeight, screenshot1.CaptureOptions.Height);
+
+            Assert.AreEqual(new Point(0, 0), screenshot1.CaptureOptions.SourcePoint);
+
+            //----------------------------------
+
+            screenshot1 = new Screenshot(testWidth, testHeight);
+
+            Assert.AreEqual(testWidth, screenshot1.CaptureOptions.Width);
+
+            Assert.AreEqual(testHeight, screenshot1.CaptureOptions.Height);
+
+            Assert.AreEqual(new Point(0, 0), screenshot1.CaptureOptions.SourcePoint);
+
+            //----------------------------------
+
+            screenshot1 = new Screenshot(new Options(captureWidth, captureHeight, captureSourcePoint));
+
+            Assert.AreEqual(captureWidth, screenshot1.CaptureOptions.Width);
+
+            Assert.AreEqual(captureHeight, screenshot1.CaptureOptions.Height);
+
+            Assert.AreEqual(captureSourcePoint, screenshot1.CaptureOptions.SourcePoint);
+
+            //----------------------------------
+
+            screenshot1 = new Screenshot(new Options(testWidth, testHeight, testPoint));
+
+            Assert.AreEqual(testWidth, screenshot1.CaptureOptions.Width);
+
+            Assert.AreEqual(testHeight, screenshot1.CaptureOptions.Height);
+
+            Assert.AreEqual(testPoint, screenshot1.CaptureOptions.SourcePoint);
         }
     }
 }

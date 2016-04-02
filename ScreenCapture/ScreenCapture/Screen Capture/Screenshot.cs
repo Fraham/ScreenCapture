@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System.Drawing.Printing;
 using System.IO;
 using System.Threading;
-using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace ScreenCapture
 {
@@ -56,8 +50,8 @@ namespace ScreenCapture
              * Creates a new bitmap with the width and height of the primary screen (the one with the task-bar).
              * Then it will create a graphics from the new bitmap.
              */
-            image = new Bitmap(CaptureOptions.Width, CaptureOptions.Height);
-            Graphics graphics = Graphics.FromImage(image);
+            Image = new Bitmap(CaptureOptions.Width, CaptureOptions.Height);
+            Graphics graphics = Graphics.FromImage(Image);
 
             /*
              * Copy the graphics from the screen for the whole screen.

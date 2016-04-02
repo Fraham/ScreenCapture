@@ -57,11 +57,11 @@ namespace ScreenCapture
         {
             get
             {
-                return this.fullscreen;
+                return fullscreen;
             }
             set
             {
-                this.fullscreen = value;
+                fullscreen = value;
             }
         }
 
@@ -73,25 +73,25 @@ namespace ScreenCapture
         {
             get
             {
-                return this.height;
+                return height;
             }
             set
             {
                 if (value < 1)
                 {
-                    this.height = 1;
+                    height = 1;
 
-                    System.Console.WriteLine("The height was set to be less than one.");
+                    Console.WriteLine("The height was set to be less than one.");
                 }
                 else if (Math.Abs(value) + Math.Abs(SourcePoint.Y) > SystemInformation.VirtualScreen.Height)
                 {
-                    this.height = SystemInformation.VirtualScreen.Height - Math.Abs(SourcePoint.Y);
+                    height = SystemInformation.VirtualScreen.Height - Math.Abs(SourcePoint.Y);
 
-                    System.Console.WriteLine("The height was set too high to fit inside the screen.");
+                    Console.WriteLine("The height was set too high to fit inside the screen.");
                 }
                 else
                 {
-                    this.height = value;
+                    height = value;
                 }
             }
         }
@@ -144,25 +144,25 @@ namespace ScreenCapture
         {
             get
             {
-                return this.width;
+                return width;
             }
             set
             {
                 if (value < 1)
                 {
-                    this.width = 1;
+                    width = 1;
 
-                    System.Console.WriteLine("The width was set to be less than one");
+                    Console.WriteLine("The width was set to be less than one");
                 }
                 else if (Math.Abs(value) + Math.Abs(SourcePoint.X) > SystemInformation.VirtualScreen.Width)
                 {
-                    this.width = SystemInformation.VirtualScreen.Width - Math.Abs(SourcePoint.X);
+                    width = SystemInformation.VirtualScreen.Width - Math.Abs(SourcePoint.X);
 
-                    System.Console.WriteLine("The width was set too high to fit inside the screen.");
+                    Console.WriteLine("The width was set too high to fit inside the screen.");
                 }
                 else
                 {
-                    this.width = value;
+                    width = value;
                 }
             }
         }
@@ -187,20 +187,7 @@ namespace ScreenCapture
         {
             try
             {
-                using (var writer = new StreamWriter("UserOptions.xml"))
-                {
-                    var serializer = new XmlSerializer(GetType());
-                    serializer.Serialize(writer, this);
-                    writer.Flush();
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                throw;
-            }
-            catch (IOException)
-            {
-                throw;
+                SaveFile("UserOptions.xml");
             }
             catch (Exception)
             {
@@ -211,7 +198,7 @@ namespace ScreenCapture
         /// <summary>
         /// Used for when the user wants to be able to save the options to file.
         /// </summary>
-        /// <param name="Filename">The choosen file name from the user. Must put .xml on the end.</param>
+        /// <param name="Filename">The chosen file name from the user. Must put .xml on the end.</param>
         public void Save(string Filename)
         {
             try
@@ -225,6 +212,27 @@ namespace ScreenCapture
 
                 string filePath = Path.Combine(directory, Filename);
 
+                SaveFile(filePath);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filePath"></param>
+        private void SaveFile(string filePath)
+        {
+            try
+            {
+                if (!(filePath.EndsWith(".xml") || filePath.EndsWith(".XML")))
+                {
+                    filePath += ".xml";
+                }
+
                 using (var writer = new StreamWriter(filePath))
                 {
                     var serializer = new XmlSerializer(GetType());
@@ -232,18 +240,55 @@ namespace ScreenCapture
                     writer.Flush();
                 }
             }
-            catch (FileNotFoundException)
-            {
-                throw;
-            }
-            catch (IOException)
-            {
-                throw;
-            }
             catch (Exception)
             {
                 throw;
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="Exception"></exception>
+        public static Options LoadFromFile()
+        {
+            return LoadFromFile("UserOptions.xml");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="Exception"></exception>
+        public static Options LoadFromFile(String FileName)
+        {
+            using (var stream = File.OpenRead(FileName))
+            {
+                var obj = new Options();
+                var serializer = new XmlSerializer(obj.GetType());
+                return (Options)serializer.Deserialize(stream);
+            }
+        }
+
+        public override bool Equals(Object obj)
+        {
+            Options optionsObj = obj as Options;
+            if (optionsObj == null)
+            {
+                return false;
+            }
+
+            return optionsObj.Height == Height && optionsObj.Width == Width && optionsObj.SourcePoint == SourcePoint && optionsObj.Fullscreen == Fullscreen;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Height + this.width;
         }
     }
 }

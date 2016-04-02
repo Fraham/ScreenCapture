@@ -13,13 +13,13 @@ namespace ScreenCapture.ScreenCapture
     public partial class frmFeed : Form
     {
         private CaptureWorker feedWorker;
-        private Options usersOptions;
+        private Options.Options usersOptions;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="usersOptions"></param>
-        public frmFeed(Options usersOptions)
+        public frmFeed(Options.Options usersOptions)
         {
             InitializeComponent();
 
@@ -105,13 +105,13 @@ namespace ScreenCapture.ScreenCapture
         /// <summary>
         /// Holds all the options for the capture
         /// </summary>
-        public Options UsersOptions
+        public Options.Options UsersOptions
         {
             get
             {
                 if (usersOptions == null)
                 {
-                    return new Options();
+                    return new Options.Options();
                 }
 
                 return usersOptions;

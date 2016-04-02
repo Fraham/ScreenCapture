@@ -99,7 +99,7 @@ namespace ScreenCapture.Tests
 
             //----------------------------------
 
-            screenshot1 = new Screenshot(new Options(captureWidth, captureHeight, captureSourcePoint));
+            screenshot1 = new Screenshot(new Options.Options(captureWidth, captureHeight, captureSourcePoint));
 
             Assert.AreEqual(captureWidth, screenshot1.CaptureOptions.Width);
 
@@ -109,7 +109,7 @@ namespace ScreenCapture.Tests
 
             //----------------------------------
 
-            screenshot1 = new Screenshot(new Options(testWidth, testHeight, testPoint));
+            screenshot1 = new Screenshot(new Options.Options(testWidth, testHeight, testPoint));
 
             Assert.AreEqual(testWidth, screenshot1.CaptureOptions.Width);
 

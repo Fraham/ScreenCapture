@@ -198,7 +198,7 @@ namespace ScreenCapture
         /// <summary>
         /// Used for when the user wants to be able to save the options to file.
         /// </summary>
-        /// <param name="Filename">The choosen file name from the user. Must put .xml on the end.</param>
+        /// <param name="Filename">The chosen file name from the user. Must put .xml on the end.</param>
         public void Save(string Filename)
         {
             try

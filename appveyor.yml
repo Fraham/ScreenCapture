@@ -22,7 +22,7 @@ install:
   - nuget restore
 
 build:
-  project: ScreenCapture\ScreenCapture.sln
+#  project: ScreenCapture\ScreenCapture.sln
   verbosity: minimal
 
   #after_test:

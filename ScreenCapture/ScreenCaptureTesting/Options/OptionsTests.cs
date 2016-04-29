@@ -9,14 +9,14 @@ namespace ScreenCapture.Tests
     [TestClass()]
     public class OptionsTests
     {
-        private Options option1;
-        private Options option2;
+        private Options.Options  option1;
+        private Options.Options  option2;
 
         [TestInitialize()]
         public void Initialize()
         {
-            option1 = new Options(100, 100, new Point(3, 4));
-            option2 = new Options(200, 100, new Point(3, 4));
+            option1 = new Options.Options (100, 100, new Point(3, 4));
+            option2 = new Options.Options (200, 100, new Point(3, 4));
         }
 
         [TestMethod()]
@@ -72,7 +72,7 @@ namespace ScreenCapture.Tests
         [ExpectedException(typeof(FileNotFoundException))]
         public void LoadThrowsFileNotFound()
         {
-            Options.LoadFromFile("notAFile");
+            Options.Options .LoadFromFile("notAFile");
         }
 
         [TestMethod]
@@ -80,13 +80,13 @@ namespace ScreenCapture.Tests
         {
             option1.Save();
 
-            Assert.AreEqual(option1, Options.LoadFromFile());
-            Assert.AreNotEqual(option2, Options.LoadFromFile());
+            Assert.AreEqual(option1, Options.Options .LoadFromFile());
+            Assert.AreNotEqual(option2, Options.Options .LoadFromFile());
 
             option2.Save();
 
-            Assert.AreEqual(option2, Options.LoadFromFile());
-            Assert.AreNotEqual(option1, Options.LoadFromFile());
+            Assert.AreEqual(option2, Options.Options .LoadFromFile());
+            Assert.AreNotEqual(option1, Options.Options .LoadFromFile());
         }
 
         [TestMethod]

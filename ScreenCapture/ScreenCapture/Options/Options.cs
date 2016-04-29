@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
-namespace ScreenCapture
+namespace ScreenCapture.Options
 {
     public class Options
     {

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace ScreenCapture
 {
@@ -11,7 +13,7 @@ namespace ScreenCapture
         private frmUserCaptureArea frmUCA = null;
         private int maxHeight;
         private int maxWidth;
-        private Options usersOptions;
+        private Options.Options  usersOptions;
         private bool loading = false;
 
         #endregion Class Variables
@@ -19,10 +21,10 @@ namespace ScreenCapture
         #region Constructor
 
         /// <summary>
-        /// Makes a new instance of a Options menu form.
+        /// Makes a new instance of a Options.Options .Options.Options  menu form.
         /// </summary>
         /// <param name="options">The options that are currently doing run.</param>
-        public frmOptions(Options options)
+        public frmOptions(Options.Options  options)
         {
             UsersOptions = options;
             InitializeComponent();
@@ -54,7 +56,7 @@ namespace ScreenCapture
             {
                 if (radFullScreen.Checked)
                 {
-                    UsersOptions = new Options();
+                    UsersOptions = new Options.Options ();
                 }
                 else
                 {
@@ -173,7 +175,7 @@ namespace ScreenCapture
         /// <summary>
         /// Holds all the options for the capture
         /// </summary>
-        public Options UsersOptions
+        public Options.Options  UsersOptions
         {
             get
             {
@@ -247,7 +249,7 @@ namespace ScreenCapture
 
         #endregion User Capture
 
-        #region Options
+        #region Options.Options 
 
         /// <summary>
         /// Loads the options from UserOptions into the right control.
@@ -270,15 +272,15 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Gets the capture information from the form and creates, returns a new Options.
+        /// Gets the capture information from the form and creates, returns a new Options.Options .
         /// </summary>
         /// <returns></returns>
-        private Options MakeOptions()
+        private Options.Options   MakeOptions()
         {
-            return UsersOptions = new Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
+            return UsersOptions = new Options.Options ((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
         }
 
-        #endregion Options
+        #endregion Options.Options 
 
         private void cmbNumberOfScreens_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -291,8 +293,8 @@ namespace ScreenCapture
                 Screen[] screens = Screen.AllScreens;
 
                 UsersOptions.Height = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Height;
-                UsersOptions.Width = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Width;                
-                    
+                UsersOptions.Width = screens[cmbNumberOfScreens.SelectedIndex].Bounds.Width;
+
                 UsersOptions.SourcePoint = new Point(screens[cmbNumberOfScreens.SelectedIndex].Bounds.Left, screens[cmbNumberOfScreens.SelectedIndex].Bounds.Top);
 
                 LoadOptions();
@@ -341,6 +343,47 @@ namespace ScreenCapture
                 {
                     cmbNumberOfScreens.SelectedIndex = count;
                 }
+            }
+        }
+
+        private void btnSaveUserProfile_Click(object sender, EventArgs e)
+        {
+            if (string.Equals(txtProfileName.Text, ""))
+            {
+                System.Console.WriteLine("Profile has not been given a name.");
+
+                MessageBox.Show("The profile needs a name before it can be saved.", this.Text + " - Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                //check if the file exist, check if the want to overwrite
+                MakeOptions();
+                saveOptions(txtProfileName.Text + ".XML");
+                //save the options
+            }
+        }
+
+        /// <summary>
+        /// It will save the options to an XML file.
+        /// </summary>
+        private void saveOptions(string Filename)
+        {
+            try
+            {
+                UsersOptions.Save(Filename);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("The file was not found.");
+                Console.WriteLine(ex.ToString());
+            }
+            catch (IOException ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex);
             }
         }
     }

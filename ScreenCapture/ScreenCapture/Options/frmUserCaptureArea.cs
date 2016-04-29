@@ -24,12 +24,12 @@ namespace ScreenCapture
         private Graphics g;
         private Form m_InstanceRef = null;
         private Pen MyPen = new Pen(Color.Red, 1);
-        private Options options;
+        private Options.Options  options;
         private bool show = false;
 
         #endregion Form Variables
 
-        public frmUserCaptureArea(Options options, bool show)
+        public frmUserCaptureArea(Options.Options  options, bool show)
         {
             InitializeComponent();
 
@@ -37,6 +37,8 @@ namespace ScreenCapture
             this.MouseUp += new MouseEventHandler(mouse_Up);
             this.MouseMove += new MouseEventHandler(mouse_Move);
             this.KeyUp += new KeyEventHandler(key_press);
+
+            this.Location = ScreenSize.TopLeftPoint;
 
             g = this.CreateGraphics();
 
@@ -82,7 +84,7 @@ namespace ScreenCapture
 
         #region Properties
 
-        public Options CaptureOptions
+        public Options.Options  CaptureOptions
         {
             get
             {
@@ -235,8 +237,8 @@ namespace ScreenCapture
         {
             if (show)
             {
-                CurrentTopLeft = CaptureOptions.SourcePoint;
-                CurrentBottomRight = CaptureOptions.BottomRightCorner;
+                CurrentTopLeft = new Point(CaptureOptions.SourcePoint.X - ScreenSize.TopLeftPoint.X, CaptureOptions.SourcePoint.Y - ScreenSize.TopLeftPoint.Y);
+                CurrentBottomRight = new Point(CaptureOptions.BottomRightCorner.X - ScreenSize.TopLeftPoint.X, CaptureOptions.BottomRightCorner.Y - ScreenSize.TopLeftPoint.Y);
 
                 RectangleDrawn = true;
 

@@ -14,7 +14,7 @@ namespace ScreenCapture
         private ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
         private Thread _thread;
         private int frames = 0;
-        private Options options;
+        private Options.Options  options;
         private PictureBox picBox;
         private bool started = false;
         private bool capturing = false;
@@ -34,7 +34,7 @@ namespace ScreenCapture
         /// <param name="sourcePoint">The source point of the capture.</param>
         public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox, Point sourcePoint)
         {
-            CaptureOptions = new Options(captureWidth, captureHeight, sourcePoint);
+            CaptureOptions = new Options.Options (captureWidth, captureHeight, sourcePoint);
 
             PicBox = picBox;
         }
@@ -48,7 +48,7 @@ namespace ScreenCapture
         /// <param name="picBox">The picture box being used to display the capture.</param>
         public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox)
         {
-            CaptureOptions = new Options(captureWidth, captureHeight, Point.Empty);
+            CaptureOptions = new Options.Options (captureWidth, captureHeight, Point.Empty);
 
             PicBox = picBox;
         }
@@ -64,7 +64,7 @@ namespace ScreenCapture
         /// <param name="y">The y co-ordinate of the source of the source</param>
         public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox, int x, int y)
         {
-            CaptureOptions = new Options(captureWidth, captureHeight, new Point(x, y));
+            CaptureOptions = new Options.Options (captureWidth, captureHeight, new Point(x, y));
 
             PicBox = picBox;
         }
@@ -77,7 +77,7 @@ namespace ScreenCapture
         /// <param name="picBox">The picture box being used to display the capture.</param>
         public CaptureWorker(PictureBox picBox)
         {
-            CaptureOptions = new Options(ScreenSize.Width, ScreenSize.Height, Point.Empty);
+            CaptureOptions = new Options.Options (ScreenSize.Width, ScreenSize.Height, Point.Empty);
 
             PicBox = picBox;
         }
@@ -88,7 +88,7 @@ namespace ScreenCapture
         /// </summary>
         /// <param name="options">The options for the capture.</param>
         /// <param name="picBox">The picture box being used to display the capture.</param>
-        public CaptureWorker(Options options, PictureBox picBox)
+        public CaptureWorker(Options.Options  options, PictureBox picBox)
         {
             CaptureOptions = options;
             PicBox = picBox;
@@ -215,7 +215,7 @@ namespace ScreenCapture
         /// Getter and Setter for the capture options.
         /// This holds all the information needed for the capture.
         /// </summary>
-        public Options CaptureOptions
+        public Options.Options  CaptureOptions
         {
             get
             {

@@ -14,6 +14,10 @@ namespace ScreenCapture
     {
         private Screenshot shot;
 
+        /// <summary>
+        /// Creates a new form which is display a screenshot which is given as a parameter.
+        /// </summary>
+        /// <param name="shot">The screenshot which should be displayed on form.</param>
         public frmScreenshot(Screenshot shot)
         {
             InitializeComponent();
@@ -23,6 +27,9 @@ namespace ScreenCapture
             loadShot();
         }
 
+        /// <summary>
+        /// Loads the screenshot onto the picture box.
+        /// </summary>
         private void loadShot()
         {
             try
@@ -35,20 +42,61 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// Saves the screenshot
+        /// </summary>
+        private void saveShot()
+        {
+            shot.save();
+        }
+
+        /// <summary>
+        /// Copies the screenshot
+        /// </summary>
+        private void copyShot()
+        {
+            shot.copy();
+        }
+
+        /// <summary>
+        /// Prints the screenshot
+        /// </summary>
+        private void printShot()
+        {
+            shot.print();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public Screenshot Shot
         {
             get
             {
+                //check if null
                 return shot;
             }
             set
             {
+                //check if null
                 shot = value;
             }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            saveShot();
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            copyShot();
+        }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            printShot();
+
             try
             {
                 Shot.Save();
@@ -59,7 +107,7 @@ namespace ScreenCapture
             }
         }
 
-        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        /*private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -81,6 +129,6 @@ namespace ScreenCapture
             {
                 MessageBox.Show("Unable to copy the screenshot.", this.Text + " - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }*/
     }
 }

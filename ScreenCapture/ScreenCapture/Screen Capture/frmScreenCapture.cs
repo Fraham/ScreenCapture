@@ -14,7 +14,7 @@ namespace ScreenCapture
     {
         #region Class Variables
 
-        private Options usersOptions;
+        private Options.Options  usersOptions;
 
         #endregion Class Variables
 
@@ -33,7 +33,7 @@ namespace ScreenCapture
 
         #endregion Constructor
 
-        #region Loading and Saving Options
+        #region Loading and Saving Options.Options 
 
         /// <summary>
         /// It will load the options from an XML file.
@@ -42,17 +42,17 @@ namespace ScreenCapture
         {
             try
             {
-                UsersOptions = Options.LoadFromFile();
+                UsersOptions = Options.Options .LoadFromFile();
             }
             catch (FileNotFoundException ex)
             {
                 Console.WriteLine("The file was not found. " + ex.ToString());
-                UsersOptions = new Options();
+                UsersOptions = new Options.Options ();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Unable to load file - " + ex.ToString());
-                UsersOptions = new Options();
+                UsersOptions = new Options.Options ();
             }
         }
 
@@ -64,7 +64,7 @@ namespace ScreenCapture
             UsersOptions.Save();
         }
 
-        #endregion Loading and Saving Options
+        #endregion Loading and Saving Options.Options 
 
         #region Form CLosing
 
@@ -85,13 +85,13 @@ namespace ScreenCapture
         /// <summary>
         /// Holds all the options for the capture
         /// </summary>
-        public Options UsersOptions
+        public Options.Options  UsersOptions
         {
             get
             {
                 if (usersOptions == null)
                 {
-                    return new Options();
+                    return new Options.Options ();
                 }
 
                 return usersOptions;
@@ -149,14 +149,14 @@ namespace ScreenCapture
 
         #endregion Screenshot
 
-        #region Options
+        #region Options.Options 
 
         private void mnsScreenCaptureOptions_Click(object sender, EventArgs e)
         {
             openOptionsForm();
         }
 
-        #endregion Options
+        #endregion Options.Options 
 
         #endregion Menu Strip
 

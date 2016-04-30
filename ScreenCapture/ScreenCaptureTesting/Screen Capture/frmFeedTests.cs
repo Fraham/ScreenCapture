@@ -14,6 +14,7 @@ namespace ScreenCapture.ScreenCapture.Tests
     public class frmFeedTests
     {
         private frmFeed feed;
+
         [TestInitialize()]
         public void Initialize()
         {

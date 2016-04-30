@@ -63,7 +63,7 @@ namespace ScreenCapture.ScreenCapture
         /// <summary>
         /// 
         /// </summary>
-        private void startFeed()
+        public void startFeed()
         {
             this.FeedWorker.Start();
         }
@@ -71,7 +71,14 @@ namespace ScreenCapture.ScreenCapture
         /// <summary>
         /// 
         /// </summary>
-        private void pauseFeed()
+        public void resumeFeed()
+        {
+            this.FeedWorker.Resume();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void pauseFeed()
         {
             this.FeedWorker.Pause();
         }
@@ -79,7 +86,7 @@ namespace ScreenCapture.ScreenCapture
         /// <summary>
         /// 
         /// </summary>
-        private void stopFeed()
+        public void stopFeed()
         {
             this.FeedWorker.Stop();
 

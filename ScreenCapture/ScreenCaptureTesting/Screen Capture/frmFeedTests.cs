@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ScreenCapture.ScreenCapture.Tests
@@ -64,6 +65,30 @@ namespace ScreenCapture.ScreenCapture.Tests
 
             Assert.IsTrue(feed.FeedWorker.Started);
             Assert.IsTrue(feed.FeedWorker.Capturing);
+        }
+
+        [TestMethod()]
+        public void Frames()
+        {
+            Assert.IsTrue(feed.FeedWorker.Frames == 0);
+
+            feed.startFeed();
+
+            Thread.Sleep(500);
+
+            Assert.IsTrue(feed.FeedWorker.Frames > 0);
+
+            feed.pauseFeed();
+
+            int frames1 = feed.FeedWorker.Frames;
+
+            feed.resumeFeed();
+
+            Thread.Sleep(500);
+
+            Assert.IsTrue(feed.FeedWorker.Frames > frames1);
+
+            feed.pauseFeed();
         }
     }
 }

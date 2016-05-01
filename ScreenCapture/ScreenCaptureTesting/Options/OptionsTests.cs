@@ -24,6 +24,7 @@ namespace ScreenCapture.Tests
         {
             Assert.AreEqual(new Options.Options(100, 100, new Point(3, 4)), option1);
             Assert.AreNotEqual(new Options.Options(100, 100, new Point(3, 4)), option2);
+            Assert.AreNotEqual(new Options.Options(100, 100, new Point(3, 4)), null);
         }
 
         [TestMethod()]

@@ -21,6 +21,20 @@ namespace ScreenCapture.Tests
         }
 
         [TestMethod()]
+        public void Image()
+        {
+            try
+            {
+                screenshot1.Image = null;
+                Assert.Fail("Should Error.");
+            }
+            catch (System.InvalidOperationException ex)
+            {
+
+            }
+        }
+
+        [TestMethod()]
         public void Capture()
         {
             screenshot1.Image = null;
@@ -118,5 +132,16 @@ namespace ScreenCapture.Tests
 
             Assert.AreEqual(testPoint, screenshot1.CaptureOptions.SourcePoint);
         }
+
+        [TestMethod()]
+        public void Save()
+        {
+        }
+
+        [TestMethod()]
+        public void Print()
+        {
+        }
+
     }
 }

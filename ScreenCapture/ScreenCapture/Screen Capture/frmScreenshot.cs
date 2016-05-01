@@ -47,7 +47,7 @@ namespace ScreenCapture
         /// </summary>
         private void saveShot()
         {
-            shot.save();
+            shot.Save();
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace ScreenCapture
         /// </summary>
         private void copyShot()
         {
-            shot.copy();
+            shot.Copy();
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace ScreenCapture
         /// </summary>
         private void printShot()
         {
-            shot.print();
+            shot.Print();
         }
 
         /// <summary>

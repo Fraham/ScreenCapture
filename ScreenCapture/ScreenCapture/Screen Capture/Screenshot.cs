@@ -61,11 +61,6 @@ namespace ScreenCapture
 
             graphics.Dispose();
         }
-
-        public void Print()
-        {
-            throw new NotImplementedException("Print() has not been implemented yet");
-        }
         
         public void Save()
         {
@@ -95,35 +90,11 @@ namespace ScreenCapture
                 throw;
             }
         }
-            
-
-        /// <summary>
-        /// Will save the current screenshot.
-        /// </summary>
-        public void save()
-        {
-            SaveFileDialog dialog = new SaveFileDialog();
-
-            dialog.Filter = "JPEG Image (.jpeg)|*.jpeg";
-
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                image.Save(dialog.FileName, ImageFormat.Jpeg);
-            }
-        }
-
-        /// <summary>
-        /// Will copy the current screenshot.
-        /// </summary>
-        public void copy()
-        {
-            Clipboard.SetImage(image);
-        }
 
         /// <summary>
         /// Will print the current screenshot.
         /// </summary>
-        public void print()
+        public void Print()
         {
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += PrintPage;

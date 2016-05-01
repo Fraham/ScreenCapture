@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 using ScreenCapture.Options;
+using System.IO;
 
 namespace ScreenCapture.Tests
 {
@@ -21,9 +22,22 @@ namespace ScreenCapture.Tests
         }
 
         [TestMethod()]
+        public void Image()
+        {
+            try
+            {
+                screenshot1.Image = null;
+                Assert.Fail("Should Error as image is null.");
+            }
+            catch
+            {
+
+            }
+        }
+
+        [TestMethod()]
         public void Capture()
         {
-            screenshot1.Image = null;
             screenshot1.Capture();
 
             Assert.IsNotNull(screenshot1.Image);
@@ -118,5 +132,31 @@ namespace ScreenCapture.Tests
 
             Assert.AreEqual(testPoint, screenshot1.CaptureOptions.SourcePoint);
         }
+
+        [TestMethod()]
+        public void Save()
+        {
+            string filename = "test.jpeg";
+
+            if (File.Exists(filename))
+            {
+                File.Delete(filename);
+            }
+
+            screenshot1.Capture();
+
+            screenshot1.Save("test.jpeg");
+
+            Assert.IsTrue(File.Exists(filename));
+        }
+
+        [TestMethod()]
+        public void Print()
+        {
+            /*screenshot1.Capture();
+
+            screenshot1.Print();*/
+        }
+
     }
 }

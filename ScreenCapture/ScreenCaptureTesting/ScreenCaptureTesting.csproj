@@ -53,9 +53,13 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Options\frmOptionsTests.cs" />
+    <Compile Include="Options\frmUserCaptureAreaTests.cs" />
     <Compile Include="Options\OptionsTests.cs" />
+    <Compile Include="Screen Capture\CaptureWorkerTests.cs" />
+    <Compile Include="Screen Capture\frmFeedTests.cs" />
     <Compile Include="Screen Capture\frmScreenCaptureTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screen Capture\frmScreenshotTests.cs" />
     <Compile Include="Screen Capture\ScreenshotTests.cs" />
   </ItemGroup>
   <ItemGroup>

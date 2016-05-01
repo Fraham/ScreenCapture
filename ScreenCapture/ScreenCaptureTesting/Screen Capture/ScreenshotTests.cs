@@ -38,7 +38,6 @@ namespace ScreenCapture.Tests
         [TestMethod()]
         public void Capture()
         {
-            screenshot1.Image = null;
             screenshot1.Capture();
 
             Assert.IsNotNull(screenshot1.Image);

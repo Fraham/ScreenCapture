@@ -153,6 +153,9 @@ namespace ScreenCapture.Tests
         [TestMethod()]
         public void Print()
         {
+            /*screenshot1.Capture();
+
+            screenshot1.Print();*/
         }
 
     }

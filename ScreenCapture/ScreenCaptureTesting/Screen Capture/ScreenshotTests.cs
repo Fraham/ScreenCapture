@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 using ScreenCapture.Options;
+using System.IO;
 
 namespace ScreenCapture.Tests
 {
@@ -136,6 +137,18 @@ namespace ScreenCapture.Tests
         [TestMethod()]
         public void Save()
         {
+            string filename = "test.jpeg";
+
+            if (File.Exists(filename))
+            {
+                File.Delete(filename);
+            }
+
+            screenshot1.Capture();
+
+            screenshot1.Save("test.jpeg");
+
+            Assert.IsTrue(File.Exists(filename));
         }
 
         [TestMethod()]

@@ -78,7 +78,12 @@ namespace ScreenCapture
                 throw;
             }
         }
-        
+
+        public void Save(string fileName)
+        {
+            Image.Save(fileName, ImageFormat.Jpeg);            
+        }
+
         public void Copy()
         {
             try

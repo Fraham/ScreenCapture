@@ -27,9 +27,9 @@ namespace ScreenCapture.Tests
             try
             {
                 screenshot1.Image = null;
-                Assert.Fail("Should Error.");
+                Assert.Fail("Should Error as image is null.");
             }
-            catch (System.InvalidOperationException ex)
+            catch
             {
 
             }

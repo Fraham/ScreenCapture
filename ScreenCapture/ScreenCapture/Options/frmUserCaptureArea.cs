@@ -339,7 +339,7 @@ namespace ScreenCapture
 
         #region Cursor
 
-        private CursPos CursorPosition(MouseEventArgs e)
+        public CursPos CursorPosition(MouseEventArgs e)
         {
             if (((e.X > CurrentTopLeft.X - 10 && e.X < CurrentTopLeft.X + 10)) && ((e.Y > CurrentTopLeft.Y + 10) && (e.Y < CurrentBottomRight.Y - 10)))
             {
@@ -492,7 +492,7 @@ namespace ScreenCapture
             }
         }
 
-        private void SetClickAction(MouseEventArgs e)
+        public void SetClickAction(MouseEventArgs e)
         {
             switch (CursorPosition(e))
             {

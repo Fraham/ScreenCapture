@@ -151,6 +151,10 @@ namespace ScreenCapture
             }
             set 
             { 
+                if (value == null)
+                {
+                    throw new InvalidOperationException("The image should not be null.");
+                }
                 image = value; 
             }
         }

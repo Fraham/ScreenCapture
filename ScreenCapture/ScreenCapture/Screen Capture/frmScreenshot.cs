@@ -96,39 +96,6 @@ namespace ScreenCapture
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
             printShot();
-
-            try
-            {
-                Shot.Save();
-            }
-            catch
-            {
-                MessageBox.Show("Unable to save the screenshot.", this.Text + " - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
-
-        /*private void printToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Shot.Print();
-            }
-            catch
-            {
-                MessageBox.Show("Unable to print the screenshot.", this.Text + " - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Shot.Copy();
-            }
-            catch
-            {
-                MessageBox.Show("Unable to copy the screenshot.", this.Text + " - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }*/
     }
 }

@@ -112,7 +112,7 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void frmOptions_Load(object sender, EventArgs e)
         {
-            nudWidth.Maximum = ScreenSize.Width;
+            /*nudWidth.Maximum = ScreenSize.Width;
             nudHeight.Maximum = ScreenSize.Height;
 
             nudXSourcePoint.Maximum = ScreenSize.Width;
@@ -120,7 +120,7 @@ namespace ScreenCapture
 
             nudXSourcePoint.Minimum = ScreenSize.TopLeftPoint.X;
             nudYSourcePoint.Minimum = ScreenSize.TopLeftPoint.Y;
-
+            */
             maxWidth = ScreenSize.Width;
             maxHeight = ScreenSize.Height;
 

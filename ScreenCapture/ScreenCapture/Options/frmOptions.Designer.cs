@@ -176,6 +176,7 @@
             // 
             this.nudHeight.Location = new System.Drawing.Point(109, 45);
             this.nudHeight.Maximum = new decimal(new int[] {
+            ScreenSize.Height,
             0,
             0,
             0});
@@ -198,10 +199,12 @@
             // 
             this.nudYSourcePoint.Location = new System.Drawing.Point(109, 97);
             this.nudYSourcePoint.Maximum = new decimal(new int[] {
+            ScreenSize.Height,
             0,
             0,
             0});
             this.nudYSourcePoint.Minimum = new decimal(new int[] {
+            ScreenSize.TopLeftPoint.Y,
             0,
             0,
             0});
@@ -219,10 +222,12 @@
             // 
             this.nudXSourcePoint.Location = new System.Drawing.Point(109, 71);
             this.nudXSourcePoint.Maximum = new decimal(new int[] {
+            ScreenSize.Width,
             0,
             0,
             0});
             this.nudXSourcePoint.Minimum = new decimal(new int[] {
+            ScreenSize.TopLeftPoint.X,
             0,
             0,
             0});

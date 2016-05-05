@@ -203,8 +203,11 @@ namespace ScreenCapture
                     }
 
                     PicBox.Image = bitmap;
+                    if (bitmap != null)
+                    {
 
-                    FeedPictures.Add(bitmap);
+                        FeedPictures.Add(bitmap);
+                    }
 
                     frames++;
                 }

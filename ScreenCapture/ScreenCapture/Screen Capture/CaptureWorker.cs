@@ -40,6 +40,8 @@ namespace ScreenCapture
             CaptureOptions = new Options.Options (captureWidth, captureHeight, sourcePoint);
 
             PicBox = picBox;
+
+            FeedPictures = new ArrayList();
         }
 
         /// <summary>
@@ -54,6 +56,8 @@ namespace ScreenCapture
             CaptureOptions = new Options.Options (captureWidth, captureHeight, Point.Empty);
 
             PicBox = picBox;
+
+            FeedPictures = new ArrayList();
         }
 
         /// <summary>
@@ -70,6 +74,8 @@ namespace ScreenCapture
             CaptureOptions = new Options.Options (captureWidth, captureHeight, new Point(x, y));
 
             PicBox = picBox;
+
+            FeedPictures = new ArrayList();
         }
 
         /// <summary>
@@ -83,6 +89,8 @@ namespace ScreenCapture
             CaptureOptions = new Options.Options (ScreenSize.Width, ScreenSize.Height, Point.Empty);
 
             PicBox = picBox;
+
+            FeedPictures = new ArrayList();
         }
 
         /// <summary>
@@ -95,6 +103,8 @@ namespace ScreenCapture
         {
             CaptureOptions = options;
             PicBox = picBox;
+
+            FeedPictures = new ArrayList();
         }
 
         #endregion Constructors
@@ -203,11 +213,8 @@ namespace ScreenCapture
                     }
 
                     PicBox.Image = bitmap;
-                    if (bitmap != null)
-                    {
 
-                        FeedPictures.Add(bitmap);
-                    }
+                    FeedPictures.Add(bitmap);
 
                     frames++;
                 }

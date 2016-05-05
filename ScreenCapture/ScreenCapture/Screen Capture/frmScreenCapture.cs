@@ -42,7 +42,7 @@ namespace ScreenCapture
         {
             try
             {
-                UsersOptions = Options.Options .LoadFromFile();
+                UsersOptions = Options.Options.LoadFromFile();
             }
             catch (FileNotFoundException ex)
             {

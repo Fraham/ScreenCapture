@@ -92,6 +92,7 @@ namespace ScreenCapture.ScreenCapture
 
             Console.WriteLine("Elapsed Time: " + this.FeedWorker.CaptureTime.Elapsed);
             Console.WriteLine("Number of Frames: " + this.FeedWorker.Frames);
+            Console.WriteLine("Number of Pictures: " + this.FeedWorker.FeedPictures.Count);
         }
 
         /// <summary>

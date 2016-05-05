@@ -136,6 +136,7 @@ namespace ScreenCapture
             _thread.Start();
 
             FeedPictures = new ArrayList();
+            frames = 0;
         }
 
         /// <summary>

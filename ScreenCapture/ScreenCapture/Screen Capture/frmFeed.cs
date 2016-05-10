@@ -67,8 +67,6 @@ namespace ScreenCapture.ScreenCapture
         public void startFeed()
         {
             this.FeedWorker.Start();
-
-            this.btnSaveFeed.Enabled = false;
         }
 
         /// <summary>
@@ -95,9 +93,6 @@ namespace ScreenCapture.ScreenCapture
 
             Console.WriteLine("Elapsed Time: " + this.FeedWorker.CaptureTime.Elapsed);
             Console.WriteLine("Number of Frames: " + this.FeedWorker.Frames);
-            Console.WriteLine("Number of Pictures: " + this.FeedWorker.FeedPictures.Count);
-
-            this.btnSaveFeed.Enabled = true;
         }
 
         /// <summary>
@@ -146,20 +141,6 @@ namespace ScreenCapture.ScreenCapture
         private void frmFeed_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnSaveFeed_Click(object sender, EventArgs e)
-        {
-            saveFeedImages();
-        }
-
-        public void saveFeedImages()
-        {
-            DialogResult result = fbdFeedSaver.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                feedWorker.saveFeedImages(fbdFeedSaver.SelectedPath);
-            }
         }
     }
 }

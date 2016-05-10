@@ -22,7 +22,7 @@ namespace ScreenCapture
         private bool capturing = false;
         private Stopwatch captureTime;
 
-        public List<Bitmap> feedPictures;
+        private string path = @"C:\Users\Graham\Desktop\test\";
 
         #endregion Class Variables
 
@@ -41,8 +41,6 @@ namespace ScreenCapture
             CaptureOptions = new Options.Options(captureWidth, captureHeight, sourcePoint);
 
             PicBox = picBox;
-
-            FeedPictures = new List<Bitmap>();
         }
 
         /// <summary>
@@ -57,8 +55,6 @@ namespace ScreenCapture
             CaptureOptions = new Options.Options(captureWidth, captureHeight, Point.Empty);
 
             PicBox = picBox;
-
-            FeedPictures = new List<Bitmap>();
         }
 
         /// <summary>
@@ -75,8 +71,6 @@ namespace ScreenCapture
             CaptureOptions = new Options.Options(captureWidth, captureHeight, new Point(x, y));
 
             PicBox = picBox;
-
-            FeedPictures = new List<Bitmap>();
         }
 
         /// <summary>
@@ -90,8 +84,6 @@ namespace ScreenCapture
             CaptureOptions = new Options.Options(ScreenSize.Width, ScreenSize.Height, Point.Empty);
 
             PicBox = picBox;
-
-            FeedPictures = new List<Bitmap>();
         }
 
         /// <summary>
@@ -104,8 +96,6 @@ namespace ScreenCapture
         {
             CaptureOptions = options;
             PicBox = picBox;
-
-            FeedPictures = new List<Bitmap>();
         }
 
         #endregion Constructors
@@ -146,7 +136,6 @@ namespace ScreenCapture
             _thread = new Thread(DoCapture);
             _thread.Start();
 
-            FeedPictures = new List<Bitmap>();
             frames = 0;
         }
 
@@ -216,9 +205,9 @@ namespace ScreenCapture
                         PicBox.Image.Dispose();
                     }
 
-                    FeedPictures.Add((Bitmap)image.Clone());
                     PicBox.Image = image;
-                    
+
+                    saveFeedImages(path, image.Clone() as Bitmap);
 
                     frames++;
                 }
@@ -354,32 +343,18 @@ namespace ScreenCapture
             }
         }
 
-        public List<Bitmap> FeedPictures
-        {
-            get
-            {
-                return feedPictures;
-            }
-
-            set
-            {
-                feedPictures = value;
-            }
-        }
-
         #endregion Properties
 
-        public void saveFeedImages(string folderPath)
+        public void saveFeedImages(string folderPath, Bitmap imageToSave)
         {
-            int count = 0;
-
-            foreach (Bitmap image in FeedPictures)
+            if (!folderPath.ToLower().EndsWith(@"\"))
             {
-                Screenshot scn = new Screenshot(image);
-                scn.Save(folderPath + @"\image" + count + ".jpeg");
-
-                count++;
+                folderPath += @"\";
             }
+
+            imageToSave.Save(folderPath + @"image" + Frames + ".jpeg");
+
+            imageToSave.Dispose();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -149,7 +150,16 @@ namespace ScreenCapture.ScreenCapture
 
         private void btnSaveFeed_Click(object sender, EventArgs e)
         {
+            saveFeedImages();
+        }
 
+        public void saveFeedImages()
+        {
+            DialogResult result = fbdFeedSaver.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                feedWorker.saveFeedImages(fbdFeedSaver.SelectedPath);
+            }
         }
     }
 }

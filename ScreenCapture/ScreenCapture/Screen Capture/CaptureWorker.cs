@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
@@ -21,7 +22,7 @@ namespace ScreenCapture
         private bool capturing = false;
         private Stopwatch captureTime;
 
-        private ArrayList feedPictures;
+        public List<Bitmap> feedPictures;
 
         #endregion Class Variables
 
@@ -41,7 +42,7 @@ namespace ScreenCapture
 
             PicBox = picBox;
 
-            FeedPictures = new ArrayList();
+            FeedPictures = new List<Bitmap>();
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace ScreenCapture
 
             PicBox = picBox;
 
-            FeedPictures = new ArrayList();
+            FeedPictures = new List<Bitmap>();
         }
 
         /// <summary>
@@ -75,7 +76,7 @@ namespace ScreenCapture
 
             PicBox = picBox;
 
-            FeedPictures = new ArrayList();
+            FeedPictures = new List<Bitmap>();
         }
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace ScreenCapture
 
             PicBox = picBox;
 
-            FeedPictures = new ArrayList();
+            FeedPictures = new List<Bitmap>();
         }
 
         /// <summary>
@@ -104,7 +105,7 @@ namespace ScreenCapture
             CaptureOptions = options;
             PicBox = picBox;
 
-            FeedPictures = new ArrayList();
+            FeedPictures = new List<Bitmap>();
         }
 
         #endregion Constructors
@@ -145,7 +146,7 @@ namespace ScreenCapture
             _thread = new Thread(DoCapture);
             _thread.Start();
 
-            FeedPictures = new ArrayList();
+            FeedPictures = new List<Bitmap>();
             frames = 0;
         }
 
@@ -156,18 +157,21 @@ namespace ScreenCapture
         /// </summary>
         public void Stop()
         {
-            CaptureTime.Stop();
-            // Signal the shutdown event
-            _shutdownEvent.Set();
+            if (started)
+            {
+                CaptureTime.Stop();
+                // Signal the shutdown event
+                _shutdownEvent.Set();
 
-            // Make sure to resume any paused threads
-            _pauseEvent.Set();
+                // Make sure to resume any paused threads
+                _pauseEvent.Set();
 
-            // Wait for the thread to exit
-            _thread.Join();
+                // Wait for the thread to exit
+                _thread.Join();
 
-            Started = false;
-            Capturing = false;
+                Started = false;
+                Capturing = false;
+            }
         }
 
         #endregion Threading
@@ -196,8 +200,8 @@ namespace ScreenCapture
                      * Creates a new bitmap with the width and height of the primary screen (the one with the task-bar).
                      * Then it will create a graphics from the new bitmap.
                      */
-                    Bitmap bitmap = new Bitmap(CaptureOptions.Width, CaptureOptions.Height);
-                    Graphics graphics = Graphics.FromImage(bitmap);
+                    Bitmap image = new Bitmap(CaptureOptions.Width, CaptureOptions.Height);
+                    Graphics graphics = Graphics.FromImage(image);
 
                     /*
                      * Copy the graphics from the screen for the whole screen.
@@ -212,9 +216,9 @@ namespace ScreenCapture
                         PicBox.Image.Dispose();
                     }
 
-                    PicBox.Image = bitmap;
-
-                    FeedPictures.Add(bitmap);
+                    FeedPictures.Add((Bitmap)image.Clone());
+                    PicBox.Image = image;
+                    
 
                     frames++;
                 }
@@ -350,7 +354,7 @@ namespace ScreenCapture
             }
         }
 
-        public ArrayList FeedPictures
+        public List<Bitmap> FeedPictures
         {
             get
             {
@@ -364,5 +368,18 @@ namespace ScreenCapture
         }
 
         #endregion Properties
+
+        public void saveFeedImages(string folderPath)
+        {
+            int count = 0;
+
+            foreach (Bitmap image in FeedPictures)
+            {
+                Screenshot scn = new Screenshot(image);
+                scn.Save(folderPath + @"\image" + count + ".jpeg");
+
+                count++;
+            }
+        }
     }
 }

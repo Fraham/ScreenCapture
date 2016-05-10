@@ -41,6 +41,11 @@ namespace ScreenCapture
             CaptureOptions = options;
         }
 
+        public Screenshot(Bitmap image)
+        {
+            Image = image;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -61,27 +66,27 @@ namespace ScreenCapture
 
             graphics.Dispose();
         }
-        
+
         public void Save()
         {
-            try
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "JPEG File | *.jpeg";
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
-                SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "JPEG File | *.jpeg";
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    Image.Save(dialog.FileName, ImageFormat.Jpeg);
-                }
-            }
-            catch
-            {
-                throw;
+                Save(dialog.FileName);
             }
         }
 
         public void Save(string fileName)
         {
-            Image.Save(fileName, ImageFormat.Jpeg);            
+            if (!(fileName.ToLower().EndsWith(".jpeg")))
+            {
+                fileName += ".jpeg";
+            }
+
+            MessageBox.Show(Image.Width + "");
+
+            Image.Save(fileName, ImageFormat.Jpeg);     
         }
 
         public void Copy()

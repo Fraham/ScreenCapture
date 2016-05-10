@@ -81,6 +81,7 @@
             // 
             // btnSaveFeed
             // 
+            this.btnSaveFeed.Enabled = false;
             this.btnSaveFeed.Location = new System.Drawing.Point(255, 12);
             this.btnSaveFeed.Name = "btnSaveFeed";
             this.btnSaveFeed.Size = new System.Drawing.Size(75, 23);

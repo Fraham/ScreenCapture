@@ -33,6 +33,7 @@
             this.btnPause = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.fbdFeedSaver = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnSaveFeed = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picFeed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,11 +79,21 @@
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
+            // btnSaveFeed
+            // 
+            this.btnSaveFeed.Location = new System.Drawing.Point(255, 12);
+            this.btnSaveFeed.Name = "btnSaveFeed";
+            this.btnSaveFeed.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveFeed.TabIndex = 3;
+            this.btnSaveFeed.Text = "Save";
+            this.btnSaveFeed.UseVisualStyleBackColor = true;
+            // 
             // frmFeed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 707);
+            this.Controls.Add(this.btnSaveFeed);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.btnStart);
@@ -103,5 +114,6 @@
         private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.FolderBrowserDialog fbdFeedSaver;
+        private System.Windows.Forms.Button btnSaveFeed;
     }
 }

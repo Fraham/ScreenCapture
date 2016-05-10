@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -22,7 +23,7 @@ namespace ScreenCapture
         private bool capturing = false;
         private Stopwatch captureTime;
 
-        private string path = @"C:\Users\Graham\Desktop\test\";
+        private string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"ScreenCapture\Feed");
 
         #endregion Class Variables
 
@@ -347,6 +348,11 @@ namespace ScreenCapture
 
         public void saveFeedImages(string folderPath, Bitmap imageToSave)
         {
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
             if (!folderPath.ToLower().EndsWith(@"\"))
             {
                 folderPath += @"\";

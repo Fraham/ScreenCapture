@@ -15,8 +15,16 @@ namespace ScreenCapture.Tests
         [TestInitialize()]
         public void Initialize()
         {
-            option1 = new Options.Options(100, 100, new Point(3, 4));
-            option2 = new Options.Options(200, 100, new Point(3, 4));
+            option1 = new Options.Options (100, 100, new Point(3, 4));
+            option2 = new Options.Options (200, 100, new Point(3, 4));
+        }
+
+        [TestMethod()]
+        public void OptionsEqual()
+        {
+            Assert.AreEqual(new Options.Options(100, 100, new Point(3, 4)), option1);
+            Assert.AreNotEqual(new Options.Options(100, 100, new Point(3, 4)), option2);
+            Assert.AreNotEqual(new Options.Options(100, 100, new Point(3, 4)), null);
         }
 
         [TestMethod()]
@@ -66,6 +74,24 @@ namespace ScreenCapture.Tests
         {
             Assert.AreEqual(new Point(3, 4), option1.SourcePoint);
             Assert.AreNotEqual(new Point(1, 4), option1.SourcePoint);
+
+            option1.SourcePoint = new Point(-999999, -999999);
+            Assert.AreEqual(ScreenSize.TopLeftPoint, option1.SourcePoint);
+
+            option1.SourcePoint = new Point(999999, 999999);
+            Assert.AreEqual(SystemInformation.VirtualScreen.Right, option1.SourcePoint.X);
+            Assert.AreEqual(SystemInformation.VirtualScreen.Bottom, option1.SourcePoint.Y);
+        }
+
+        [TestMethod()]
+        public void BottomRightCorner()
+        {
+            option1.SourcePoint = new Point(1, 1);
+            option1.Width = 10;
+            option1.Height = 10;
+
+            Assert.AreEqual(new Point(11, 11), option1.BottomRightCorner);
+            Assert.AreNotEqual(new Point(1, 4), option1.BottomRightCorner);
         }
 
         [TestMethod]

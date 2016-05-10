@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
@@ -20,6 +21,8 @@ namespace ScreenCapture
         private bool capturing = false;
         private Stopwatch captureTime;
 
+        private ArrayList feedPictures;
+
         #endregion Class Variables
 
         #region Constructors
@@ -37,6 +40,8 @@ namespace ScreenCapture
             CaptureOptions = new Options.Options(captureWidth, captureHeight, sourcePoint);
 
             PicBox = picBox;
+
+            FeedPictures = new ArrayList();
         }
 
         /// <summary>
@@ -51,6 +56,8 @@ namespace ScreenCapture
             CaptureOptions = new Options.Options(captureWidth, captureHeight, Point.Empty);
 
             PicBox = picBox;
+
+            FeedPictures = new ArrayList();
         }
 
         /// <summary>
@@ -67,6 +74,8 @@ namespace ScreenCapture
             CaptureOptions = new Options.Options(captureWidth, captureHeight, new Point(x, y));
 
             PicBox = picBox;
+
+            FeedPictures = new ArrayList();
         }
 
         /// <summary>
@@ -80,6 +89,8 @@ namespace ScreenCapture
             CaptureOptions = new Options.Options(ScreenSize.Width, ScreenSize.Height, Point.Empty);
 
             PicBox = picBox;
+
+            FeedPictures = new ArrayList();
         }
 
         /// <summary>
@@ -92,6 +103,8 @@ namespace ScreenCapture
         {
             CaptureOptions = options;
             PicBox = picBox;
+
+            FeedPictures = new ArrayList();
         }
 
         #endregion Constructors
@@ -131,6 +144,9 @@ namespace ScreenCapture
             CaptureTime.Restart();
             _thread = new Thread(DoCapture);
             _thread.Start();
+
+            FeedPictures = new ArrayList();
+            frames = 0;
         }
 
         /// <summary>
@@ -197,6 +213,8 @@ namespace ScreenCapture
                     }
 
                     PicBox.Image = bitmap;
+
+                    FeedPictures.Add(bitmap);
 
                     frames++;
                 }
@@ -329,6 +347,19 @@ namespace ScreenCapture
                 {
                     captureTime = value;
                 }
+            }
+        }
+
+        public ArrayList FeedPictures
+        {
+            get
+            {
+                return feedPictures;
+            }
+
+            set
+            {
+                feedPictures = value;
             }
         }
 

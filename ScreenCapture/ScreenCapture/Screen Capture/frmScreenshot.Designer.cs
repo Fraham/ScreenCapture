@@ -32,10 +32,8 @@
             this.picScreenshot = new System.Windows.Forms.PictureBox();
             this.cmsScreenshot = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenshot)).BeginInit();
             this.cmsScreenshot.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +48,7 @@
             this.picScreenshot.Location = new System.Drawing.Point(0, 0);
             this.picScreenshot.Name = "picScreenshot";
             this.picScreenshot.Size = new System.Drawing.Size(286, 259);
+            this.picScreenshot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picScreenshot.TabIndex = 0;
             this.picScreenshot.TabStop = false;
             // 
@@ -59,34 +58,29 @@
             this.saveToolStripMenuItem,
             this.printToolStripMenuItem,
             this.copyToolStripMenuItem});
-
             this.cmsScreenshot.Name = "cmsScreenshot";
             this.cmsScreenshot.Size = new System.Drawing.Size(103, 70);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.copyToolStripMenuItem.Text = "Copy";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.printToolStripMenuItem.Text = "Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // frmScreenshot
             // 

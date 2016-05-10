@@ -35,6 +35,18 @@ namespace ScreenCapture.Options
         /// Making a new instance of the options class.
         /// This will store the users options for the capture.
         /// </summary>
+        public Options(Options options)
+        {
+            Width = options.Width;
+            Height = options.Height;
+            SourcePoint = options.SourcePoint;
+            Fullscreen = options.Fullscreen;
+        }
+
+        /// <summary>
+        /// Making a new instance of the options class.
+        /// This will store the users options for the capture.
+        /// </summary>
         /// <param name="width">The width of the capture area.</param>
         /// <param name="height">The height of the capture area.</param>
         /// <param name="sourcePoint">The source point of the capture.</param>

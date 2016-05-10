@@ -175,6 +175,11 @@
             // nudHeight
             // 
             this.nudHeight.Location = new System.Drawing.Point(109, 45);
+            this.nudHeight.Maximum = new decimal(new int[] {
+            ScreenSize.Height,
+            0,
+            0,
+            0});
             this.nudHeight.Minimum = new decimal(new int[] {
             1,
             0,
@@ -193,22 +198,57 @@
             // nudYSourcePoint
             // 
             this.nudYSourcePoint.Location = new System.Drawing.Point(109, 97);
+            this.nudYSourcePoint.Maximum = new decimal(new int[] {
+            ScreenSize.Height,
+            0,
+            0,
+            0});
+            this.nudYSourcePoint.Minimum = new decimal(new int[] {
+            ScreenSize.TopLeftPoint.Y,
+            0,
+            0,
+            0});
             this.nudYSourcePoint.Name = "nudYSourcePoint";
             this.nudYSourcePoint.Size = new System.Drawing.Size(120, 20);
             this.nudYSourcePoint.TabIndex = 3;
+            this.nudYSourcePoint.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudYSourcePoint.ValueChanged += new System.EventHandler(this.nudYSourcePoint_ValueChanged);
             // 
             // nudXSourcePoint
             // 
             this.nudXSourcePoint.Location = new System.Drawing.Point(109, 71);
+            this.nudXSourcePoint.Maximum = new decimal(new int[] {
+            ScreenSize.Width,
+            0,
+            0,
+            0});
+            this.nudXSourcePoint.Minimum = new decimal(new int[] {
+            ScreenSize.TopLeftPoint.X,
+            0,
+            0,
+            0});
             this.nudXSourcePoint.Name = "nudXSourcePoint";
             this.nudXSourcePoint.Size = new System.Drawing.Size(120, 20);
             this.nudXSourcePoint.TabIndex = 3;
+            this.nudXSourcePoint.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudXSourcePoint.ValueChanged += new System.EventHandler(this.nudXSourcePoint_ValueChanged);
             // 
             // nudWidth
             // 
             this.nudWidth.Location = new System.Drawing.Point(109, 19);
+            this.nudWidth.Maximum = new decimal(new int[] {
+            ScreenSize.Width,
+            0,
+            0,
+            0});
             this.nudWidth.Minimum = new decimal(new int[] {
             1,
             0,

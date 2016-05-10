@@ -88,6 +88,7 @@
             this.btnSaveFeed.TabIndex = 3;
             this.btnSaveFeed.Text = "Save";
             this.btnSaveFeed.UseVisualStyleBackColor = true;
+            this.btnSaveFeed.Click += new System.EventHandler(this.btnSaveFeed_Click);
             // 
             // frmFeed
             // 

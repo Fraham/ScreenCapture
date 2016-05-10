@@ -32,6 +32,7 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
+            this.fbdFeedSaver = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.picFeed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +87,7 @@
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.picFeed);
-            this.MinimumSize = new System.Drawing.Size(20, 38);
+            this.MinimumSize = new System.Drawing.Size(20, 39);
             this.Name = "frmFeed";
             this.Text = "Feed";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmFeed_FormClosing);
@@ -101,5 +102,6 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.FolderBrowserDialog fbdFeedSaver;
     }
 }

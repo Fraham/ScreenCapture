@@ -14,7 +14,7 @@ namespace ScreenCapture
     {
         #region Class Variables
 
-        private Options.Options  usersOptions;
+        private Options.Options usersOptions;
 
         #endregion Class Variables
 
@@ -47,12 +47,12 @@ namespace ScreenCapture
             catch (FileNotFoundException ex)
             {
                 Console.WriteLine("The file was not found. " + ex.ToString());
-                UsersOptions = new Options.Options ();
+                UsersOptions = new Options.Options();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Unable to load file - " + ex.ToString());
-                UsersOptions = new Options.Options ();
+                UsersOptions = new Options.Options();
             }
         }
 
@@ -85,13 +85,13 @@ namespace ScreenCapture
         /// <summary>
         /// Holds all the options for the capture
         /// </summary>
-        public Options.Options  UsersOptions
+        public Options.Options UsersOptions
         {
             get
             {
                 if (usersOptions == null)
                 {
-                    return new Options.Options ();
+                    return new Options.Options();
                 }
 
                 return usersOptions;

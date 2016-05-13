@@ -182,44 +182,39 @@ namespace ScreenCapture
         /// </summary>
         public void DoCapture()
         {
-            try
+
+            while (true)
             {
-                while (true)
-                {
-                    _pauseEvent.WaitOne(Timeout.Infinite);
+                _pauseEvent.WaitOne(Timeout.Infinite);
 
-                    if (_shutdownEvent.WaitOne(0))
-                        break;
+                if (_shutdownEvent.WaitOne(0))
+                    break;
 
-                    /*
-                     * Creates a new bitmap with the width and height of the primary screen (the one with the task-bar).
-                     * Then it will create a graphics from the new bitmap.
-                     */
-                    Bitmap image = new Bitmap(CaptureOptions.Width, CaptureOptions.Height);
-                    Graphics graphics = Graphics.FromImage(image);
+                /*
+                 * Creates a new bitmap with the width and height of the primary screen (the one with the task-bar).
+                 * Then it will create a graphics from the new bitmap.
+                 */
+                Bitmap image = new Bitmap(CaptureOptions.Width, CaptureOptions.Height);
+                Graphics graphics = Graphics.FromImage(image);
 
-                    /*
-                     * Copy the graphics from the screen for the whole screen.
-                     * Then it will set the created bitmap image to the picture box.
-                     */
-                    graphics.CopyFromScreen(CaptureOptions.SourcePoint, Point.Empty, new Size(CaptureOptions.Width, CaptureOptions.Height));
+                /*
+                 * Copy the graphics from the screen for the whole screen.
+                 * Then it will set the created bitmap image to the picture box.
+                 */
+                graphics.CopyFromScreen(CaptureOptions.SourcePoint, Point.Empty, new Size(CaptureOptions.Width, CaptureOptions.Height));
 
-                    graphics.Dispose();
+                graphics.Dispose();
 
-                    PicBox.Image = image;
+                PicBox.Image = image;
 
-                    ThreadPool.QueueUserWorkItem(saveFeedImages, new ImageSaverThread(Path, image.Clone() as Bitmap, Frames));
+                ThreadPool.QueueUserWorkItem(saveFeedImages, new ImageSaverThread(Path, image.Clone() as Bitmap, Frames));
 
-                    saveFeedImages(new ImageSaverThread(Path, image.Clone() as Bitmap, Frames));
+                saveFeedImages(new ImageSaverThread(Path, image.Clone() as Bitmap, Frames));
 
-                    frames++;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
+                frames++;
             }
         }
+        
 
         #endregion Capture
 
@@ -377,7 +372,7 @@ namespace ScreenCapture
         /// thread pool to allow for execution of saving while still capturing.
         /// </summary>
         /// <param name="objectRef">The ImagerSaverThread is used.</param>
-        public void saveFeedImages(Object objectRef)
+        public void saveFeedImages(object objectRef)
         {
             ImageSaverThread threaData = objectRef as ImageSaverThread;
 
@@ -391,7 +386,7 @@ namespace ScreenCapture
                 threaData.FolderPath += @"\";
             }
 
-            threaData.ImageToSave.Save(String.Format("{0}image{1}.jpeg", threaData.FolderPath, threaData.FrameNumber));
+            threaData.ImageToSave.Save(string.Format("{0}image{1}.jpeg", threaData.FolderPath, threaData.FrameNumber));
 
             threaData.ImageToSave.Dispose();
         }

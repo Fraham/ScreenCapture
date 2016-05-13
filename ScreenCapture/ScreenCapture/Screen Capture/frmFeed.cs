@@ -8,25 +8,6 @@ namespace ScreenCapture.ScreenCapture
         private CaptureWorker feedWorker;
         private Options.Options usersOptions;
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="usersOptions"></param>
-        public frmFeed(Options.Options usersOptions)
-        {
-            InitializeComponent();
-
-            this.UsersOptions = usersOptions;
-
-            this.UsersOptions = usersOptions;
-
-            DialogResult result = fbdFeedSaver.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                FeedWorker = new CaptureWorker(this.UsersOptions, this.picFeed, fbdFeedSaver.SelectedPath);
-            }
-        }
-
         public frmFeed(Options.Options usersOptions, string path)
         {
             InitializeComponent();

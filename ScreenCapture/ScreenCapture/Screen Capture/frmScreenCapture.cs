@@ -235,7 +235,7 @@ namespace ScreenCapture
         private void openOptionsForm()
         {
             frmOptions frmO = new frmOptions(UsersOptions);
-            if (frmO.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (frmO.ShowDialog() == DialogResult.OK)
             {
                 UsersOptions = frmO.UsersOptions;
             }

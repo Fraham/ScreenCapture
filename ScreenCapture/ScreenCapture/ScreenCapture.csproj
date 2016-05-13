@@ -79,6 +79,7 @@
     <Compile Include="Screen Capture\frmScreenshot.Designer.cs">
       <DependentUpon>frmScreenshot.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screen Capture\ImageSaverThread.cs" />
     <Compile Include="Screen Capture\Screenshot.cs" />
     <Compile Include="ScreenSize.cs" />
     <EmbeddedResource Include="Options\frmOptions.resx">

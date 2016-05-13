@@ -21,6 +21,8 @@ namespace ScreenCapture
         private bool capturing = false;
         private Stopwatch captureTime;
 
+        //private ThreadPool savingThreadPool;
+
         //private string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"ScreenCapture\Feed");
         private string path;
 
@@ -217,6 +219,8 @@ namespace ScreenCapture
 
                     PicBox.Image = image;
 
+                    ThreadPool.QueueUserWorkItem(saveFeedImages, new ImageSaverThread(Path, image.Clone() as Bitmap, Frames));
+
                     saveFeedImages(new ImageSaverThread(Path, image.Clone() as Bitmap, Frames));
 
                     frames++;
@@ -366,9 +370,9 @@ namespace ScreenCapture
                 {
                     throw new ArgumentNullException("The path is null");
                 }
-                if (!Directory.Exists(path))
+                if (!Directory.Exists(value))
                 {
-                    Directory.CreateDirectory(path);
+                    Directory.CreateDirectory(value);
                 }
 
                 path = value;
@@ -377,8 +381,10 @@ namespace ScreenCapture
 
         #endregion Properties
 
-        public void saveFeedImages(ImageSaverThread ist)
+        public void saveFeedImages(Object objectRef)
         {
+            ImageSaverThread ist = objectRef as ImageSaverThread;
+             
             if (!Directory.Exists(ist.FolderPath))
             {
                 Directory.CreateDirectory(ist.FolderPath);

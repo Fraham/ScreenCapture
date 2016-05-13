@@ -21,9 +21,6 @@ namespace ScreenCapture
         private bool capturing = false;
         private Stopwatch captureTime;
 
-        //private ThreadPool savingThreadPool;
-
-        //private string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"ScreenCapture\Feed");
         private string path;
 
         #endregion Class Variables
@@ -31,8 +28,8 @@ namespace ScreenCapture
         #region Constructors
 
         /// <summary>
-        /// Makes a new instance of a capture worker.
-        /// It will capture an area from the source point to the set width and height.
+        /// Makes a new instance of a capture worker. It will capture an area from the source point
+        /// to the set width and height.
         /// </summary>
         /// <param name="captureWidth">The width of capture area.</param>
         /// <param name="captureHeight">The height of capture area.</param>
@@ -48,8 +45,8 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Makes a new instance of a capture worker.
-        /// It will capture an area from (0, 0) to the set width and height.
+        /// Makes a new instance of a capture worker. It will capture an area from (0, 0) to the set
+        /// width and height.
         /// </summary>
         /// <param name="captureWidth">The width of capture area.</param>
         /// <param name="captureHeight">The height of capture area.</param>
@@ -64,8 +61,8 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Makes a new instance of a capture worker.
-        /// It will capture an area from the set x and y to the set width and height.
+        /// Makes a new instance of a capture worker. It will capture an area from the set x and y to
+        /// the set width and height.
         /// </summary>
         /// <param name="captureWidth">The width of capture area.</param>
         /// <param name="captureHeight">The height of capture area.</param>
@@ -82,9 +79,8 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Makes a new instance of a capture worker
-        /// It will set the height and width of the capture to the full area of displays.
-        /// It will be able to capture the screen over multiple displays.
+        /// Makes a new instance of a capture worker It will set the height and width of the capture
+        /// to the full area of displays. It will be able to capture the screen over multiple displays.
         /// </summary>
         /// <param name="picBox">The picture box being used to display the capture.</param>
         public CaptureWorker(PictureBox picBox, string path)
@@ -97,8 +93,7 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Makes a new instance of a capture worker
-        /// It will capture an area using the options provided.
+        /// Makes a new instance of a capture worker It will capture an area using the options provided.
         /// </summary>
         /// <param name="options">The options for the capture.</param>
         /// <param name="picBox">The picture box being used to display the capture.</param>
@@ -115,8 +110,7 @@ namespace ScreenCapture
         #region Threading
 
         /// <summary>
-        /// This will pause the thread from running.
-        /// It can be resumed by using Resume function.
+        /// This will pause the thread from running. It can be resumed by using Resume function.
         /// </summary>
         public void Pause()
         {
@@ -152,9 +146,8 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// This will completely stop the running thread.
-        /// It will allow for the currently paused thread to resume again.
-        /// It will allow the current thread to finish a loop around before stopping.
+        /// This will completely stop the running thread. It will allow for the currently paused
+        /// thread to resume again. It will allow the current thread to finish a loop around before stopping.
         /// </summary>
         public void Stop()
         {
@@ -180,11 +173,12 @@ namespace ScreenCapture
         #region Capture
 
         /// <summary>
-        /// This will run the capture code until the signal to stop the thread.
-        /// The call comes form the global variable shouldStop which can be changed to false by calling RequestStop.
-        /// Once the request to stop the thread is made it will finish until the end of the current thread and then it will stop looping.
-        /// The capture uses the global variables CaptureWidth and CaptureHeight as the width and height of the capture.
-        /// It will display the capture on the picture box that was used when creating the new class.
+        /// This will run the capture code until the signal to stop the thread. The call comes form
+        /// the global variable shouldStop which can be changed to false by calling RequestStop. Once
+        /// the request to stop the thread is made it will finish until the end of the current thread
+        /// and then it will stop looping. The capture uses the global variables CaptureWidth and
+        /// CaptureHeight as the width and height of the capture. It will display the capture on the
+        /// picture box that was used when creating the new class.
         /// </summary>
         public void DoCapture()
         {
@@ -212,11 +206,6 @@ namespace ScreenCapture
 
                     graphics.Dispose();
 
-                    /*if (PicBox.Image != null)
-                    {
-                        PicBox.Image.Dispose();
-                    }*/
-
                     PicBox.Image = image;
 
                     ThreadPool.QueueUserWorkItem(saveFeedImages, new ImageSaverThread(Path, image.Clone() as Bitmap, Frames));
@@ -237,8 +226,7 @@ namespace ScreenCapture
         #region Properties
 
         /// <summary>
-        /// Getter and Setter for the capture options.
-        /// This holds all the information needed for the capture.
+        /// Getter and Setter for the capture options. This holds all the information needed for the capture.
         /// </summary>
         public Options.Options CaptureOptions
         {
@@ -253,8 +241,8 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Getter and Setter for the frames variable.
-        /// The variable is used to count the amount of frames processed.
+        /// Getter and Setter for the frames variable. The variable is used to count the amount of
+        /// frames processed.
         /// </summary>
         public int Frames
         {
@@ -269,8 +257,7 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Getter and Setter for picture box.
-        /// When setting the value for the picture box must not be null.
+        /// Getter and Setter for picture box. When setting the value for the picture box must not be null.
         /// </summary>
         public PictureBox PicBox
         {
@@ -294,8 +281,8 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Getter and Setter for the started variable.
-        /// The variable is boolean so can only be true or false.
+        /// Getter and Setter for the started variable. The variable is boolean so can only be true
+        /// or false.
         /// </summary>
         public bool Started
         {
@@ -310,8 +297,8 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Getter and Setter for the capturing variable.
-        /// The variable is boolean so can only be true or false.
+        /// Getter and Setter for the capturing variable. The variable is boolean so can only be true
+        /// or false.
         /// </summary>
         public bool Capturing
         {
@@ -326,8 +313,8 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Getter and Setter for capture time.
-        /// When setting the value for the capture time must not be null.
+        /// Getter and Setter for capture time. When setting the value for the capture time must not
+        /// be null.
         /// </summary>
         public Stopwatch CaptureTime
         {
@@ -357,6 +344,10 @@ namespace ScreenCapture
             }
         }
 
+        /// <summary>
+        /// The path variable were the feed images will be saved. If the path is null is it throw an
+        /// ArgumentNullException. If the path does not exist then it will create it.
+        /// </summary>
         public string Path
         {
             get
@@ -381,10 +372,15 @@ namespace ScreenCapture
 
         #endregion Properties
 
+        /// <summary>
+        /// Will save an image to file. Used in the feed to save the captured images. It is part of a
+        /// thread pool to allow for execution of saving while still capturing.
+        /// </summary>
+        /// <param name="objectRef">The ImagerSaverThread is used.</param>
         public void saveFeedImages(Object objectRef)
         {
             ImageSaverThread ist = objectRef as ImageSaverThread;
-             
+
             if (!Directory.Exists(ist.FolderPath))
             {
                 Directory.CreateDirectory(ist.FolderPath);
@@ -395,7 +391,7 @@ namespace ScreenCapture
                 ist.FolderPath += @"\";
             }
 
-            ist.ImageToSave.Save(String.Format("{0}image{1}.jpeg", ist.FolderPath, ist.FrameNumber) );
+            ist.ImageToSave.Save(String.Format("{0}image{1}.jpeg", ist.FolderPath, ist.FrameNumber));
 
             ist.ImageToSave.Dispose();
         }

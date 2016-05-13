@@ -217,7 +217,7 @@ namespace ScreenCapture
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex);
+                Console.WriteLine(ex);
             }
         }
 
@@ -232,11 +232,11 @@ namespace ScreenCapture
         {
             get
             {
-                return this.options;
+                return options;
             }
             set
             {
-                this.options = value;
+                options = value;
             }
         }
 
@@ -263,13 +263,13 @@ namespace ScreenCapture
         {
             get
             {
-                return this.picBox;
+                return picBox;
             }
             set
             {
                 if (value == null)
                 {
-                    System.Console.WriteLine("Null picture box.");
+                    Console.WriteLine("Null picture box.");
 
                     picBox = new PictureBox();
                 }
@@ -379,21 +379,21 @@ namespace ScreenCapture
         /// <param name="objectRef">The ImagerSaverThread is used.</param>
         public void saveFeedImages(Object objectRef)
         {
-            ImageSaverThread ist = objectRef as ImageSaverThread;
+            ImageSaverThread threaData = objectRef as ImageSaverThread;
 
-            if (!Directory.Exists(ist.FolderPath))
+            if (!Directory.Exists(threaData.FolderPath))
             {
-                Directory.CreateDirectory(ist.FolderPath);
+                Directory.CreateDirectory(threaData.FolderPath);
             }
 
-            if (!ist.FolderPath.ToLower().EndsWith(@"\"))
+            if (!threaData.FolderPath.ToLower().EndsWith(@"\"))
             {
-                ist.FolderPath += @"\";
+                threaData.FolderPath += @"\";
             }
 
-            ist.ImageToSave.Save(String.Format("{0}image{1}.jpeg", ist.FolderPath, ist.FrameNumber));
+            threaData.ImageToSave.Save(String.Format("{0}image{1}.jpeg", threaData.FolderPath, threaData.FrameNumber));
 
-            ist.ImageToSave.Dispose();
+            threaData.ImageToSave.Dispose();
         }
     }
 }

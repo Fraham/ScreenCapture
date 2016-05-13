@@ -217,7 +217,7 @@ namespace ScreenCapture
 
                     PicBox.Image = image;
 
-                    saveFeedImages(Path, image.Clone() as Bitmap, Frames);
+                    saveFeedImages(new ImageSaverThread(Path, image.Clone() as Bitmap, Frames));
 
                     frames++;
                 }
@@ -377,21 +377,21 @@ namespace ScreenCapture
 
         #endregion Properties
 
-        public void saveFeedImages(string folderPath, Bitmap imageToSave, int frameNumber)
+        public void saveFeedImages(ImageSaverThread ist)
         {
-            if (!Directory.Exists(folderPath))
+            if (!Directory.Exists(ist.FolderPath))
             {
-                Directory.CreateDirectory(folderPath);
+                Directory.CreateDirectory(ist.FolderPath);
             }
 
-            if (!folderPath.ToLower().EndsWith(@"\"))
+            if (!ist.FolderPath.ToLower().EndsWith(@"\"))
             {
-                folderPath += @"\";
+                ist.FolderPath += @"\";
             }
 
-            imageToSave.Save(String.Format("{0}image{1}.jpeg", folderPath, frameNumber) );
+            ist.ImageToSave.Save(String.Format("{0}image{1}.jpeg", ist.FolderPath, ist.FrameNumber) );
 
-            imageToSave.Dispose();
+            ist.ImageToSave.Dispose();
         }
     }
 }

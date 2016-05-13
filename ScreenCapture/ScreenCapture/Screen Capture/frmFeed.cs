@@ -28,7 +28,11 @@ namespace ScreenCapture.ScreenCapture
 
             this.UsersOptions = usersOptions;
 
-            FeedWorker = new CaptureWorker(this.UsersOptions, this.picFeed);
+            DialogResult result = fbdFeedSaver.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                FeedWorker = new CaptureWorker(this.UsersOptions, this.picFeed, fbdFeedSaver.SelectedPath);
+            }            
         }
 
         /// <summary>

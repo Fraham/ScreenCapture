@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -25,6 +23,7 @@ namespace ScreenCapture
 
         //private string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"ScreenCapture\Feed");
         private string path;
+
         #endregion Class Variables
 
         #region Constructors

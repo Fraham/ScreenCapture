@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace ScreenCapture
 {
@@ -249,7 +248,7 @@ namespace ScreenCapture
 
         #endregion User Capture
 
-        #region Options.Options 
+        #region Options.Options
 
         /// <summary>
         /// Loads the options from UserOptions into the right control.
@@ -275,12 +274,14 @@ namespace ScreenCapture
         /// Gets the capture information from the form and creates, returns a new Options.Options.
         /// </summary>
         /// <returns></returns>
-        private Options.Options  MakeOptions()
+        private Options.Options MakeOptions()
         {
             return UsersOptions = new Options.Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
         }
 
-        #endregion Options.Options 
+        #endregion Options.Options
+
+
 
         private void cmbNumberOfScreens_SelectedIndexChanged(object sender, EventArgs e)
         {

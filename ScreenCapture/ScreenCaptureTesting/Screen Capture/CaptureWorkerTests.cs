@@ -1,12 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ScreenCapture;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace ScreenCapture.Tests
 {
@@ -19,7 +13,7 @@ namespace ScreenCapture.Tests
         [TestInitialize()]
         public void Initialize()
         {
-            capture = new CaptureWorker(new Options.Options(100, 100, new Point(3, 4)), new System.Windows.Forms.PictureBox());
+            capture = new CaptureWorker(new Options.Options(100, 100, new Point(3, 4)), new System.Windows.Forms.PictureBox(), @"C:\\");
         }
 
         [TestMethod()]

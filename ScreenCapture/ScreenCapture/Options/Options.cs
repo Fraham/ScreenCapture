@@ -233,7 +233,7 @@ namespace ScreenCapture.Options
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="filePath"></param>
         private void SaveFile(string filePath)
@@ -259,7 +259,7 @@ namespace ScreenCapture.Options
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         /// <exception cref="FileNotFoundException"></exception>
@@ -271,7 +271,7 @@ namespace ScreenCapture.Options
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         /// <exception cref="FileNotFoundException"></exception>

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 /*
  * Things to do:
- * 
+ *
  * taking a screenshot and then opening and closing the options will start the capture.
  */
 
@@ -33,7 +33,7 @@ namespace ScreenCapture
 
         #endregion Constructor
 
-        #region Loading and Saving Options.Options 
+        #region Loading and Saving Options.Options
 
         /// <summary>
         /// It will load the options from an XML file.
@@ -64,7 +64,7 @@ namespace ScreenCapture
             UsersOptions.Save();
         }
 
-        #endregion Loading and Saving Options.Options 
+        #endregion Loading and Saving Options.Options
 
         #region Form CLosing
 
@@ -149,14 +149,14 @@ namespace ScreenCapture
 
         #endregion Screenshot
 
-        #region Options.Options 
+        #region Options.Options
 
         private void mnsScreenCaptureOptions_Click(object sender, EventArgs e)
         {
             openOptionsForm();
         }
 
-        #endregion Options.Options 
+        #endregion Options.Options
 
         #endregion Menu Strip
 

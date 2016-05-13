@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Windows.Forms;
 using System.Drawing.Printing;
-using System.IO;
-using System.Threading;
+using System.Windows.Forms;
 
 namespace ScreenCapture
 {
@@ -47,7 +45,7 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Capture()
         {
@@ -84,7 +82,7 @@ namespace ScreenCapture
                 fileName += ".jpeg";
             }
 
-            Image.Save(fileName, ImageFormat.Jpeg);     
+            Image.Save(fileName, ImageFormat.Jpeg);
         }
 
         public void Copy()
@@ -106,11 +104,11 @@ namespace ScreenCapture
         {
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += PrintPage;
-            pd.Print(); 
+            pd.Print();
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="o"></param>
         /// <param name="e"></param>
@@ -137,12 +135,12 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Bitmap Image
         {
-            get 
-            { 
+            get
+            {
                 if (image != null)
                 {
                     return image;
@@ -150,15 +148,15 @@ namespace ScreenCapture
                 else
                 {
                     throw new InvalidOperationException("The image has not been set");
-                }                
+                }
             }
-            set 
-            { 
+            set
+            {
                 if (value == null)
                 {
                     throw new InvalidOperationException("The image should not be null.");
                 }
-                image = value; 
+                image = value;
             }
         }
     }

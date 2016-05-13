@@ -389,7 +389,7 @@ namespace ScreenCapture
                 folderPath += @"\";
             }
 
-            imageToSave.Save(folderPath + @"image" + frameNumber + ".jpeg");
+            imageToSave.Save(String.Format("{0}image{1}.jpeg", folderPath, frameNumber) );
 
             imageToSave.Dispose();
         }

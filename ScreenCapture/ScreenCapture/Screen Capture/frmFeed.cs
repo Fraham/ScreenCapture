@@ -140,7 +140,7 @@ namespace ScreenCapture.ScreenCapture
 
         private void frmFeed_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.FeedWorker.Started)
+            if (this.FeedWorker != null && this.FeedWorker.Started)
             {
                 this.FeedWorker.Stop();
             }
@@ -148,6 +148,10 @@ namespace ScreenCapture.ScreenCapture
 
         private void frmFeed_Load(object sender, EventArgs e)
         {
+            if (this.FeedWorker == null)
+            {
+                this.Close();
+            }
         }
     }
 }

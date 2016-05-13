@@ -243,8 +243,13 @@ namespace ScreenCapture
 
         private void btnLiveFeed_Click(object sender, EventArgs e)
         {
-            ScreenCapture.frmFeed feed = new ScreenCapture.frmFeed(this.UsersOptions);
-            feed.Show();
+            DialogResult result = fbdFeedSaver.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                ScreenCapture.frmFeed feed = new ScreenCapture.frmFeed(this.UsersOptions, fbdFeedSaver.SelectedPath);
+                feed.Show();
+            }
+            
         }
     }
 }

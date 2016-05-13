@@ -362,6 +362,11 @@ namespace ScreenCapture
 
             set
             {
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
                 path = value;
             }
         }

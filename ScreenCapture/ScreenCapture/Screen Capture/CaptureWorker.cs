@@ -42,7 +42,7 @@ namespace ScreenCapture
 
             PicBox = picBox;
 
-            this.path = path;
+            this.Path = path;
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace ScreenCapture
 
             PicBox = picBox;
 
-            this.path = path;
+            this.Path = path;
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace ScreenCapture
 
             PicBox = picBox;
 
-            this.path = path;
+            this.Path = path;
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace ScreenCapture
 
             PicBox = picBox;
 
-            this.path = path;
+            this.Path = path;
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace ScreenCapture
             CaptureOptions = options;
             PicBox = picBox;
 
-            this.path = path;
+            this.Path = path;
         }
 
         #endregion Constructors
@@ -217,7 +217,7 @@ namespace ScreenCapture
 
                     PicBox.Image = image;
 
-                    saveFeedImages(path, image.Clone() as Bitmap, Frames);
+                    saveFeedImages(Path, image.Clone() as Bitmap, Frames);
 
                     frames++;
                 }
@@ -350,6 +350,19 @@ namespace ScreenCapture
                 {
                     captureTime = value;
                 }
+            }
+        }
+
+        public string Path
+        {
+            get
+            {
+                return path;
+            }
+
+            set
+            {
+                path = value;
             }
         }
 

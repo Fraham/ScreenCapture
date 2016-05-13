@@ -362,6 +362,10 @@ namespace ScreenCapture
 
             set
             {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("The path is null");
+                }
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);

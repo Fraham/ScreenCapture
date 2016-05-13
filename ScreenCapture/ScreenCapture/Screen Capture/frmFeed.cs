@@ -27,6 +27,17 @@ namespace ScreenCapture.ScreenCapture
             }
         }
 
+        public frmFeed(Options.Options usersOptions, string path)
+        {
+            InitializeComponent();
+
+            this.UsersOptions = usersOptions;
+
+            this.UsersOptions = usersOptions;
+
+            FeedWorker = new CaptureWorker(this.UsersOptions, this.picFeed, path);
+        }
+
         /// <summary>
         ///
         /// </summary>

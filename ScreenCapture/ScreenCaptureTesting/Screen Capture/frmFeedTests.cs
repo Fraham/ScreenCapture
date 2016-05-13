@@ -18,7 +18,7 @@ namespace ScreenCapture.ScreenCapture.Tests
         [TestInitialize()]
         public void Initialize()
         {
-            feed = new frmFeed(new Options.Options(100, 100, new Point(3, 4)));
+            feed = new frmFeed(new Options.Options(100, 100, new Point(3, 4)), @"\Testing\");
         }
 
         [TestMethod()]

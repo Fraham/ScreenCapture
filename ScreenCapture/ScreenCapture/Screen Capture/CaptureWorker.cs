@@ -201,10 +201,10 @@ namespace ScreenCapture
 
                     graphics.Dispose();
 
-                    if (PicBox.Image != null)
+                    /*if (PicBox.Image != null)
                     {
                         PicBox.Image.Dispose();
-                    }
+                    }*/
 
                     PicBox.Image = image;
 

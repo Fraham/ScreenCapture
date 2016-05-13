@@ -250,7 +250,7 @@
             0,
             0});
             this.nudWidth.Minimum = new decimal(new int[] {
-            1,
+            0,
             0,
             0,
             0});

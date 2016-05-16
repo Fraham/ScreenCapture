@@ -16,7 +16,6 @@ namespace ScreenCapture
         private Thread _thread;
         private int frames = 0;
         private Options.Options options;
-        private PictureBox picBox;
         private bool started = false;
         private bool capturing = false;
         private Stopwatch captureTime;
@@ -35,11 +34,11 @@ namespace ScreenCapture
         /// <param name="captureHeight">The height of capture area.</param>
         /// <param name="picBox">The picture box being used to display the capture.</param>
         /// <param name="sourcePoint">The source point of the capture.</param>
-        public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox, Point sourcePoint, string path)
+        public CaptureWorker(int captureWidth, int captureHeight,  Point sourcePoint, string path)
         {
             CaptureOptions = new Options.Options(captureWidth, captureHeight, sourcePoint);
 
-            PicBox = picBox;
+            
 
             this.Path = path;
         }
@@ -51,11 +50,11 @@ namespace ScreenCapture
         /// <param name="captureWidth">The width of capture area.</param>
         /// <param name="captureHeight">The height of capture area.</param>
         /// <param name="picBox">The picture box being used to display the capture.</param>
-        public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox, string path)
+        public CaptureWorker(int captureWidth, int captureHeight,  string path)
         {
             CaptureOptions = new Options.Options(captureWidth, captureHeight, Point.Empty);
 
-            PicBox = picBox;
+            
 
             this.Path = path;
         }
@@ -69,11 +68,11 @@ namespace ScreenCapture
         /// <param name="picBox">The picture box being used to display the capture.</param>
         /// <param name="x">The x co-ordinate of the source of the source</param>
         /// <param name="y">The y co-ordinate of the source of the source</param>
-        public CaptureWorker(int captureWidth, int captureHeight, PictureBox picBox, int x, int y, string path)
+        public CaptureWorker(int captureWidth, int captureHeight,  int x, int y, string path)
         {
             CaptureOptions = new Options.Options(captureWidth, captureHeight, new Point(x, y));
 
-            PicBox = picBox;
+            
 
             this.Path = path;
         }
@@ -83,11 +82,11 @@ namespace ScreenCapture
         /// to the full area of displays. It will be able to capture the screen over multiple displays.
         /// </summary>
         /// <param name="picBox">The picture box being used to display the capture.</param>
-        public CaptureWorker(PictureBox picBox, string path)
+        public CaptureWorker( string path)
         {
             CaptureOptions = new Options.Options(ScreenSize.Width, ScreenSize.Height, Point.Empty);
 
-            PicBox = picBox;
+            
 
             this.Path = path;
         }
@@ -97,10 +96,10 @@ namespace ScreenCapture
         /// </summary>
         /// <param name="options">The options for the capture.</param>
         /// <param name="picBox">The picture box being used to display the capture.</param>
-        public CaptureWorker(Options.Options options, PictureBox picBox, string path)
+        public CaptureWorker(Options.Options options,  string path)
         {
             CaptureOptions = options;
-            PicBox = picBox;
+            
 
             this.Path = path;
         }
@@ -205,7 +204,7 @@ namespace ScreenCapture
 
                 graphics.Dispose();
 
-                PicBox.Image = image;
+                //PicBox.Image = image;
 
                 ThreadPool.QueueUserWorkItem(saveFeedImages, new ImageSaverThread(Path, image.Clone() as Bitmap, Frames));
 
@@ -248,30 +247,6 @@ namespace ScreenCapture
             set
             {
                 frames = value;
-            }
-        }
-
-        /// <summary>
-        /// Getter and Setter for picture box. When setting the value for the picture box must not be null.
-        /// </summary>
-        public PictureBox PicBox
-        {
-            get
-            {
-                return picBox;
-            }
-            set
-            {
-                if (value == null)
-                {
-                    Console.WriteLine("Null picture box.");
-
-                    picBox = new PictureBox();
-                }
-                else
-                {
-                    picBox = value;
-                }
             }
         }
 

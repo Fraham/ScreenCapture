@@ -16,7 +16,7 @@ namespace ScreenCapture.ScreenCapture
 
             this.UsersOptions = usersOptions;
 
-            FeedWorker = new CaptureWorker(this.UsersOptions, this.picFeed, path);
+            FeedWorker = new CaptureWorker(this.UsersOptions, path);
         }
 
         /// <summary>

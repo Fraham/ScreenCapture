@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 /*
  * Things to do:
- * 
+ *
  * taking a screenshot and then opening and closing the options will start the capture.
  */
 
@@ -14,7 +14,7 @@ namespace ScreenCapture
     {
         #region Class Variables
 
-        private Options.Options  usersOptions;
+        private Options.Options usersOptions;
 
         #endregion Class Variables
 
@@ -33,7 +33,7 @@ namespace ScreenCapture
 
         #endregion Constructor
 
-        #region Loading and Saving Options.Options 
+        #region Loading and Saving Options.Options
 
         /// <summary>
         /// It will load the options from an XML file.
@@ -42,17 +42,17 @@ namespace ScreenCapture
         {
             try
             {
-                UsersOptions = Options.Options .LoadFromFile();
+                UsersOptions = Options.Options.LoadFromFile();
             }
             catch (FileNotFoundException ex)
             {
                 Console.WriteLine("The file was not found. " + ex.ToString());
-                UsersOptions = new Options.Options ();
+                UsersOptions = new Options.Options();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Unable to load file - " + ex.ToString());
-                UsersOptions = new Options.Options ();
+                UsersOptions = new Options.Options();
             }
         }
 
@@ -64,7 +64,7 @@ namespace ScreenCapture
             UsersOptions.Save();
         }
 
-        #endregion Loading and Saving Options.Options 
+        #endregion Loading and Saving Options.Options
 
         #region Form CLosing
 
@@ -85,13 +85,13 @@ namespace ScreenCapture
         /// <summary>
         /// Holds all the options for the capture
         /// </summary>
-        public Options.Options  UsersOptions
+        public Options.Options UsersOptions
         {
             get
             {
                 if (usersOptions == null)
                 {
-                    return new Options.Options ();
+                    return new Options.Options();
                 }
 
                 return usersOptions;
@@ -149,14 +149,14 @@ namespace ScreenCapture
 
         #endregion Screenshot
 
-        #region Options.Options 
+        #region Options.Options
 
         private void mnsScreenCaptureOptions_Click(object sender, EventArgs e)
         {
             openOptionsForm();
         }
 
-        #endregion Options.Options 
+        #endregion Options.Options
 
         #endregion Menu Strip
 
@@ -235,7 +235,7 @@ namespace ScreenCapture
         private void openOptionsForm()
         {
             frmOptions frmO = new frmOptions(UsersOptions);
-            if (frmO.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (frmO.ShowDialog() == DialogResult.OK)
             {
                 UsersOptions = frmO.UsersOptions;
             }
@@ -243,8 +243,13 @@ namespace ScreenCapture
 
         private void btnLiveFeed_Click(object sender, EventArgs e)
         {
-            ScreenCapture.frmFeed feed = new ScreenCapture.frmFeed(this.UsersOptions);
-            feed.Show();
+            DialogResult result = fbdFeedSaver.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                ScreenCapture.frmFeed feed = new ScreenCapture.frmFeed(this.UsersOptions, fbdFeedSaver.SelectedPath);
+                feed.Show();
+            }
+            
         }
     }
 }

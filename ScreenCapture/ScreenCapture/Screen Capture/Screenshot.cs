@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Windows.Forms;
 using System.Drawing.Printing;
-using System.IO;
-using System.Threading;
+using System.Windows.Forms;
 
 namespace ScreenCapture
 {
     public class Screenshot
     {
-        private Options.Options  options;
+        private Options.Options options;
         private Bitmap image;
 
         /// <summary>
@@ -22,7 +20,7 @@ namespace ScreenCapture
         /// <param name="sourcePoint">The source point of the capture.</param>
         public Screenshot(int captureWidth, int captureHeight, Point sourcePoint)
         {
-            CaptureOptions = new Options.Options (captureWidth, captureHeight, sourcePoint);
+            CaptureOptions = new Options.Options(captureWidth, captureHeight, sourcePoint);
         }
 
         /// <summary>
@@ -33,16 +31,21 @@ namespace ScreenCapture
         /// <param name="captureHeight">The height of capture area.</param>
         public Screenshot(int captureWidth, int captureHeight)
         {
-            CaptureOptions = new Options.Options (captureWidth, captureHeight, Point.Empty);
+            CaptureOptions = new Options.Options(captureWidth, captureHeight, Point.Empty);
         }
 
-        public Screenshot(Options.Options  options)
+        public Screenshot(Options.Options options)
         {
             CaptureOptions = options;
         }
 
+        public Screenshot(Bitmap image)
+        {
+            Image = image;
+        }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Capture()
         {
@@ -61,27 +64,25 @@ namespace ScreenCapture
 
             graphics.Dispose();
         }
-        
+
         public void Save()
         {
-            try
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "JPEG File | *.jpeg";
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
-                SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "JPEG File | *.jpeg";
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    Image.Save(dialog.FileName, ImageFormat.Jpeg);
-                }
-            }
-            catch
-            {
-                throw;
+                Save(dialog.FileName);
             }
         }
 
         public void Save(string fileName)
         {
-            Image.Save(fileName, ImageFormat.Jpeg);            
+            if (!(fileName.ToLower().EndsWith(".jpeg")))
+            {
+                fileName += ".jpeg";
+            }
+
+            Image.Save(fileName, ImageFormat.Jpeg);
         }
 
         public void Copy()
@@ -103,11 +104,11 @@ namespace ScreenCapture
         {
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += PrintPage;
-            pd.Print(); 
+            pd.Print();
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="o"></param>
         /// <param name="e"></param>
@@ -121,7 +122,7 @@ namespace ScreenCapture
         /// Getter and Setter for the capture options.
         /// This holds all the information needed for the capture.
         /// </summary>
-        public Options.Options  CaptureOptions
+        public Options.Options CaptureOptions
         {
             get
             {
@@ -134,12 +135,12 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Bitmap Image
         {
-            get 
-            { 
+            get
+            {
                 if (image != null)
                 {
                     return image;
@@ -147,15 +148,15 @@ namespace ScreenCapture
                 else
                 {
                     throw new InvalidOperationException("The image has not been set");
-                }                
+                }
             }
-            set 
-            { 
+            set
+            {
                 if (value == null)
                 {
                     throw new InvalidOperationException("The image should not be null.");
                 }
-                image = value; 
+                image = value;
             }
         }
     }

@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using ScreenCapture.Options;
 
 namespace ScreenCapture
 {
@@ -13,7 +14,8 @@ namespace ScreenCapture
         private frmUserCaptureArea frmUCA = null;
         private int maxHeight;
         private int maxWidth;
-        private Options.Options  usersOptions;
+        private Options.Options usersOptions;
+
         private bool loading = false;
 
         #endregion Class Variables
@@ -21,10 +23,10 @@ namespace ScreenCapture
         #region Constructor
 
         /// <summary>
-        /// Makes a new instance of a Options.Options .Options.Options  menu form.
+        /// Makes a new instance of a Options.Options.Options.Options menu form.
         /// </summary>
         /// <param name="options">The options that are currently doing run.</param>
-        public frmOptions(Options.Options  options)
+        public frmOptions(Options.Options options)
         {
             UsersOptions = options;
             InitializeComponent();
@@ -56,7 +58,7 @@ namespace ScreenCapture
             {
                 if (radFullScreen.Checked)
                 {
-                    UsersOptions = new Options.Options ();
+                    UsersOptions = new Options.Options();
                 }
                 else
                 {
@@ -112,7 +114,7 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void frmOptions_Load(object sender, EventArgs e)
         {
-            nudWidth.Maximum = ScreenSize.Width;
+            /*nudWidth.Maximum = ScreenSize.Width;
             nudHeight.Maximum = ScreenSize.Height;
 
             nudXSourcePoint.Maximum = ScreenSize.Width;
@@ -120,7 +122,7 @@ namespace ScreenCapture
 
             nudXSourcePoint.Minimum = ScreenSize.TopLeftPoint.X;
             nudYSourcePoint.Minimum = ScreenSize.TopLeftPoint.Y;
-
+            */
             maxWidth = ScreenSize.Width;
             maxHeight = ScreenSize.Height;
 
@@ -175,7 +177,7 @@ namespace ScreenCapture
         /// <summary>
         /// Holds all the options for the capture
         /// </summary>
-        public Options.Options  UsersOptions
+        public Options.Options UsersOptions
         {
             get
             {
@@ -249,7 +251,7 @@ namespace ScreenCapture
 
         #endregion User Capture
 
-        #region Options.Options 
+        #region Options.Options
 
         /// <summary>
         /// Loads the options from UserOptions into the right control.
@@ -272,15 +274,17 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Gets the capture information from the form and creates, returns a new Options.Options .
+        /// Gets the capture information from the form and creates, returns a new Options.Options.
         /// </summary>
         /// <returns></returns>
-        private Options.Options   MakeOptions()
+        private Options.Options MakeOptions()
         {
-            return UsersOptions = new Options.Options ((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
+            return UsersOptions = new Options.Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
         }
 
-        #endregion Options.Options 
+        #endregion Options.Options
+
+
 
         private void cmbNumberOfScreens_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -35,6 +35,7 @@
             this.mnsScreenCaptureCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsScreenCaptureOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsScreenCapture = new System.Windows.Forms.MenuStrip();
+            this.fbdFeedSaver = new System.Windows.Forms.FolderBrowserDialog();
             this.mnsScreenCapture.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -126,6 +127,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnsScreenCaptureCopy;
         private System.Windows.Forms.ToolStripMenuItem mnsScreenCaptureOptions;
         private System.Windows.Forms.MenuStrip mnsScreenCapture;
+        private System.Windows.Forms.FolderBrowserDialog fbdFeedSaver;
     }
 }
 

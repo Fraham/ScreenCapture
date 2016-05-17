@@ -12,8 +12,8 @@ C:\Users\Graham\Desktop\GitHub\ScreenCapture\ScreenCapture\ScreenCapture\bin\Deb
 C:\Users\Graham\Desktop\GitHub\ScreenCapture\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.exe
 C:\Users\Graham\Desktop\GitHub\ScreenCapture\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.pdb
 C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\bin\Debug\ScreenCapture.exe.config
-C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\bin\Debug\ScreenCapture.exe
-C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\bin\Debug\ScreenCapture.pdb
+C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.exe
+C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.pdb
 C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.csprojResolveAssemblyReference.cache
 C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.frmOptions.resources
 C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.frmUserCaptureArea.resources
@@ -22,5 +22,5 @@ C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\
 C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.Properties.Resources.resources
 C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.frmScreenshot.resources
 C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.csproj.GenerateResource.Cache
-C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.exe
-C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.pdb
+C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\bin\Debug\ScreenCapture.exe
+C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCapture\bin\Debug\ScreenCapture.pdb

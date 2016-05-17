@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+using ScreenCapture.Options;
 
 namespace ScreenCapture
 {
@@ -13,6 +15,7 @@ namespace ScreenCapture
         private int maxHeight;
         private int maxWidth;
         private Options.Options usersOptions;
+
         private bool loading = false;
 
         #endregion Class Variables

@@ -68,10 +68,9 @@ namespace ScreenCapture.Options
             {
                 return name;
             }
-
             set
             {
-                name = value;
+                name = (value == null || value.Equals("")) ? "null" : value;
             }
         }
 

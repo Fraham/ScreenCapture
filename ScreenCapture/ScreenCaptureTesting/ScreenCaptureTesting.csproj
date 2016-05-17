@@ -60,6 +60,7 @@
     <Compile Include="Screen Capture\frmScreenCaptureTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screen Capture\frmScreenshotTests.cs" />
+    <Compile Include="Screen Capture\ImageSaverThreadTests.cs" />
     <Compile Include="Screen Capture\ScreenshotTests.cs" />
   </ItemGroup>
   <ItemGroup>

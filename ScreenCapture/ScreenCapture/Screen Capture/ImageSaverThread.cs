@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +27,21 @@ namespace ScreenCapture
             {
                 return folderPath;
             }
-
             set
             {
-                folderPath = value;
+                if (!(new Uri(value)).IsWellFormedOriginalString())
+                {
+                    if (!Directory.Exists(value))
+                    {
+                        Directory.CreateDirectory(value);
+                    }
+
+                    folderPath = value;
+                }
+                else
+                {
+                    throw new FileNotFoundException("Folder not valid " + value);
+                }                
             }
         }
 
@@ -55,6 +67,11 @@ namespace ScreenCapture
 
             set
             {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Frame number has to be greater than zero");
+                }
+
                 frameNumber = value;
             }
         }

@@ -16,10 +16,11 @@ namespace ScreenCapture.Tests
 
         private ImageSaverThread ist;
 
+        private Screenshot sh = new Screenshot(100, 100);
+
         [TestInitialize()]
         public void Initialize()
-        {
-            Screenshot sh = new Screenshot(100, 100);
+        {            
             sh.Capture();
             
             ist = new ImageSaverThread(@"C:\Users\Graham\Desktop\test", sh.Image, 1);
@@ -38,7 +39,7 @@ namespace ScreenCapture.Tests
         [TestMethod()]
         public void ImageSaverThreadImage()
         {
-
+            Assert.AreEqual(sh.Image, ist.ImageToSave);
         }
 
         [TestMethod()]

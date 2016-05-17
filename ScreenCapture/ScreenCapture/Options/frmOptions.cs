@@ -23,7 +23,7 @@ namespace ScreenCapture
         #region Constructor
 
         /// <summary>
-        /// Makes a new instance of a Options.Options .Options.Options  menu form.
+        /// Makes a new instance of a Options.Options.Options.Options menu form.
         /// </summary>
         /// <param name="options">The options that are currently doing run.</param>
         public frmOptions(Options.Options options)
@@ -251,7 +251,7 @@ namespace ScreenCapture
 
         #endregion User Capture
 
-        #region Options.Options 
+        #region Options.Options
 
         /// <summary>
         /// Loads the options from UserOptions into the right control.
@@ -274,7 +274,7 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Gets the capture information from the form and creates, returns a new Options.Options .
+        /// Gets the capture information from the form and creates, returns a new Options.Options.
         /// </summary>
         /// <returns></returns>
         private Options.Options MakeOptions()
@@ -282,7 +282,9 @@ namespace ScreenCapture
             return UsersOptions = new Options.Options((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
         }
 
-        #endregion Options.Options 
+        #endregion Options.Options
+
+
 
         private void cmbNumberOfScreens_SelectedIndexChanged(object sender, EventArgs e)
         {

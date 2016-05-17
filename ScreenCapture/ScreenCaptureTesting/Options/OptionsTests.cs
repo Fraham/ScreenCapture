@@ -15,8 +15,8 @@ namespace ScreenCapture.Tests
         [TestInitialize()]
         public void Initialize()
         {
-            option1 = new Options.Options (100, 100, new Point(3, 4));
-            option2 = new Options.Options (200, 100, new Point(3, 4));
+            option1 = new Options.Options(100, 100, new Point(3, 4));
+            option2 = new Options.Options(200, 100, new Point(3, 4));
         }
 
         [TestMethod()]

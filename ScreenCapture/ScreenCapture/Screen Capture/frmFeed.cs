@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ScreenCapture.ScreenCapture
@@ -15,11 +8,7 @@ namespace ScreenCapture.ScreenCapture
         private CaptureWorker feedWorker;
         private Options.Options usersOptions;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="usersOptions"></param>
-        public frmFeed(Options.Options usersOptions)
+        public frmFeed(Options.Options usersOptions, string path)
         {
             InitializeComponent();
 
@@ -27,11 +16,11 @@ namespace ScreenCapture.ScreenCapture
 
             this.UsersOptions = usersOptions;
 
-            FeedWorker = new CaptureWorker(this.UsersOptions, this.picFeed);
+            FeedWorker = new CaptureWorker(this.UsersOptions, path);
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -41,7 +30,7 @@ namespace ScreenCapture.ScreenCapture
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -51,7 +40,7 @@ namespace ScreenCapture.ScreenCapture
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -61,7 +50,7 @@ namespace ScreenCapture.ScreenCapture
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void startFeed()
         {
@@ -69,14 +58,15 @@ namespace ScreenCapture.ScreenCapture
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void resumeFeed()
         {
             this.FeedWorker.Resume();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void pauseFeed()
         {
@@ -84,7 +74,7 @@ namespace ScreenCapture.ScreenCapture
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void stopFeed()
         {
@@ -92,7 +82,6 @@ namespace ScreenCapture.ScreenCapture
 
             Console.WriteLine("Elapsed Time: " + this.FeedWorker.CaptureTime.Elapsed);
             Console.WriteLine("Number of Frames: " + this.FeedWorker.Frames);
-            Console.WriteLine("Number of Pictures: " + this.FeedWorker.FeedPictures.Count);
         }
 
         /// <summary>
@@ -132,7 +121,7 @@ namespace ScreenCapture.ScreenCapture
 
         private void frmFeed_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.FeedWorker.Started)
+            if (this.FeedWorker != null && this.FeedWorker.Started)
             {
                 this.FeedWorker.Stop();
             }
@@ -140,7 +129,10 @@ namespace ScreenCapture.ScreenCapture
 
         private void frmFeed_Load(object sender, EventArgs e)
         {
-
+            if (this.FeedWorker == null)
+            {
+                this.Close();
+            }
         }
     }
 }

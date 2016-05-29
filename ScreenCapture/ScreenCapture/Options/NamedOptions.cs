@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace ScreenCapture.Options
 {
-    internal class NamedOptions : Options
+    public class NamedOptions : Options
     {
         private string name;
 

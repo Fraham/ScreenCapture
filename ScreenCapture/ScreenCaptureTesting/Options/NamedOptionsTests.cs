@@ -85,6 +85,8 @@ namespace ScreenCapture.Options.Tests
         [TestMethod()]
         public void NamedOptionsSaving()
         {
+            namedOptions.AddToList();
+
             NamedOptions.SaveOptionsToFile();
         }
     }

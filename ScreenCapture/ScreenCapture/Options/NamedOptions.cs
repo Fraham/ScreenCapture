@@ -13,7 +13,7 @@ namespace ScreenCapture.Options
         private static ArrayList userNamedOptions = new ArrayList();
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="name"></param>
         /// <param name="options"></param>
@@ -24,7 +24,7 @@ namespace ScreenCapture.Options
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -34,7 +34,7 @@ namespace ScreenCapture.Options
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="name"></param>
         /// <param name="width"></param>
@@ -65,12 +65,12 @@ namespace ScreenCapture.Options
             UserNamedOptions.Remove(namedOptions);
         }
 
-        public ArrayList LoadOptionsFromFile()
+        public static ArrayList LoadOptionsFromFile()
         {
             return LoadOptionsFromFile("options.xml");
         }
 
-        public ArrayList LoadOptionsFromFile(string filename)
+        public static ArrayList LoadOptionsFromFile(string filename)
         {
             if (File.Exists(filename))
             {
@@ -87,21 +87,13 @@ namespace ScreenCapture.Options
             }
         }
 
-        public void SaveOptionsToFile()
+        public static void SaveOptionsToFile()
         {
             SaveOptionsToFile(UserNamedOptions, "options.xml");
         }
 
-        public void SaveOptionsToFile(ArrayList options, string filename)
+        public static void SaveOptionsToFile(ArrayList options, string filename)
         {
-            if (!(new Uri(filename)).IsWellFormedOriginalString())
-            {
-                if (!Directory.Exists(filename))
-                {
-                    Directory.CreateDirectory(filename);
-                }
-            }
-
             if (!(filename.ToLower().EndsWith(".xml")))
             {
                 filename += ".xml";
@@ -109,7 +101,7 @@ namespace ScreenCapture.Options
 
             using (var writer = new StreamWriter(filename))
             {
-                var serializer = new XmlSerializer(GetType());
+                var serializer = new XmlSerializer(options.GetType());
                 serializer.Serialize(writer, options);
                 writer.Flush();
             }

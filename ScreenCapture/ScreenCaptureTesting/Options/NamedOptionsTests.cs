@@ -5,7 +5,7 @@ namespace ScreenCapture.Options.Tests
     [TestClass()]
     public class NamedOptionsTests
     {
-        NamedOptions namedOptions;
+        private NamedOptions namedOptions;
 
         [TestInitialize()]
         public void Initialize()
@@ -79,13 +79,13 @@ namespace ScreenCapture.Options.Tests
         [TestMethod()]
         public void NamedOptionsLoading()
         {
-
+            NamedOptions.UserNamedOptions = NamedOptions.LoadOptionsFromFile();
         }
 
         [TestMethod()]
         public void NamedOptionsSaving()
         {
-
+            NamedOptions.SaveOptionsToFile();
         }
     }
 }

@@ -79,7 +79,7 @@ namespace ScreenCapture.Options.Tests
         [TestMethod()]
         public void NamedOptionsLoading()
         {
-            NamedOptions.UserNamedOptions = NamedOptions.LoadOptionsFromFile();
+            //NamedOptions.UserNamedOptions = NamedOptions.LoadOptionsFromFile();
         }
 
         [TestMethod()]
@@ -87,7 +87,7 @@ namespace ScreenCapture.Options.Tests
         {
             namedOptions.AddToList();
 
-            NamedOptions.SaveOptionsToFile();
+            //NamedOptions.SaveOptionsToFile();
         }
     }
 }

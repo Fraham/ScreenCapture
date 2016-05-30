@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 
 namespace ScreenCapture.Options
 {
+    [Serializable]
     public class NamedOptions : Options
     {
         private string name;
@@ -43,6 +44,11 @@ namespace ScreenCapture.Options
         public NamedOptions(string name, int width, int height, Point sourcePoint) : base(width, height, sourcePoint)
         {
             Name = name;
+        }
+
+        public NamedOptions() : base()
+        {
+            Name = null;
         }
 
         public void AddToList()

@@ -41,6 +41,50 @@ namespace ScreenCapture.Options.Tests
         [TestMethod()]
         public void NamedOptionsName()
         {
+            Assert.AreEqual("Name", namedOptions.Name);
+
+            namedOptions.Name = "";
+
+            Assert.AreEqual("null", namedOptions.Name);
+
+            namedOptions.Name = null;
+
+            Assert.AreEqual("null", namedOptions.Name);
+        }
+
+        [TestMethod()]
+        public void NamedOptionsArrayList()
+        {
+            Assert.AreEqual(0, NamedOptions.UserNamedOptions.Count);
+
+            namedOptions.addToList();
+
+            Assert.AreEqual(1, NamedOptions.UserNamedOptions.Count);
+
+            NamedOptions namedOptions2 = new NamedOptions("Name2");
+
+            NamedOptions.addToList(namedOptions2);
+
+            Assert.AreEqual(2, NamedOptions.UserNamedOptions.Count);
+
+            namedOptions.removeFromList();
+
+            Assert.AreEqual(1, NamedOptions.UserNamedOptions.Count);
+
+            NamedOptions.removeFromList(namedOptions2);
+
+            Assert.AreEqual(0, NamedOptions.UserNamedOptions.Count);
+        }
+
+        [TestMethod()]
+        public void NamedOptionsLoading()
+        {
+
+        }
+
+        [TestMethod()]
+        public void NamedOptionsSaving()
+        {
 
         }
     }

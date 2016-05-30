@@ -10,7 +10,7 @@ namespace ScreenCapture.Options
     {
         private string name;
 
-        private static ArrayList userNamedOptions;
+        private static ArrayList userNamedOptions = new ArrayList();
 
         public NamedOptions(string name, Options options) : base(options)
         {
@@ -25,6 +25,26 @@ namespace ScreenCapture.Options
         public NamedOptions(string name, int width, int height, Point sourcePoint) : base(width, height, sourcePoint)
         {
             Name = name;
+        }
+
+        public void addToList()
+        {
+            UserNamedOptions.Add(this);
+        }
+
+        public static void addToList(NamedOptions namedOptions)
+        {
+            UserNamedOptions.Add(namedOptions);
+        }
+
+        public void removeFromList()
+        {
+            UserNamedOptions.Remove(this);
+        }
+
+        public static void removeFromList(NamedOptions namedOptions)
+        {
+            UserNamedOptions.Remove(namedOptions);
         }
 
         public ArrayList loadOptionsFromFile()
@@ -57,7 +77,7 @@ namespace ScreenCapture.Options
             using (var writer = new StreamWriter(filename))
             {
                 var serializer = new XmlSerializer(GetType());
-                serializer.Serialize(writer, this);
+                serializer.Serialize(writer, options);
                 writer.Flush();
             }
         }

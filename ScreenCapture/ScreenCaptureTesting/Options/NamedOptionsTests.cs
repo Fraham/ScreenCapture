@@ -57,21 +57,21 @@ namespace ScreenCapture.Options.Tests
         {
             Assert.AreEqual(0, NamedOptions.UserNamedOptions.Count);
 
-            namedOptions.addToList();
+            namedOptions.AddToList();
 
             Assert.AreEqual(1, NamedOptions.UserNamedOptions.Count);
 
             NamedOptions namedOptions2 = new NamedOptions("Name2");
 
-            NamedOptions.addToList(namedOptions2);
+            NamedOptions.AddToList(namedOptions2);
 
             Assert.AreEqual(2, NamedOptions.UserNamedOptions.Count);
 
-            namedOptions.removeFromList();
+            namedOptions.RemoveFromList();
 
             Assert.AreEqual(1, NamedOptions.UserNamedOptions.Count);
 
-            NamedOptions.removeFromList(namedOptions2);
+            NamedOptions.RemoveFromList(namedOptions2);
 
             Assert.AreEqual(0, NamedOptions.UserNamedOptions.Count);
         }

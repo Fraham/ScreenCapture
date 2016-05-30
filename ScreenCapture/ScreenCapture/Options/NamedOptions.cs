@@ -12,63 +12,96 @@ namespace ScreenCapture.Options
 
         private static ArrayList userNamedOptions = new ArrayList();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public NamedOptions(string name, Options options) : base(options)
         {
             Name = name;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public NamedOptions(string name) : base()
         {
             Name = name;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="sourcePoint"></param>
         public NamedOptions(string name, int width, int height, Point sourcePoint) : base(width, height, sourcePoint)
         {
             Name = name;
         }
 
-        public void addToList()
+        public void AddToList()
         {
             UserNamedOptions.Add(this);
         }
 
-        public static void addToList(NamedOptions namedOptions)
+        public static void AddToList(NamedOptions namedOptions)
         {
             UserNamedOptions.Add(namedOptions);
         }
 
-        public void removeFromList()
+        public void RemoveFromList()
         {
             UserNamedOptions.Remove(this);
         }
 
-        public static void removeFromList(NamedOptions namedOptions)
+        public static void RemoveFromList(NamedOptions namedOptions)
         {
             UserNamedOptions.Remove(namedOptions);
         }
 
-        public ArrayList loadOptionsFromFile()
+        public ArrayList LoadOptionsFromFile()
         {
-            return loadOptionsFromFile("options.xml");
+            return LoadOptionsFromFile("options.xml");
         }
 
-        public ArrayList loadOptionsFromFile(String filename)
+        public ArrayList LoadOptionsFromFile(string filename)
         {
-            using (var stream = File.OpenRead(filename))
+            if (File.Exists(filename))
             {
-                var obj = new Options();
-                var serializer = new XmlSerializer(obj.GetType());
-                return (ArrayList)serializer.Deserialize(stream);
+                using (var stream = File.OpenRead(filename))
+                {
+                    var obj = new Options();
+                    var serializer = new XmlSerializer(obj.GetType());
+                    return (ArrayList)serializer.Deserialize(stream);
+                }
+            }
+            else
+            {
+                return new ArrayList();
             }
         }
 
-        public void saveOptionsToFile()
+        public void SaveOptionsToFile()
         {
-            saveOptionsToFile(UserNamedOptions, "options.xml");
+            SaveOptionsToFile(UserNamedOptions, "options.xml");
         }
 
-        public void saveOptionsToFile(ArrayList options, string filename)
+        public void SaveOptionsToFile(ArrayList options, string filename)
         {
+            if (!(new Uri(filename)).IsWellFormedOriginalString())
+            {
+                if (!Directory.Exists(filename))
+                {
+                    Directory.CreateDirectory(filename);
+                }
+            }
+
             if (!(filename.ToLower().EndsWith(".xml")))
             {
                 filename += ".xml";

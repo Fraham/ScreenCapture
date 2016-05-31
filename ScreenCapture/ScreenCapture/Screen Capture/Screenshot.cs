@@ -47,7 +47,7 @@ namespace ScreenCapture
         /// <summary>
         ///
         /// </summary>
-        public void Capture()
+        public Bitmap Capture()
         {
             /*
              * Creates a new bitmap with the width and height of the primary screen (the one with the task-bar).
@@ -63,6 +63,8 @@ namespace ScreenCapture
             graphics.CopyFromScreen(CaptureOptions.SourcePoint, Point.Empty, new Size(CaptureOptions.Width, CaptureOptions.Height));
 
             graphics.Dispose();
+
+            return Image;
         }
 
         public void Save()
@@ -87,17 +89,10 @@ namespace ScreenCapture
 
         public void Copy()
         {
-            try
-            {
-                Clipboard.SetImage(Image);
-            }
-            catch
-            {
-                throw;
-            }
+            Clipboard.SetImage(Image);
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Will print the current screenshot.
         /// </summary>
         public void Print()
@@ -116,7 +111,7 @@ namespace ScreenCapture
         {
             Point loc = new Point(100, 100);
             e.Graphics.DrawImage(image, loc);
-        }
+        }*/
 
         /// <summary>
         /// Getter and Setter for the capture options.

@@ -56,7 +56,7 @@ namespace ScreenCapture
         /// </summary>
         private void printShot()
         {
-            shot.Print();
+            //shot.Print();
         }
 
         /// <summary>

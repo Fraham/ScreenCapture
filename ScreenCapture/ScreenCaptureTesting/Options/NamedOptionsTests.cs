@@ -86,7 +86,19 @@ namespace ScreenCapture.Options.Tests
         [TestMethod()]
         public void NamedOptionsLoading()
         {
+            namedOptions.AddToList();
+
+            NamedOptions.SaveOptionsToFile();
+
+            namedOptions.RemoveFromList();
+
             NamedOptions.UserNamedOptions = NamedOptions.LoadOptionsFromFile();
+
+            Assert.AreEqual(0, NamedOptions.UserNamedOptions.IndexOf(namedOptions));
+
+            NamedOptions.UserNamedOptions = NamedOptions.LoadOptionsFromFile("options");
+
+            Assert.AreEqual(0, NamedOptions.UserNamedOptions.IndexOf(namedOptions));
         }
 
         [TestMethod()]
@@ -95,6 +107,8 @@ namespace ScreenCapture.Options.Tests
             namedOptions.AddToList();
 
             NamedOptions.SaveOptionsToFile();
+
+            NamedOptions.SaveOptionsToFile("cheese");
         }
     }
 }

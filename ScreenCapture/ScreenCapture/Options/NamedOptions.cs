@@ -79,6 +79,11 @@ namespace ScreenCapture.Options
 
         public static List<NamedOptions> LoadOptionsFromFile(string filename)
         {
+            if (!(filename.ToLower().EndsWith(".xml")))
+            {
+                filename += ".xml";
+            }
+
             if (File.Exists(filename))
             {
                 using (var stream = File.OpenRead(filename))
@@ -96,6 +101,11 @@ namespace ScreenCapture.Options
         public static void SaveOptionsToFile()
         {
             SaveOptionsToFile(UserNamedOptions, "options.xml");
+        }
+
+        public static void SaveOptionsToFile(string filename)
+        {
+            SaveOptionsToFile(UserNamedOptions, filename);
         }
 
         public static void SaveOptionsToFile(List<NamedOptions> options, string filename)

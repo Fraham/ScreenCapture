@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfNamedOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <NamedOptions>
+    <Fullscreen>true</Fullscreen>
+    <Height>1080</Height>
+    <SourcePoint>
+      <X>0</X>
+      <Y>0</Y>
+    </SourcePoint>
+    <Width>3840</Width>
+    <Name>Name</Name>
+  </NamedOptions>
+  <NamedOptions>
+    <Fullscreen>true</Fullscreen>
+    <Height>1080</Height>
+    <SourcePoint>
+      <X>0</X>
+      <Y>0</Y>
+    </SourcePoint>
+    <Width>3840</Width>
+    <Name>Name</Name>
+  </NamedOptions>
+</ArrayOfNamedOptions>

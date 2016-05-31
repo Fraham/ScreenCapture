@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Xml.Serialization;
@@ -11,7 +12,7 @@ namespace ScreenCapture.Options
     {
         private string name;
 
-        private static ArrayList userNamedOptions = new ArrayList();
+        private static List<NamedOptions> userNamedOptions = new List<NamedOptions>();
 
         /// <summary>
         ///
@@ -71,25 +72,24 @@ namespace ScreenCapture.Options
             UserNamedOptions.Remove(namedOptions);
         }
 
-        public static ArrayList LoadOptionsFromFile()
+        public static List<NamedOptions> LoadOptionsFromFile()
         {
             return LoadOptionsFromFile("options.xml");
         }
 
-        public static ArrayList LoadOptionsFromFile(string filename)
+        public static List<NamedOptions> LoadOptionsFromFile(string filename)
         {
             if (File.Exists(filename))
             {
                 using (var stream = File.OpenRead(filename))
                 {
-                    var obj = new Options();
-                    var serializer = new XmlSerializer(obj.GetType());
-                    return (ArrayList)serializer.Deserialize(stream);
+                    var serializer = new XmlSerializer(typeof(List<NamedOptions>));
+                    return (List<NamedOptions>)serializer.Deserialize(stream);
                 }
             }
             else
             {
-                return new ArrayList();
+                return new List<NamedOptions>();
             }
         }
 
@@ -98,7 +98,7 @@ namespace ScreenCapture.Options
             SaveOptionsToFile(UserNamedOptions, "options.xml");
         }
 
-        public static void SaveOptionsToFile(ArrayList options, string filename)
+        public static void SaveOptionsToFile(List<NamedOptions> options, string filename)
         {
             if (!(filename.ToLower().EndsWith(".xml")))
             {
@@ -107,7 +107,7 @@ namespace ScreenCapture.Options
 
             using (var writer = new StreamWriter(filename))
             {
-                var serializer = new XmlSerializer(options.GetType());
+                var serializer = new XmlSerializer(typeof(List<NamedOptions>));
                 serializer.Serialize(writer, options);
                 writer.Flush();
             }
@@ -125,7 +125,7 @@ namespace ScreenCapture.Options
             }
         }
 
-        public static ArrayList UserNamedOptions
+        public static List<NamedOptions> UserNamedOptions
         {
             get
             {

@@ -36,6 +36,13 @@ namespace ScreenCapture.Options.Tests
             Assert.AreEqual(10, namedOptions3.Width);
             Assert.AreEqual(20, namedOptions3.Height);
             Assert.AreEqual(new System.Drawing.Point(1, 2), namedOptions3.SourcePoint);
+
+            NamedOptions namedOptions4 = new NamedOptions();
+
+            Assert.AreEqual("null", namedOptions4.Name);
+            Assert.AreEqual(ScreenSize.Width, namedOptions4.Width);
+            Assert.AreEqual(ScreenSize.Height, namedOptions4.Height);
+            Assert.AreEqual(ScreenSize.TopLeftPoint, namedOptions4.SourcePoint);
         }
 
         [TestMethod()]
@@ -79,7 +86,7 @@ namespace ScreenCapture.Options.Tests
         [TestMethod()]
         public void NamedOptionsLoading()
         {
-            //NamedOptions.UserNamedOptions = NamedOptions.LoadOptionsFromFile();
+            NamedOptions.UserNamedOptions = NamedOptions.LoadOptionsFromFile();
         }
 
         [TestMethod()]
@@ -87,7 +94,7 @@ namespace ScreenCapture.Options.Tests
         {
             namedOptions.AddToList();
 
-            //NamedOptions.SaveOptionsToFile();
+            NamedOptions.SaveOptionsToFile();
         }
     }
 }

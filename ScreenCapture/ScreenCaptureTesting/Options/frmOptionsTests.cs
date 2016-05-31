@@ -27,8 +27,8 @@ namespace ScreenCapture.Tests
         {
             optionsForm.Show();
 
-            Assert.AreEqual(ScreenSize.Width, optionsForm.nudXSourcePoint.Maximum);
-            Assert.AreEqual(ScreenSize.Height, optionsForm.nudYSourcePoint.Maximum);
+            //Assert.AreEqual(ScreenSize.Width, optionsForm.nudXSourcePoint.Maximum);
+            //Assert.AreEqual(ScreenSize.Height, optionsForm.nudYSourcePoint.Maximum);
 
             Assert.AreEqual(ScreenSize.Width, optionsForm.MaxWidth);
             Assert.AreEqual(ScreenSize.Height, optionsForm.MaxHeight);

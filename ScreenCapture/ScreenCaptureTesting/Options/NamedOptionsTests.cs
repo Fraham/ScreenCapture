@@ -106,7 +106,7 @@ namespace ScreenCapture.Options.Tests
 
             Assert.AreEqual(0, NamedOptions.UserNamedOptions.Count);
 
-            Assert.AreNotEqual(new List<NamedOptions>, NamedOptions.UserNamedOptions);
+            Assert.AreNotEqual(new List<NamedOptions>(), NamedOptions.UserNamedOptions);
         }
 
         [TestMethod()]

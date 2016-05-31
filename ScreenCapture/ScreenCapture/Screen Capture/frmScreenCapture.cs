@@ -41,7 +41,7 @@ namespace ScreenCapture
         /// <summary>
         /// It will load the options from an XML file.
         /// </summary>
-        private void LoadOptions()
+        public void LoadOptions()
         {
             try
             {
@@ -62,7 +62,7 @@ namespace ScreenCapture
         /// <summary>
         /// It will save the options to an XML file.
         /// </summary>
-        private void SaveOptions()
+        public void SaveOptions()
         {
             UsersOptions.Save();
         }
@@ -212,7 +212,7 @@ namespace ScreenCapture
         /// It will open the options menu in dialog form.
         /// It will load the new capture options if the user has changed the settings.
         /// </summary>
-        private void OpenOptionsForm()
+        public void OpenOptionsForm()
         {
             frmOptions frmO = new frmOptions(UsersOptions);
             if (frmO.ShowDialog() == DialogResult.OK)

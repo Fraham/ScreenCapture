@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Threading;
-using System.Windows.Forms;
 
 namespace ScreenCapture
 {
@@ -34,11 +33,9 @@ namespace ScreenCapture
         /// <param name="captureHeight">The height of capture area.</param>
         /// <param name="picBox">The picture box being used to display the capture.</param>
         /// <param name="sourcePoint">The source point of the capture.</param>
-        public CaptureWorker(int captureWidth, int captureHeight,  Point sourcePoint, string path)
+        public CaptureWorker(int captureWidth, int captureHeight, Point sourcePoint, string path)
         {
             CaptureOptions = new Options.Options(captureWidth, captureHeight, sourcePoint);
-
-            
 
             this.Path = path;
         }
@@ -50,11 +47,9 @@ namespace ScreenCapture
         /// <param name="captureWidth">The width of capture area.</param>
         /// <param name="captureHeight">The height of capture area.</param>
         /// <param name="picBox">The picture box being used to display the capture.</param>
-        public CaptureWorker(int captureWidth, int captureHeight,  string path)
+        public CaptureWorker(int captureWidth, int captureHeight, string path)
         {
             CaptureOptions = new Options.Options(captureWidth, captureHeight, Point.Empty);
-
-            
 
             this.Path = path;
         }
@@ -68,11 +63,9 @@ namespace ScreenCapture
         /// <param name="picBox">The picture box being used to display the capture.</param>
         /// <param name="x">The x co-ordinate of the source of the source</param>
         /// <param name="y">The y co-ordinate of the source of the source</param>
-        public CaptureWorker(int captureWidth, int captureHeight,  int x, int y, string path)
+        public CaptureWorker(int captureWidth, int captureHeight, int x, int y, string path)
         {
             CaptureOptions = new Options.Options(captureWidth, captureHeight, new Point(x, y));
-
-            
 
             this.Path = path;
         }
@@ -82,11 +75,9 @@ namespace ScreenCapture
         /// to the full area of displays. It will be able to capture the screen over multiple displays.
         /// </summary>
         /// <param name="picBox">The picture box being used to display the capture.</param>
-        public CaptureWorker( string path)
+        public CaptureWorker(string path)
         {
             CaptureOptions = new Options.Options(ScreenSize.Width, ScreenSize.Height, Point.Empty);
-
-            
 
             this.Path = path;
         }
@@ -96,10 +87,9 @@ namespace ScreenCapture
         /// </summary>
         /// <param name="options">The options for the capture.</param>
         /// <param name="picBox">The picture box being used to display the capture.</param>
-        public CaptureWorker(Options.Options options,  string path)
+        public CaptureWorker(Options.Options options, string path)
         {
             CaptureOptions = options;
-            
 
             this.Path = path;
         }
@@ -181,7 +171,6 @@ namespace ScreenCapture
         /// </summary>
         public void DoCapture()
         {
-
             while (true)
             {
                 _pauseEvent.WaitOne(Timeout.Infinite);
@@ -213,7 +202,6 @@ namespace ScreenCapture
                 frames++;
             }
         }
-        
 
         #endregion Capture
 

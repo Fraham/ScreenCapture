@@ -17,6 +17,7 @@ namespace ScreenCapture.Tests
         public void Initialize()
         {
             capture = new frmScreenCapture();
+            capture.TakeScreenshot();
         }
 
         [TestMethod()]

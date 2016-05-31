@@ -167,19 +167,21 @@ namespace ScreenCapture
 
         public void CopyScreenshot()
         {
-            try
+            /*try
             {
                 Clipboard.SetImage(screenshot.Image);
             }
             catch (Exception ex)
             {
                 System.Console.WriteLine(ex);
-            }
+            }*/
+
+            screenshot.Copy();
         }
 
         public void SaveScreenshot()
         {
-            try
+            /*try
             {
                 SaveFileDialog dialog = new SaveFileDialog();
                 dialog.Filter = "JPEG File | *.jpeg";
@@ -191,7 +193,8 @@ namespace ScreenCapture
             catch (Exception ex)
             {
                 System.Console.WriteLine(ex);
-            }
+            }*/
+            screenshot.Save();
         }
 
         public void TakeScreenshot()

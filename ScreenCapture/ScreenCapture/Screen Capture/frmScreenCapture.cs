@@ -167,33 +167,11 @@ namespace ScreenCapture
 
         public void CopyScreenshot()
         {
-            /*try
-            {
-                Clipboard.SetImage(screenshot.Image);
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex);
-            }*/
-
             screenshot.Copy();
         }
 
         public void SaveScreenshot()
         {
-            /*try
-            {
-                SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "JPEG File | *.jpeg";
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    screenshot.Image.Save(dialog.FileName, ImageFormat.Jpeg);
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex);
-            }*/
             screenshot.Save();
         }
 

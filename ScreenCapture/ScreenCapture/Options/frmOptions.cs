@@ -13,7 +13,17 @@ namespace ScreenCapture
 
         private frmUserCaptureArea frmUCA = null;
         private int maxHeight;
+        public int MaxHeight
+        {
+            get { return maxHeight; }
+            set { maxHeight = value; }
+        }
         private int maxWidth;
+        public int MaxWidth
+        {
+            get { return maxWidth; }
+            set { maxWidth = value; }
+        }
         private Options.Options usersOptions;
 
         private bool loading = false;
@@ -54,6 +64,11 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void btnOk_Click(object sender, EventArgs e)
         {
+            Okay();
+        }
+
+        public void Okay()
+        {
             if (validWidth() && validHeight())
             {
                 if (radFullScreen.Checked)
@@ -92,14 +107,7 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void radNotFullScreen_CheckedChanged(object sender, EventArgs e)
         {
-            if (radFullScreen.Checked)
-            {
-                grpCaptureOptions.Enabled = false;
-            }
-            else
-            {
-                grpCaptureOptions.Enabled = true;
-            }
+            grpCaptureOptions.Enabled = !radFullScreen.Checked;
         }
 
         #endregion Click Events
@@ -114,17 +122,8 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void frmOptions_Load(object sender, EventArgs e)
         {
-            /*nudWidth.Maximum = ScreenSize.Width;
-            nudHeight.Maximum = ScreenSize.Height;
-
-            nudXSourcePoint.Maximum = ScreenSize.Width;
-            nudYSourcePoint.Maximum = ScreenSize.Height;
-
-            nudXSourcePoint.Minimum = ScreenSize.TopLeftPoint.X;
-            nudYSourcePoint.Minimum = ScreenSize.TopLeftPoint.Y;
-            */
-            maxWidth = ScreenSize.Width;
-            maxHeight = ScreenSize.Height;
+            MaxWidth = ScreenSize.Width;
+            MaxHeight = ScreenSize.Height;
 
             for (int i = 1; i <= SystemInformation.MonitorCount; i++)
             {
@@ -148,7 +147,7 @@ namespace ScreenCapture
         /// <returns>If the height and the source point are less than the max height.</returns>
         private bool validHeight()
         {
-            if (nudHeight.Value + Math.Abs(nudYSourcePoint.Value) > maxHeight)
+            if (nudHeight.Value + Math.Abs(nudYSourcePoint.Value) > MaxHeight)
             {
                 return false;
             }
@@ -162,7 +161,7 @@ namespace ScreenCapture
         /// <returns>If the width and the source point are less than the max width.</returns>
         private bool validWidth()
         {
-            if (nudWidth.Value + Math.Abs(nudXSourcePoint.Value) > maxWidth)
+            if (nudWidth.Value + Math.Abs(nudXSourcePoint.Value) > MaxWidth)
             {
                 return false;
             }

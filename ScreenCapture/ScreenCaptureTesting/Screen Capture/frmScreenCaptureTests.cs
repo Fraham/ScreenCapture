@@ -17,7 +17,6 @@ namespace ScreenCapture.Tests
         public void Initialize()
         {
             capture = new frmScreenCapture();
-            capture.TakeScreenshot();
         }
 
         [TestMethod()]
@@ -41,7 +40,8 @@ namespace ScreenCapture.Tests
         [TestMethod()]
         public void frmScreenCaptureTestCopy()
         {
-            capture.CopyScreenshot();
+            //capture.TakeScreenshot();
+            //capture.CopyScreenshot();
         }
 
         [TestMethod()]
@@ -53,7 +53,7 @@ namespace ScreenCapture.Tests
         [TestMethod()]
         public void frmScreenCaptureTestTake()
         {
-            capture.TakeScreenshot();
+            //capture.TakeScreenshot();
         }
 
         [TestMethod()]

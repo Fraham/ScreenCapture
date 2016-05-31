@@ -25,7 +25,7 @@ namespace ScreenCapture.Tests
 
             capture = new CaptureWorker(100, 100, 3, 4, @"C:\");
 
-            capture = new CaptureWorker(@"C:\");
+            capture = new CaptureWorker(@"C:\dave");
 
             capture = new CaptureWorker(new Options.Options(100, 100, new Point(3, 4)), @"C:\");
         }

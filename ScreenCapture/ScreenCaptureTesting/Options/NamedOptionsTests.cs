@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.IO;
 
 namespace ScreenCapture.Options.Tests
 {
@@ -99,6 +101,10 @@ namespace ScreenCapture.Options.Tests
             NamedOptions.UserNamedOptions = NamedOptions.LoadOptionsFromFile("options");
 
             Assert.AreEqual(0, NamedOptions.UserNamedOptions.IndexOf(namedOptions));
+
+            NamedOptions.UserNamedOptions = NamedOptions.LoadOptionsFromFile("nonFile");
+
+            Assert.AreEqual(0, NamedOptions.UserNamedOptions.Count);
         }
 
         [TestMethod()]

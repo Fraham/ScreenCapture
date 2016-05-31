@@ -147,5 +147,21 @@ namespace ScreenCapture.Options
                 userNamedOptions = value;
             }
         }
+
+        public override bool Equals(Object obj)
+        {
+            NamedOptions optionsObj = obj as NamedOptions;
+            if (optionsObj == null)
+            {
+                return false;
+            }
+
+            return optionsObj.Height == Height && optionsObj.Width == Width && optionsObj.SourcePoint == SourcePoint && optionsObj.Fullscreen == Fullscreen && optionsObj.Name.Equals(Name);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Height + this.Width;
+        }
     }
 }

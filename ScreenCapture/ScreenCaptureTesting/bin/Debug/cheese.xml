@@ -10,14 +10,4 @@
     <Width>3840</Width>
     <Name>Name</Name>
   </NamedOptions>
-  <NamedOptions>
-    <Fullscreen>true</Fullscreen>
-    <Height>1080</Height>
-    <SourcePoint>
-      <X>0</X>
-      <Y>0</Y>
-    </SourcePoint>
-    <Width>3840</Width>
-    <Name>Name</Name>
-  </NamedOptions>
 </ArrayOfNamedOptions>

@@ -24,12 +24,12 @@ namespace ScreenCapture
         private Graphics g;
         private Form m_InstanceRef = null;
         private Pen MyPen = new Pen(Color.Red, 1);
-        private Options.Options  options;
+        private Options.Options options;
         private bool show = false;
 
         #endregion Form Variables
 
-        public frmUserCaptureArea(Options.Options  options, bool show)
+        public frmUserCaptureArea(Options.Options options, bool show)
         {
             InitializeComponent();
 
@@ -84,7 +84,7 @@ namespace ScreenCapture
 
         #region Properties
 
-        public Options.Options  CaptureOptions
+        public Options.Options CaptureOptions
         {
             get
             {
@@ -159,16 +159,16 @@ namespace ScreenCapture
             else
                 //Selection area has reached the right side of the screen
                 if ((Cursor.X) - DragClickRelative.X > 0)
-                {
-                    CurrentTopLeft.X = this.Width - RectangleWidth;
-                    CurrentBottomRight.X = CurrentTopLeft.X + RectangleWidth;
-                }
-                //Selection area has reached the left side of the screen
-                else
-                {
-                    CurrentTopLeft.X = this.Left;
-                    CurrentBottomRight.X = CurrentTopLeft.X + RectangleWidth;
-                }
+            {
+                CurrentTopLeft.X = this.Width - RectangleWidth;
+                CurrentBottomRight.X = CurrentTopLeft.X + RectangleWidth;
+            }
+            //Selection area has reached the left side of the screen
+            else
+            {
+                CurrentTopLeft.X = this.Left;
+                CurrentBottomRight.X = CurrentTopLeft.X + RectangleWidth;
+            }
 
             if (Cursor.Y - DragClickRelative.Y > 0 && Cursor.Y - DragClickRelative.Y + RectangleHeight < this.Width)
             {
@@ -178,16 +178,16 @@ namespace ScreenCapture
             else
                 //Selection area has reached the bottom of the screen
                 if (Cursor.Y - DragClickRelative.Y > 0)
-                {
-                    CurrentTopLeft.Y = this.Height - RectangleHeight;
-                    CurrentBottomRight.Y = CurrentTopLeft.Y + RectangleHeight;
-                }
-                //Selection area has reached the top of the screen
-                else
-                {
-                    CurrentTopLeft.Y = 0;
-                    CurrentBottomRight.Y = CurrentTopLeft.Y + RectangleHeight;
-                }
+            {
+                CurrentTopLeft.Y = this.Height - RectangleHeight;
+                CurrentBottomRight.Y = CurrentTopLeft.Y + RectangleHeight;
+            }
+            //Selection area has reached the top of the screen
+            else
+            {
+                CurrentTopLeft.Y = 0;
+                CurrentBottomRight.Y = CurrentTopLeft.Y + RectangleHeight;
+            }
 
             //Draw a new rectangle
             g.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);

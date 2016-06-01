@@ -6,3 +6,9 @@ C:\Users\Graham\Desktop\GitHub\ScreenCapture\ScreenCapture\ScreenCaptureTesting\
 C:\Users\Graham\Desktop\GitHub\ScreenCapture\ScreenCapture\ScreenCaptureTesting\bin\Debug\ScreenCapture.pdb
 C:\Users\Graham\Desktop\GitHub\ScreenCapture\ScreenCapture\ScreenCaptureTesting\obj\Debug\ScreenCaptureTesting.dll
 C:\Users\Graham\Desktop\GitHub\ScreenCapture\ScreenCapture\ScreenCaptureTesting\obj\Debug\ScreenCaptureTesting.pdb
+C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCaptureTesting\obj\Debug\ScreenCaptureTesting.csprojResolveAssemblyReference.cache
+C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCaptureTesting\bin\Debug\ScreenCaptureTesting.dll
+C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCaptureTesting\bin\Debug\ScreenCaptureTesting.pdb
+C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCaptureTesting\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCaptureTesting\bin\Debug\ScreenCapture.exe
+C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCaptureTesting\bin\Debug\ScreenCapture.pdb

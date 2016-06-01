@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ScreenCapture
@@ -63,11 +56,11 @@ namespace ScreenCapture
         /// </summary>
         private void printShot()
         {
-            shot.Print();
+            //shot.Print();
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Screenshot Shot
         {

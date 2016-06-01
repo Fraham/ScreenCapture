@@ -22,7 +22,7 @@ namespace ScreenCapture.Tests
         }
 
         [TestMethod()]
-        public void Image()
+        public void SceenshotImage()
         {
             try
             {
@@ -36,7 +36,7 @@ namespace ScreenCapture.Tests
         }
 
         [TestMethod()]
-        public void Capture()
+        public void SceenshotCapture()
         {
             screenshot1.Capture();
 
@@ -48,7 +48,7 @@ namespace ScreenCapture.Tests
         }
 
         [TestMethod()]
-        public void Copy()
+        public void SceenshotCopy()
         {
             screenshot1.Capture();
 
@@ -66,7 +66,7 @@ namespace ScreenCapture.Tests
         }
 
         [TestMethod()]
-        public void Constructors()
+        public void SceenshotConstructors()
         {
             Point testPoint = new Point(10, 30);
             int testWidth = 120;
@@ -131,10 +131,12 @@ namespace ScreenCapture.Tests
             Assert.AreEqual(testHeight, screenshot1.CaptureOptions.Height);
 
             Assert.AreEqual(testPoint, screenshot1.CaptureOptions.SourcePoint);
+
+            Screenshot screenshot2 = new Screenshot(screenshot1.Capture());
         }
 
         [TestMethod()]
-        public void Save()
+        public void SceenshotSave()
         {
             string filename = "test.jpeg";
 
@@ -145,13 +147,24 @@ namespace ScreenCapture.Tests
 
             screenshot1.Capture();
 
-            screenshot1.Save("test.jpeg");
+            screenshot1.Save(filename);
 
             Assert.IsTrue(File.Exists(filename));
+
+            string filename2 = "testing";
+
+            if (File.Exists(filename2 + ".jpeg"))
+            {
+                File.Delete(filename2 + ".jpeg");
+            }
+
+            screenshot1.Save(filename2);
+
+            Assert.IsTrue(File.Exists(filename2 + ".jpeg"));
         }
 
         [TestMethod()]
-        public void Print()
+        public void SceenshotPrint()
         {
             /*screenshot1.Capture();
 

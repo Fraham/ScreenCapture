@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using ScreenCapture.Options;
 
 namespace ScreenCapture
 {
@@ -12,8 +13,24 @@ namespace ScreenCapture
 
         private frmUserCaptureArea frmUCA = null;
         private int maxHeight;
+        public int MaxHeight
+        {
+            get { return maxHeight; }
+            set { maxHeight = value; }
+        }
         private int maxWidth;
-        private Options.Options  usersOptions;
+        public int MaxWidth
+        {
+            get { return maxWidth; }
+            set { maxWidth = value; }
+        }
+
+        private int currentHeight;
+        private int currentWidth;
+        private int currentX;
+        private int currentY;
+        private Options.Options usersOptions;
+
         private bool loading = false;
 
         #endregion Class Variables
@@ -21,10 +38,10 @@ namespace ScreenCapture
         #region Constructor
 
         /// <summary>
-        /// Makes a new instance of a Options.Options .Options.Options  menu form.
+        /// Makes a new instance of a Options.Options.Options.Options menu form.
         /// </summary>
         /// <param name="options">The options that are currently doing run.</param>
-        public frmOptions(Options.Options  options)
+        public frmOptions(Options.Options options)
         {
             UsersOptions = options;
             InitializeComponent();
@@ -52,11 +69,16 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void btnOk_Click(object sender, EventArgs e)
         {
-            if (validWidth() && validHeight())
+            Okay();
+        }
+
+        public void Okay()
+        {
+            if (ValidWidth() && ValidHeight())
             {
                 if (radFullScreen.Checked)
                 {
-                    UsersOptions = new Options.Options ();
+                    UsersOptions = new Options.Options();
                 }
                 else
                 {
@@ -90,14 +112,7 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void radNotFullScreen_CheckedChanged(object sender, EventArgs e)
         {
-            if (radFullScreen.Checked)
-            {
-                grpCaptureOptions.Enabled = false;
-            }
-            else
-            {
-                grpCaptureOptions.Enabled = true;
-            }
+            grpCaptureOptions.Enabled = !radFullScreen.Checked;
         }
 
         #endregion Click Events
@@ -112,17 +127,8 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void frmOptions_Load(object sender, EventArgs e)
         {
-            nudWidth.Maximum = ScreenSize.Width;
-            nudHeight.Maximum = ScreenSize.Height;
-
-            nudXSourcePoint.Maximum = ScreenSize.Width;
-            nudYSourcePoint.Maximum = ScreenSize.Height;
-
-            nudXSourcePoint.Minimum = ScreenSize.TopLeftPoint.X;
-            nudYSourcePoint.Minimum = ScreenSize.TopLeftPoint.Y;
-
-            maxWidth = ScreenSize.Width;
-            maxHeight = ScreenSize.Height;
+            MaxWidth = ScreenSize.Width;
+            MaxHeight = ScreenSize.Height;
 
             for (int i = 1; i <= SystemInformation.MonitorCount; i++)
             {
@@ -144,9 +150,9 @@ namespace ScreenCapture
         /// It will check if its a valid height.
         /// </summary>
         /// <returns>If the height and the source point are less than the max height.</returns>
-        private bool validHeight()
+        public bool ValidHeight()
         {
-            if (nudHeight.Value + Math.Abs(nudYSourcePoint.Value) > maxHeight)
+            if (CurrentHeight + Math.Abs(CurrentY) > MaxHeight)
             {
                 return false;
             }
@@ -158,9 +164,9 @@ namespace ScreenCapture
         /// It will check if its a valid width.
         /// </summary>
         /// <returns>If the width and the source point are less than the max width.</returns>
-        private bool validWidth()
+        public bool ValidWidth()
         {
-            if (nudWidth.Value + Math.Abs(nudXSourcePoint.Value) > maxWidth)
+            if (CurrentWidth + Math.Abs(CurrentX) > MaxWidth)
             {
                 return false;
             }
@@ -175,7 +181,7 @@ namespace ScreenCapture
         /// <summary>
         /// Holds all the options for the capture
         /// </summary>
-        public Options.Options  UsersOptions
+        public Options.Options UsersOptions
         {
             get
             {
@@ -184,6 +190,58 @@ namespace ScreenCapture
             set
             {
                 usersOptions = value;
+            }
+        }
+
+        public int CurrentHeight
+        {
+            get
+            {
+                return currentHeight;
+            }
+
+            set
+            {
+                currentHeight = value;
+            }
+        }
+
+        public int CurrentWidth
+        {
+            get
+            {
+                return currentWidth;
+            }
+
+            set
+            {
+                currentWidth = value;
+            }
+        }
+
+        public int CurrentX
+        {
+            get
+            {
+                return currentX;
+            }
+
+            set
+            {
+                currentX = value;
+            }
+        }
+
+        public int CurrentY
+        {
+            get
+            {
+                return currentY;
+            }
+
+            set
+            {
+                currentY = value;
             }
         }
 
@@ -249,7 +307,7 @@ namespace ScreenCapture
 
         #endregion User Capture
 
-        #region Options.Options 
+        #region Options.Options
 
         /// <summary>
         /// Loads the options from UserOptions into the right control.
@@ -272,15 +330,17 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Gets the capture information from the form and creates, returns a new Options.Options .
+        /// Gets the capture information from the form and creates, returns a new Options.Options.
         /// </summary>
         /// <returns></returns>
-        private Options.Options   MakeOptions()
+        private Options.Options MakeOptions()
         {
-            return UsersOptions = new Options.Options ((int)nudWidth.Value, (int)nudHeight.Value, new Point((int)nudXSourcePoint.Value, (int)nudYSourcePoint.Value));
+            return UsersOptions = new Options.Options((int)CurrentWidth, (int)CurrentHeight, new Point((int)CurrentX, (int)CurrentY));
         }
 
-        #endregion Options.Options 
+        #endregion Options.Options
+
+
 
         private void cmbNumberOfScreens_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -303,21 +363,25 @@ namespace ScreenCapture
 
         private void nudWidth_ValueChanged(object sender, EventArgs e)
         {
+            CurrentWidth = (int)nudWidth.Value;
             captureOptionsChanged();
         }
 
         private void nudHeight_ValueChanged(object sender, EventArgs e)
         {
+            CurrentHeight = (int)nudHeight.Value;
             captureOptionsChanged();
         }
 
         private void nudXSourcePoint_ValueChanged(object sender, EventArgs e)
         {
+            CurrentX = (int)nudXSourcePoint.Value;
             captureOptionsChanged();
         }
 
         private void nudYSourcePoint_ValueChanged(object sender, EventArgs e)
         {
+            CurrentY = (int)nudYSourcePoint.Value;
             captureOptionsChanged();
         }
 
@@ -329,7 +393,7 @@ namespace ScreenCapture
 
                 foreach (Screen screen in Screen.AllScreens)
                 {
-                    if (screen.Bounds.Width == nudWidth.Value && screen.Bounds.Height == nudHeight.Value && screen.Bounds.X == nudXSourcePoint.Value && screen.Bounds.Y == nudYSourcePoint.Value)
+                    if (screen.Bounds.Width == CurrentWidth && screen.Bounds.Height == CurrentHeight && screen.Bounds.X == CurrentX && screen.Bounds.Y == CurrentY)
                     {
                         cmbNumberOfScreens.SelectedIndex = count;
 

@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 
 /*
  * Things to do:
- * 
+ *
  * taking a screenshot and then opening and closing the options will start the capture.
  */
 
@@ -14,7 +15,9 @@ namespace ScreenCapture
     {
         #region Class Variables
 
-        private Options.Options  usersOptions;
+        private Options.Options usersOptions;
+
+        private Screenshot screenshot;
 
         #endregion Class Variables
 
@@ -28,43 +31,43 @@ namespace ScreenCapture
         {
             InitializeComponent();
 
-            loadOptions();
+            LoadOptions();
         }
 
         #endregion Constructor
 
-        #region Loading and Saving Options.Options 
+        #region Loading and Saving Options.Options
 
         /// <summary>
         /// It will load the options from an XML file.
         /// </summary>
-        private void loadOptions()
+        public void LoadOptions()
         {
             try
             {
-                UsersOptions = Options.Options .LoadFromFile();
+                UsersOptions = Options.Options.LoadFromFile();
             }
             catch (FileNotFoundException ex)
             {
                 Console.WriteLine("The file was not found. " + ex.ToString());
-                UsersOptions = new Options.Options ();
+                UsersOptions = new Options.Options();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Unable to load file - " + ex.ToString());
-                UsersOptions = new Options.Options ();
+                UsersOptions = new Options.Options();
             }
         }
 
         /// <summary>
         /// It will save the options to an XML file.
         /// </summary>
-        private void saveOptions()
+        public void SaveOptions()
         {
             UsersOptions.Save();
         }
 
-        #endregion Loading and Saving Options.Options 
+        #endregion Loading and Saving Options.Options
 
         #region Form CLosing
 
@@ -75,7 +78,7 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void frmScreenCapture_FormClosing(object sender, FormClosingEventArgs e)
         {
-            saveOptions();
+            SaveOptions();
         }
 
         #endregion Form CLosing
@@ -85,13 +88,13 @@ namespace ScreenCapture
         /// <summary>
         /// Holds all the options for the capture
         /// </summary>
-        public Options.Options  UsersOptions
+        public Options.Options UsersOptions
         {
             get
             {
                 if (usersOptions == null)
                 {
-                    return new Options.Options ();
+                    return new Options.Options();
                 }
 
                 return usersOptions;
@@ -113,7 +116,7 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void cmsPictureBoxCopy_Click(object sender, EventArgs e)
         {
-            copyScreenshot();
+            CopyScreenshot();
         }
 
         /// <summary>
@@ -123,7 +126,7 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void cmsPictureBoxSave_Click(object sender, EventArgs e)
         {
-            saveScreenshot();
+            SaveScreenshot();
         }
 
         #endregion Picture Box Context Strip
@@ -134,90 +137,48 @@ namespace ScreenCapture
 
         private void mnsScreenCaptureCopy_Click(object sender, EventArgs e)
         {
-            copyScreenshot();
+            CopyScreenshot();
         }
 
         private void mnsScreenCaptureSave_Click(object sender, EventArgs e)
         {
-            saveScreenshot();
+            SaveScreenshot();
         }
 
         private void mnsScreenCaptureTake_Click(object sender, EventArgs e)
         {
-            takeScreenshot();
+            TakeScreenshot();
         }
 
         #endregion Screenshot
 
-        #region Options.Options 
+        #region Options.Options
 
         private void mnsScreenCaptureOptions_Click(object sender, EventArgs e)
         {
-            openOptionsForm();
+            OpenOptionsForm();
         }
 
-        #endregion Options.Options 
+        #endregion Options.Options
 
         #endregion Menu Strip
 
         #region Screenshot Methods
 
-        private void copyScreenshot()
+        public void CopyScreenshot()
         {
-            /*try
-            {
-                Clipboard.SetImage(picFeed.Image);
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex);
-            }*/
+            screenshot.Copy();
         }
 
-        private void saveScreenshot()
+        public void SaveScreenshot()
         {
-            /*try
-            {
-                SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "JPEG File | *.jpeg";
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    picFeed.Image.Save(dialog.FileName, ImageFormat.Jpeg);
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex);
-            }*/
+            screenshot.Save();
         }
 
-        private void takeScreenshot()
+        public void TakeScreenshot()
         {
-            /*
-             * It will check if the worker has already been started.
-             * Then it will resume and pause to get a still image.
-             *
-             * If it hasn't been started already it will start and then pause
-             * with a small sleep so has enough time to capture the screen.
-            */
-            /*
-            if (WorkerObject.Started)
-            {
-                WorkerObject.Resume();
-            }
-            else
-            {
-                WorkerObject.Start();
-            }
-
-            Thread.Sleep(10);
-            WorkerObject.Pause();
-            */
-
-            Screenshot screenshot = new Screenshot(UsersOptions);
+            screenshot = new Screenshot(UsersOptions);
             screenshot.Capture();
-
-            //this.picFeed.Image = screenshot.Image;
 
             frmScreenshot frmShot = new frmScreenshot(screenshot);
             frmShot.Show();
@@ -232,10 +193,10 @@ namespace ScreenCapture
         /// It will open the options menu in dialog form.
         /// It will load the new capture options if the user has changed the settings.
         /// </summary>
-        private void openOptionsForm()
+        public void OpenOptionsForm()
         {
             frmOptions frmO = new frmOptions(UsersOptions);
-            if (frmO.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (frmO.ShowDialog() == DialogResult.OK)
             {
                 UsersOptions = frmO.UsersOptions;
             }
@@ -243,8 +204,12 @@ namespace ScreenCapture
 
         private void btnLiveFeed_Click(object sender, EventArgs e)
         {
-            ScreenCapture.frmFeed feed = new ScreenCapture.frmFeed(this.UsersOptions);
-            feed.Show();
+            DialogResult result = fbdFeedSaver.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                ScreenCapture.frmFeed feed = new ScreenCapture.frmFeed(this.UsersOptions, fbdFeedSaver.SelectedPath);
+                feed.Show();
+            }
         }
     }
 }

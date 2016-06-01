@@ -13,11 +13,25 @@ namespace ScreenCapture.Tests
         [TestInitialize()]
         public void Initialize()
         {
-            capture = new CaptureWorker(new Options.Options(100, 100, new Point(3, 4)), @"C:\\");
+            capture = new CaptureWorker(new Options.Options(100, 100, new Point(3, 4)), @"C:\");
         }
 
         [TestMethod()]
-        public void startFeed()
+        public void CaptureWorkerConstructors()
+        {
+            capture = new CaptureWorker(100, 100, new Point(3, 4), @"C:\");
+
+            capture = new CaptureWorker(100, 100, @"C:\");
+
+            capture = new CaptureWorker(100, 100, 3, 4, @"C:\");
+
+            capture = new CaptureWorker(@"C:\dave");
+
+            capture = new CaptureWorker(new Options.Options(100, 100, new Point(3, 4)), @"C:\");
+        }
+
+        [TestMethod()]
+        public void CaptureWorkerStartFeed()
         {
             capture.Start();
 
@@ -26,7 +40,7 @@ namespace ScreenCapture.Tests
         }
 
         [TestMethod()]
-        public void pauseFeed()
+        public void CaptureWorkerPauseFeed()
         {
             capture.Start();
             capture.Pause();
@@ -36,7 +50,7 @@ namespace ScreenCapture.Tests
         }
 
         [TestMethod()]
-        public void stopFeed()
+        public void CaptureWorkerStopFeed()
         {
             capture.Start();
             capture.Stop();
@@ -46,7 +60,7 @@ namespace ScreenCapture.Tests
         }
 
         [TestMethod()]
-        public void resumeFeed()
+        public void CaptureWorkerResumeFeed()
         {
             capture.Start();
             capture.Pause();
@@ -57,7 +71,7 @@ namespace ScreenCapture.Tests
         }
 
         [TestMethod()]
-        public void Frames()
+        public void CaptureWorkerFrames()
         {
             Assert.IsTrue(capture.Frames == 0);
 
@@ -81,7 +95,7 @@ namespace ScreenCapture.Tests
         }
 
         [TestMethod()]
-        public void CaptureTime()
+        public void CaptureWorkerCaptureTime()
         {
             Assert.IsTrue(capture.CaptureTime.ElapsedMilliseconds == 0);
 

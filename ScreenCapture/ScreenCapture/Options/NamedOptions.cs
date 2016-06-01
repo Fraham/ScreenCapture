@@ -1,53 +1,114 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Xml.Serialization;
 
 namespace ScreenCapture.Options
 {
-    internal class NamedOptions : Options
+    [Serializable]
+    public class NamedOptions : Options
     {
         private string name;
 
-        private static ArrayList userNamedOptions;
+        private static List<NamedOptions> userNamedOptions = new List<NamedOptions>();
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public NamedOptions(string name, Options options) : base(options)
         {
             Name = name;
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public NamedOptions(string name) : base()
         {
             Name = name;
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="sourcePoint"></param>
         public NamedOptions(string name, int width, int height, Point sourcePoint) : base(width, height, sourcePoint)
         {
             Name = name;
         }
 
-        public ArrayList loadOptionsFromFile()
+        public NamedOptions() : base()
         {
-            return loadOptionsFromFile("options.xml");
+            Name = null;
         }
 
-        public ArrayList loadOptionsFromFile(String filename)
+        public void AddToList()
         {
-            using (var stream = File.OpenRead(filename))
+            UserNamedOptions.Add(this);
+        }
+
+        public static void AddToList(NamedOptions namedOptions)
+        {
+            UserNamedOptions.Add(namedOptions);
+        }
+
+        public void RemoveFromList()
+        {
+            UserNamedOptions.Remove(this);
+        }
+
+        public static void RemoveFromList(NamedOptions namedOptions)
+        {
+            UserNamedOptions.Remove(namedOptions);
+        }
+
+        public static List<NamedOptions> LoadOptionsFromFile()
+        {
+            return LoadOptionsFromFile("options.xml");
+        }
+
+        public static List<NamedOptions> LoadOptionsFromFile(string filename)
+        {
+            if (!(filename.ToLower().EndsWith(".xml")))
             {
-                var obj = new Options();
-                var serializer = new XmlSerializer(obj.GetType());
-                return (ArrayList)serializer.Deserialize(stream);
+                filename += ".xml";
+            }
+
+            if (File.Exists(filename))
+            {
+                using (var stream = File.OpenRead(filename))
+                {
+                    var serializer = new XmlSerializer(typeof(List<NamedOptions>));
+                    return (List<NamedOptions>)serializer.Deserialize(stream);
+                }
+            }
+            else
+            {
+                return new List<NamedOptions>();
             }
         }
 
-        public void saveOptionsToFile()
+        public static void SaveOptionsToFile()
         {
-            saveOptionsToFile(UserNamedOptions, "options.xml");
+            SaveOptionsToFile(UserNamedOptions, "options.xml");
         }
 
-        public void saveOptionsToFile(ArrayList options, string filename)
+        public static void SaveOptionsToFile(string filename)
+        {
+            SaveOptionsToFile(UserNamedOptions, filename);
+        }
+
+        public static void SaveOptionsToFile(List<NamedOptions> options, string filename)
         {
             if (!(filename.ToLower().EndsWith(".xml")))
             {
@@ -56,8 +117,8 @@ namespace ScreenCapture.Options
 
             using (var writer = new StreamWriter(filename))
             {
-                var serializer = new XmlSerializer(GetType());
-                serializer.Serialize(writer, this);
+                var serializer = new XmlSerializer(typeof(List<NamedOptions>));
+                serializer.Serialize(writer, options);
                 writer.Flush();
             }
         }
@@ -74,7 +135,7 @@ namespace ScreenCapture.Options
             }
         }
 
-        public static ArrayList UserNamedOptions
+        public static List<NamedOptions> UserNamedOptions
         {
             get
             {
@@ -85,6 +146,22 @@ namespace ScreenCapture.Options
             {
                 userNamedOptions = value;
             }
+        }
+
+        public override bool Equals(Object obj)
+        {
+            NamedOptions optionsObj = obj as NamedOptions;
+            if (optionsObj == null)
+            {
+                return false;
+            }
+
+            return optionsObj.Height == Height && optionsObj.Width == Width && optionsObj.SourcePoint == SourcePoint && optionsObj.Fullscreen == Fullscreen && optionsObj.Name.Equals(Name);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Height + this.Width;
         }
     }
 }

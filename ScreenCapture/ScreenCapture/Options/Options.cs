@@ -6,6 +6,8 @@ using System.Xml.Serialization;
 
 namespace ScreenCapture.Options
 {
+    [XmlInclude(typeof(NamedOptions))]
+    [Serializable]
     public class Options
     {
         #region Class Variables

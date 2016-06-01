@@ -176,7 +176,7 @@
             // 
             this.nudHeight.Location = new System.Drawing.Point(109, 45);
             this.nudHeight.Maximum = new decimal(new int[] {
-            ScreenSize.Height,
+            1080,
             0,
             0,
             0});
@@ -199,12 +199,7 @@
             // 
             this.nudYSourcePoint.Location = new System.Drawing.Point(109, 97);
             this.nudYSourcePoint.Maximum = new decimal(new int[] {
-            ScreenSize.Height,
-            0,
-            0,
-            0});
-            this.nudYSourcePoint.Minimum = new decimal(new int[] {
-            ScreenSize.TopLeftPoint.Y,
+            1080,
             0,
             0,
             0});
@@ -222,12 +217,7 @@
             // 
             this.nudXSourcePoint.Location = new System.Drawing.Point(109, 71);
             this.nudXSourcePoint.Maximum = new decimal(new int[] {
-            ScreenSize.Width,
-            0,
-            0,
-            0});
-            this.nudXSourcePoint.Minimum = new decimal(new int[] {
-            ScreenSize.TopLeftPoint.X,
+            3840,
             0,
             0,
             0});
@@ -245,12 +235,7 @@
             // 
             this.nudWidth.Location = new System.Drawing.Point(109, 19);
             this.nudWidth.Maximum = new decimal(new int[] {
-            ScreenSize.Width,
-            0,
-            0,
-            0});
-            this.nudWidth.Minimum = new decimal(new int[] {
-            0,
+            3840,
             0,
             0,
             0});
@@ -397,18 +382,18 @@
         private System.Windows.Forms.Label lblYSourcePoint;
         private System.Windows.Forms.Label lblXSourcePoint;
         private System.Windows.Forms.Label lblWidth;
-        private System.Windows.Forms.NumericUpDown nudHeight;
-        private System.Windows.Forms.NumericUpDown nudYSourcePoint;
-        private System.Windows.Forms.NumericUpDown nudXSourcePoint;
-        private System.Windows.Forms.NumericUpDown nudWidth;
         private System.Windows.Forms.Button btnSelectCaptureArea;
         private System.Windows.Forms.Button btnShowCaptureArea;
         private System.Windows.Forms.GroupBox grpScreenSelect;
-        private System.Windows.Forms.ComboBox cmbNumberOfScreens;
         private System.Windows.Forms.GroupBox grpUserProfiles;
         private System.Windows.Forms.TextBox txtProfileName;
         private System.Windows.Forms.Button btnSaveUserProfile;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.NumericUpDown nudHeight;
+        public System.Windows.Forms.NumericUpDown nudYSourcePoint;
+        public System.Windows.Forms.NumericUpDown nudXSourcePoint;
+        public System.Windows.Forms.NumericUpDown nudWidth;
+        public System.Windows.Forms.ComboBox cmbNumberOfScreens;
     }
 }

@@ -32,6 +32,7 @@
             this.btnPause = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.fbdFeedSaver = new System.Windows.Forms.FolderBrowserDialog();
+            this.lblTimer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnStart
@@ -64,11 +65,22 @@
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(37, 38);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(174, 46);
+            this.lblTimer.TabIndex = 3;
+            this.lblTimer.Text = "00:00:00";
+            // 
             // frmFeed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(261, 43);
+            this.ClientSize = new System.Drawing.Size(261, 90);
+            this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.btnStart);
@@ -78,6 +90,7 @@
             this.Text = "Feed";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmFeed_FormClosing);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -86,5 +99,6 @@
         private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.FolderBrowserDialog fbdFeedSaver;
+        private System.Windows.Forms.Label lblTimer;
     }
 }

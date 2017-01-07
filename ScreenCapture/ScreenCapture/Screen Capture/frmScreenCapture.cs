@@ -152,7 +152,7 @@ namespace ScreenCapture
 
         #endregion Screenshot
 
-        #region Options.Options
+        #region Options
 
         private void mnsScreenCaptureOptions_Click(object sender, EventArgs e)
         {

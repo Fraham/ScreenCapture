@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace ScreenCapture.ScreenCapture
@@ -8,11 +9,14 @@ namespace ScreenCapture.ScreenCapture
         private CaptureWorker feedWorker;
         private Options.Options usersOptions;
 
+        private ManualResetEvent pauseThread = new ManualResetEvent(true);
+        private ManualResetEvent shutdownThread = new ManualResetEvent(false);
+
+        private Thread timerDisplayThread;
+
         public frmFeed(Options.Options usersOptions, string path)
         {
             InitializeComponent();
-
-            this.UsersOptions = usersOptions;
 
             this.UsersOptions = usersOptions;
 
@@ -36,7 +40,14 @@ namespace ScreenCapture.ScreenCapture
         /// <param name="e"></param>
         private void btnPause_Click(object sender, EventArgs e)
         {
-            pauseFeed();
+            if (running)
+            {
+                pauseFeed();
+            }
+            else
+            {
+                resumeFeed();
+            }
         }
 
         /// <summary>
@@ -55,6 +66,13 @@ namespace ScreenCapture.ScreenCapture
         public void startFeed()
         {
             this.FeedWorker.Start();
+
+            pauseThread = new ManualResetEvent(true);
+            shutdownThread = new ManualResetEvent(false);
+
+            timerDisplayThread = new Thread(DisplayTimer);
+            running = true;
+            timerDisplayThread.Start();
         }
 
         /// <summary>
@@ -63,6 +81,10 @@ namespace ScreenCapture.ScreenCapture
         public void resumeFeed()
         {
             this.FeedWorker.Resume();
+
+            pauseThread.Set();
+
+            running = true;
         }
 
         /// <summary>
@@ -71,6 +93,10 @@ namespace ScreenCapture.ScreenCapture
         public void pauseFeed()
         {
             this.FeedWorker.Pause();
+
+            pauseThread.Reset();
+
+            running = false;
         }
 
         /// <summary>
@@ -82,7 +108,20 @@ namespace ScreenCapture.ScreenCapture
 
             Console.WriteLine("Elapsed Time: " + this.FeedWorker.CaptureTime.Elapsed);
             Console.WriteLine("Number of Frames: " + this.FeedWorker.Frames);
+
+            // Signal the shutdown event
+            shutdownThread.Set();
+
+            // Make sure to resume any paused threads
+            //pauseThread.Set();
+
+            // Wait for the thread to exit
+           // timerDisplayThread.Join();
+
+            running = false;
         }
+
+        public bool running = false;
 
         /// <summary>
         /// Holds all the information about the current feed.
@@ -132,6 +171,34 @@ namespace ScreenCapture.ScreenCapture
             if (this.FeedWorker == null)
             {
                 this.Close();
+            }
+        }
+
+        private void DisplayTimer()
+        {
+            while (true)
+            {
+                pauseThread.WaitOne(Timeout.Infinite);
+
+                if (shutdownThread.WaitOne(0))
+                    break;
+
+                SetText(FeedWorker.CaptureTime.Elapsed.ToString());
+            }
+        }
+
+        delegate void SetTextCallback(string text);
+
+        private void SetText(string text)
+        {
+            if (this.lblTimer.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                this.lblTimer.Text = text;
             }
         }
     }

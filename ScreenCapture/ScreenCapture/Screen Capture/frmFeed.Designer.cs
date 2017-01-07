@@ -69,11 +69,11 @@
             // 
             this.lblTimer.AutoSize = true;
             this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimer.Location = new System.Drawing.Point(37, 38);
+            this.lblTimer.Location = new System.Drawing.Point(4, 38);
             this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(174, 46);
+            this.lblTimer.Size = new System.Drawing.Size(251, 46);
             this.lblTimer.TabIndex = 3;
-            this.lblTimer.Text = "00:00:00";
+            this.lblTimer.Text = "00:00:00.000";
             // 
             // frmFeed
             // 

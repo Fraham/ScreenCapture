@@ -279,7 +279,7 @@ namespace ScreenCapture.Options
         /// <exception cref="FileNotFoundException"></exception>
         /// <exception cref="IOException"></exception>
         /// <exception cref="Exception"></exception>
-        public static Options LoadFromFile(String FileName)
+        public static Options LoadFromFile(string FileName)
         {
             using (var stream = File.OpenRead(FileName))
             {

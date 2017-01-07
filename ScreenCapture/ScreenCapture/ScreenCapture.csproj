@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,7 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\ScreenshotFactory.cs" />
+    <Compile Include="Interfaces\IScreenshotRepository.cs" />
     <Compile Include="Options\NamedOptions.cs" />
+    <Compile Include="Repositories\FakeScreenshotRepository.cs" />
+    <Compile Include="Repositories\WindowsScreenshotRepository.cs" />
     <Compile Include="Screen Capture\CaptureWorker.cs" />
     <Compile Include="Options\frmOptions.cs">
       <SubType>Form</SubType>
@@ -121,6 +126,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -149,7 +149,7 @@ namespace ScreenCapture.Tests
 
             screenshot1.Save(filename);
 
-            Assert.IsTrue(File.Exists(filename));
+            Assert.AreEqual(screenshot1.Image, screenshot1.Load(filename));
 
             string filename2 = "testing";
 
@@ -160,7 +160,7 @@ namespace ScreenCapture.Tests
 
             screenshot1.Save(filename2);
 
-            Assert.IsTrue(File.Exists(filename2 + ".jpeg"));
+            Assert.AreEqual(screenshot1.Image, screenshot1.Load(filename));
         }
 
         [TestMethod()]

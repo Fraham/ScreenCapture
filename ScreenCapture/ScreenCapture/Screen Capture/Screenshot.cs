@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ScreenCapture.Interfaces;
+using ScreenCapture.Factories;
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
@@ -10,6 +12,8 @@ namespace ScreenCapture
     {
         private Options.Options options;
         private Bitmap image;
+
+        IScreenshotRepository screenshotRepository = ScreenshotFactory.GetRepository();
 
         /// <summary>
         /// Makes a new instance of a screenshot.
@@ -69,22 +73,17 @@ namespace ScreenCapture
 
         public void Save()
         {
-            SaveFileDialog dialog = new SaveFileDialog();
-            dialog.Filter = "JPEG File | *.jpeg";
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                Save(dialog.FileName);
-            }
+            screenshotRepository.Save(Image);
         }
 
         public void Save(string fileName)
         {
-            if (!(fileName.ToLower().EndsWith(".jpeg")))
-            {
-                fileName += ".jpeg";
-            }
+            screenshotRepository.Save(Image, fileName: fileName);
+        }
 
-            Image.Save(fileName, ImageFormat.Jpeg);
+        public Image Load(string fileName)
+        {
+            return screenshotRepository.Load(fileName: fileName);
         }
 
         public void Copy()

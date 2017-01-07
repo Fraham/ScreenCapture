@@ -12,3 +12,4 @@ C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCaptureT
 C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCaptureTesting\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCaptureTesting\bin\Debug\ScreenCapture.exe
 C:\Users\Graham\SkyDrive\MiniProjects\ScreenCapture\ScreenCapture\ScreenCaptureTesting\bin\Debug\ScreenCapture.pdb
+C:\Users\Graham\Desktop\GitHub\ScreenCapture\ScreenCapture\ScreenCaptureTesting\bin\Debug\ScreenCaptureTesting.dll.config

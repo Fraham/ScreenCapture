@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace ScreenCapture.Repositories
+namespace ScreenCapture.Repositories.ScreenshotRepositories
 {
     public class FakeScreenshotRepository : IScreenshotRepository
     {

@@ -45,11 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\OptionsFactory.cs" />
     <Compile Include="Factories\ScreenshotFactory.cs" />
+    <Compile Include="Interfaces\IOptionsRepository.cs" />
     <Compile Include="Interfaces\IScreenshotRepository.cs" />
     <Compile Include="Options\NamedOptions.cs" />
-    <Compile Include="Repositories\FakeScreenshotRepository.cs" />
-    <Compile Include="Repositories\WindowsScreenshotRepository.cs" />
+    <Compile Include="Repositories\OptionsRepositories\FakeOptionsRepository.cs" />
+    <Compile Include="Repositories\OptionsRepositories\WindowsOptionsRepository.cs" />
+    <Compile Include="Repositories\ScreenshotRepositories\FakeScreenshotRepository.cs" />
+    <Compile Include="Repositories\ScreenshotRepositories\WindowsScreenshotRepository.cs" />
     <Compile Include="Screen Capture\CaptureWorker.cs" />
     <Compile Include="Options\frmOptions.cs">
       <SubType>Form</SubType>
@@ -111,7 +115,6 @@
     <EmbeddedResource Include="Screen Capture\frmScreenshot.resx">
       <DependentUpon>frmScreenshot.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

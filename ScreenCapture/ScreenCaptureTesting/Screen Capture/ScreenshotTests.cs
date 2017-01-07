@@ -140,11 +140,6 @@ namespace ScreenCapture.Tests
         {
             string filename = "test.jpeg";
 
-            if (File.Exists(filename))
-            {
-                File.Delete(filename);
-            }
-
             screenshot1.Capture();
 
             screenshot1.Save(filename);
@@ -152,11 +147,6 @@ namespace ScreenCapture.Tests
             Assert.AreEqual(screenshot1.Image, screenshot1.Load(filename));
 
             string filename2 = "testing";
-
-            if (File.Exists(filename2 + ".jpeg"))
-            {
-                File.Delete(filename2 + ".jpeg");
-            }
 
             screenshot1.Save(filename2);
 

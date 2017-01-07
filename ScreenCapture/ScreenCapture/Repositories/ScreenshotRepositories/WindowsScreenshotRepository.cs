@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ScreenCapture.Repositories
+namespace ScreenCapture.Repositories.ScreenshotRepositories
 {
     public class WindowsScreenshotRepository : IScreenshotRepository
     {

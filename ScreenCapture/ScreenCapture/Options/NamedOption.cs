@@ -10,10 +10,14 @@ namespace ScreenCapture.Options
     [Serializable]
     public class NamedOption : Option
     {
+        #region Class variables
+
         private string name;
         private bool isDefault;
 
-        //private static List<NamedOption> userNamedOptions = new List<NamedOption>();
+        #endregion
+
+        #region Constructors
 
         /// <summary>
         ///
@@ -54,78 +58,12 @@ namespace ScreenCapture.Options
         public NamedOption() : base()
         {
             Name = null;
+            IsDefault = false;
         }
 
-        //public void AddToList()
-        //{
-        //    UserNamedOptions.Add(this);
-        //}
+        #endregion
 
-        //public static void AddToList(NamedOption namedOptions)
-        //{
-        //    UserNamedOptions.Add(namedOptions);
-        //}
-
-        //public void RemoveFromList()
-        //{
-        //    UserNamedOptions.Remove(this);
-        //}
-
-        //public static void RemoveFromList(NamedOption namedOptions)
-        //{
-        //    UserNamedOptions.Remove(namedOptions);
-        //}
-
-        //public static List<NamedOption> LoadOptionsFromFile()
-        //{
-        //    return LoadOptionsFromFile("options.xml");
-        //}
-
-        //public static List<NamedOption> LoadOptionsFromFile(string filename)
-        //{
-        //    if (!(filename.ToLower().EndsWith(".xml")))
-        //    {
-        //        filename += ".xml";
-        //    }
-
-        //    if (File.Exists(filename))
-        //    {
-        //        using (var stream = File.OpenRead(filename))
-        //        {
-        //            var serializer = new XmlSerializer(typeof(List<NamedOption>));
-        //            return (List<NamedOption>)serializer.Deserialize(stream);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return new List<NamedOption>();
-        //    }
-        //}
-
-        //public static void SaveOptionsToFile()
-        //{
-        //    SaveOptionsToFile(UserNamedOptions, "options.xml");
-        //}
-
-        //public static void SaveOptionsToFile(string filename)
-        //{
-        //    SaveOptionsToFile(UserNamedOptions, filename);
-        //}
-
-        //public static void SaveOptionsToFile(List<NamedOption> options, string filename)
-        //{
-        //    if (!(filename.ToLower().EndsWith(".xml")))
-        //    {
-        //        filename += ".xml";
-        //    }
-
-        //    using (var writer = new StreamWriter(filename))
-        //    {
-        //        var serializer = new XmlSerializer(typeof(List<NamedOption>));
-        //        serializer.Serialize(writer, options);
-        //        writer.Flush();
-        //    }
-        //}
+        #region Properties
 
         public string Name
         {
@@ -151,18 +89,9 @@ namespace ScreenCapture.Options
             }
         }
 
-        //public static List<NamedOption> UserNamedOptions
-        //{
-        //    get
-        //    {
-        //        return userNamedOptions;
-        //    }
+        #endregion
 
-        //    set
-        //    {
-        //        userNamedOptions = value;
-        //    }
-        //}
+        #region Equals
 
         public override bool Equals(Object obj)
         {
@@ -179,5 +108,7 @@ namespace ScreenCapture.Options
         {
             return this.Height + this.Width;
         }
+
+        #endregion
     }
 }

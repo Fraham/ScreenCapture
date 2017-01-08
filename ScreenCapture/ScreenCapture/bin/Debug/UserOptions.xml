@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Option xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Fullscreen>true</Fullscreen>
-  <Height>1080</Height>
-  <SourcePoint>
-    <X>0</X>
-    <Y>0</Y>
-  </SourcePoint>
-  <Width>3840</Width>
-</Option>
+<ArrayOfNamedOption xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <NamedOption>
+    <Fullscreen>true</Fullscreen>
+    <Height>1080</Height>
+    <SourcePoint>
+      <X>0</X>
+      <Y>0</Y>
+    </SourcePoint>
+    <Width>3840</Width>
+    <Name>Default</Name>
+    <IsDefault>true</IsDefault>
+  </NamedOption>
+</ArrayOfNamedOption>

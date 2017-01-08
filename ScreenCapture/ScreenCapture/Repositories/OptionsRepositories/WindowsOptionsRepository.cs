@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 
 namespace ScreenCapture.Repositories.OptionsRepositories
 {
-    class WindowsOptionsRepository : IOptionsRepository
+    public class WindowsOptionsRepository : IOptionsRepository
     {
         private ICollection<NamedOption> options = new List<NamedOption>();
         private string fileName = "userOptions.xml";
@@ -99,7 +99,7 @@ namespace ScreenCapture.Repositories.OptionsRepositories
 
         public NamedOption GetDefault()
         {
-            return Options.First(op => op.IsDefault);
+            return Options.First(op => op.IsDefault == true);
         }
 
         private ICollection<NamedOption> Load()
@@ -114,7 +114,10 @@ namespace ScreenCapture.Repositories.OptionsRepositories
             }
             else
             {
-                return new List<NamedOption>();
+                var newList = new List<NamedOption>();
+                newList.Add(new NamedOption("Default", isDefault: true));
+                Save(newList);
+                return newList;
             }
         }
 
@@ -130,12 +133,7 @@ namespace ScreenCapture.Repositories.OptionsRepositories
 
         private void Save()
         {
-            using (var writer = new StreamWriter(fileName))
-            {
-                var serializer = new XmlSerializer(typeof(List<NamedOption>));
-                serializer.Serialize(writer, Options);
-                writer.Flush();
-            }
+            Save(Options);
         }
 
         #region Properties

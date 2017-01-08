@@ -18,8 +18,6 @@ namespace ScreenCapture
     {
         #region Class Variables
 
-        private NamedOption usersOptions;
-
         private Screenshot screenshot;
 
         private IOptionsRepository optionsRepository = OptionsFactory.GetRepository();
@@ -35,36 +33,9 @@ namespace ScreenCapture
         public frmScreenCapture()
         {
             InitializeComponent();
-
-            LoadOptions();
         }
 
         #endregion Constructor
-
-        #region Loading and Saving Options.Options
-
-        /// <summary>
-        /// It will load the options from an XML file.
-        /// </summary>
-        public void LoadOptions()
-        {
-            try
-            {
-                UsersOptions = optionsRepository.GetDefault();
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine("The file was not found. " + ex.ToString());
-                UsersOptions = new NamedOption();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Unable to load file - " + ex.ToString());
-                UsersOptions = new NamedOption();
-            }
-        }
-
-        #endregion Loading and Saving Options.Options
 
         #region Form CLosing
 
@@ -80,29 +51,6 @@ namespace ScreenCapture
 
         #endregion Form CLosing
 
-        #region Properties
-
-        /// <summary>
-        /// Holds all the options for the capture
-        /// </summary>
-        public NamedOption UsersOptions
-        {
-            get
-            {
-                if (usersOptions == null)
-                {
-                    return new NamedOption();
-                }
-
-                return usersOptions;
-            }
-            set
-            {
-                usersOptions = value;
-            }
-        }
-
-        #endregion Properties
 
         #region Picture Box Context Strip
 
@@ -174,7 +122,7 @@ namespace ScreenCapture
 
         public void TakeScreenshot()
         {
-            screenshot = new Screenshot(UsersOptions);
+            screenshot = new Screenshot(optionsRepository.GetDefault());
             screenshot.Capture();
 
             frmScreenshot frmShot = new frmScreenshot(screenshot);
@@ -192,11 +140,7 @@ namespace ScreenCapture
         /// </summary>
         public void OpenOptionsForm()
         {
-            frmOptions frmO = new frmOptions(UsersOptions);
-            if (frmO.ShowDialog() == DialogResult.OK)
-            {
-                UsersOptions = frmO.UsersOptions;
-            }
+            frmOptions frmO = new frmOptions(optionsRepository.GetDefault());
         }
 
         private void btnLiveFeed_Click(object sender, EventArgs e)
@@ -204,7 +148,7 @@ namespace ScreenCapture
             DialogResult result = fbdFeedSaver.ShowDialog();
             if (result == DialogResult.OK)
             {
-                ScreenCapture.frmFeed feed = new ScreenCapture.frmFeed(this.UsersOptions, fbdFeedSaver.SelectedPath);
+                ScreenCapture.frmFeed feed = new ScreenCapture.frmFeed(optionsRepository.GetDefault(), fbdFeedSaver.SelectedPath);
                 feed.Show();
             }
         }

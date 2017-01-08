@@ -134,7 +134,7 @@
             this.grpCaptureOptions.Size = new System.Drawing.Size(240, 127);
             this.grpCaptureOptions.TabIndex = 0;
             this.grpCaptureOptions.TabStop = false;
-            this.grpCaptureOptions.Text = "Capture Options";
+            this.grpCaptureOptions.Text = "Capture Option";
             // 
             // lblHeight
             // 
@@ -352,7 +352,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "frmOptions";
-            this.Text = "Options";
+            this.Text = "Option";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmOptions_FormClosing);
             this.Load += new System.EventHandler(this.frmOptions_Load);
             this.grpFullScreen.ResumeLayout(false);

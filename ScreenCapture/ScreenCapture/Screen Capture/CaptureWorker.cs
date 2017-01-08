@@ -14,7 +14,7 @@ namespace ScreenCapture
         private ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
         private Thread _thread;
         private int frames = 0;
-        private Options.Options options;
+        private Options.Option options;
         private bool started = false;
         private bool capturing = false;
         private Stopwatch captureTime;
@@ -35,7 +35,7 @@ namespace ScreenCapture
         /// <param name="sourcePoint">The source point of the capture.</param>
         public CaptureWorker(int captureWidth, int captureHeight, Point sourcePoint, string path)
         {
-            CaptureOptions = new Options.Options(captureWidth, captureHeight, sourcePoint);
+            CaptureOptions = new Options.Option(captureWidth, captureHeight, sourcePoint);
 
             this.Path = path;
         }
@@ -49,7 +49,7 @@ namespace ScreenCapture
         /// <param name="picBox">The picture box being used to display the capture.</param>
         public CaptureWorker(int captureWidth, int captureHeight, string path)
         {
-            CaptureOptions = new Options.Options(captureWidth, captureHeight, Point.Empty);
+            CaptureOptions = new Options.Option(captureWidth, captureHeight, Point.Empty);
 
             this.Path = path;
         }
@@ -65,7 +65,7 @@ namespace ScreenCapture
         /// <param name="y">The y co-ordinate of the source of the source</param>
         public CaptureWorker(int captureWidth, int captureHeight, int x, int y, string path)
         {
-            CaptureOptions = new Options.Options(captureWidth, captureHeight, new Point(x, y));
+            CaptureOptions = new Options.Option(captureWidth, captureHeight, new Point(x, y));
 
             this.Path = path;
         }
@@ -77,7 +77,7 @@ namespace ScreenCapture
         /// <param name="picBox">The picture box being used to display the capture.</param>
         public CaptureWorker(string path)
         {
-            CaptureOptions = new Options.Options(ScreenSize.Width, ScreenSize.Height, Point.Empty);
+            CaptureOptions = new Options.Option(ScreenSize.Width, ScreenSize.Height, Point.Empty);
 
             this.Path = path;
         }
@@ -87,7 +87,7 @@ namespace ScreenCapture
         /// </summary>
         /// <param name="options">The options for the capture.</param>
         /// <param name="picBox">The picture box being used to display the capture.</param>
-        public CaptureWorker(Options.Options options, string path)
+        public CaptureWorker(Options.Option options, string path)
         {
             CaptureOptions = options;
 
@@ -210,7 +210,7 @@ namespace ScreenCapture
         /// <summary>
         /// Getter and Setter for the capture options. This holds all the information needed for the capture.
         /// </summary>
-        public Options.Options CaptureOptions
+        public Options.Option CaptureOptions
         {
             get
             {

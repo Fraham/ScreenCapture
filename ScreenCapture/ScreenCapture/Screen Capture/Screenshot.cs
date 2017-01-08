@@ -10,7 +10,7 @@ namespace ScreenCapture
 {
     public class Screenshot
     {
-        private Options.Options options;
+        private Options.Option options;
         private Bitmap image;
 
         IScreenshotRepository screenshotRepository = ScreenshotFactory.GetRepository();
@@ -24,7 +24,7 @@ namespace ScreenCapture
         /// <param name="sourcePoint">The source point of the capture.</param>
         public Screenshot(int captureWidth, int captureHeight, Point sourcePoint)
         {
-            CaptureOptions = new Options.Options(captureWidth, captureHeight, sourcePoint);
+            CaptureOptions = new Options.Option(captureWidth, captureHeight, sourcePoint);
         }
 
         /// <summary>
@@ -35,10 +35,10 @@ namespace ScreenCapture
         /// <param name="captureHeight">The height of capture area.</param>
         public Screenshot(int captureWidth, int captureHeight)
         {
-            CaptureOptions = new Options.Options(captureWidth, captureHeight, Point.Empty);
+            CaptureOptions = new Options.Option(captureWidth, captureHeight, Point.Empty);
         }
 
-        public Screenshot(Options.Options options)
+        public Screenshot(Options.Option options)
         {
             CaptureOptions = options;
         }
@@ -116,7 +116,7 @@ namespace ScreenCapture
         /// Getter and Setter for the capture options.
         /// This holds all the information needed for the capture.
         /// </summary>
-        public Options.Options CaptureOptions
+        public Options.Option CaptureOptions
         {
             get
             {

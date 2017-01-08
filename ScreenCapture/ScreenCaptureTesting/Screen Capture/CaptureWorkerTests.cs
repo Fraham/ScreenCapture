@@ -13,7 +13,7 @@ namespace ScreenCapture.Tests
         [TestInitialize()]
         public void Initialize()
         {
-            capture = new CaptureWorker(new Options.Options(100, 100, new Point(3, 4)), @"C:\");
+            capture = new CaptureWorker(new Options.Option(100, 100, new Point(3, 4)), @"C:\");
         }
 
         [TestMethod()]
@@ -27,7 +27,7 @@ namespace ScreenCapture.Tests
 
             capture = new CaptureWorker(@"C:\dave");
 
-            capture = new CaptureWorker(new Options.Options(100, 100, new Point(3, 4)), @"C:\");
+            capture = new CaptureWorker(new Options.Option(100, 100, new Point(3, 4)), @"C:\");
         }
 
         [TestMethod()]

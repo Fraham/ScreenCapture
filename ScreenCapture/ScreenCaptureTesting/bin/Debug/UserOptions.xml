@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Options xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<Option xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Fullscreen>false</Fullscreen>
   <Height>100</Height>
   <SourcePoint>
@@ -7,4 +7,4 @@
     <Y>4</Y>
   </SourcePoint>
   <Width>200</Width>
-</Options>
+</Option>

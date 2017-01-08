@@ -86,7 +86,7 @@
             // 
             this.mnsScreenCaptureOptions.Name = "mnsScreenCaptureOptions";
             this.mnsScreenCaptureOptions.Size = new System.Drawing.Size(61, 20);
-            this.mnsScreenCaptureOptions.Text = "Options";
+            this.mnsScreenCaptureOptions.Text = "Option";
             this.mnsScreenCaptureOptions.Click += new System.EventHandler(this.mnsScreenCaptureOptions_Click);
             // 
             // mnsScreenCapture

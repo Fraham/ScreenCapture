@@ -49,7 +49,7 @@
     <Compile Include="Factories\ScreenshotFactory.cs" />
     <Compile Include="Interfaces\IOptionsRepository.cs" />
     <Compile Include="Interfaces\IScreenshotRepository.cs" />
-    <Compile Include="Options\NamedOptions.cs" />
+    <Compile Include="Options\NamedOption.cs" />
     <Compile Include="Repositories\OptionsRepositories\FakeOptionsRepository.cs" />
     <Compile Include="Repositories\OptionsRepositories\WindowsOptionsRepository.cs" />
     <Compile Include="Repositories\ScreenshotRepositories\FakeScreenshotRepository.cs" />
@@ -79,7 +79,7 @@
     <Compile Include="Options\frmUserCaptureArea.Designer.cs">
       <DependentUpon>frmUserCaptureArea.cs</DependentUpon>
     </Compile>
-    <Compile Include="Options\Options.cs" />
+    <Compile Include="Options\Option.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screen Capture\frmScreenshot.cs">

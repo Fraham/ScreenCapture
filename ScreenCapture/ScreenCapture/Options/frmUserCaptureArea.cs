@@ -24,12 +24,12 @@ namespace ScreenCapture
         private Graphics g;
         private Form m_InstanceRef = null;
         private Pen MyPen = new Pen(Color.Red, 1);
-        private Options.Options options;
+        private Options.Option options;
         private bool show = false;
 
         #endregion Form Variables
 
-        public frmUserCaptureArea(Options.Options options, bool show)
+        public frmUserCaptureArea(Options.Option options, bool show)
         {
             InitializeComponent();
 
@@ -84,7 +84,7 @@ namespace ScreenCapture
 
         #region Properties
 
-        public Options.Options CaptureOptions
+        public Options.Option CaptureOptions
         {
             get
             {

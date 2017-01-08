@@ -7,14 +7,14 @@ namespace ScreenCapture.ScreenCapture
     public partial class frmFeed : Form
     {
         private CaptureWorker feedWorker;
-        private Options.Options usersOptions;
+        private Options.Option usersOptions;
 
         private ManualResetEvent pauseThread = new ManualResetEvent(true);
         private ManualResetEvent shutdownThread = new ManualResetEvent(false);
 
         private Thread timerDisplayThread;
 
-        public frmFeed(Options.Options usersOptions, string path)
+        public frmFeed(Options.Option usersOptions, string path)
         {
             InitializeComponent();
 
@@ -141,13 +141,13 @@ namespace ScreenCapture.ScreenCapture
         /// <summary>
         /// Holds all the options for the capture
         /// </summary>
-        public Options.Options UsersOptions
+        public Options.Option UsersOptions
         {
             get
             {
                 if (usersOptions == null)
                 {
-                    return new Options.Options();
+                    return new Options.Option();
                 }
 
                 return usersOptions;

@@ -8,7 +8,7 @@ namespace ScreenCapture.Tests
     {
 
     //    private frmOptions optionsForm;
-    //    private Options.Options options = new Options.Options();
+    //    private Option.Option options = new Option.Option();
 
     //    [TestInitialize()]
     //    public void Initialize()

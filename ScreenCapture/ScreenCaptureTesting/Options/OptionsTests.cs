@@ -9,22 +9,22 @@ namespace ScreenCapture.Tests
     [TestClass()]
     public class OptionsTests
     {
-        private Options.Options option1;
-        private Options.Options option2;
+        private Options.Option option1;
+        private Options.Option option2;
 
         [TestInitialize()]
         public void Initialize()
         {
-            option1 = new Options.Options(100, 100, new Point(3, 4));
-            option2 = new Options.Options(200, 100, new Point(3, 4));
+            option1 = new Options.Option(100, 100, new Point(3, 4));
+            option2 = new Options.Option(200, 100, new Point(3, 4));
         }
 
         [TestMethod()]
         public void OptionsEqual()
         {
-            Assert.AreEqual(new Options.Options(100, 100, new Point(3, 4)), option1);
-            Assert.AreNotEqual(new Options.Options(100, 100, new Point(3, 4)), option2);
-            Assert.AreNotEqual(new Options.Options(100, 100, new Point(3, 4)), null);
+            Assert.AreEqual(new Options.Option(100, 100, new Point(3, 4)), option1);
+            Assert.AreNotEqual(new Options.Option(100, 100, new Point(3, 4)), option2);
+            Assert.AreNotEqual(new Options.Option(100, 100, new Point(3, 4)), null);
         }
 
         [TestMethod()]
@@ -98,7 +98,7 @@ namespace ScreenCapture.Tests
         [ExpectedException(typeof(FileNotFoundException))]
         public void LoadThrowsFileNotFound()
         {
-            Options.Options.LoadFromFile("notAFile");
+            Options.Option.LoadFromFile("notAFile");
         }
 
         [TestMethod]
@@ -106,13 +106,13 @@ namespace ScreenCapture.Tests
         {
             option1.Save();
 
-            Assert.AreEqual(option1, Options.Options.LoadFromFile());
-            Assert.AreNotEqual(option2, Options.Options.LoadFromFile());
+            Assert.AreEqual(option1, Options.Option.LoadFromFile());
+            Assert.AreNotEqual(option2, Options.Option.LoadFromFile());
 
             option2.Save();
 
-            Assert.AreEqual(option2, Options.Options.LoadFromFile());
-            Assert.AreNotEqual(option1, Options.Options.LoadFromFile());
+            Assert.AreEqual(option2, Options.Option.LoadFromFile());
+            Assert.AreNotEqual(option1, Options.Option.LoadFromFile());
         }
 
         [TestMethod]

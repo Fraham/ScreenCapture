@@ -1,6 +1,7 @@
 ﻿using ScreenCapture.Options;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,12 +10,20 @@ namespace ScreenCapture.Interfaces
 {
     public interface IOptionsRepository
     {
-        void Create(NamedOptions option);
+        NamedOption Create(NamedOption option);
 
-        void Update(NamedOptions option);
+        NamedOption Create(string name, int width, int height, Point sourcePoint, bool isDefault);
 
-        NamedOptions Get(string name);
+        NamedOption Update(string name, NamedOption option, string newName);
 
-        ICollection<NamedOptions> GetAll();
+        NamedOption Update(string name, int width, int height, Point sourcePoint, bool isDefault, string newName);
+
+        NamedOption Get(string name);
+
+        IEnumerable<NamedOption> GetAll();
+
+        void SetDefault(NamedOption option);
+
+        NamedOption GetDefault();
     }
 }

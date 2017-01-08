@@ -29,7 +29,7 @@ namespace ScreenCapture
         private int currentWidth;
         private int currentX;
         private int currentY;
-        private Options.Options usersOptions;
+        private Options.Option usersOptions;
 
         private bool loading = false;
 
@@ -38,10 +38,10 @@ namespace ScreenCapture
         #region Constructor
 
         /// <summary>
-        /// Makes a new instance of a Options.Options.Options.Options menu form.
+        /// Makes a new instance of a Option.Option.Option.Option menu form.
         /// </summary>
         /// <param name="options">The options that are currently doing run.</param>
-        public frmOptions(Options.Options options)
+        public frmOptions(Options.Option options)
         {
             UsersOptions = options;
             InitializeComponent();
@@ -78,7 +78,7 @@ namespace ScreenCapture
             {
                 if (radFullScreen.Checked)
                 {
-                    UsersOptions = new Options.Options();
+                    UsersOptions = new Options.Option();
                 }
                 else
                 {
@@ -181,7 +181,7 @@ namespace ScreenCapture
         /// <summary>
         /// Holds all the options for the capture
         /// </summary>
-        public Options.Options UsersOptions
+        public Options.Option UsersOptions
         {
             get
             {
@@ -330,12 +330,12 @@ namespace ScreenCapture
         }
 
         /// <summary>
-        /// Gets the capture information from the form and creates, returns a new Options.Options.
+        /// Gets the capture information from the form and creates, returns a new Option.Option.
         /// </summary>
         /// <returns></returns>
-        private Options.Options MakeOptions()
+        private Options.Option MakeOptions()
         {
-            return UsersOptions = new Options.Options((int)CurrentWidth, (int)CurrentHeight, new Point((int)CurrentX, (int)CurrentY));
+            return UsersOptions = new Options.Option((int)CurrentWidth, (int)CurrentHeight, new Point((int)CurrentX, (int)CurrentY));
         }
 
         #endregion Options.Options

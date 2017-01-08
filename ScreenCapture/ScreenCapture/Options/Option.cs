@@ -6,9 +6,9 @@ using System.Xml.Serialization;
 
 namespace ScreenCapture.Options
 {
-    [XmlInclude(typeof(NamedOptions))]
+    [XmlInclude(typeof(NamedOption))]
     [Serializable]
-    public class Options
+    public class Option
     {
         #region Class Variables
 
@@ -25,7 +25,7 @@ namespace ScreenCapture.Options
         /// Making a new instance of the options class.
         /// This will store the users options for the capture.
         /// </summary>
-        public Options()
+        public Option()
         {
             Width = ScreenSize.Width;
             Height = ScreenSize.Height;
@@ -37,7 +37,7 @@ namespace ScreenCapture.Options
         /// Making a new instance of the options class.
         /// This will store the users options for the capture.
         /// </summary>
-        public Options(Options options)
+        public Option(Option options)
         {
             Width = options.Width;
             Height = options.Height;
@@ -52,7 +52,7 @@ namespace ScreenCapture.Options
         /// <param name="width">The width of the capture area.</param>
         /// <param name="height">The height of the capture area.</param>
         /// <param name="sourcePoint">The source point of the capture.</param>
-        public Options(int width, int height, Point sourcePoint)
+        public Option(int width, int height, Point sourcePoint)
         {
             Width = width;
             Height = height;
@@ -267,7 +267,7 @@ namespace ScreenCapture.Options
         /// <exception cref="FileNotFoundException"></exception>
         /// <exception cref="IOException"></exception>
         /// <exception cref="Exception"></exception>
-        public static Options LoadFromFile()
+        public static Option LoadFromFile()
         {
             return LoadFromFile("UserOptions.xml");
         }
@@ -279,19 +279,19 @@ namespace ScreenCapture.Options
         /// <exception cref="FileNotFoundException"></exception>
         /// <exception cref="IOException"></exception>
         /// <exception cref="Exception"></exception>
-        public static Options LoadFromFile(string FileName)
+        public static Option LoadFromFile(string FileName)
         {
             using (var stream = File.OpenRead(FileName))
             {
-                var obj = new Options();
+                var obj = new Option();
                 var serializer = new XmlSerializer(obj.GetType());
-                return (Options)serializer.Deserialize(stream);
+                return (Option)serializer.Deserialize(stream);
             }
         }
 
         public override bool Equals(Object obj)
         {
-            Options optionsObj = obj as Options;
+            Option optionsObj = obj as Option;
             if (optionsObj == null)
             {
                 return false;

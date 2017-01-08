@@ -114,7 +114,7 @@ namespace ScreenCapture.Tests
 
             //----------------------------------
 
-            screenshot1 = new Screenshot(new Options.Option(captureWidth, captureHeight, captureSourcePoint));
+            screenshot1 = new Screenshot(new NamedOption("", captureWidth, captureHeight, captureSourcePoint));
 
             Assert.AreEqual(captureWidth, screenshot1.CaptureOptions.Width);
 
@@ -124,7 +124,7 @@ namespace ScreenCapture.Tests
 
             //----------------------------------
 
-            screenshot1 = new Screenshot(new Options.Option(testWidth, testHeight, testPoint));
+            screenshot1 = new Screenshot(new NamedOption("", testWidth, testHeight, testPoint));
 
             Assert.AreEqual(testWidth, screenshot1.CaptureOptions.Width);
 

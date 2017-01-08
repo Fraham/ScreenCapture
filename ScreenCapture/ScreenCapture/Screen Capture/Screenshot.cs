@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.Windows.Forms;
+using ScreenCapture.Options;
 
 namespace ScreenCapture
 {
@@ -22,9 +23,9 @@ namespace ScreenCapture
         /// <param name="captureWidth">The width of capture area.</param>
         /// <param name="captureHeight">The height of capture area.</param>
         /// <param name="sourcePoint">The source point of the capture.</param>
-        public Screenshot(int captureWidth, int captureHeight, Point sourcePoint)
+        public Screenshot(int captureWidth, int captureHeight, Point sourcePoint, string name = "")
         {
-            CaptureOptions = new Options.Option(captureWidth, captureHeight, sourcePoint);
+            CaptureOptions = new NamedOption(name, captureWidth, captureHeight, sourcePoint);
         }
 
         /// <summary>
@@ -33,12 +34,12 @@ namespace ScreenCapture
         /// </summary>
         /// <param name="captureWidth">The width of capture area.</param>
         /// <param name="captureHeight">The height of capture area.</param>
-        public Screenshot(int captureWidth, int captureHeight)
+        public Screenshot(int captureWidth, int captureHeight, string name = "")
         {
-            CaptureOptions = new Options.Option(captureWidth, captureHeight, Point.Empty);
+            CaptureOptions = new NamedOption(name, captureWidth, captureHeight, Point.Empty);
         }
 
-        public Screenshot(Options.Option options)
+        public Screenshot(NamedOption options)
         {
             CaptureOptions = options;
         }

@@ -19,14 +19,6 @@ namespace ScreenCapture.Tests
         [TestMethod()]
         public void CaptureWorkerConstructors()
         {
-            capture = new CaptureWorker(100, 100, new Point(3, 4), @"C:\");
-
-            capture = new CaptureWorker(100, 100, @"C:\");
-
-            capture = new CaptureWorker(100, 100, 3, 4, @"C:\");
-
-            capture = new CaptureWorker(@"C:\dave");
-
             capture = new CaptureWorker(new Options.Option(100, 100, new Point(3, 4)), @"C:\");
         }
 

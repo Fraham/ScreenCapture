@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ScreenCapture.Options;
 using ScreenCapture.ScreenCapture;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace ScreenCapture.ScreenCapture.Tests
         [TestInitialize()]
         public void Initialize()
         {
-            feed = new frmFeed(new Options.Option(100, 100, new Point(3, 4)), @"\Testing\");
+            feed = new frmFeed(new NamedOption("", 100, 100, new Point(3, 4)), @"\Testing\");
         }
 
         [TestMethod()]

@@ -95,28 +95,7 @@ namespace ScreenCapture.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FileNotFoundException))]
-        public void LoadThrowsFileNotFound()
-        {
-            Options.Option.LoadFromFile("notAFile");
-        }
-
-        [TestMethod]
         public void Load()
-        {
-            option1.Save();
-
-            Assert.AreEqual(option1, Options.Option.LoadFromFile());
-            Assert.AreNotEqual(option2, Options.Option.LoadFromFile());
-
-            option2.Save();
-
-            Assert.AreEqual(option2, Options.Option.LoadFromFile());
-            Assert.AreNotEqual(option1, Options.Option.LoadFromFile());
-        }
-
-        [TestMethod]
-        public void Save()
         {
 
         }

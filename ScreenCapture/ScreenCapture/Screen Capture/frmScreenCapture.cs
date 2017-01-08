@@ -1,7 +1,10 @@
-﻿using System;
+﻿using ScreenCapture.Options;
+using System;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
+using ScreenCapture.Factories;
+using ScreenCapture.Interfaces;
 
 /*
  * Things to do:
@@ -15,9 +18,11 @@ namespace ScreenCapture
     {
         #region Class Variables
 
-        private Options.Option usersOptions;
+        private NamedOption usersOptions;
 
         private Screenshot screenshot;
+
+        private IOptionsRepository optionsRepository = OptionsFactory.GetRepository();
 
         #endregion Class Variables
 
@@ -45,26 +50,18 @@ namespace ScreenCapture
         {
             try
             {
-                UsersOptions = Options.Option.LoadFromFile();
+                UsersOptions = optionsRepository.GetDefault();
             }
             catch (FileNotFoundException ex)
             {
                 Console.WriteLine("The file was not found. " + ex.ToString());
-                UsersOptions = new Options.Option();
+                UsersOptions = new NamedOption();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Unable to load file - " + ex.ToString());
-                UsersOptions = new Options.Option();
+                UsersOptions = new NamedOption();
             }
-        }
-
-        /// <summary>
-        /// It will save the options to an XML file.
-        /// </summary>
-        public void SaveOptions()
-        {
-            UsersOptions.Save();
         }
 
         #endregion Loading and Saving Options.Options
@@ -78,7 +75,7 @@ namespace ScreenCapture
         /// <param name="e"></param>
         private void frmScreenCapture_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveOptions();
+            
         }
 
         #endregion Form CLosing
@@ -88,13 +85,13 @@ namespace ScreenCapture
         /// <summary>
         /// Holds all the options for the capture
         /// </summary>
-        public Options.Option UsersOptions
+        public NamedOption UsersOptions
         {
             get
             {
                 if (usersOptions == null)
                 {
-                    return new Options.Option();
+                    return new NamedOption();
                 }
 
                 return usersOptions;

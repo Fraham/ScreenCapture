@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScreenCapture.Options;
+using System;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -7,14 +8,14 @@ namespace ScreenCapture.ScreenCapture
     public partial class frmFeed : Form
     {
         private CaptureWorker feedWorker;
-        private Options.Option usersOptions;
+        private NamedOption usersOptions;
 
         private ManualResetEvent pauseThread = new ManualResetEvent(true);
         private ManualResetEvent shutdownThread = new ManualResetEvent(false);
 
         private Thread timerDisplayThread;
 
-        public frmFeed(Options.Option usersOptions, string path)
+        public frmFeed(NamedOption usersOptions, string path)
         {
             InitializeComponent();
 
@@ -141,13 +142,13 @@ namespace ScreenCapture.ScreenCapture
         /// <summary>
         /// Holds all the options for the capture
         /// </summary>
-        public Options.Option UsersOptions
+        public NamedOption UsersOptions
         {
             get
             {
                 if (usersOptions == null)
                 {
-                    return new Options.Option();
+                    return new NamedOption();
                 }
 
                 return usersOptions;

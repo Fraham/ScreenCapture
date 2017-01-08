@@ -197,97 +197,97 @@ namespace ScreenCapture.Options
         /// <summary>
         /// Will save the currently loaded options to file.
         /// </summary>
-        public void Save()
-        {
-            try
-            {
-                SaveFile("UserOptions.xml");
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        //public void Save()
+        //{
+        //    try
+        //    {
+        //        SaveFile("UserOptions.xml");
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
 
-        /// <summary>
-        /// Used for when the user wants to be able to save the options to file.
-        /// </summary>
-        /// <param name="Filename">The chosen file name from the user. Must put .xml on the end.</param>
-        public void Save(string Filename)
-        {
-            try
-            {
-                string directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ScreenCapture");
+        ///// <summary>
+        ///// Used for when the user wants to be able to save the options to file.
+        ///// </summary>
+        ///// <param name="Filename">The chosen file name from the user. Must put .xml on the end.</param>
+        //public void Save(string Filename)
+        //{
+        //    try
+        //    {
+        //        string directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ScreenCapture");
 
-                if (!Directory.Exists(directory))
-                {
-                    Directory.CreateDirectory(directory);
-                }
+        //        if (!Directory.Exists(directory))
+        //        {
+        //            Directory.CreateDirectory(directory);
+        //        }
 
-                string filePath = Path.Combine(directory, Filename);
+        //        string filePath = Path.Combine(directory, Filename);
 
-                SaveFile(filePath);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        //        SaveFile(filePath);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="filePath"></param>
-        private void SaveFile(string filePath)
-        {
-            try
-            {
-                if (!(filePath.EndsWith(".xml") || filePath.EndsWith(".XML")))
-                {
-                    filePath += ".xml";
-                }
+        ///// <summary>
+        /////
+        ///// </summary>
+        ///// <param name="filePath"></param>
+        //private void SaveFile(string filePath)
+        //{
+        //    try
+        //    {
+        //        if (!(filePath.EndsWith(".xml") || filePath.EndsWith(".XML")))
+        //        {
+        //            filePath += ".xml";
+        //        }
 
-                using (var writer = new StreamWriter(filePath))
-                {
-                    var serializer = new XmlSerializer(GetType());
-                    serializer.Serialize(writer, this);
-                    writer.Flush();
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        //        using (var writer = new StreamWriter(filePath))
+        //        {
+        //            var serializer = new XmlSerializer(GetType());
+        //            serializer.Serialize(writer, this);
+        //            writer.Flush();
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="FileNotFoundException"></exception>
-        /// <exception cref="IOException"></exception>
-        /// <exception cref="Exception"></exception>
-        public static Option LoadFromFile()
-        {
-            return LoadFromFile("UserOptions.xml");
-        }
+        ///// <summary>
+        /////
+        ///// </summary>
+        ///// <returns></returns>
+        ///// <exception cref="FileNotFoundException"></exception>
+        ///// <exception cref="IOException"></exception>
+        ///// <exception cref="Exception"></exception>
+        //public static Option LoadFromFile()
+        //{
+        //    return LoadFromFile("UserOptions.xml");
+        //}
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="FileNotFoundException"></exception>
-        /// <exception cref="IOException"></exception>
-        /// <exception cref="Exception"></exception>
-        public static Option LoadFromFile(string FileName)
-        {
-            using (var stream = File.OpenRead(FileName))
-            {
-                var obj = new Option();
-                var serializer = new XmlSerializer(obj.GetType());
-                return (Option)serializer.Deserialize(stream);
-            }
-        }
+        ///// <summary>
+        /////
+        ///// </summary>
+        ///// <returns></returns>
+        ///// <exception cref="FileNotFoundException"></exception>
+        ///// <exception cref="IOException"></exception>
+        ///// <exception cref="Exception"></exception>
+        //public static Option LoadFromFile(string FileName)
+        //{
+        //    using (var stream = File.OpenRead(FileName))
+        //    {
+        //        var obj = new Option();
+        //        var serializer = new XmlSerializer(obj.GetType());
+        //        return (Option)serializer.Deserialize(stream);
+        //    }
+        //}
 
         public override bool Equals(Object obj)
         {

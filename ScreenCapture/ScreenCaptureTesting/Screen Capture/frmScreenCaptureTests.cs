@@ -22,7 +22,7 @@ namespace ScreenCapture.Tests
         [TestMethod()]
         public void frmScreenCaptureTestSaveOptions()
         {
-            capture.SaveOptions();
+            //capture.SaveOptions();
         }
 
         [TestMethod()]

@@ -18,6 +18,11 @@ namespace ScreenCapture.Repositories.OptionsRepositories
 
         public NamedOption Create(NamedOption option)
         {
+            if (option.IsDefault)
+            {
+                SetDefault(option);
+            }
+
             Options.Add(option);
 
             Save();

@@ -29,7 +29,7 @@ namespace ScreenCapture
         private int currentWidth;
         private int currentX;
         private int currentY;
-        private Options.Option usersOptions;
+        private NamedOption usersOptions;
 
         private bool loading = false;
 
@@ -41,7 +41,7 @@ namespace ScreenCapture
         /// Makes a new instance of a Option.Option.Option.Option menu form.
         /// </summary>
         /// <param name="options">The options that are currently doing run.</param>
-        public frmOptions(Options.Option options)
+        public frmOptions(NamedOption options)
         {
             UsersOptions = options;
             InitializeComponent();
@@ -78,7 +78,7 @@ namespace ScreenCapture
             {
                 if (radFullScreen.Checked)
                 {
-                    UsersOptions = new Options.Option();
+                    UsersOptions = new NamedOption();
                 }
                 else
                 {
@@ -181,7 +181,7 @@ namespace ScreenCapture
         /// <summary>
         /// Holds all the options for the capture
         /// </summary>
-        public Options.Option UsersOptions
+        public NamedOption UsersOptions
         {
             get
             {
@@ -333,9 +333,9 @@ namespace ScreenCapture
         /// Gets the capture information from the form and creates, returns a new Option.Option.
         /// </summary>
         /// <returns></returns>
-        private Options.Option MakeOptions()
+        private NamedOption MakeOptions()
         {
-            return UsersOptions = new Options.Option((int)CurrentWidth, (int)CurrentHeight, new Point((int)CurrentX, (int)CurrentY));
+            return UsersOptions = new NamedOption(txtProfileName.Text, (int)CurrentWidth, (int)CurrentHeight, new Point((int)CurrentX, (int)CurrentY));
         }
 
         #endregion Options.Options
@@ -422,7 +422,7 @@ namespace ScreenCapture
             {
                 //check if the file exist, check if the want to overwrite
                 MakeOptions();
-                saveOptions(txtProfileName.Text + ".XML");
+                SaveOptions(txtProfileName.Text + ".XML");
                 //save the options
             }
         }
@@ -430,11 +430,11 @@ namespace ScreenCapture
         /// <summary>
         /// It will save the options to an XML file.
         /// </summary>
-        private void saveOptions(string Filename)
+        private void SaveOptions(string Filename)
         {
             try
             {
-                UsersOptions.Save(Filename);
+                //UsersOptions.Save(Filename);
             }
             catch (FileNotFoundException ex)
             {

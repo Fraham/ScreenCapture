@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ScreenCapture;
+using ScreenCapture.Options;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -17,7 +18,7 @@ namespace ScreenCapture.Tests
         [TestInitialize()]
         public void Initialize()
         {
-            captureArea = new frmUserCaptureArea(new Options.Option(100, 100, new Point(3, 4)), false);
+            captureArea = new frmUserCaptureArea(new NamedOption("", 100, 100, new Point(3, 4)), false);
         }
 
         [TestMethod()]
@@ -31,7 +32,7 @@ namespace ScreenCapture.Tests
         {
             Assert.AreEqual(new Options.Option(100, 100, new Point(3, 4)), captureArea.CaptureOptions);
 
-            captureArea.CaptureOptions = new Options.Option(101, 110, new Point(4, 6));
+            captureArea.CaptureOptions = new NamedOption("", 101, 110, new Point(4, 6));
 
             Assert.AreNotEqual(new Options.Option(100, 100, new Point(3, 4)), captureArea.CaptureOptions);
 

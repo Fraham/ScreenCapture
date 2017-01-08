@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScreenCapture.Options;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -24,12 +25,12 @@ namespace ScreenCapture
         private Graphics g;
         private Form m_InstanceRef = null;
         private Pen MyPen = new Pen(Color.Red, 1);
-        private Options.Option options;
+        private NamedOption options;
         private bool show = false;
 
         #endregion Form Variables
 
-        public frmUserCaptureArea(Options.Option options, bool show)
+        public frmUserCaptureArea(NamedOption options, bool show)
         {
             InitializeComponent();
 
@@ -84,7 +85,7 @@ namespace ScreenCapture
 
         #region Properties
 
-        public Options.Option CaptureOptions
+        public NamedOption CaptureOptions
         {
             get
             {

@@ -18,16 +18,7 @@ namespace ScreenCapture.Repositories.OptionsRepositories
 
         public NamedOption Create(NamedOption option)
         {
-            if (option.IsDefault)
-            {
-                SetDefault(option);
-            }
-
-            Options.Add(option);
-
-            Save();
-
-            return option;
+            return Create(option.Name, option.Width, option.Height, option.SourcePoint, option.IsDefault);
         }
 
         public NamedOption Create(string name, int width, int height, Point sourcePoint, bool isDefault = false)

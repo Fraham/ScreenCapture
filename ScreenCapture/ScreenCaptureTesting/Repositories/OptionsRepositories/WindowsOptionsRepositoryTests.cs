@@ -209,6 +209,14 @@ namespace ScreenCapture.Repositories.OptionsRepositories.Tests
             Assert.AreEqual(20, optionsRepository.Get(optionName).Height);
         }
 
+        [TestMethod()]
+        public void OptionsRepositoriesUpdate_GetAll_Success()
+        {
+            var list = optionsRepository.GetAll();
+
+            Assert.AreEqual(1, list.Count());
+        }
+
         private ICollection<NamedOption> LoadFile()
         {
             if (File.Exists(fileName))

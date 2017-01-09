@@ -14,9 +14,9 @@ namespace ScreenCapture.Interfaces
 
         NamedOption Create(string name, int width, int height, Point sourcePoint, bool isDefault);
 
-        NamedOption Update(string name, NamedOption option, string newName);
+        NamedOption Update(string name, NamedOption option, string newName = null);
 
-        NamedOption Update(string name, int width, int height, Point sourcePoint, bool isDefault, string newName);
+        NamedOption Update(string name, int width = 0, int height = 0, Point sourcePoint = default(Point), bool isDefault = false, string newName = null);
 
         NamedOption Get(string name);
 

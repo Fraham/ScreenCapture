@@ -130,6 +130,85 @@ namespace ScreenCapture.Repositories.OptionsRepositories.Tests
             Assert.AreEqual(option1, optionsRepository.GetDefault());
         }
 
+        [TestMethod()]
+        public void OptionsRepositoriesUpdate_WidthChange_Success()
+        {
+            string optionName = "Option 1";
+            optionsRepository.Create(new NamedOption(optionName));
+
+            optionsRepository.Update(optionName, width: 20);
+
+            Assert.AreEqual(20, optionsRepository.Get(optionName).Width);
+        }
+
+        [TestMethod()]
+        public void OptionsRepositoriesUpdate_HeightChange_Success()
+        {
+            string optionName = "Option 1";
+            optionsRepository.Create(new NamedOption(optionName));
+
+            optionsRepository.Update(optionName, height: 20);
+
+            Assert.AreEqual(20, optionsRepository.Get(optionName).Height);
+        }
+
+        [TestMethod()]
+        public void OptionsRepositoriesUpdate_SourcePointChange_Success()
+        {
+            string optionName = "Option 1";
+            optionsRepository.Create(new NamedOption(optionName));
+
+            optionsRepository.Update(optionName, sourcePoint: new Point(30, 30));
+
+            Assert.AreEqual(new Point(30, 30), optionsRepository.Get(optionName).SourcePoint);
+        }
+
+        [TestMethod()]
+        public void OptionsRepositoriesUpdate_NameChange_Success()
+        {
+            string optionName = "Option 1";
+            optionsRepository.Create(new NamedOption(optionName));
+
+            const string newName = "NewName";
+            optionsRepository.Update(optionName, newName: newName);
+
+            Assert.IsNotNull(optionsRepository.Get(newName));
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(Exception))]
+        public void OptionsRepositoriesUpdate_OptionNotSetUp_Failure()
+        {
+            string optionName = "Option 1";
+            optionsRepository.Create(new NamedOption(optionName));
+
+            const string newName = "NewName";
+            optionsRepository.Update(newName, newName: newName);
+        }
+
+        [TestMethod()]
+        public void OptionsRepositoriesUpdate_SetDefault_Success()
+        {
+            string optionName = "Option 1";
+            optionsRepository.Create(new NamedOption(optionName));
+
+            var option = optionsRepository.Update(optionName, isDefault: true);
+
+            Assert.AreEqual(option, optionsRepository.GetDefault());
+        }
+
+        [TestMethod()]
+        public void OptionsRepositoriesUpdate_HeightChangeNamedOption_Success()
+        {
+            string optionName = "Option 1";
+            var option = optionsRepository.Create(new NamedOption(optionName));
+            option.Height = 20;
+
+            optionsRepository.Update(optionName, option);
+
+            Assert.AreEqual(20, optionsRepository.Get(optionName).Height);
+        }
+
         private ICollection<NamedOption> LoadFile()
         {
             if (File.Exists(fileName))

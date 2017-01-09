@@ -39,7 +39,14 @@ namespace ScreenCapture.Repositories.OptionsRepositories
 
         public NamedOption Get(string name)
         {
-            return Options.First(op => op.Name == name);
+            try
+            {
+                return Options.First(op => op.Name == name);
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
         }
 
         public IEnumerable<NamedOption> GetAll()
@@ -52,7 +59,7 @@ namespace ScreenCapture.Repositories.OptionsRepositories
             return Update(name, option.Width, option.Height, option.SourcePoint, option.IsDefault);
         }
 
-        public NamedOption Update(string name, int width, int height, Point sourcePoint, bool isDefault = false, string newName = null)
+        public NamedOption Update(string name, int width = 0, int height = 0, Point sourcePoint = default(Point), bool isDefault = false, string newName = null)
         {
             var option = Get(name);
 
@@ -66,9 +73,18 @@ namespace ScreenCapture.Repositories.OptionsRepositories
                 SetDefault(option);
             }
 
-            option.Width = width;
-            option.Height = height;
-            option.SourcePoint = sourcePoint;
+            if (width != 0)
+            {
+                option.Width = width;
+            }
+            if (height != 0)
+            {
+                option.Height = height;
+            }
+            if (sourcePoint != default(Point))
+            {
+                option.SourcePoint = sourcePoint;
+            }            
 
             if (!string.IsNullOrEmpty(newName))
             {

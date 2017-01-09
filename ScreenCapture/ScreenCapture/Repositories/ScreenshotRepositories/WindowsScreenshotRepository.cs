@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,26 @@ namespace ScreenCapture.Repositories.ScreenshotRepositories
 {
     public class WindowsScreenshotRepository : IScreenshotRepository
     {
-        public Image Load(string fileName = null)
+        public Image Load(string _fileName = null)
         {
-            throw new NotImplementedException();
+            string fileName;
+
+            if ((fileName = _fileName) == null)
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "JPEG File | *.jpeg";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    fileName = dialog.FileName;
+                }
+            }
+
+            if (!File.Exists(fileName))
+            {
+                return null;
+            }
+
+            return Image.FromFile(fileName);
         }
 
         public void Save(Image image, ImageFormat _imageFormat = null, string _fileName = null)
@@ -33,9 +51,9 @@ namespace ScreenCapture.Repositories.ScreenshotRepositories
                 }
             }
 
-            if (!(fileName.ToLower().EndsWith(".jpeg")))
+            if (!(fileName.ToLower().EndsWith("."+ imageFormat.ToString().ToLower())))
             {
-                fileName += ".jpeg";
+                fileName += "." + imageFormat.ToString();
             }
 
             image.Save(fileName, imageFormat);

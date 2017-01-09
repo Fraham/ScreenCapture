@@ -58,6 +58,7 @@
     <Compile Include="Options\NamedOptionsTests.cs" />
     <Compile Include="Options\OptionsTests.cs" />
     <Compile Include="Repositories\OptionsRepositories\WindowsOptionsRepositoryTests.cs" />
+    <Compile Include="Repositories\ScreenshotRepositories\WindowsScreenshotRepositoryTests.cs" />
     <Compile Include="Screen Capture\CaptureWorkerTests.cs" />
     <Compile Include="Screen Capture\frmFeedTests.cs" />
     <Compile Include="Screen Capture\frmScreenCaptureTests.cs" />

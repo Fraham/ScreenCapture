@@ -1,15 +1,20 @@
-﻿using System;
+﻿using ScreenCapture.Interfaces;
+using ScreenCapture.Factories;
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.Windows.Forms;
+using ScreenCapture.Options;
 
 namespace ScreenCapture
 {
     public class Screenshot
     {
-        private Options.Options options;
+        private Options.Option options;
         private Bitmap image;
+
+        IScreenshotRepository screenshotRepository = ScreenshotFactory.GetRepository();
 
         /// <summary>
         /// Makes a new instance of a screenshot.
@@ -18,9 +23,9 @@ namespace ScreenCapture
         /// <param name="captureWidth">The width of capture area.</param>
         /// <param name="captureHeight">The height of capture area.</param>
         /// <param name="sourcePoint">The source point of the capture.</param>
-        public Screenshot(int captureWidth, int captureHeight, Point sourcePoint)
+        public Screenshot(int captureWidth, int captureHeight, Point sourcePoint, string name = "")
         {
-            CaptureOptions = new Options.Options(captureWidth, captureHeight, sourcePoint);
+            CaptureOptions = new NamedOption(name, captureWidth, captureHeight, sourcePoint);
         }
 
         /// <summary>
@@ -29,12 +34,12 @@ namespace ScreenCapture
         /// </summary>
         /// <param name="captureWidth">The width of capture area.</param>
         /// <param name="captureHeight">The height of capture area.</param>
-        public Screenshot(int captureWidth, int captureHeight)
+        public Screenshot(int captureWidth, int captureHeight, string name = "")
         {
-            CaptureOptions = new Options.Options(captureWidth, captureHeight, Point.Empty);
+            CaptureOptions = new NamedOption(name, captureWidth, captureHeight, Point.Empty);
         }
 
-        public Screenshot(Options.Options options)
+        public Screenshot(NamedOption options)
         {
             CaptureOptions = options;
         }
@@ -69,22 +74,17 @@ namespace ScreenCapture
 
         public void Save()
         {
-            SaveFileDialog dialog = new SaveFileDialog();
-            dialog.Filter = "JPEG File | *.jpeg";
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                Save(dialog.FileName);
-            }
+            screenshotRepository.Save(Image);
         }
 
         public void Save(string fileName)
         {
-            if (!(fileName.ToLower().EndsWith(".jpeg")))
-            {
-                fileName += ".jpeg";
-            }
+            screenshotRepository.Save(Image, fileName: fileName);
+        }
 
-            Image.Save(fileName, ImageFormat.Jpeg);
+        public Image Load(string fileName)
+        {
+            return screenshotRepository.Load(fileName: fileName);
         }
 
         public void Copy()
@@ -117,7 +117,7 @@ namespace ScreenCapture
         /// Getter and Setter for the capture options.
         /// This holds all the information needed for the capture.
         /// </summary>
-        public Options.Options CaptureOptions
+        public Options.Option CaptureOptions
         {
             get
             {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ArrayOfNamedOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <NamedOptions>
+<ArrayOfNamedOption xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <NamedOption>
     <Fullscreen>true</Fullscreen>
     <Height>1080</Height>
     <SourcePoint>
@@ -9,5 +9,6 @@
     </SourcePoint>
     <Width>3840</Width>
     <Name>Name</Name>
-  </NamedOptions>
-</ArrayOfNamedOptions>
+    <IsDefault>false</IsDefault>
+  </NamedOption>
+</ArrayOfNamedOption>

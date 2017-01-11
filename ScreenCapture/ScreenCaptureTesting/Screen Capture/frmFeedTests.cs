@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ScreenCapture.Options;
 using ScreenCapture.ScreenCapture;
 using System;
 using System.Collections.Generic;
@@ -18,14 +19,14 @@ namespace ScreenCapture.ScreenCapture.Tests
         [TestInitialize()]
         public void Initialize()
         {
-            feed = new frmFeed(new Options.Options(100, 100, new Point(3, 4)), @"\Testing\");
+            feed = new frmFeed(new NamedOption("", 100, 100, new Point(3, 4)), @"\Testing\");
         }
 
         [TestMethod()]
         public void CaptureOptions()
         {
-            Assert.AreEqual(new Options.Options(100, 100, new Point(3, 4)), feed.UsersOptions);
-            Assert.AreNotEqual(new Options.Options(101, 100, new Point(3, 4)), feed.UsersOptions);
+            Assert.AreEqual(new Options.Option(100, 100, new Point(3, 4)), feed.UsersOptions);
+            Assert.AreNotEqual(new Options.Option(101, 100, new Point(3, 4)), feed.UsersOptions);
         }
 
         [TestMethod()]

@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,7 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Options\NamedOptions.cs" />
+    <Compile Include="Factories\OptionsFactory.cs" />
+    <Compile Include="Factories\ScreenshotFactory.cs" />
+    <Compile Include="Interfaces\IOptionsRepository.cs" />
+    <Compile Include="Interfaces\IScreenshotRepository.cs" />
+    <Compile Include="Options\NamedOption.cs" />
+    <Compile Include="Repositories\OptionsRepositories\FakeOptionsRepository.cs" />
+    <Compile Include="Repositories\OptionsRepositories\WindowsOptionsRepository.cs" />
+    <Compile Include="Repositories\ScreenshotRepositories\FakeScreenshotRepository.cs" />
+    <Compile Include="Repositories\ScreenshotRepositories\WindowsScreenshotRepository.cs" />
     <Compile Include="Screen Capture\CaptureWorker.cs" />
     <Compile Include="Options\frmOptions.cs">
       <SubType>Form</SubType>
@@ -70,7 +79,7 @@
     <Compile Include="Options\frmUserCaptureArea.Designer.cs">
       <DependentUpon>frmUserCaptureArea.cs</DependentUpon>
     </Compile>
-    <Compile Include="Options\Options.cs" />
+    <Compile Include="Options\Option.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screen Capture\frmScreenshot.cs">
@@ -106,7 +115,6 @@
     <EmbeddedResource Include="Screen Capture\frmScreenshot.resx">
       <DependentUpon>frmScreenshot.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -121,6 +129,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -14,7 +14,7 @@ namespace ScreenCapture
         private ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
         private Thread _thread;
         private int frames = 0;
-        private Options.Options options;
+        private Options.Option options;
         private bool started = false;
         private bool capturing = false;
         private Stopwatch captureTime;
@@ -26,68 +26,11 @@ namespace ScreenCapture
         #region Constructors
 
         /// <summary>
-        /// Makes a new instance of a capture worker. It will capture an area from the source point
-        /// to the set width and height.
-        /// </summary>
-        /// <param name="captureWidth">The width of capture area.</param>
-        /// <param name="captureHeight">The height of capture area.</param>
-        /// <param name="picBox">The picture box being used to display the capture.</param>
-        /// <param name="sourcePoint">The source point of the capture.</param>
-        public CaptureWorker(int captureWidth, int captureHeight, Point sourcePoint, string path)
-        {
-            CaptureOptions = new Options.Options(captureWidth, captureHeight, sourcePoint);
-
-            this.Path = path;
-        }
-
-        /// <summary>
-        /// Makes a new instance of a capture worker. It will capture an area from (0, 0) to the set
-        /// width and height.
-        /// </summary>
-        /// <param name="captureWidth">The width of capture area.</param>
-        /// <param name="captureHeight">The height of capture area.</param>
-        /// <param name="picBox">The picture box being used to display the capture.</param>
-        public CaptureWorker(int captureWidth, int captureHeight, string path)
-        {
-            CaptureOptions = new Options.Options(captureWidth, captureHeight, Point.Empty);
-
-            this.Path = path;
-        }
-
-        /// <summary>
-        /// Makes a new instance of a capture worker. It will capture an area from the set x and y to
-        /// the set width and height.
-        /// </summary>
-        /// <param name="captureWidth">The width of capture area.</param>
-        /// <param name="captureHeight">The height of capture area.</param>
-        /// <param name="picBox">The picture box being used to display the capture.</param>
-        /// <param name="x">The x co-ordinate of the source of the source</param>
-        /// <param name="y">The y co-ordinate of the source of the source</param>
-        public CaptureWorker(int captureWidth, int captureHeight, int x, int y, string path)
-        {
-            CaptureOptions = new Options.Options(captureWidth, captureHeight, new Point(x, y));
-
-            this.Path = path;
-        }
-
-        /// <summary>
-        /// Makes a new instance of a capture worker It will set the height and width of the capture
-        /// to the full area of displays. It will be able to capture the screen over multiple displays.
-        /// </summary>
-        /// <param name="picBox">The picture box being used to display the capture.</param>
-        public CaptureWorker(string path)
-        {
-            CaptureOptions = new Options.Options(ScreenSize.Width, ScreenSize.Height, Point.Empty);
-
-            this.Path = path;
-        }
-
-        /// <summary>
         /// Makes a new instance of a capture worker It will capture an area using the options provided.
         /// </summary>
         /// <param name="options">The options for the capture.</param>
         /// <param name="picBox">The picture box being used to display the capture.</param>
-        public CaptureWorker(Options.Options options, string path)
+        public CaptureWorker(Options.Option options, string path)
         {
             CaptureOptions = options;
 
@@ -210,7 +153,7 @@ namespace ScreenCapture
         /// <summary>
         /// Getter and Setter for the capture options. This holds all the information needed for the capture.
         /// </summary>
-        public Options.Options CaptureOptions
+        public Options.Option CaptureOptions
         {
             get
             {

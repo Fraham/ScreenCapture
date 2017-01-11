@@ -14,15 +14,9 @@ namespace ScreenCapture.Tests
         }
 
         [TestMethod()]
-        public void frmScreenCaptureTestLoadOptions()
-        {
-            capture.LoadOptions();
-        }
-
-        [TestMethod()]
         public void frmScreenCaptureTestSaveOptions()
         {
-            capture.SaveOptions();
+            //capture.SaveOptions();
         }
 
         [TestMethod()]
